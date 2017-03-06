@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RatingView">
+            <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7lx-5C-BSE">
+                    <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_grade" translatesAutoresizingMaskIntoConstraints="NO" id="TbT-L4-CQ9">
+                            <rect key="frame" x="0.0" y="8" width="20" height="20"/>
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="1W9-rY-aEo"/>
+                                <constraint firstAttribute="height" constant="20" id="xAM-fW-zhs"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_grade" translatesAutoresizingMaskIntoConstraints="NO" id="ZM1-uU-e4B">
+                            <rect key="frame" x="30" y="8" width="20" height="20"/>
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="RMQ-b4-4tQ"/>
+                                <constraint firstAttribute="height" constant="20" id="b0C-Zl-iti"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_grade" translatesAutoresizingMaskIntoConstraints="NO" id="noF-cM-CtG">
+                            <rect key="frame" x="60" y="8" width="20" height="20"/>
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="DIJ-mv-SQw"/>
+                                <constraint firstAttribute="height" constant="20" id="XgD-7L-Z0v"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_grade" translatesAutoresizingMaskIntoConstraints="NO" id="v83-jb-ER8">
+                            <rect key="frame" x="90" y="8" width="20" height="20"/>
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="Yh4-hD-Rvm"/>
+                                <constraint firstAttribute="height" constant="20" id="qHM-rK-Dpk"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_grade" translatesAutoresizingMaskIntoConstraints="NO" id="WJV-eB-laA">
+                            <rect key="frame" x="120" y="8" width="20" height="20"/>
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="Egq-uy-kgQ"/>
+                                <constraint firstAttribute="width" constant="20" id="Mus-De-zEG"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="noF-cM-CtG" firstAttribute="centerY" secondItem="ZM1-uU-e4B" secondAttribute="centerY" id="21h-QF-VqV"/>
+                        <constraint firstItem="TbT-L4-CQ9" firstAttribute="leading" secondItem="7lx-5C-BSE" secondAttribute="leading" id="4Gm-ak-XDI"/>
+                        <constraint firstItem="v83-jb-ER8" firstAttribute="centerY" secondItem="noF-cM-CtG" secondAttribute="centerY" id="7dX-gF-TU3"/>
+                        <constraint firstItem="ZM1-uU-e4B" firstAttribute="centerY" secondItem="TbT-L4-CQ9" secondAttribute="centerY" id="Feq-4t-uqs"/>
+                        <constraint firstItem="WJV-eB-laA" firstAttribute="leading" secondItem="v83-jb-ER8" secondAttribute="trailing" constant="10" id="J9T-T6-FsE"/>
+                        <constraint firstItem="v83-jb-ER8" firstAttribute="leading" secondItem="noF-cM-CtG" secondAttribute="trailing" constant="10" id="R47-ax-Jdh"/>
+                        <constraint firstAttribute="bottom" secondItem="TbT-L4-CQ9" secondAttribute="bottom" constant="2" id="RCn-PA-0A6"/>
+                        <constraint firstItem="ZM1-uU-e4B" firstAttribute="leading" secondItem="TbT-L4-CQ9" secondAttribute="trailing" constant="10" id="bxf-IF-Vmx"/>
+                        <constraint firstItem="noF-cM-CtG" firstAttribute="leading" secondItem="ZM1-uU-e4B" secondAttribute="trailing" constant="10" id="puZ-Xw-N7l"/>
+                        <constraint firstItem="WJV-eB-laA" firstAttribute="centerY" secondItem="v83-jb-ER8" secondAttribute="centerY" id="zcb-ZZ-26k"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="7lx-5C-BSE" secondAttribute="bottom" id="25T-dh-nLL"/>
+                <constraint firstAttribute="trailing" secondItem="7lx-5C-BSE" secondAttribute="trailing" id="UzK-84-TXn"/>
+                <constraint firstItem="7lx-5C-BSE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Vpr-NQ-shx"/>
+                <constraint firstItem="7lx-5C-BSE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="p0g-gM-KtS"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="ibCollectionRate" destination="TbT-L4-CQ9" id="MdA-M6-HsI"/>
+                <outletCollection property="ibCollectionRate" destination="ZM1-uU-e4B" id="4Ei-w6-3dF"/>
+                <outletCollection property="ibCollectionRate" destination="noF-cM-CtG" id="T4w-5U-StH"/>
+                <outletCollection property="ibCollectionRate" destination="v83-jb-ER8" id="ws9-RL-HB8"/>
+                <outletCollection property="ibCollectionRate" destination="WJV-eB-laA" id="eym-xa-YJM"/>
+            </connections>
+            <point key="canvasLocation" x="-38.5" y="-220"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_grade" width="24" height="24"/>
+    </resources>
+</document>

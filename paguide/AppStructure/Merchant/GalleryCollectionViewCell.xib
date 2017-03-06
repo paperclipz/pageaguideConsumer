@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="gallery_collection_cell" id="gTV-IL-0wX" customClass="GalleryCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="93" height="92"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="93" height="92"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8hT-JS-oQ5">
+                        <rect key="frame" x="0.0" y="0.0" width="93" height="92"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_grade" translatesAutoresizingMaskIntoConstraints="NO" id="J9e-5U-JXy">
+                                <rect key="frame" x="0.0" y="0.0" width="93" height="92"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="J9e-5U-JXy" firstAttribute="leading" secondItem="8hT-JS-oQ5" secondAttribute="leading" id="Ctd-cS-K2B"/>
+                            <constraint firstAttribute="trailing" secondItem="J9e-5U-JXy" secondAttribute="trailing" id="Owa-7X-hra"/>
+                            <constraint firstAttribute="bottom" secondItem="J9e-5U-JXy" secondAttribute="bottom" id="Qfd-dP-Q8C"/>
+                            <constraint firstItem="J9e-5U-JXy" firstAttribute="top" secondItem="8hT-JS-oQ5" secondAttribute="top" id="tWC-NW-93j"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="8hT-JS-oQ5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="J6z-Gc-WD4"/>
+                <constraint firstAttribute="trailing" secondItem="8hT-JS-oQ5" secondAttribute="trailing" id="LtH-qM-drI"/>
+                <constraint firstItem="8hT-JS-oQ5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="VKh-Ix-Hxx"/>
+                <constraint firstAttribute="bottom" secondItem="8hT-JS-oQ5" secondAttribute="bottom" id="r7g-Li-clf"/>
+            </constraints>
+            <size key="customSize" width="93" height="92"/>
+            <point key="canvasLocation" x="46.5" y="73"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_grade" width="24" height="24"/>
+    </resources>
+</document>
