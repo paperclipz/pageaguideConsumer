@@ -82,9 +82,19 @@
     
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Register" bundle:nil];
-    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Register_Main_Navigation"];
+    UINavigationController *navC = [storyboard instantiateViewControllerWithIdentifier:@"Register_Main_Navigation"];
     
-    [rootController presentViewController:vc animated:YES completion:nil];
+    
+//    [navC.navigationBar setBackgroundImage:[UIImage new]
+//                                                  forBarMetrics:UIBarMetricsDefault];
+//    navC.navigationBar.shadowImage = [UIImage new];
+//    navC.navigationBar.translucent = YES;
+//    navC.view.backgroundColor = [UIColor clearColor];
+//    navC.navigationBar.backgroundColor = [UIColor clearColor];
+//
+//    
+    [rootController presentViewController:navC animated:YES completion:nil];
+    
     //        if (!index.showTabBar) {
     
 }

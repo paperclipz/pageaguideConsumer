@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalenderViewController">
+            <connections>
+                <outlet property="calendarContentView" destination="N3i-h4-eyj" id="yiB-RJ-L9v"/>
+                <outlet property="calendarMenuView" destination="y3T-t1-ol2" id="N3B-pQ-Ul6"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3i-h4-eyj" customClass="JTHorizontalCalendarView">
+                    <rect key="frame" x="0.0" y="128" width="375" height="539"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fakedSelectedDay">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3T-t1-ol2" customClass="JTCalendarMenuView">
+                    <rect key="frame" x="0.0" y="64" width="375" height="64"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="YgJ-zT-Xaf"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="N3i-h4-eyj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JCr-uK-P75"/>
+                <constraint firstAttribute="trailing" secondItem="N3i-h4-eyj" secondAttribute="trailing" id="LzN-pJ-u8S"/>
+                <constraint firstItem="N3i-h4-eyj" firstAttribute="top" secondItem="y3T-t1-ol2" secondAttribute="bottom" id="Pke-0Z-EwM"/>
+                <constraint firstItem="y3T-t1-ol2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="nXI-Mx-Gxo"/>
+                <constraint firstAttribute="trailing" secondItem="y3T-t1-ol2" secondAttribute="trailing" id="rj9-mv-iwp"/>
+                <constraint firstAttribute="bottom" secondItem="N3i-h4-eyj" secondAttribute="bottom" id="tof-KA-Y62"/>
+                <constraint firstItem="y3T-t1-ol2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tsq-Ve-DC0"/>
+            </constraints>
+            <point key="canvasLocation" x="121.5" y="78.5"/>
+        </view>
+    </objects>
+</document>

@@ -33,9 +33,10 @@ def shared_pods
     pod 'FBSDKCoreKit', '~>4.16.0'
     pod 'FBSDKLoginKit', '~>4.16.0'
     pod 'FBSDKShareKit', '~>4.16.0'
-    #pod 'IDMPhotoBrowser'
+    pod 'MWPhotoBrowser'
+    pod 'JTCalendar', '~> 2.0'
+
     #pod 'PEPhotoCropEditor'
-    
     # pod 'IAPHelper'
     
     

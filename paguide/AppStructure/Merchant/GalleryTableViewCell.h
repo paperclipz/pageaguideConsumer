@@ -10,5 +10,10 @@
 
 @interface GalleryTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UICollectionView *ibCollectionView;
+@property(strong, nonatomic)NSArray* arrImageList;
+
+-(void)setupImageList:(NSArray*)imageList;
+
+@property(nonatomic,copy)IntBlock didSelectAtIndexBlock;
 
 @end

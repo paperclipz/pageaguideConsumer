@@ -15,22 +15,43 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1g-rp-AmA">
-                    <rect key="frame" x="10" y="0.0" width="355" height="53"/>
+                    <rect key="frame" x="10" y="0.0" width="265" height="53"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCt-Fv-Yqu">
+                    <rect key="frame" x="275" y="0.0" width="90" height="53"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sa4-Qg-fn6">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                    <connections>
+                        <action selector="btnDidSelectClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="2iS-gi-XNV"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="sa4-Qg-fn6" secondAttribute="trailing" id="1T7-M7-YFE"/>
+                <constraint firstItem="DCt-Fv-Yqu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7mY-WT-y6e"/>
                 <constraint firstItem="g1g-rp-AmA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Bem-lh-ZK1"/>
-                <constraint firstAttribute="trailing" secondItem="g1g-rp-AmA" secondAttribute="trailing" constant="10" id="Js9-5r-yHB"/>
+                <constraint firstItem="DCt-Fv-Yqu" firstAttribute="leading" secondItem="g1g-rp-AmA" secondAttribute="trailing" id="F47-WQ-Yzg"/>
+                <constraint firstItem="sa4-Qg-fn6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I8U-Lm-u1d"/>
+                <constraint firstAttribute="trailing" secondItem="g1g-rp-AmA" secondAttribute="trailing" constant="100" id="Js9-5r-yHB"/>
+                <constraint firstAttribute="bottom" secondItem="sa4-Qg-fn6" secondAttribute="bottom" id="ODm-7x-3UI"/>
+                <constraint firstAttribute="trailing" secondItem="DCt-Fv-Yqu" secondAttribute="trailing" constant="10" id="SlV-OP-Xxz"/>
+                <constraint firstAttribute="bottom" secondItem="DCt-Fv-Yqu" secondAttribute="bottom" id="aRF-QV-Pps"/>
+                <constraint firstItem="sa4-Qg-fn6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mXg-c3-Unp"/>
                 <constraint firstItem="g1g-rp-AmA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="tXm-Hv-TW6"/>
                 <constraint firstAttribute="bottom" secondItem="g1g-rp-AmA" secondAttribute="bottom" id="yxG-TG-OWT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="lblTitle1" destination="g1g-rp-AmA" id="tP6-hs-EG4"/>
+                <outlet property="lblTitle2" destination="DCt-Fv-Yqu" id="DAN-0P-wkH"/>
             </connections>
             <point key="canvasLocation" x="25.5" y="-254.5"/>
         </view>

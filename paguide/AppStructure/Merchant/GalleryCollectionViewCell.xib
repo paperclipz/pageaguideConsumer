@@ -41,6 +41,9 @@
                 <constraint firstAttribute="bottom" secondItem="8hT-JS-oQ5" secondAttribute="bottom" id="r7g-Li-clf"/>
             </constraints>
             <size key="customSize" width="93" height="92"/>
+            <connections>
+                <outlet property="ibImageView" destination="J9e-5U-JXy" id="3AX-QF-tN7"/>
+            </connections>
             <point key="canvasLocation" x="46.5" y="73"/>
         </collectionViewCell>
     </objects>

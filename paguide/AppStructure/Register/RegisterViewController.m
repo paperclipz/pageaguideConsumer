@@ -10,6 +10,9 @@
 #import "RegisterTableViewCell.h"
 #import "EBActionSheetViewController.h"
 
+#define viewTypeLogin @"login"
+#define viewTypeRegister @"register"
+
 @protocol KeyValueModel;
 
 @interface cellObject : NSObject
@@ -27,6 +30,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 @property (nonatomic,strong) NSArray* arrItemList;
+@property (nonatomic, strong)NSString* viewType;
 
 @end
 
@@ -46,9 +50,54 @@
 }
 
 #pragma mark - System lifecycle
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    if ([self.viewType isEqualToString:viewTypeLogin]) {
+    
+        [self.navigationController setNavigationBarHidden:YES];
+
+    }
+    else{
+        [self.navigationController setNavigationBarHidden:NO];
+
+    }
+    
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    if ([self.viewType isEqualToString:viewTypeLogin]) {
+        
+        [self.navigationController setNavigationBarHidden:NO];
+        
+    }
+    else
+    {
+        [self.navigationController setNavigationBarHidden:NO];
+
+    }
+
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    NSString* type = [self valueForKey:@"viewType"];
+//    
+//    
+//    @try {
+//        NSLog(@"user define : %@",type);
+//
+//    } @catch (NSException *exception) {
+//        
+//        
+//        NSLog(@"user define have error");
+//
+//    }
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self initSelfView];
@@ -68,6 +117,14 @@
 -(void)initSelfView
 {
     [Utils setRoundBorder:self.btnSubmit color:[UIColor clearColor] borderRadius:5.0f];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    
 }
 
 -(NSArray*)arrItemList

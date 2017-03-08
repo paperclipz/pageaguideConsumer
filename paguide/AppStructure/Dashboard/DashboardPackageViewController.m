@@ -8,6 +8,7 @@
 
 #import "DashboardPackageViewController.h"
 #import "DashboardPackageTableViewCell.h"
+#import "CalenderViewController.h"
 
 @interface DashboardPackageViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
@@ -20,11 +21,16 @@
 }
 - (IBAction)btnLoginClicked:(id)sender {
     
+    CalenderViewController* viewC = [CalenderViewController new];
+    
+    [self.navigationController pushViewController:viewC animated:YES];
+    return ;
     [Utils showRegisterPage];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     [self initSelfView];
 
@@ -105,6 +111,12 @@
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"package_details" sender:self];
+}
+
 
 /*
 #pragma mark - Navigation

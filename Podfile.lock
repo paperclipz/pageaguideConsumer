@@ -21,6 +21,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - DACircularProgress (2.3.1)
   - FBSDKCoreKit (4.16.1):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.16.1):
@@ -70,7 +71,13 @@ PODS:
   - HexColors (2.3.0)
   - IQKeyboardManager (4.0.8)
   - JSONModel (1.7.0)
+  - JTCalendar (2.1.9)
   - KVNProgress (2.3.1)
+  - MBProgressHUD (0.9.2)
+  - MWPhotoBrowser (2.1.2):
+    - DACircularProgress (~> 2.3)
+    - MBProgressHUD (~> 0.9)
+    - SDWebImage (!= 3.7.2, ~> 3.7)
   - Protobuf (3.2.0)
   - RMActionController (1.0.5)
   - RMDateSelectionViewController (2.0.3):
@@ -94,7 +101,9 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - IQKeyboardManager
   - JSONModel
+  - JTCalendar (~> 2.0)
   - KVNProgress
+  - MWPhotoBrowser
   - RMDateSelectionViewController (~> 2.0.3)
   - SDWebImage
   - SVPullToRefresh
@@ -113,6 +122,7 @@ SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FBSDKCoreKit: 6feac4e8921ccd7afa83fb1df6291dc6eec42c7c
   FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
   FBSDKShareKit: 53af0239b5bd2ebf191f32f75991245a208cc982
@@ -127,7 +137,10 @@ SPEC CHECKSUMS:
   HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
   IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
+  JTCalendar: beb2f4c1b639bf6880f680b4858227acf83a049c
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
   RMActionController: b83653e7452ed51492094d65dc82151c36443c03
   RMDateSelectionViewController: 354a0f1fe40bac01054528b7a8735f2973bbd813
@@ -135,6 +148,6 @@ SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   TSMessages: eb3cf27b6900684a21bad4fe9ea426e287b8c839
 
-PODFILE CHECKSUM: 4a14cdabc76405e9ef420f9d49278489677f6477
+PODFILE CHECKSUM: e2d2114d3c70b758d061fe989860a47aa3c056d7
 
 COCOAPODS: 1.0.1

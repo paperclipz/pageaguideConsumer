@@ -10,18 +10,22 @@
 #import "MerchantProfileTableViewCell.h"
 #import "HeaderView.h"
 #import "GalleryTableViewCell.h"
+#import "MWPhotoBrowser.h"
 
 
 #define cell_about @"About"
 #define cell_review @"Review"
 #define cell_gallery @"Gallery"
 
-@interface MerchantProfileViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MerchantProfileViewController () <UITableViewDataSource, UITableViewDelegate,MWPhotoBrowserDelegate>
 {
     NSArray* arrCellList;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *ibMerchantProfileView;
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
+
+@property (strong,nonatomic)NSArray* arrImageList;
+@property (strong,nonatomic)NSMutableArray* arrMWImageList;
 
 @end
 
@@ -39,6 +43,8 @@
     self.ibTableView.estimatedRowHeight = 120.0f;
     
     self.ibTableView.rowHeight = UITableViewAutomaticDimension;
+    
+    self.arrImageList = @[@"http://www.interviewmagazine.com/files/2013/09/28/img-scarlett-johansson_160222925524.jpg",@"http://esq.h-cdn.co/assets/cm/15/07/54daf94090795_-_esq-scarlet-johansson-2005-01-de.jpg"];
     
   //  [self.ibTableView registerClass:[GalleryTableViewCell class] forCellReuseIdentifier:@"gallery_cell"];
     
@@ -68,6 +74,28 @@
     
     
     headerView.lblTitle1.text = type;
+    
+    headerView.lblTitle2.text = @"More";
+
+    headerView.lblTitle2.hidden = YES;
+
+    if ([type isEqualToString:cell_review]) {
+        
+        if (true) {
+            
+            headerView.lblTitle2.hidden = NO;
+            
+        }
+    }
+    
+    headerView.didSelectBlock = ^(void)
+    {
+      
+        if ([type isEqualToString:cell_review]) {
+            
+            [self performSegueWithIdentifier:@"merchant_review" sender:self];
+        }
+    };
     
     return view;
     
@@ -155,14 +183,67 @@
         
         GalleryTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"merchant_gallery"];
         
+        [cell setupImageList:self.arrImageList];
         
-              return cell;
+        
+        cell.didSelectAtIndexBlock = ^(int index)
+        {
+            [self showGalleryView:index];
+        };
+        
+        return cell;
     }
   
     return nil;
 }
 
+-(void)showGalleryView:(NSInteger)index
+{
+    
+    
+    self.arrMWImageList = [NSMutableArray new];
+    
+    for (int i = 0; i<self.arrImageList.count; i++) {
+        
+        [self.arrMWImageList addObject:[MWPhoto photoWithURL:[NSURL URLWithString:self.arrImageList[i]]]];
+        
+    }
+    
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    
+    // Set options
+    browser.displayActionButton = YES; // Show action button to allow sharing, copying, etc (defaults to YES)
+    browser.displayNavArrows = NO; // Whether to display left and right nav arrows on toolbar (defaults to NO)
+    browser.displaySelectionButtons = NO; // Whether selection buttons are shown on each image (defaults to NO)
+    browser.zoomPhotosToFill = YES; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
+    browser.alwaysShowControls = NO; // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
+    browser.enableGrid = YES; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
+    browser.startOnGrid = NO; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
+    browser.autoPlayOnAppear = NO; // Auto-play first video
+    
+    // Customise selection images to change colours if required
+    
+    // Optionally set the current visible photo before displaying
+    [browser setCurrentPhotoIndex:index];
+    
+    // Present
+    
+   // [self presentViewController:browser animated:YES completion:nil];
+    
+    [self.navigationController pushViewController:browser animated:YES];
+    
+}
 
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser
+{
+    return self.arrMWImageList.count;
+    
+}
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
+{
+    return self.arrMWImageList[index];
+}
 /*
 #pragma mark - Navigation
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define APP_MAIN_COLOR [UIColor colorWithRed:43.0/255.0f green:57.0/255.0f blue:144.0/255.0f alpha:1]
+#define APP_MAIN_COLOR [UIColor redColor]
 
 @interface AppConstant : NSObject
 

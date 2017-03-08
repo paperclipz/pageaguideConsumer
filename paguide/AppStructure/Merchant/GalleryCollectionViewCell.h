@@ -10,5 +10,6 @@
 #import "CommonCollectionViewCell.h"
 
 @interface GalleryCollectionViewCell : CommonCollectionViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *ibImageView;
 
 @end

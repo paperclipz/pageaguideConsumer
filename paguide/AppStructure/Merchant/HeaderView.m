@@ -17,5 +17,12 @@
     // Drawing code
 }
 */
+- (IBAction)btnDidSelectClicked:(id)sender {
+    
+    if (self.didSelectBlock)
+    {
+        self.didSelectBlock();
+    }
+}
 
 @end

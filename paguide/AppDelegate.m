@@ -17,6 +17,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[UITabBar appearance] setTintColor:APP_MAIN_COLOR];
+
+    [[UINavigationBar appearance] setTintColor:APP_MAIN_COLOR];
+
     return YES;
 }
 

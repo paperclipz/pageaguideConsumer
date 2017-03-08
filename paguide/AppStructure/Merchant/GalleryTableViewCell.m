@@ -31,9 +31,17 @@
     // Configure the view for the selected state
 }
 
+-(void)setupImageList:(NSArray*)imageList
+{
+    self.arrImageList = imageList;
+    
+    [self.ibCollectionView reloadData];
+}
+
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 20;
+    return self.arrImageList.count;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -47,9 +55,23 @@
     {
         cell = [[GalleryCollectionViewCell alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
     }
-        
+    
+    NSString* imageUrl = self.arrImageList[indexPath.row];
+    
+    [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+    
     return cell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.didSelectAtIndexBlock) {
+        self.didSelectAtIndexBlock(indexPath.row);
+    }
+}
+
+
+
 
 
 @end
