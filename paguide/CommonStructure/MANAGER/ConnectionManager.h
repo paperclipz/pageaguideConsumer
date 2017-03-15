@@ -7,7 +7,7 @@
 
 #define IS_SIMULATOR NO
 
-
+#define SERVICE_TOKEN @"iw-V8JRku6nEmUnz7GJOpsJ_0-D7z0resdYmnJQirsU"
 
 @interface ConnectionManager :NSObject
 @property(nonatomic,strong)NSString* serverPath;

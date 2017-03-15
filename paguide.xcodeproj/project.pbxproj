@@ -82,6 +82,15 @@
 		8A6B68F41E6D593600D696DE /* icon_history_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68E51E6D593600D696DE /* icon_history_grey.png */; };
 		8A6B68F51E6D593600D696DE /* icon_package_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68E61E6D593600D696DE /* icon_package_grey.png */; };
 		8A6B68F61E6D593600D696DE /* icon_request_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68E71E6D593600D696DE /* icon_request_grey.png */; };
+		8A6EB1BC1E71218B0022ABA2 /* QuantitySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EB1BA1E71218B0022ABA2 /* QuantitySelectionViewController.m */; };
+		8A6EB1BD1E71218B0022ABA2 /* QuantitySelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EB1BB1E71218B0022ABA2 /* QuantitySelectionViewController.xib */; };
+		8A6EB1C21E714EB30022ABA2 /* PromoCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EB1C01E714EB30022ABA2 /* PromoCodeViewController.m */; };
+		8A6EB1C31E714EB30022ABA2 /* PromoCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EB1C11E714EB30022ABA2 /* PromoCodeViewController.xib */; };
+		8A6EB1C91E71541D0022ABA2 /* UIButton+System.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EB1C81E71541D0022ABA2 /* UIButton+System.m */; };
+		8A6EB1CC1E71594B0022ABA2 /* GeneralTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EB1CB1E71594B0022ABA2 /* GeneralTableViewCell.m */; };
+		8A6EB1D01E715F1A0022ABA2 /* RatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EB1CE1E715F1A0022ABA2 /* RatingViewController.m */; };
+		8A6EB1D11E715F1A0022ABA2 /* RatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6EB1CF1E715F1A0022ABA2 /* RatingViewController.xib */; };
+		8A6EB1D41E71627A0022ABA2 /* CustomPopOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6EB1D31E71627A0022ABA2 /* CustomPopOutViewController.m */; };
 		8A772B061E601D2F00763DF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A772B051E601D2F00763DF7 /* main.m */; };
 		8A772B091E601D2F00763DF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A772B081E601D2F00763DF7 /* AppDelegate.m */; };
 		8A772B0C1E601D3000763DF7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A772B0B1E601D3000763DF7 /* ViewController.m */; };
@@ -116,12 +125,20 @@
 		8A8E30781E6FB12700A16002 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E30661E6FB12700A16002 /* FSCalendarTransitionCoordinator.m */; };
 		8A8E30791E6FB12700A16002 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E30681E6FB12700A16002 /* FSCalendarWeekdayView.m */; };
 		8A8E307A1E6FB12700A16002 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E30691E6FB12700A16002 /* Info.plist */; };
+		8A9BD70B1E77E0880043D171 /* GVUserDefaults+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9BD70A1E77E0880043D171 /* GVUserDefaults+Extra.m */; };
+		8A9BD70F1E77E2A40043D171 /* VerifyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9BD70D1E77E2A40043D171 /* VerifyAccountViewController.m */; };
+		8A9BD7101E77E2A40043D171 /* VerifyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9BD70E1E77E2A40043D171 /* VerifyAccountViewController.xib */; };
+		8A9BD7141E77FF0C0043D171 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9BD7121E77FF0C0043D171 /* ForgotPasswordViewController.m */; };
+		8A9BD7151E77FF0C0043D171 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9BD7131E77FF0C0043D171 /* ForgotPasswordViewController.xib */; };
 		8A9F461D1E603DA8005F1453 /* AppConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F46101E603DA8005F1453 /* AppConstant.m */; };
 		8A9F461E1E603DA8005F1453 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F46141E603DA8005F1453 /* Utils.m */; };
 		8A9F461F1E603DA8005F1453 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F46171E603DA8005F1453 /* ConnectionManager.m */; };
 		8A9F46201E603DA8005F1453 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F46191E603DA8005F1453 /* DataManager.m */; };
 		8A9F46211E603DA8005F1453 /* LoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F461B1E603DA8005F1453 /* LoadingManager.m */; };
 		8A9F46241E604645005F1453 /* ConnectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F46231E604645005F1453 /* ConnectionHelper.m */; };
+		8AD70D1B1E77A36A006F1A8E /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D1A1E77A36A006F1A8E /* LoginViewModel.m */; };
+		8AD70D1E1E77B167006F1A8E /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D1D1E77B167006F1A8E /* MessageManager.m */; };
+		8AD70D221E77B1A2006F1A8E /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D211E77B1A2006F1A8E /* UIViewController+Extension.m */; };
 		8AFA22C31E6D16550090837C /* DashboardPackageFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA22C21E6D16540090837C /* DashboardPackageFilterViewController.m */; };
 		8AFA22C61E6D19850090837C /* FilterCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA22C51E6D19850090837C /* FilterCategoryTableViewCell.m */; };
 		8AFA22CD1E6D3EF90090837C /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA22CB1E6D3EF90090837C /* GalleryViewController.m */; };
@@ -129,6 +146,11 @@
 		8AFA22F51E6D53520090837C /* 1080x1920.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AFA22D11E6D53520090837C /* 1080x1920.png */; };
 		8AFA22F61E6D53520090837C /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AFA22D21E6D53520090837C /* 640x1136.png */; };
 		8AFA230C1E6D53520090837C /* 750x1334.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AFA22E91E6D53520090837C /* 750x1334.png */; };
+		8AFFDE411E769AEA00C55B55 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFDE401E769AEA00C55B55 /* BaseModel.m */; };
+		8AFFDE441E769B0900C55B55 /* CountryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFDE431E769B0900C55B55 /* CountryModel.m */; };
+		8AFFDE4B1E76A1A900C55B55 /* NSArray+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFDE481E76A1A900C55B55 /* NSArray+JSON.m */; };
+		8AFFDE4C1E76A1A900C55B55 /* NSArray+value.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFDE4A1E76A1A900C55B55 /* NSArray+value.m */; };
+		8AFFDE4F1E76A98600C55B55 /* CellObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFDE4E1E76A98600C55B55 /* CellObject.m */; };
 		DB80E34B9755E728BF06E46F /* libPods-paguideUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB1D574CF8888961838CBCF /* libPods-paguideUITests.a */; };
 		E683741508F3F61E040113D7 /* libPods-paguideTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA09E971CBF4BE8F95E4260E /* libPods-paguideTests.a */; };
 /* End PBXBuildFile section */
@@ -253,6 +275,21 @@
 		8A6B68E51E6D593600D696DE /* icon_history_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_history_grey.png; sourceTree = "<group>"; };
 		8A6B68E61E6D593600D696DE /* icon_package_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_package_grey.png; sourceTree = "<group>"; };
 		8A6B68E71E6D593600D696DE /* icon_request_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_request_grey.png; sourceTree = "<group>"; };
+		8A6EB1B91E71218B0022ABA2 /* QuantitySelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuantitySelectionViewController.h; sourceTree = "<group>"; };
+		8A6EB1BA1E71218B0022ABA2 /* QuantitySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuantitySelectionViewController.m; sourceTree = "<group>"; };
+		8A6EB1BB1E71218B0022ABA2 /* QuantitySelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuantitySelectionViewController.xib; sourceTree = "<group>"; };
+		8A6EB1BF1E714EB30022ABA2 /* PromoCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoCodeViewController.h; sourceTree = "<group>"; };
+		8A6EB1C01E714EB30022ABA2 /* PromoCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoCodeViewController.m; sourceTree = "<group>"; };
+		8A6EB1C11E714EB30022ABA2 /* PromoCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromoCodeViewController.xib; sourceTree = "<group>"; };
+		8A6EB1C71E71541D0022ABA2 /* UIButton+System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+System.h"; sourceTree = "<group>"; };
+		8A6EB1C81E71541D0022ABA2 /* UIButton+System.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+System.m"; sourceTree = "<group>"; };
+		8A6EB1CA1E71594B0022ABA2 /* GeneralTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralTableViewCell.h; sourceTree = "<group>"; };
+		8A6EB1CB1E71594B0022ABA2 /* GeneralTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralTableViewCell.m; sourceTree = "<group>"; };
+		8A6EB1CD1E715F1A0022ABA2 /* RatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingViewController.h; sourceTree = "<group>"; };
+		8A6EB1CE1E715F1A0022ABA2 /* RatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatingViewController.m; sourceTree = "<group>"; };
+		8A6EB1CF1E715F1A0022ABA2 /* RatingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingViewController.xib; sourceTree = "<group>"; };
+		8A6EB1D21E71627A0022ABA2 /* CustomPopOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopOutViewController.h; sourceTree = "<group>"; };
+		8A6EB1D31E71627A0022ABA2 /* CustomPopOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopOutViewController.m; sourceTree = "<group>"; };
 		8A772B011E601D2F00763DF7 /* paguide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = paguide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A772B051E601D2F00763DF7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8A772B071E601D2F00763DF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -318,6 +355,14 @@
 		8A8E30671E6FB12700A16002 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
 		8A8E30681E6FB12700A16002 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
 		8A8E30691E6FB12700A16002 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A9BD7091E77E0880043D171 /* GVUserDefaults+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GVUserDefaults+Extra.h"; sourceTree = "<group>"; };
+		8A9BD70A1E77E0880043D171 /* GVUserDefaults+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GVUserDefaults+Extra.m"; sourceTree = "<group>"; };
+		8A9BD70C1E77E2A40043D171 /* VerifyAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyAccountViewController.h; sourceTree = "<group>"; };
+		8A9BD70D1E77E2A40043D171 /* VerifyAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyAccountViewController.m; sourceTree = "<group>"; };
+		8A9BD70E1E77E2A40043D171 /* VerifyAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerifyAccountViewController.xib; sourceTree = "<group>"; };
+		8A9BD7111E77FF0C0043D171 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
+		8A9BD7121E77FF0C0043D171 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		8A9BD7131E77FF0C0043D171 /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotPasswordViewController.xib; sourceTree = "<group>"; };
 		8A9F460F1E603DA8005F1453 /* AppConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstant.h; sourceTree = "<group>"; };
 		8A9F46101E603DA8005F1453 /* AppConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConstant.m; sourceTree = "<group>"; };
 		8A9F46111E603DA8005F1453 /* CoreBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreBlock.h; sourceTree = "<group>"; };
@@ -333,6 +378,12 @@
 		8A9F46221E604645005F1453 /* ConnectionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionHelper.h; sourceTree = "<group>"; };
 		8A9F46231E604645005F1453 /* ConnectionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionHelper.m; sourceTree = "<group>"; };
 		8A9F46261E6047BE005F1453 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		8AD70D191E77A36A006F1A8E /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
+		8AD70D1A1E77A36A006F1A8E /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
+		8AD70D1C1E77B167006F1A8E /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
+		8AD70D1D1E77B167006F1A8E /* MessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageManager.m; sourceTree = "<group>"; };
+		8AD70D201E77B1A2006F1A8E /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
+		8AD70D211E77B1A2006F1A8E /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
 		8AFA22C11E6D16540090837C /* DashboardPackageFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardPackageFilterViewController.h; sourceTree = "<group>"; };
 		8AFA22C21E6D16540090837C /* DashboardPackageFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardPackageFilterViewController.m; sourceTree = "<group>"; };
 		8AFA22C41E6D19850090837C /* FilterCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCategoryTableViewCell.h; sourceTree = "<group>"; };
@@ -343,6 +394,16 @@
 		8AFA22D11E6D53520090837C /* 1080x1920.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1080x1920.png; sourceTree = "<group>"; };
 		8AFA22D21E6D53520090837C /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
 		8AFA22E91E6D53520090837C /* 750x1334.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 750x1334.png; sourceTree = "<group>"; };
+		8AFFDE3F1E769AEA00C55B55 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		8AFFDE401E769AEA00C55B55 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		8AFFDE421E769B0900C55B55 /* CountryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryModel.h; sourceTree = "<group>"; };
+		8AFFDE431E769B0900C55B55 /* CountryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryModel.m; sourceTree = "<group>"; };
+		8AFFDE471E76A1A900C55B55 /* NSArray+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JSON.h"; sourceTree = "<group>"; };
+		8AFFDE481E76A1A900C55B55 /* NSArray+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSON.m"; sourceTree = "<group>"; };
+		8AFFDE491E76A1A900C55B55 /* NSArray+value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+value.h"; sourceTree = "<group>"; };
+		8AFFDE4A1E76A1A900C55B55 /* NSArray+value.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+value.m"; sourceTree = "<group>"; };
+		8AFFDE4D1E76A98600C55B55 /* CellObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellObject.h; sourceTree = "<group>"; };
+		8AFFDE4E1E76A98600C55B55 /* CellObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellObject.m; sourceTree = "<group>"; };
 		AE14A459BB761AAFF26A8CF9 /* Pods-paguideUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguideUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-paguideUITests/Pods-paguideUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B4E2A6F102445162C625E9AD /* Pods-paguideUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguideUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-paguideUITests/Pods-paguideUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BA09E971CBF4BE8F95E4260E /* libPods-paguideTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-paguideTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -408,6 +469,7 @@
 		8A20DB161E63D0F900C2F060 /* AppStructure */ = {
 			isa = PBXGroup;
 			children = (
+				8A6EB1BE1E714EA30022ABA2 /* CustomPopOutView */,
 				8A8E30421E6FAF9300A16002 /* Calender */,
 				8A1176D91E6D6CC200C72B5A /* Package */,
 				8A5637571E69221100ACAF2B /* Merchant */,
@@ -434,12 +496,12 @@
 		8A4E85A31E63D849002DC150 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				8A851FB91E66C5CA00904B6C /* DashboardPackageViewController.h */,
+				8A851FBA1E66C5CA00904B6C /* DashboardPackageViewController.m */,
 				8A4E85A71E63DA3A002DC150 /* DashboardMainTableViewCell.h */,
 				8A4E85A81E63DA3A002DC150 /* DashboardMainTableViewCell.m */,
 				8A851FB61E66C5B300904B6C /* RequestGuideViewController.h */,
 				8A851FB71E66C5B300904B6C /* RequestGuideViewController.m */,
-				8A851FB91E66C5CA00904B6C /* DashboardPackageViewController.h */,
-				8A851FBA1E66C5CA00904B6C /* DashboardPackageViewController.m */,
 				8A851FBC1E66CAEC00904B6C /* DashboardPackageTableViewCell.h */,
 				8A851FBD1E66CAEC00904B6C /* DashboardPackageTableViewCell.m */,
 				8AFA22C11E6D16540090837C /* DashboardPackageFilterViewController.h */,
@@ -461,6 +523,8 @@
 				8A5637471E69135B00ACAF2B /* AppointmentListViewController.m */,
 				8A5637491E69182100ACAF2B /* PackageTableViewCell.h */,
 				8A56374A1E69182100ACAF2B /* PackageTableViewCell.m */,
+				8A6EB1CA1E71594B0022ABA2 /* GeneralTableViewCell.h */,
+				8A6EB1CB1E71594B0022ABA2 /* GeneralTableViewCell.m */,
 			);
 			path = Appointment;
 			sourceTree = "<group>";
@@ -618,6 +682,27 @@
 			path = not_in_use;
 			sourceTree = "<group>";
 		};
+		8A6EB1BE1E714EA30022ABA2 /* CustomPopOutView */ = {
+			isa = PBXGroup;
+			children = (
+				8A6EB1BF1E714EB30022ABA2 /* PromoCodeViewController.h */,
+				8A6EB1C01E714EB30022ABA2 /* PromoCodeViewController.m */,
+				8A6EB1C11E714EB30022ABA2 /* PromoCodeViewController.xib */,
+				8A6EB1CD1E715F1A0022ABA2 /* RatingViewController.h */,
+				8A6EB1CE1E715F1A0022ABA2 /* RatingViewController.m */,
+				8A6EB1CF1E715F1A0022ABA2 /* RatingViewController.xib */,
+				8A6EB1D21E71627A0022ABA2 /* CustomPopOutViewController.h */,
+				8A6EB1D31E71627A0022ABA2 /* CustomPopOutViewController.m */,
+				8A9BD70C1E77E2A40043D171 /* VerifyAccountViewController.h */,
+				8A9BD70D1E77E2A40043D171 /* VerifyAccountViewController.m */,
+				8A9BD70E1E77E2A40043D171 /* VerifyAccountViewController.xib */,
+				8A9BD7111E77FF0C0043D171 /* ForgotPasswordViewController.h */,
+				8A9BD7121E77FF0C0043D171 /* ForgotPasswordViewController.m */,
+				8A9BD7131E77FF0C0043D171 /* ForgotPasswordViewController.xib */,
+			);
+			path = CustomPopOutView;
+			sourceTree = "<group>";
+		};
 		8A772AF81E601D2F00763DF7 = {
 			isa = PBXGroup;
 			children = (
@@ -707,6 +792,9 @@
 				8A8E30431E6FAFA500A16002 /* CalenderViewController.h */,
 				8A8E30441E6FAFA500A16002 /* CalenderViewController.m */,
 				8A8E30451E6FAFA500A16002 /* CalenderViewController.xib */,
+				8A6EB1B91E71218B0022ABA2 /* QuantitySelectionViewController.h */,
+				8A6EB1BA1E71218B0022ABA2 /* QuantitySelectionViewController.m */,
+				8A6EB1BB1E71218B0022ABA2 /* QuantitySelectionViewController.xib */,
 			);
 			path = Calender;
 			sourceTree = "<group>";
@@ -751,6 +839,15 @@
 			path = FSCalendar;
 			sourceTree = "<group>";
 		};
+		8A9BD7081E77E0780043D171 /* GVUserDefault+extra */ = {
+			isa = PBXGroup;
+			children = (
+				8A9BD7091E77E0880043D171 /* GVUserDefaults+Extra.h */,
+				8A9BD70A1E77E0880043D171 /* GVUserDefaults+Extra.m */,
+			);
+			path = "GVUserDefault+extra";
+			sourceTree = "<group>";
+		};
 		8A9F46091E603DA8005F1453 /* CommonStructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,6 +857,7 @@
 				8A9F460D1E603DA8005F1453 /* FRAMEWORK */,
 				8A9F460E1E603DA8005F1453 /* HELPER */,
 				8A9F46151E603DA8005F1453 /* MANAGER */,
+				8AD70D181E77A356006F1A8E /* VIEWMODEL */,
 				8A9F461C1E603DA8005F1453 /* MODEL */,
 			);
 			name = CommonStructure;
@@ -776,8 +874,13 @@
 		8A9F460B1E603DA8005F1453 /* CATEGORY */ = {
 			isa = PBXGroup;
 			children = (
+				8A9BD7081E77E0780043D171 /* GVUserDefault+extra */,
+				8AD70D1F1E77B1A2006F1A8E /* UIViewController+Extension */,
+				8AFFDE461E76A1A900C55B55 /* NSArray+Extension */,
 				8A5B3ECD1E66857C005BE083 /* TTTAttributedLabel+Block.h */,
 				8A5B3ECE1E66857C005BE083 /* TTTAttributedLabel+Block.m */,
+				8A6EB1C71E71541D0022ABA2 /* UIButton+System.h */,
+				8A6EB1C81E71541D0022ABA2 /* UIButton+System.m */,
 			);
 			path = CATEGORY;
 			sourceTree = "<group>";
@@ -819,6 +922,8 @@
 		8A9F46151E603DA8005F1453 /* MANAGER */ = {
 			isa = PBXGroup;
 			children = (
+				8AD70D1C1E77B167006F1A8E /* MessageManager.h */,
+				8AD70D1D1E77B167006F1A8E /* MessageManager.m */,
 				8A9F46161E603DA8005F1453 /* ConnectionManager.h */,
 				8A9F46171E603DA8005F1453 /* ConnectionManager.m */,
 				8A9F46181E603DA8005F1453 /* DataManager.h */,
@@ -832,8 +937,32 @@
 		8A9F461C1E603DA8005F1453 /* MODEL */ = {
 			isa = PBXGroup;
 			children = (
+				8AFFDE3F1E769AEA00C55B55 /* BaseModel.h */,
+				8AFFDE401E769AEA00C55B55 /* BaseModel.m */,
+				8AFFDE421E769B0900C55B55 /* CountryModel.h */,
+				8AFFDE431E769B0900C55B55 /* CountryModel.m */,
+				8AFFDE4D1E76A98600C55B55 /* CellObject.h */,
+				8AFFDE4E1E76A98600C55B55 /* CellObject.m */,
 			);
 			path = MODEL;
+			sourceTree = "<group>";
+		};
+		8AD70D181E77A356006F1A8E /* VIEWMODEL */ = {
+			isa = PBXGroup;
+			children = (
+				8AD70D191E77A36A006F1A8E /* LoginViewModel.h */,
+				8AD70D1A1E77A36A006F1A8E /* LoginViewModel.m */,
+			);
+			path = VIEWMODEL;
+			sourceTree = "<group>";
+		};
+		8AD70D1F1E77B1A2006F1A8E /* UIViewController+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8AD70D201E77B1A2006F1A8E /* UIViewController+Extension.h */,
+				8AD70D211E77B1A2006F1A8E /* UIViewController+Extension.m */,
+			);
+			path = "UIViewController+Extension";
 			sourceTree = "<group>";
 		};
 		8AFA22CF1E6D53520090837C /* Resources */ = {
@@ -854,6 +983,17 @@
 				8AFA22E91E6D53520090837C /* 750x1334.png */,
 			);
 			path = Slicing;
+			sourceTree = "<group>";
+		};
+		8AFFDE461E76A1A900C55B55 /* NSArray+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8AFFDE471E76A1A900C55B55 /* NSArray+JSON.h */,
+				8AFFDE481E76A1A900C55B55 /* NSArray+JSON.m */,
+				8AFFDE491E76A1A900C55B55 /* NSArray+value.h */,
+				8AFFDE4A1E76A1A900C55B55 /* NSArray+value.m */,
+			);
+			path = "NSArray+Extension";
 			sourceTree = "<group>";
 		};
 		8D9EE13AEEF5A0A6C6DEA452 /* Frameworks */ = {
@@ -985,10 +1125,12 @@
 				8A6B68AF1E6D557300D696DE /* icon_calendar_grey.png in Resources */,
 				8A6B68BB1E6D557300D696DE /* icon_share_white.png in Resources */,
 				8A6B68AA1E6D557300D696DE /* icon_arrow_next_red.png in Resources */,
+				8A9BD7101E77E2A40043D171 /* VerifyAccountViewController.xib in Resources */,
 				8A851FCD1E66D8D600904B6C /* ProfileHeaderFooterView.xib in Resources */,
 				8AFA22CE1E6D3EF90090837C /* GalleryViewController.xib in Resources */,
 				8A6B68B81E6D557300D696DE /* icon_profile_red@2x.png in Resources */,
 				8A6B68B31E6D557300D696DE /* icon_filter_red.png in Resources */,
+				8A6EB1BD1E71218B0022ABA2 /* QuantitySelectionViewController.xib in Resources */,
 				8A56376C1E697B0600ACAF2B /* GalleryCollectionViewCell.xib in Resources */,
 				8A5637621E6971A000ACAF2B /* HeaderView.xib in Resources */,
 				8A6B68AE1E6D557300D696DE /* icon_bookmark_white.png in Resources */,
@@ -996,12 +1138,14 @@
 				8A772B141E601D3000763DF7 /* LaunchScreen.storyboard in Resources */,
 				8A6B68B71E6D557300D696DE /* icon_profile_red@1x.png in Resources */,
 				8A6B68BD1E6D557300D696DE /* icon_star_full_white.png in Resources */,
+				8A6EB1C31E714EB30022ABA2 /* PromoCodeViewController.xib in Resources */,
 				8A6B68EA1E6D593600D696DE /* icon_concierge_red@1x.png in Resources */,
 				8A6B68BA1E6D557300D696DE /* icon_setting_red.png in Resources */,
 				8A6B68BE1E6D557300D696DE /* icon_star_outline_red.png in Resources */,
 				8A772B111E601D3000763DF7 /* Assets.xcassets in Resources */,
 				8A6B68EE1E6D593600D696DE /* icon_package_red@1x.png in Resources */,
 				8A6B68B11E6D557300D696DE /* icon_dropdown_red.png in Resources */,
+				8A6EB1D11E715F1A0022ABA2 /* RatingViewController.xib in Resources */,
 				8A6B68F51E6D593600D696DE /* icon_package_grey.png in Resources */,
 				8A6B68B51E6D557300D696DE /* icon_minus_red.png in Resources */,
 				8A61AD811E6597CA002383A3 /* EBActionSheetViewController.xib in Resources */,
@@ -1013,6 +1157,7 @@
 				8A8E30471E6FAFA500A16002 /* CalenderViewController.xib in Resources */,
 				8A6B68E91E6D593600D696DE /* icon_appointment_red@2x.png in Resources */,
 				8AFA230C1E6D53520090837C /* 750x1334.png in Resources */,
+				8A9BD7151E77FF0C0043D171 /* ForgotPasswordViewController.xib in Resources */,
 				8A6B68F21E6D593600D696DE /* icon_appointment_grey.png in Resources */,
 				8AFA22F61E6D53520090837C /* 640x1136.png in Resources */,
 				8A6B68F41E6D593600D696DE /* icon_history_grey.png in Resources */,
@@ -1185,16 +1330,20 @@
 			files = (
 				8A772B0C1E601D3000763DF7 /* ViewController.m in Sources */,
 				8A56376B1E697B0600ACAF2B /* GalleryCollectionViewCell.m in Sources */,
+				8AFFDE441E769B0900C55B55 /* CountryModel.m in Sources */,
 				8AFA22C31E6D16550090837C /* DashboardPackageFilterViewController.m in Sources */,
 				8A8E306F1E6FB12700A16002 /* FSCalendarCollectionView.m in Sources */,
 				8A5B3ED21E669600005BE083 /* KeyValueModel.m in Sources */,
 				8A5B3ECF1E66857C005BE083 /* TTTAttributedLabel+Block.m in Sources */,
+				8A9BD70F1E77E2A40043D171 /* VerifyAccountViewController.m in Sources */,
 				8AFA22CD1E6D3EF90090837C /* GalleryViewController.m in Sources */,
 				8A1176DC1E6D91C500C72B5A /* PackageDetailsViewController.m in Sources */,
+				8A9BD70B1E77E0880043D171 /* GVUserDefaults+Extra.m in Sources */,
 				8A772B091E601D2F00763DF7 /* AppDelegate.m in Sources */,
 				8A851FBB1E66C5CA00904B6C /* DashboardPackageViewController.m in Sources */,
 				8A5637721E698FE100ACAF2B /* CommonTableViewCell.m in Sources */,
 				8A5637181E68038D00ACAF2B /* ApptHeaderTableViewCell.m in Sources */,
+				8A6EB1D01E715F1A0022ABA2 /* RatingViewController.m in Sources */,
 				8A8E30741E6FB12700A16002 /* FSCalendarExtensions.m in Sources */,
 				8A5637651E697A4400ACAF2B /* GalleryTableViewCell.m in Sources */,
 				8A8E30721E6FB12700A16002 /* FSCalendarDelegationFactory.m in Sources */,
@@ -1202,9 +1351,12 @@
 				8A8E30731E6FB12700A16002 /* FSCalendarDelegationProxy.m in Sources */,
 				8A5B3EC81E6682D6005BE083 /* TTTAttributedLabel.m in Sources */,
 				8A5637551E691B8300ACAF2B /* HistoryListViewController.m in Sources */,
+				8A6EB1D41E71627A0022ABA2 /* CustomPopOutViewController.m in Sources */,
+				8AFFDE411E769AEA00C55B55 /* BaseModel.m in Sources */,
 				8A8E306E1E6FB12700A16002 /* FSCalendarCell.m in Sources */,
 				8A56375D1E6924E800ACAF2B /* MerchantProfileTableViewCell.m in Sources */,
 				8A8E306D1E6FB12700A16002 /* FSCalendarCalculator.m in Sources */,
+				8A9BD7141E77FF0C0043D171 /* ForgotPasswordViewController.m in Sources */,
 				8A1176DF1E6E973400C72B5A /* PackageDetailsTableViewCell.m in Sources */,
 				8A56374B1E69182100ACAF2B /* PackageTableViewCell.m in Sources */,
 				8A4E85A91E63DA3A002DC150 /* DashboardMainTableViewCell.m in Sources */,
@@ -1213,16 +1365,22 @@
 				8A1176D41E6D5F6600C72B5A /* ProfileTableViewCell.m in Sources */,
 				8A851FBE1E66CAEC00904B6C /* DashboardPackageTableViewCell.m in Sources */,
 				8A9F46211E603DA8005F1453 /* LoadingManager.m in Sources */,
+				8AFFDE4C1E76A1A900C55B55 /* NSArray+value.m in Sources */,
 				8A8E30751E6FB12700A16002 /* FSCalendarHeaderView.m in Sources */,
+				8AD70D221E77B1A2006F1A8E /* UIViewController+Extension.m in Sources */,
 				8A5637711E698FE100ACAF2B /* CommonCollectionViewCell.m in Sources */,
 				8A8E30711E6FB12700A16002 /* FSCalendarConstants.m in Sources */,
 				8A8E30701E6FB12700A16002 /* FSCalendarCollectionViewLayout.m in Sources */,
 				8A9F461F1E603DA8005F1453 /* ConnectionManager.m in Sources */,
 				8A8E306B1E6FB12700A16002 /* FSCalendar.m in Sources */,
+				8A6EB1CC1E71594B0022ABA2 /* GeneralTableViewCell.m in Sources */,
 				8A8E306C1E6FB12700A16002 /* FSCalendarAppearance.m in Sources */,
 				8A4CB60B1E63EDEC00A8BCDA /* RegisterViewController.m in Sources */,
+				8A6EB1C91E71541D0022ABA2 /* UIButton+System.m in Sources */,
 				8A5637521E691ACA00ACAF2B /* HistoryViewController.m in Sources */,
 				8A5637121E67FFF700ACAF2B /* AppointmentViewController.m in Sources */,
+				8AFFDE4F1E76A98600C55B55 /* CellObject.m in Sources */,
+				8AD70D1B1E77A36A006F1A8E /* LoginViewModel.m in Sources */,
 				8A9F46241E604645005F1453 /* ConnectionHelper.m in Sources */,
 				8A8E30781E6FB12700A16002 /* FSCalendarTransitionCoordinator.m in Sources */,
 				8A8E306A1E6FB12700A16002 /* FSCalendar+Deprecated.m in Sources */,
@@ -1232,8 +1390,10 @@
 				8A5B3EBE1E6676C2005BE083 /* EBActionSheetTableViewCell.m in Sources */,
 				8A8E30771E6FB12700A16002 /* FSCalendarStickyHeader.m in Sources */,
 				8A5637601E6970EE00ACAF2B /* HeaderView.m in Sources */,
+				8AD70D1E1E77B167006F1A8E /* MessageManager.m in Sources */,
 				8A8E30761E6FB12700A16002 /* FSCalendarScopeHandle.m in Sources */,
 				8A4CB6081E63ED9000A8BCDA /* RegisterTableViewCell.m in Sources */,
+				8AFFDE4B1E76A1A900C55B55 /* NSArray+JSON.m in Sources */,
 				8A851FB81E66C5B300904B6C /* RequestGuideViewController.m in Sources */,
 				8A5B3EC71E6682D6005BE083 /* README.md in Sources */,
 				8A9F461E1E603DA8005F1453 /* Utils.m in Sources */,
@@ -1241,6 +1401,8 @@
 				8A5637751E6992A200ACAF2B /* ReviewViewController.m in Sources */,
 				8AFA22C61E6D19850090837C /* FilterCategoryTableViewCell.m in Sources */,
 				8A8E30461E6FAFA500A16002 /* CalenderViewController.m in Sources */,
+				8A6EB1BC1E71218B0022ABA2 /* QuantitySelectionViewController.m in Sources */,
+				8A6EB1C21E714EB30022ABA2 /* PromoCodeViewController.m in Sources */,
 				8A9F461D1E603DA8005F1453 /* AppConstant.m in Sources */,
 				8A5637151E68011B00ACAF2B /* RatingView.m in Sources */,
 				8A8E30791E6FB12700A16002 /* FSCalendarWeekdayView.m in Sources */,

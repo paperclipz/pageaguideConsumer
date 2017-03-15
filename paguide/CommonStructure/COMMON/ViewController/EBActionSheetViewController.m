@@ -50,7 +50,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 100;
+    return self.arrItemList.count;
 
 }
 
@@ -62,9 +62,18 @@
 {
     EBActionSheetTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"customcell"];
     
-    cell.lblTitle.text = @"gwp";
+    NSString* title = self.arrItemList[indexPath.row];
+    
+    cell.lblTitle.text = title;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.didSelectAtIndexBlock) {
+        self.didSelectAtIndexBlock(indexPath);
+    }
 }
 
 

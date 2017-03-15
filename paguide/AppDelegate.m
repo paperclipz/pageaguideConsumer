@@ -22,6 +22,9 @@
 
     [[UINavigationBar appearance] setTintColor:APP_MAIN_COLOR];
 
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:APP_MAIN_COLOR}];
+
+    
     return YES;
 }
 

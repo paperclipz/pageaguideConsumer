@@ -38,7 +38,7 @@ def shared_pods
 
     #pod 'PEPhotoCropEditor'
     # pod 'IAPHelper'
-    
+    pod 'GVUserDefaults'
     
 end
 

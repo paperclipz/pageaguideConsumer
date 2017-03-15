@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface CalenderViewController : UIViewController
 
+
+@property (nonatomic,copy)NSDateBlock didContinueWithDateBlock;
 @end

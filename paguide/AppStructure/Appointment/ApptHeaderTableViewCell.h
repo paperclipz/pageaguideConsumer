@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ApptHeaderTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
 @end

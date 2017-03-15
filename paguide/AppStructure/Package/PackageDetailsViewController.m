@@ -10,6 +10,9 @@
 #import "PackageDetailsTableViewCell.h"
 #import "HeaderView.h"
 #import "RatingView.h"
+#import "CalenderViewController.h"
+#import "QuantitySelectionViewController.h"
+#import "PromoCodeViewController.h"
 
 #define cell_type_title @"title"
 #define cell_type_details @"details"
@@ -32,51 +35,58 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblGrandTotal_makepayment;
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice_makepayment;
 
+
+@property(nonatomic,strong)QuantitySelectionViewController* quantitySelectionViewController;
+@property(nonatomic,strong)PackageDetailsViewController* packageDetailsMakePaymentViewController;
+@property(nonatomic,strong)PromoCodeViewController* promoCodeViewController;
 @end
 
 @implementation PackageDetailsViewController
 - (IBAction)btnMakePaymentClicked:(id)sender {
     
-    constHeight_makepayment.constant = 0;
-    constHeight_availability.constant = 70;
+    [self showPromoCodeView];
 }
+
 - (IBAction)btnAvailableClicked:(id)sender {
     
-    constHeight_makepayment.constant = 70;
-    constHeight_availability.constant = 0;
-
+    [self showCalenderView];
+    
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self initData];
+    
     [self initSelfView];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-
-    [self.ibImgProfileView sd_setImageWithURL:[NSURL URLWithString:@"https://s-media-cache-ak0.pinimg.com/736x/8b/b1/60/8bb160c9f3b45906ef8ffab6ac972870.jpg"]];
-
-    self.ibTableView.estimatedRowHeight = 120.0f;
-    
-    self.ibTableView.rowHeight = UITableViewAutomaticDimension;
-    
-//    let transparentPixel = UIImage(named: "TransparentPixel")
-//    navigationBar.setBackgroundImage(transparentPixel, for: UIBarMetrics.default)
-//    navigationBar.shadowImage = transparentPixel
-//    navigationBar.backgroundColor = UIColor.clear()
-//    navigationBar.isTranslucent = true
-//    
-    // Do any additional setup after loading the view.
     
     arrCellList = @[cell_type_title,cell_type_details,cell_type_map];
     
-    constHeight_makepayment.constant = 0;
     
 }
 
 -(void)initSelfView
 {
+
+    if (_viewType == PACKAGE_VIEW_TYPE_AVAILABILIY) {
+        constHeight_makepayment.constant = 0;
+        constHeight_availability.constant = 70;
+
+    }
+    else{
+        constHeight_makepayment.constant = 70;
+        constHeight_availability.constant = 0;
+
+    }
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [self.ibImgProfileView sd_setImageWithURL:[NSURL URLWithString:@"https://s-media-cache-ak0.pinimg.com/736x/8b/b1/60/8bb160c9f3b45906ef8ffab6ac972870.jpg"]];
+    
+    self.ibTableView.estimatedRowHeight = 120.0f;
+    
+    self.ibTableView.rowHeight = UITableViewAutomaticDimension;
     
     [self.ibRatingContentView addSubview:self.ratingView];
     
@@ -335,15 +345,113 @@
     return _ratingView;
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(QuantitySelectionViewController*)quantitySelectionViewController
+{
+    if (!_quantitySelectionViewController) {
+        _quantitySelectionViewController = [QuantitySelectionViewController new];
+    }
+    
+    return _quantitySelectionViewController;
 }
-*/
+
+-(PackageDetailsViewController*)packageDetailsMakePaymentViewController
+{
+    if (!_packageDetailsMakePaymentViewController) {
+        
+        _packageDetailsMakePaymentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"package_detail_controller"];
+     
+        _packageDetailsMakePaymentViewController.viewType = PACKAGE_VIEW_TYPE_PAYMENT;
+    }
+    
+    return _packageDetailsMakePaymentViewController;
+}
+
+-(PromoCodeViewController*)promoCodeViewController
+{
+    if (!_promoCodeViewController) {
+        _promoCodeViewController  = [PromoCodeViewController new];
+    }
+    
+    return _promoCodeViewController;
+}
+#pragma mark - Show View
+
+-(void)showCalenderView
+{
+    CalenderViewController* viewC = [CalenderViewController new];
+    viewC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewC animated:YES];
+    
+    viewC.didContinueWithDateBlock = ^(NSDate* date)
+    {
+        
+        [self showQuantityView];
+    };
+}
+
+
+-(void)showQuantityView
+{
+    self.quantitySelectionViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    self.quantitySelectionViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self.tabBarController presentViewController:self.quantitySelectionViewController animated:YES completion:nil];
+    
+    self.quantitySelectionViewController.didSelectQuantityBlock = ^(int count)
+    {
+        [self.quantitySelectionViewController dismissViewControllerAnimated:YES completion:^{
+            
+            [self showPaymentPackageDetailView];
+        }];
+    };
+    
+}
+
+-(void)showPaymentPackageDetailView
+{
+
+    _packageDetailsMakePaymentViewController = nil;
+    [self.navigationController pushViewController:self.packageDetailsMakePaymentViewController animated:YES];
+
+}
+
+
+-(void)showPromoCodeView
+{
+    self.promoCodeViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    self.promoCodeViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self.tabBarController presentViewController:self.promoCodeViewController animated:YES completion:nil];
+    
+    __weak typeof (self)weakSelf = self;
+    
+    self.promoCodeViewController.didApplyPromoBlock = ^(void)
+    {
+        [weakSelf.promoCodeViewController dismissViewControllerAnimated:YES completion:^{
+            
+            
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }];
+    };
+
+}
+
+
+#pragma mark - Navigation
+//
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//    
+//    if ([[segue identifier] isEqualToString:@"package_details"]) {
+//        
+//        PackageDetailsViewController *vc = [segue destinationViewController];
+//        
+//        vc.viewType = PACKAGE_VIEW_TYPE_PAYMENT;
+//        
+//    }
+//}
+
+
 
 @end

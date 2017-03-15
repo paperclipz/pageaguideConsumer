@@ -4,14 +4,15 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalenderViewController">
             <connections>
-                <outlet property="calendarContentView" destination="N3i-h4-eyj" id="yiB-RJ-L9v"/>
-                <outlet property="calendarMenuView" destination="y3T-t1-ol2" id="N3B-pQ-Ul6"/>
+                <outlet property="btnContinue" destination="5vd-sn-6uQ" id="IaP-vZ-Gap"/>
+                <outlet property="calendarContentView" destination="OuC-D5-X0r" id="GxX-RP-wEY"/>
+                <outlet property="calendarMenuView" destination="JaJ-y3-hZw" id="6Kb-L7-jOr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,32 +21,65 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3i-h4-eyj" customClass="JTHorizontalCalendarView">
-                    <rect key="frame" x="0.0" y="128" width="375" height="539"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fakedSelectedDay">
-                            <integer key="value" value="2"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3T-t1-ol2" customClass="JTCalendarMenuView">
-                    <rect key="frame" x="0.0" y="64" width="375" height="64"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4c-PC-NBi">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OuC-D5-X0r" customClass="JTHorizontalCalendarView">
+                            <rect key="frame" x="0.0" y="64" width="375" height="469"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JaJ-y3-hZw" customClass="JTCalendarMenuView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="Eba-f0-evX"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4H-FK-iRU">
+                            <rect key="frame" x="0.0" y="533" width="375" height="70"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vd-sn-6uQ">
+                                    <rect key="frame" x="10" y="10" width="355" height="50"/>
+                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Continue">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="btnContinueClicked:" destination="-1" eventType="touchUpInside" id="ahD-M6-hlm"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="5vd-sn-6uQ" secondAttribute="bottom" constant="10" id="2fF-wp-jG3"/>
+                                <constraint firstItem="5vd-sn-6uQ" firstAttribute="leading" secondItem="I4H-FK-iRU" secondAttribute="leading" constant="10" id="Czr-sU-AXd"/>
+                                <constraint firstItem="5vd-sn-6uQ" firstAttribute="top" secondItem="I4H-FK-iRU" secondAttribute="top" constant="10" id="aOZ-Gf-E9S"/>
+                                <constraint firstAttribute="trailing" secondItem="5vd-sn-6uQ" secondAttribute="trailing" constant="10" id="exd-Lc-GkG"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="64" id="YgJ-zT-Xaf"/>
+                        <constraint firstAttribute="bottom" secondItem="OuC-D5-X0r" secondAttribute="bottom" constant="70" id="CVE-h1-9PV"/>
+                        <constraint firstItem="I4H-FK-iRU" firstAttribute="top" secondItem="OuC-D5-X0r" secondAttribute="bottom" id="Ftn-N8-fS8"/>
+                        <constraint firstAttribute="trailing" secondItem="OuC-D5-X0r" secondAttribute="trailing" id="Tw5-35-wqz"/>
+                        <constraint firstItem="JaJ-y3-hZw" firstAttribute="leading" secondItem="L4c-PC-NBi" secondAttribute="leading" id="WDj-xv-9SL"/>
+                        <constraint firstAttribute="bottom" secondItem="I4H-FK-iRU" secondAttribute="bottom" id="ZE0-HU-TlZ"/>
+                        <constraint firstItem="I4H-FK-iRU" firstAttribute="leading" secondItem="L4c-PC-NBi" secondAttribute="leading" id="ZHQ-vW-a3x"/>
+                        <constraint firstItem="OuC-D5-X0r" firstAttribute="top" secondItem="JaJ-y3-hZw" secondAttribute="bottom" id="dhD-60-Vaz"/>
+                        <constraint firstAttribute="trailing" secondItem="JaJ-y3-hZw" secondAttribute="trailing" id="djz-O1-SSI"/>
+                        <constraint firstAttribute="trailing" secondItem="I4H-FK-iRU" secondAttribute="trailing" id="jbB-cV-aEY"/>
+                        <constraint firstItem="JaJ-y3-hZw" firstAttribute="top" secondItem="L4c-PC-NBi" secondAttribute="top" id="sDx-Gf-Ido"/>
+                        <constraint firstItem="OuC-D5-X0r" firstAttribute="leading" secondItem="L4c-PC-NBi" secondAttribute="leading" id="zpE-Qc-mJJ"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="N3i-h4-eyj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JCr-uK-P75"/>
-                <constraint firstAttribute="trailing" secondItem="N3i-h4-eyj" secondAttribute="trailing" id="LzN-pJ-u8S"/>
-                <constraint firstItem="N3i-h4-eyj" firstAttribute="top" secondItem="y3T-t1-ol2" secondAttribute="bottom" id="Pke-0Z-EwM"/>
-                <constraint firstItem="y3T-t1-ol2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="nXI-Mx-Gxo"/>
-                <constraint firstAttribute="trailing" secondItem="y3T-t1-ol2" secondAttribute="trailing" id="rj9-mv-iwp"/>
-                <constraint firstAttribute="bottom" secondItem="N3i-h4-eyj" secondAttribute="bottom" id="tof-KA-Y62"/>
-                <constraint firstItem="y3T-t1-ol2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tsq-Ve-DC0"/>
+                <constraint firstItem="L4c-PC-NBi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1N5-Xl-ifP"/>
+                <constraint firstItem="L4c-PC-NBi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="HJd-7s-DRr"/>
+                <constraint firstAttribute="bottom" secondItem="L4c-PC-NBi" secondAttribute="bottom" id="Ni9-XS-Zfz"/>
+                <constraint firstAttribute="trailing" secondItem="L4c-PC-NBi" secondAttribute="trailing" id="aGh-ER-XW3"/>
             </constraints>
             <point key="canvasLocation" x="121.5" y="78.5"/>
         </view>

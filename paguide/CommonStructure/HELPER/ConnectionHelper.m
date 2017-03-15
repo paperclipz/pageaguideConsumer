@@ -7,6 +7,7 @@
 //
 
 #import "ConnectionHelper.h"
+#import "CountryModel.h"
 
 @implementation ConnectionHelper
 
@@ -16,7 +17,7 @@
     id result;
     
     switch (type) {
-        case ServerRequestTypePostAccessLogin:
+        case ServerRequestTypePostUserRegister:
         {
             NSString *filePath = [[NSBundle mainBundle] pathForResource:@"newsfeed" ofType:@"json"];
             NSData* data = [NSData dataWithContentsOfFile:filePath];
@@ -40,7 +41,7 @@
     BOOL flag = false;
     
     switch (type) {
-        case ServerRequestTypePostAccessLogin:
+        case ServerRequestTypePostUserRegister:
             break;
             
         default:
@@ -60,8 +61,13 @@
     switch (type) {
        
             
-        case ServerRequestTypePostCustomerPostsInfosHelpersStatus:
+        case ServerRequestTypePostUserRegister:
             break;
+            
+            
+        case ServerRequestTypePostUserCountry_Listing:
+       
+
             
         default:
             

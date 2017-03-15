@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PromoCodeViewController">
+            <connections>
+                <outlet property="btnCancel" destination="Jh3-cL-DT9" id="6z9-Oq-1J5"/>
+                <outlet property="btnContinue" destination="R7p-9F-idj" id="B8S-8I-fTO"/>
+                <outlet property="view" destination="2jc-Wv-LEw" id="rYa-F0-5gz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2jc-Wv-LEw">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3G1-XN-2mW">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="btnCancelClicked:" destination="-1" eventType="touchUpInside" id="dz2-iY-2mK"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPb-7n-Hnr">
+                    <rect key="frame" x="10" y="234" width="355" height="200"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Promo Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTh-kf-pw2">
+                            <rect key="frame" x="15" y="39" width="325" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Promo Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ane-G0-MaK">
+                            <rect key="frame" x="50" y="85" width="255" height="17"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QP-Rl-jaS">
+                            <rect key="frame" x="15" y="117" width="325" height="1"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="Z8d-mD-m5l"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7p-9F-idj">
+                            <rect key="frame" x="182.5" y="128" width="157.5" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Continue"/>
+                            <connections>
+                                <action selector="btnContinueClicked:" destination="-1" eventType="touchUpInside" id="jo4-ri-cBV"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jh3-cL-DT9">
+                            <rect key="frame" x="15" y="128" width="157.5" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="d87-VO-sr4"/>
+                            </constraints>
+                            <state key="normal" title="No Promo Code"/>
+                            <connections>
+                                <action selector="btnCancelClicked:" destination="-1" eventType="touchUpInside" id="0pP-oi-wwf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="R7p-9F-idj" firstAttribute="centerY" secondItem="Jh3-cL-DT9" secondAttribute="centerY" id="6YR-3H-lbE"/>
+                        <constraint firstItem="Jh3-cL-DT9" firstAttribute="top" secondItem="1QP-Rl-jaS" secondAttribute="bottom" constant="10" id="8ks-uC-m3y"/>
+                        <constraint firstAttribute="trailing" secondItem="R7p-9F-idj" secondAttribute="trailing" constant="15" id="AdV-li-Idf"/>
+                        <constraint firstItem="R7p-9F-idj" firstAttribute="leading" secondItem="Jh3-cL-DT9" secondAttribute="trailing" constant="10" id="BU8-i4-24r"/>
+                        <constraint firstAttribute="height" constant="200" id="LT9-u9-kvx"/>
+                        <constraint firstItem="bTh-kf-pw2" firstAttribute="top" secondItem="dPb-7n-Hnr" secondAttribute="top" constant="39" id="ScW-Nh-Wzp"/>
+                        <constraint firstItem="Ane-G0-MaK" firstAttribute="leading" secondItem="dPb-7n-Hnr" secondAttribute="leading" constant="50" id="T2s-GF-iD3"/>
+                        <constraint firstAttribute="trailing" secondItem="bTh-kf-pw2" secondAttribute="trailing" constant="15" id="TwE-3I-I1I"/>
+                        <constraint firstItem="R7p-9F-idj" firstAttribute="height" secondItem="Jh3-cL-DT9" secondAttribute="height" id="XN1-dE-GeP"/>
+                        <constraint firstItem="1QP-Rl-jaS" firstAttribute="top" secondItem="Ane-G0-MaK" secondAttribute="bottom" constant="15" id="YET-lg-Bo1"/>
+                        <constraint firstItem="1QP-Rl-jaS" firstAttribute="leading" secondItem="dPb-7n-Hnr" secondAttribute="leading" constant="15" id="ZdH-xb-fvG"/>
+                        <constraint firstItem="Jh3-cL-DT9" firstAttribute="leading" secondItem="dPb-7n-Hnr" secondAttribute="leading" constant="15" id="bVd-BN-KJ4"/>
+                        <constraint firstAttribute="trailing" secondItem="Ane-G0-MaK" secondAttribute="trailing" constant="50" id="hn4-3U-rDB"/>
+                        <constraint firstItem="1QP-Rl-jaS" firstAttribute="centerX" secondItem="Ane-G0-MaK" secondAttribute="centerX" id="lZ3-Iq-FaH"/>
+                        <constraint firstItem="Ane-G0-MaK" firstAttribute="top" secondItem="bTh-kf-pw2" secondAttribute="bottom" constant="25" id="ra0-Zp-izQ"/>
+                        <constraint firstItem="bTh-kf-pw2" firstAttribute="leading" secondItem="dPb-7n-Hnr" secondAttribute="leading" constant="15" id="s5O-6Z-LFO"/>
+                        <constraint firstItem="R7p-9F-idj" firstAttribute="width" secondItem="Jh3-cL-DT9" secondAttribute="width" id="v4b-hS-jw5"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="dPb-7n-Hnr" firstAttribute="leading" secondItem="2jc-Wv-LEw" secondAttribute="leading" constant="10" id="7Kx-CC-5bm"/>
+                <constraint firstAttribute="bottom" secondItem="3G1-XN-2mW" secondAttribute="bottom" id="80G-sN-7TT"/>
+                <constraint firstAttribute="trailing" secondItem="3G1-XN-2mW" secondAttribute="trailing" id="Nlc-2A-9qp"/>
+                <constraint firstItem="3G1-XN-2mW" firstAttribute="leading" secondItem="2jc-Wv-LEw" secondAttribute="leading" id="YsD-aW-toM"/>
+                <constraint firstAttribute="trailing" secondItem="dPb-7n-Hnr" secondAttribute="trailing" constant="10" id="qpr-ze-gSn"/>
+                <constraint firstItem="3G1-XN-2mW" firstAttribute="top" secondItem="2jc-Wv-LEw" secondAttribute="top" id="trv-aA-uc2"/>
+                <constraint firstItem="dPb-7n-Hnr" firstAttribute="centerY" secondItem="2jc-Wv-LEw" secondAttribute="centerY" id="yId-Hi-t9K"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+</document>

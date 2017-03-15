@@ -27,14 +27,12 @@
 - (IBAction)didSelectSegmentedControl:(UISegmentedControl *)sender {
 //    if (sender.selectedSegmentIndex == 0) {
 //        
-//    
 //    }
     
     if (self.didSelectAtIndexBlock ) {
         self.didSelectAtIndexBlock((int)sender.selectedSegmentIndex);
     }
 }
-
 
 -(void)setupSegmentedControlAtIndex:(IntBlock)indexPathBlock
 {

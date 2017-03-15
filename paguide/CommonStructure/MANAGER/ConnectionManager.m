@@ -6,7 +6,7 @@
 
 //#define SERVER_PATH_LIVE @"vmi85167.contabo.host:8080/beep-server/rest"
 
-#define SERVER_PATH_LIVE @"ec2-52-221-241-109.ap-southeast-1.compute.amazonaws.com/beep-server/rest"
+#define SERVER_PATH_LIVE @"devpage.pageadvisor.com"
 
 
 #define Header_X_Auth @"X-Authorization"
@@ -149,7 +149,12 @@
 
 + (void)requestServerWith:(AFNETWORK_TYPE)networkType serverRequestType:(ServerRequestType)serverType parameter:(NSDictionary*)parameter appendString:(NSString*)appendString success:(IDBlock)success failure:(IErrorBlock)failure
 {
-    [[ConnectionManager Instance]requestServerWith:networkType serverRequestType:serverType parameter:parameter appendString:appendString success:success failure:failure];
+    
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc]initWithDictionary:parameter];
+    
+    [dict addEntriesFromDictionary:@{@"services_token" : SERVICE_TOKEN}];
+    
+    [[ConnectionManager Instance]requestServerWith:networkType serverRequestType:serverType parameter:dict appendString:appendString success:success failure:failure];
 }
 
 +(void)requestServerWithNSURLSession:(AFNETWORK_TYPE)networkType serverRequestType:(ServerRequestType)serverType parameter:(NSDictionary*)parameter appendString:(NSString*)appendString success:(IDBlock)success failure:(IErrorBlock)failure
@@ -188,19 +193,19 @@
     
     
       AFHTTPSessionManager* manager = self.manager;
-
-    NSString* jtw = @"";
+//
+//    NSString* jtw = @"";
+//    
+//    NSLog(@"JWT : %@",jtw);
     
-    NSLog(@"JWT : %@",jtw);
-    
-    if (!(serverType == ServerRequestTypePostCustomerJwt
-          || serverType == ServerRequestTypePostAccessLogin)) {
-        
-        [manager.requestSerializer setValue:jtw forHTTPHeaderField:Header_X_Auth];
-        
-    }
-
-
+//    if (!(serverType == ServerRequestTypePostCustomerJwt
+//          || serverType == ServerRequestTypePostAccessLogin)) {
+//        
+//        [manager.requestSerializer setValue:jtw forHTTPHeaderField:Header_X_Auth];
+//        
+//    }
+//
+//
     
    // AFHTTPSessionManager* manager = [self createNewDataManager];
 
@@ -225,28 +230,9 @@
                     
                     [LoadingManager hide];
 
-                    if (serverType == ServerRequestTypePostCustomerLogouts) {
-                        
-                        if (failure) {
-                            failure(nil);
-                        }
-                        
-                        return;
-                    }
                     
                     [self showErrorHandling:task Error:error WithRecallingPreviousMethod:^(id object) {
                        
-                        NSString* jtw = @"";
-                        
-                        NSLog(@"JWT : %@",jtw);
-                        
-                        
-                        if (!(serverType == ServerRequestTypePostCustomerJwt
-                            || serverType == ServerRequestTypePostAccessLogin)) {
-                            
-                            [manager.requestSerializer setValue:jtw forHTTPHeaderField:Header_X_Auth];
-
-                        }
                         
                         [manager GET:fullURL parameters:parameter progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                             
@@ -282,6 +268,9 @@
                     
                     [LoadingManager hide];
                     
+                    NSLog(@"RESPONSE: %@", responseObject);
+
+                    
                     [self validateAfterRequest:responseObject requestType:serverType withURL:fullURL completionBlock:success errorBlock:failure];
                     
                     
@@ -291,15 +280,6 @@
                     
                     [LoadingManager hide];
                     
-                    
-                    if (serverType == ServerRequestTypePostCustomerLogouts) {
-                        
-                        if (failure) {
-                            failure(nil);
-                        }
-                        
-                        return;
-                    }
                     
                     [self showErrorHandling:task Error:error WithRecallingPreviousMethod:^(id object) {
                         
@@ -456,7 +436,7 @@
                 break;
         }
         
-    //    NSLog(@"\n\n ===== [REQUEST SERVER WITH %@][URL] : %@ \n [REQUEST JSON] : %@\n\n",strNetworkType,fullURL,[parameter bv_jsonStringWithPrettyPrint:YES]);
+        NSLog(@"\n\n ===== [REQUEST SERVER WITH %@][URL] : %@ \n [REQUEST JSON] : %@\n\n",strNetworkType,fullURL,[parameter bv_jsonStringWithPrettyPrint:YES]);
     
         
 }
@@ -512,15 +492,15 @@
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:60.0];
     
-    NSString* jtw = @"";
+//    NSString* jtw = @"";
+//    
+//    NSLog(@"jwt : %@",jtw);
+//    
+//    [request addValue:jtw forHTTPHeaderField:Header_X_Auth];
     
-    NSLog(@"jwt : %@",jtw);
+    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
-    [request addValue:jtw forHTTPHeaderField:Header_X_Auth];
-    
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    //[request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     [request setHTTPMethod:strNetworkType];
   
@@ -596,7 +576,7 @@
 //    
 //    [uploadTask resume];
     
-   // NSLog(@"\n\n ===== [REQUEST SERVER WITH %@][URL] : %@ \n [REQUEST JSON] : %@\n\n",strNetworkType,fullURL,[parameter bv_jsonStringWithPrettyPrint:YES]);
+    NSLog(@"\n\n ===== [REQUEST SERVER WITH %@][URL] : %@ \n [REQUEST JSON] : %@\n\n",strNetworkType,fullURL,[parameter bv_jsonStringWithPrettyPrint:YES]);
 
 
 }
@@ -606,129 +586,57 @@
 {
     NSString* str;
     switch (type) {
-        case ServerRequestTypePostAccessLogin:
-            str = [NSString stringWithFormat:@"access/logins"];
+            
+        case ServerRequestTypePostUserRegister:
+            str = [NSString stringWithFormat:@"user/register"];
             
             break;
-            case ServerRequestTypePostAccessRegistration:
-            str = [NSString stringWithFormat:@"access/registrations"];
+               case ServerRequestTypePostUserCountry_Listing:
+            str = [NSString stringWithFormat:@"user/country-listing"];
             
             break;
-            case ServerRequestTypePostAccessVerification:
-            str = [NSString stringWithFormat:@"access/verifications"];
+            
+        case ServerRequestTypePostUserLogin:
+            str = [NSString stringWithFormat:@"user/login"];
             
             break;
-            case ServerRequestTypePostAccessPasswordRenewal:
-            str = [NSString stringWithFormat:@"access/passwords/renewals"];
             
-            break;
-            case ServerRequestTypePostAccessReset:
-            str = [NSString stringWithFormat:@"access/passwords/resets"];
-            
-            break;
-            case ServerRequestTypePostAccessPasswordVerifications:
-            str = [NSString stringWithFormat:@"access/passwords/verifications"];
-            
-            break;
-            case ServerRequestTypePostAccessUsernamesAvailability:
-            str = [NSString stringWithFormat:@"access/usernames/availability"];
-            
-            break;
-        case ServerRequestTypePostInfoHelpersChat:
-            str = [NSString stringWithFormat:@"chats"];
 
+        case ServerRequestTypePostUserResendOTP:
+            
+            str = [NSString stringWithFormat:@"user/resendotp"];
+            
             break;
-
-        case ServerRequestTypePostCustomerCompletions:
-        case ServerRequestTypePostInfo:
-        case ServerRequestTypePostCustomerTutorial:
-        case ServerRequestTypeGetCustomer:
-        case ServerRequestTypePostCustomerPasswords:
-        case ServerRequestTypeGetCustomerNotifications:
-        case ServerRequestTypePostCustomerNotificationsReads:
-        case ServerRequestTypePostCustomerRevision:
-        case ServerRequestTypePostCustomerPostsInfosHelpersStatus:
-        case ServerRequestTypePostCustomerPostsHelpsHelpersStatus:
-        case ServerRequestTypePostInfohelpersHigh5s:
-            //POST /customers/{userId}/posts/infos/{postId}/helpers/{helperId}/high5s
-        case ServerRequestTypePostInfoHelpersCreateChat:
-            // POST /customers/{userId}/posts/infos/{postId}/helpers/{helperId}/chats
-        case ServerRequestTypePostCustomerPostsFBConnects:
-           // POST /customers/{userId}/fb/connects
-        case ServerRequestTypePostHelpHelpersCreateChat:
-        case ServerRequestTypePostHelpThanks:
-        case ServerRequestTypePostCustomerHelpHelpersSpams:
-        case ServerRequestTypePostCustomerInfoHelpersSpams:
-        case ServerRequestTypePostInfoCloses:
-        case ServerRequestTypePostHelpCloses:
-        case ServerRequestTypePostHelpHelpersChat:
-        case ServerRequestTypePostCustomerJwt:
-        case ServerRequestTypePostCustomerPicture:
-        case ServerRequestTypePostCustomerPreference:
-        case ServerRequestTypeGetCustomerPreference:
-        case ServerRequestTypePostCustomerLogouts:
-        case ServerRequestTypePostCustomerPurchase:
-            str = [NSString stringWithFormat:@"customers"];
+            
+            
+        case ServerRequestTypePostUserVerifyOTP:
+            
+            str = [NSString stringWithFormat:@"user/verifyotp"];
+            
+            break;
+            
+        case ServerRequestTypePostUserForgotPassword:
+            
+            str = [NSString stringWithFormat:@"user/forgotpassword"];
+            
+            break;
+            
+        case ServerRequestTypePostPackageListing:
+            
+            str = [NSString stringWithFormat:@"package/listing"];
             
             break;
 
-        case ServerRequestTypeGetBeepOwnRequestor:
-            str = [NSString stringWithFormat:@"beeps/own/requestors"];
 
-            break;
 
-        case ServerRequestTypeGetBeepOthersRequestor:
-            str = [NSString stringWithFormat:@"beeps/others/requestors"];
             
-            break;
-//            POST /posts/infos/{postId}/helpers/{helperId}/replies
-        case ServerRequestTypePostInfosHelpersReplies:
-        case ServerRequestTypeGetInfosReplies:
-        case ServerRequestTypeGetInfosRequestors:
-        case ServerRequestTypePostInfoHelpersCancellations:
-            //POST /posts/infos/{postId}/helpers/{helperId}/cancellations
-        case ServerRequestTypePostInfosHelpersSpams:
-
-            str = [NSString stringWithFormat:@"posts/infos"];
-
-            break;
             
-            //GET /posts/helps/{postId}/requestors/{requestorId}
-
-        case ServerRequestTypeGetHelpsRequestors:
-            
-            //POST /posts/helps/{postId}/helpers/{helperId}/offers
-        case ServerRequestTypePostHelpsHelpersOffers:
-        case ServerRequestTypePostHelpHelpersSpams:
-        case ServerRequestTypePostHelpHelpersCancellations:
-            str = [NSString stringWithFormat:@"posts/helps"];
-
-            break;
-        case ServerRequestTypeGetPostHelpersChat:
-
-            str = [NSString stringWithFormat:@"posts"];
-            break;
-            
-        case ServerRequestTypeGetStoreCredits:
-            str = [NSString stringWithFormat:@"stores/credits"];
-
-            break;
-            
-        case ServerRequestTypePostChatResponderStatus:
-            str = [NSString stringWithFormat:@"chats"];
-
-            break;
-            
-        case ServerRequestTypeGetCreditConsumptions:
-            str = [NSString stringWithFormat:@"credits"];
-
         default:
             break;
     }
-    return [NSString stringWithFormat:@"http://%@/%@",self.serverPath,str];
+    return [NSString stringWithFormat:@"https://%@/%@",self.serverPath,str];
     
 }
-
 -(void)storeServerData:(id)obj requestType:(ServerRequestType)type
 {
     [self.connHelper storeServerData:obj requestType:type];
@@ -748,9 +656,32 @@
 -(void)validateAfterRequest:(id)obj requestType:(ServerRequestType)type withURL:(NSString*)url completionBlock:(IDBlock)success errorBlock:(IDBlock)failure
 {
     
-    
- //   NSLog(@"\n\n\n [SUCCESS RESPONSE RESULT URL : %@] \n%@ \n\n\n", url,[obj bv_jsonStringWithPrettyPrint:YES]);
+    NSLog(@"\n\n\n [SUCCESS RESPONSE RESULT URL : %@] \n%@ \n\n\n", url,[obj bv_jsonStringWithPrettyPrint:YES]);
 
+    NSError* error;
+
+    BaseModel* model = [[BaseModel alloc]initWithDictionary:obj error:&error];
+
+    
+    if (model.isSuccessful) {
+        
+        
+        [self storeServerData:obj requestType:type];
+
+        if (success) {
+            success(obj);
+        }
+    }
+    else
+    {
+    
+        if (failure) {
+            failure(obj);
+        }
+        
+
+    }
+  
     
  //   NSError* error;
     
@@ -863,4 +794,11 @@
     return session;
 }
 
+
+//+(void)getErrorMessage:(id)object
+//{
+//    BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
+//    
+//    NSDictionary* errordict = 
+//}
 @end

@@ -9,6 +9,8 @@
 #import "DashboardPackageViewController.h"
 #import "DashboardPackageTableViewCell.h"
 #import "CalenderViewController.h"
+#import "PackageDetailsViewController.h"
+#import "RatingViewController.h"
 
 @interface DashboardPackageViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
@@ -21,11 +23,30 @@
 }
 - (IBAction)btnLoginClicked:(id)sender {
     
-    CalenderViewController* viewC = [CalenderViewController new];
-    
-    [self.navigationController pushViewController:viewC animated:YES];
-    return ;
+  
     [Utils showRegisterPage];
+}
+- (IBAction)btnTest2Clicked:(id)sender {
+    
+    
+    RatingViewController* rVC = [RatingViewController new];
+    rVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    rVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self.tabBarController presentViewController:rVC animated:YES completion:nil];
+    
+//    __weak typeof (self)weakSelf = self;
+    
+//    self.promoCodeViewController.didApplyPromoBlock = ^(void)
+//    {
+//        [weakSelf.promoCodeViewController dismissViewControllerAnimated:YES completion:^{
+//            
+//            
+//            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+//        }];
+//    };
+    
+
 }
 
 - (void)viewDidLoad {
@@ -34,6 +55,7 @@
     
     [self initSelfView];
 
+    [self requestServerForPackageListing];
 
     // Do any additional setup after loading the view.
 }
@@ -118,14 +140,38 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
+    
+    if ([[segue identifier] isEqualToString:@"package_details"]) {
+        
+        PackageDetailsViewController *vc = [segue destinationViewController];
+        
+        vc.viewType = PACKAGE_VIEW_TYPE_AVAILABILIY;
 
+    }
+}
+
+#pragma mark - Request Server
+
+-(void)requestServerForPackageListing
+{
+    NSDictionary* dict = @{@"per_page" : @"",
+                           @"page" : @"1",
+                           @"filter" : @"Historical",
+                           
+                           };
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostPackageListing parameter:dict appendString:nil success:^(id object) {
+        
+        
+    } failure:^(id object) {
+        
+    }];
+}
 @end

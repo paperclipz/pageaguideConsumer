@@ -20,114 +20,15 @@ typedef enum
 typedef enum
 {
     //  ==========  [ access ]  ==========  //
-    ServerRequestTypePostAccessLogin,
-    ServerRequestTypePostAccessRegistration,
-    ServerRequestTypePostAccessVerification,
-    ServerRequestTypePostAccessPasswordRenewal,
-    ServerRequestTypePostAccessReset,
-    ServerRequestTypePostAccessPasswordVerifications,
-    ServerRequestTypePostAccessUsernamesAvailability,
+    ServerRequestTypePostUserRegister,
+    ServerRequestTypePostUserLogin,
+    ServerRequestTypePostUserResendOTP,
+    ServerRequestTypePostUserVerifyOTP,
+    ServerRequestTypePostUserCountry_Listing,
+    ServerRequestTypePostUserForgotPassword,
+    ServerRequestTypePostPackageListing,
     //  ==========  [ access ]  ==========  //
-    //  ==================================  //
-    
-    //  ==========  [ Customers ]  ==========  //
-    ServerRequestTypeGetCustomer,
-    ServerRequestTypePostCustomerCompletions,
-    ServerRequestTypePostCustomerJwt,
-    ServerRequestTypePostCustomerLogouts,
-    ServerRequestTypePostCustomerPasswords,
-    ServerRequestTypePostCustomerPicture,
-    ServerRequestTypePostCustomerTutorial,
-    ServerRequestTypePostCustomerRevision,
-    ServerRequestTypePostCustomerPostsInfosHelpersStatus,
-    ServerRequestTypePostCustomerPostsHelpsHelpersStatus,
-    ServerRequestTypePostCustomerPostsFBConnects,
-    ServerRequestTypeGetCustomerPreference,
-    ServerRequestTypePostCustomerPreference,
-    ServerRequestTypePostCustomerPurchase,
-    //  ==========  [ Customers ]  ==========  //
-    //  =====================================  //
-    
-    
-    //  ==========  [ Owner Get Info ]  ==========  //
-    ServerRequestTypePostInfo,
-    ServerRequestTypePostInfoCloses,
-    ServerRequestTypePostInfoHelpersCreateChat,
-    ServerRequestTypePostInfohelpersHigh5s,
-    ServerRequestTypePostCustomerInfoHelpersSpams,
-    ServerRequestTypePostInfoHelpersStatus,
-    ServerRequestTypePostInfoHelpersCancellations,
-    ServerRequestTypePostInfoHelpersChat,
-    //  ==========  [ Owner Get Info  ]  ==========  //
-    //  =====================================  //
-    
-    
-    //  ==========  [ Owner Get Help ]  ==========  //
-    ServerRequestTypePostHelp,
-    ServerRequestTypePostHelpCloses,
-    ServerRequestTypePostHelpThanks,
-    ServerRequestTypePostHelpHelpersChat,
-    ServerRequestTypePostCustomerHelpHelpersSpams,
-    ServerRequestTypePostHelpHelpersStatus,
-    ServerRequestTypePostHelpHelpersCreateChat,
-    ServerRequestTypePostHelpHelpersCancellations,
-    //  ==========  [ Owner Get Help  ]  ==========  //
-    //  ===========================================  //
-    
-    
-    //  ==========  [ Beep Resources ]  ==========  //
 
-    ServerRequestTypeGetBeepOwnRequestor,
-    ServerRequestTypeGetBeepOthersRequestor,
-    
-    //  ==========  [ Beep Resources ]  ==========  //
-    //  ==========================================  //
-
-    
-
-    //  ==========  [ Notification ]  ==========  //
-    
-    ServerRequestTypeGetCustomerNotifications,
-    ServerRequestTypePostCustomerNotificationsReads,
-    
-    //  ==========  [ Notification ]  ==========  //
-    //  ========================================  //
-    
-    
-    
-    //  ==========  [ GetInfoResources ]  ==========  //
-    
-    ServerRequestTypePostInfosHelpersReplies,
-    ServerRequestTypePostInfosHelpersSpams,
-    ServerRequestTypeGetInfosReplies,
-    ServerRequestTypeGetInfosRequestors,
-    //  ==========  [ GetInfoResources ]  ==========  //
-    //  ========================================  //
-    
-    //  ==========  [ GetHelpResources ]  ==========  //
-
-    ServerRequestTypeGetHelpsRequestors,
-    ServerRequestTypePostHelpsHelpersOffers,
-    ServerRequestTypePostHelpHelpersSpams,
-    //  ==========  [ GetHelpResources ]  ==========  //
-
-    ServerRequestTypeGetPostHelpersChat,
-    
-    //  ==========  [ GET StoreResource  ]  ==========  //
-    
-    ServerRequestTypeGetStoreCredits,
-    ServerRequestTypeGetCreditConsumptions,
-
-    
-    //  ==========  [ GET StoreResource  ]  ==========  //
-
-    
-
-    //  ==========  [ GET ChatResources  ]  ==========  //
-    
-    ServerRequestTypePostChatResponderStatus
-    //  ==========  [ GET ChatResources  ]  ==========  //
-    
 
 
 }ServerRequestType;
@@ -140,7 +41,8 @@ typedef enum
     REGISTER_CELL_TYPE_country = 3,
     REGISTER_CELL_TYPE_phone_number = 4,
     REGISTER_CELL_TYPE_TNC = 5,
-    
+    REGISTER_CELL_TYPE_Password = 6,
+    REGISTER_CELL_TYPE_RE_Password = 7,
 }REGISTER_CELL_TYPE;
 
 

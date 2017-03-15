@@ -12,4 +12,6 @@
 + (id)Instance;
 
 
+-(void)getCountryList:(NSArrayBlock)completionBlock;
+
 @end

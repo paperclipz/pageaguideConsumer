@@ -21,6 +21,7 @@
 {
     NSArray* arrCellList;
 }
+
 @property (weak, nonatomic) IBOutlet UIImageView *ibMerchantProfileView;
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 
@@ -71,7 +72,6 @@
     }
     
     HeaderView* headerView = (HeaderView*)view;
-    
     
     headerView.lblTitle1.text = type;
     
