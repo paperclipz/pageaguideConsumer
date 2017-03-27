@@ -11,11 +11,24 @@
 #import "CalenderViewController.h"
 #import "PackageDetailsViewController.h"
 #import "RatingViewController.h"
+#import "PackageWrapperModel.h"
+#import "DashboardPackageFilterViewController.h"
 
+#define PER_PAGE @"10"
 @interface DashboardPackageViewController () <UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *ibTableView;
+{
+    PackageModel* selectedPackageModel;
+    
+    NSString* strFilter;
+}
 
+@property (nonatomic) PagingViewModel* vm_package_paging;
+@property (nonatomic) NSMutableArray<PackageModel>* arrPackageList;
+
+
+@property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 @property (weak, nonatomic) IBOutlet UIButton *btnFilter;
+
 @end
 
 @implementation DashboardPackageViewController
@@ -28,24 +41,28 @@
 }
 - (IBAction)btnTest2Clicked:(id)sender {
     
+    [Utils showRegisterPage];
+
     
+    return;
+
+
     RatingViewController* rVC = [RatingViewController new];
     rVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     rVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     [self.tabBarController presentViewController:rVC animated:YES completion:nil];
     
-//    __weak typeof (self)weakSelf = self;
     
-//    self.promoCodeViewController.didApplyPromoBlock = ^(void)
-//    {
-//        [weakSelf.promoCodeViewController dismissViewControllerAnimated:YES completion:^{
-//            
-//            
-//            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-//        }];
-//    };
-    
+    __weak typeof (rVC)weakRatingVC = rVC;
+    rVC.didFinishRateBlock = ^(void)
+    {
+        NSLog(@"txt:%@",weakRatingVC.txtRating.text);
+        
+        NSLog(@"rating:%i",weakRatingVC.rating);
+
+    };
+
 
 }
 
@@ -57,7 +74,49 @@
 
     [self requestServerForPackageListing];
 
+    
+    [self.ibTableView setupFooterView];
+    
+    [self.ibTableView pullToRefresh:^{
+        
+        [self resetAndCallPackageListing];
+      
+    }];
+
     // Do any additional setup after loading the view.
+}
+
+-(void)resetAndCallPackageListing
+{
+    _vm_package_paging = nil;
+    
+    strFilter = @"";
+    
+    [self.arrPackageList removeAllObjects];
+    
+    self.arrPackageList = nil;
+    
+    [self.ibTableView reloadData];
+
+    
+    [self requestServerForPackageListing];
+
+}
+
+-(void)resetAndCallPackageListingWithFilter:(NSString*)filter
+{
+    _vm_package_paging = nil;
+    
+    strFilter = filter;
+    
+    [self.arrPackageList removeAllObjects];
+    
+    self.arrPackageList = nil;
+    
+    [self.ibTableView reloadData];
+    
+    [self requestServerForPackageListing];
+    
 }
 
 -(void)initSelfView
@@ -81,7 +140,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.arrPackageList.count;
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -91,55 +150,74 @@
 {
     DashboardPackageTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"dashPackageCell"];
     
-    
-    [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:@"http://www.mediastinger.com/wp-content/uploads/2016/02/Batman-v-Superman-Final-Trailer-hq.jpg"]];
-    
-    cell.lblTitle1.text = @"badman vs superman";
-    
-
-    NSString* string2 = @"RM 89.90 72.00 | save 13.50";
-    
-    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:string2];
-    
-    NSRange string2_range1 = [attributeString.string rangeOfString:@"RM 89.90"];
-    NSRange string2_range2 = [attributeString.string rangeOfString:@"72.00"];
-
+    PackageModel* model = self.arrPackageList[indexPath.row];
     
     
-    [attributeString addAttribute:NSStrikethroughStyleAttributeName
-                            value:@2
-                            range:string2_range2];
-    
-    
-
-    [attributeString addAttribute:NSFontAttributeName
-                   value:[UIFont fontWithName:@"Helvetica-Bold" size:12.0]
-                   range:string2_range1];
-  
-    
-    [attributeString addAttribute:NSForegroundColorAttributeName
-                            value:[UIColor redColor]
-                            range:string2_range1];
-    
-
-    
-    cell.lblTitle2.attributedText = attributeString;
-    
-    cell.lblTitle3.text = @"Travel sdn Bhd";
-    
-    cell.lblTitle4.text = @"GOGO";
-    
-    cell.lblTitle5.text = @"2 slot left";
-    
+    [self setupPackageInCell:cell With:model];
+//    
+//    [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:@"http://www.mediastinger.com/wp-content/uploads/2016/02/Batman-v-Superman-Final-Trailer-hq.jpg"]];
+//    
+//    cell.lblTitle1.text = @"badman vs superman";
+//    
+//
+//    NSString* string2 = @"RM 89.90 72.00 | save 13.50";
+//    
+//    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:string2];
+//    
+//    NSRange string2_range1 = [attributeString.string rangeOfString:@"RM 89.90"];
+//    NSRange string2_range2 = [attributeString.string rangeOfString:@"72.00"];
+//
+//    
+//    
+//    [attributeString addAttribute:NSStrikethroughStyleAttributeName
+//                            value:@2
+//                            range:string2_range2];
+//    
+//    
+//
+//    [attributeString addAttribute:NSFontAttributeName
+//                   value:[UIFont fontWithName:@"Helvetica-Bold" size:12.0]
+//                   range:string2_range1];
+//  
+//    
+//    [attributeString addAttribute:NSForegroundColorAttributeName
+//                            value:[UIColor redColor]
+//                            range:string2_range1];
+//    
+//
+//    
+//    cell.lblTitle2.attributedText = attributeString;
+//    
+//    cell.lblTitle3.text = @"Travel sdn Bhd";
+//    
+//    cell.lblTitle4.text = @"GOGO";
+//    
+//    cell.lblTitle5.text = @"2 slot left";
+//    
     return cell;
+}
+
+
+-(void)setupPackageInCell:(DashboardPackageTableViewCell*)cell With:(PackageModel*)model
+{
+    cell.lblTitle1.text = model.name;
+    
+    cell.lblTitle2.text = [NSString stringWithFormat:@"%@ %@",model.currency, model.price];
+    
+    cell.lblTitle3.text = model.desc;
+
+    [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:model.listing_img]];
+
+    cell.lblTitle4.text = model.category;
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    selectedPackageModel = self.arrPackageList[indexPath.row];
+    
     [self performSegueWithIdentifier:@"package_details" sender:self];
 }
-
-
 
 #pragma mark - Navigation
 
@@ -153,25 +231,108 @@
         PackageDetailsViewController *vc = [segue destinationViewController];
         
         vc.viewType = PACKAGE_VIEW_TYPE_AVAILABILIY;
+        
+        [vc setupPackageID:selectedPackageModel.packages_id];
 
+    }else    if ([[segue identifier] isEqualToString:@"filter"]) {
+        
+        UINavigationController *navC = [segue destinationViewController];
+        
+        DashboardPackageFilterViewController* vc = navC.viewControllers[0];
+        
+        vc.didSubmitFilterBlock = ^(NSString* filterSTr)
+        {
+            [self resetAndCallPackageListingWithFilter:filterSTr];
+        };
+        
     }
+    
+    
 }
 
+#pragma mark - Declaration
+
+
+-(NSMutableArray<PackageModel>*)arrPackageList{
+    
+    if (!_arrPackageList) {
+        _arrPackageList = (NSMutableArray<PackageModel>*)[NSMutableArray new];
+    }
+    
+    return _arrPackageList;
+}
+
+-(PagingViewModel*)vm_package_paging
+{
+    if (!_vm_package_paging) {
+        _vm_package_paging = [PagingViewModel new];
+    }
+    
+    return _vm_package_paging;
+}
 #pragma mark - Request Server
 
 -(void)requestServerForPackageListing
 {
-    NSDictionary* dict = @{@"per_page" : @"",
-                           @"page" : @"1",
-                           @"filter" : @"Historical",
-                           
+    
+    if (self.vm_package_paging.isLoading || !self.vm_package_paging.hasNext) {
+        return;
+        
+    }
+    
+    self.vm_package_paging.isLoading = YES;
+
+    NSDictionary* dict = @{@"per_page" : PER_PAGE,
+                           @"page" : @(self.vm_package_paging.currentPage + 1),                           
                            };
     
-    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostPackageListing parameter:dict appendString:nil success:^(id object) {
+    NSMutableDictionary* mDict = [[NSMutableDictionary alloc]initWithDictionary:dict];
+    
+    if (![Utils isStringNull:strFilter]) {
+        [mDict addEntriesFromDictionary:@{@"filter" : IsNullConverstion(strFilter)}];
+    }
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostPackageListing parameter:mDict appendString:nil success:^(id object) {
         
+        
+        self.vm_package_paging.isLoading = NO;
+        
+        NSError* error;
+        
+        PackageWrapperModel* model = [[PackageWrapperModel alloc]initWithDictionary:object error:&error];
+        
+        [self.vm_package_paging processPagingFrom:model.pageContent];
+      
+        [self.ibTableView stopRefresh];
+        
+        [self.arrPackageList addObjectsFromArray:model.arrPackageList];
+        
+        [self.ibTableView reloadData];
         
     } failure:^(id object) {
         
+        
+        self.vm_package_paging.isLoading = NO;
+
+        [self.ibTableView stopRefresh];
+
     }];
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+    [self.ibTableView scrollViewDidScroll:scrollView activated:^{
+    
+        if (self.vm_package_paging.hasNext) {
+            
+            [self requestServerForPackageListing];
+        }
+        
+    }];
+    
+
+}// any offset changes
+
+
 @end

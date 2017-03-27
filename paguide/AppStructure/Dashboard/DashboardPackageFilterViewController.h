@@ -10,4 +10,6 @@
 
 @interface DashboardPackageFilterViewController : UIViewController
 
+
+@property (nonatomic, copy) StringBlock didSubmitFilterBlock;
 @end

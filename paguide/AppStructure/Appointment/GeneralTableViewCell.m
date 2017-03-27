@@ -9,6 +9,12 @@
 #import "GeneralTableViewCell.h"
 
 @implementation GeneralTableViewCell
+- (IBAction)btnSelectionClicked:(id)sender {
+    
+    if (self.didSelectBlock) {
+        self.didSelectBlock();
+    }
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

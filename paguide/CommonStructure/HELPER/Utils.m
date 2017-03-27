@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 
 #define BORDER_WIDTH 1.0f
-
+#define KEY_APP_TOKEN @"app_token"
 @implementation Utils
 
 
@@ -61,6 +61,53 @@
 }
 
 #pragma mark - App Utils
+
+
++(void)setAppToken:(NSString*)token
+{
+    
+ //   [GVUserDefaults standardUserDefaults].token = token;
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults removeObjectForKey:KEY_APP_TOKEN];
+    
+    if (![Utils isStringNull:token]) {
+        
+        [defaults setObject:token forKey:KEY_APP_TOKEN];
+       
+        [defaults synchronize];
+        
+    }
+    
+}
+
++(NSString*)getToken
+{
+    
+   // return @"j77u4ZtdKb6xs7gTOqc4m6mXSLftiUhBgCo9VF5ABcQ";
+    
+    //NSString* token  = [GVUserDefaults standardUserDefaults].token;
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString * token = [defaults objectForKey:KEY_APP_TOKEN];
+    
+   // NSString* token = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+    
+    
+    if (![Utils isStringNull:token]) {
+    
+        return token;
+    }
+    else{
+        return @"";
+
+    }
+    
+
+}
 
 +(NSString*)getAppVersion
 {

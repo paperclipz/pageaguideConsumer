@@ -11,4 +11,8 @@
 
 @interface RatingViewController : CustomPopOutViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *txtRating;
+@property (nonatomic,assign) int rating;
+
+@property(nonatomic,copy)VoidBlock didFinishRateBlock;
 @end

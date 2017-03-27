@@ -26,11 +26,36 @@ typedef enum
     ServerRequestTypePostUserVerifyOTP,
     ServerRequestTypePostUserCountry_Listing,
     ServerRequestTypePostUserForgotPassword,
-    ServerRequestTypePostPackageListing,
+    ServerRequestTypePostUserProfile,
+    ServerRequestTypePostUserUpdateProfile,
     //  ==========  [ access ]  ==========  //
+    
+    ServerRequestTypePostPackagesCategoryList,
+    ServerRequestTypePostPackageListing,
+    ServerRequestTypePostPackageDetailsInfo,
+    ServerRequestTypePostUserRequestFormFormat,
+    //  ==========  [ package ]  ==========  //
 
+    
+    //  ==========  [ appointment ]  ==========  //
+    ServerRequestTypePostAppointmentListing,
+    ServerRequestTypePostAppointmentComplete,
+    ServerRequestTypePostAppointmentValidatecode,
+    //  ==========  [ appointment ]  ==========  //
+    ServerRequestTypePostHistoryListing,
+    ServerRequestTypePostPromocodeCheck,
+    ServerRequestTypePostPackagePurchase,
+    
+    //  ==========  [ Request ]  ==========  //
 
-
+    ServerRequestTypePostRequestConsumerlisting,
+    
+    //  ==========  [ Request ]  ==========  //
+    ServerRequestTypePostPaymentStripeCharge,
+    ServerRequestTypePostRequestBiddinglist,
+    ServerRequestTypePostRequestBidselection,
+    ServerRequestTypePostRequestCreate,
+    
 }ServerRequestType;
 
 
@@ -44,5 +69,12 @@ typedef enum
     REGISTER_CELL_TYPE_Password = 6,
     REGISTER_CELL_TYPE_RE_Password = 7,
 }REGISTER_CELL_TYPE;
+
+typedef enum
+{
+    APPOITNMENT_VIEW_TYPE_VERIFY = 1,
+    APPOITNMENT_VIEW_TYPE_COMPLETE = 2,
+    APPOITNMENT_VIEW_TYPE_HISTORY = 3,
+}APPOITNMENT_VIEW_TYPE;
 
 

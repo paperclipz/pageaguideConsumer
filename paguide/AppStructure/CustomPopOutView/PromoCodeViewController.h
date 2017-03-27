@@ -11,5 +11,7 @@
 @interface PromoCodeViewController : UIViewController
 
 
-@property(nonatomic,copy)VoidBlock didApplyPromoBlock;
+@property(nonatomic,copy)StringBlock didApplyPromoBlock;
+@property(nonatomic,copy)VoidBlock didApplyNoPromoBlock;
+
 @end

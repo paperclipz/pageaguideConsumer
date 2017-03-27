@@ -41,6 +41,7 @@
 }
 - (IBAction)btnLoginClicked:(id)sender {
     
+    [self requestServerForLogin];
     
 }
 - (IBAction)btnFbLoginClicked:(id)sender {
@@ -497,6 +498,8 @@
         
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
         
+        [Utils setAppToken:model.token];
+        
         [self dismissViewControllerAnimated:YES completion:^{
             
             [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess];
@@ -506,7 +509,6 @@
     } failure:^(id object) {
         
     }];
-    [GVUserDefaults standardUserDefaults].token = @"myusername";
 
 }
 -(void)requestServerForRegister

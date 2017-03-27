@@ -36,12 +36,16 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self.ibMerchantProfileView sd_setImageWithURL:[NSURL URLWithString:@"https://s-media-cache-ak0.pinimg.com/736x/8b/b1/60/8bb160c9f3b45906ef8ffab6ac972870.jpg"]];
+   // [self.ibMerchantProfileView sd_setImageWithURL:[NSURL URLWithString:@"https://s-media-cache-ak0.pinimg.com/736x/8b/b1/60/8bb160c9f3b45906ef8ffab6ac972870.jpg"]];
 
     arrCellList = @[cell_about,cell_review,cell_gallery];
 
     
     self.ibTableView.estimatedRowHeight = 120.0f;
+    
+    self.ibTableView.dataSource = nil;
+    
+    self.ibTableView.delegate   = nil;
     
     self.ibTableView.rowHeight = UITableViewAutomaticDimension;
     

@@ -9,6 +9,12 @@
 #import "FilterCategoryTableViewCell.h"
 
 @implementation FilterCategoryTableViewCell
+- (IBAction)ibSwitchClicked:(id)sender {
+    
+    if (self.didChangewitchBlock) {
+        self.didChangewitchBlock();
+    }
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

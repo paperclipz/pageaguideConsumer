@@ -8,10 +8,21 @@
 
 #import "ProfileTableViewCell.h"
 
+@interface ProfileTableViewCell() <UITextFieldDelegate>
+
+@end
 @implementation ProfileTableViewCell
+- (IBAction)btnOneClicked:(id)sender {
+    
+    if (self.didSelectBlock) {
+        self.didSelectBlock();
+    }
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.txtDefault.delegate = self;
     // Initialization code
 }
 
@@ -21,4 +32,14 @@
     // Configure the view for the selected state
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+    
+    if (self.didUpdateStringBlock) {
+        self.didUpdateStringBlock(textField.text);
+    }
+}
+
 @end
+

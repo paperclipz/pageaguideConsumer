@@ -28,6 +28,10 @@
 
 #pragma mark - App Utils
 
++(NSString*)getToken;
+
++(void)setAppToken:(NSString*)token;
+
 +(void)showRegisterPage;
 
 //+(void)linkRegisterPin:(NSString*)pin;
@@ -57,4 +61,5 @@
 
 
 #pragma mark - App Specific
+
 @end

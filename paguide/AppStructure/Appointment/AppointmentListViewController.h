@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppointmentListViewController : UIViewController
+#import "BaseViewController.h"
+
+@interface AppointmentListViewController : BaseViewController
 
 @end

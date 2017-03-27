@@ -46,7 +46,7 @@
 
         if (i< rate) {
             
-            imgRateView.tintColor = [UIColor redColor];
+            imgRateView.tintColor = APP_MAIN_COLOR;
         }
         
     }

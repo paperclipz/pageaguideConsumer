@@ -8,11 +8,17 @@
 
 #import "AppDelegate.h"
 
+#import "Stripe.h"
+
+
+#define STRIPE_KEY @"pk_test_useqkPsXfsDnNPCl6F4VIgMO"
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
+
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -24,8 +30,18 @@
 
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:APP_MAIN_COLOR}];
 
+    [self customApplication:application didFinishLaunchingWithOptions:launchOptions];
     
     return YES;
+}
+
+//custom implementation for application launch
+
+- (void)customApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+ 
+    [[STPPaymentConfiguration sharedConfiguration] setPublishableKey:STRIPE_KEY];
+
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

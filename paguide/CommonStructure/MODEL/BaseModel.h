@@ -19,7 +19,14 @@
 
 @property (nonatomic,strong)NSString* status;
 
-@property (nonatomic,strong)NSString* status_code;
+@property (nonatomic,strong)NSNumber* status_code;
+
+@property (nonatomic,strong)NSString* token;
+
+#pragma mark - Status Code
+
+@property (nonatomic,strong)NSString* generalMessage;
+
 
 @end
 

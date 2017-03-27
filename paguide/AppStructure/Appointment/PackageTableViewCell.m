@@ -12,6 +12,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    [Utils setRoundBorder:self.lblPackage color:APP_MAIN_COLOR borderRadius:5.0f];
+    
     // Initialization code
 }
 

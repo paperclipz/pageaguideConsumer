@@ -13,5 +13,7 @@
 @property (strong, nonatomic) NSString* key;
 @property (strong, nonatomic) NSString* value;
 
+@property (assign, nonatomic) BOOL isSelected;
+@property (strong, nonatomic) NSDate* choosenDate;
 
 @end

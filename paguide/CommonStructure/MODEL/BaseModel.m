@@ -83,4 +83,47 @@
     return _displayMessage;
 }
 
+
+#pragma mark - Status Code
+
+-(NSString*)generalMessage
+{
+    NSString* message = @"";
+    
+    
+    if (![Utils isStringNull:self.displayMessage]) {
+        
+        
+        return self.displayMessage;
+        
+    }
+    else{
+    
+        
+        switch ([self.status_code integerValue]) {
+                
+            case 900:
+                message = @"success payment";
+                break;
+                
+            case 905:
+                message = @"complete and rate success";
+                break;
+                
+            case 904:
+                message = @"verification code success";
+                break;
+            default:
+                
+                
+                message = @"";
+                break;
+        }
+        
+        
+        return message;
+    }
+    
+  
+}
 @end

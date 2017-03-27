@@ -38,7 +38,7 @@
                                 <constraint firstAttribute="width" constant="40" id="MX0-If-wcH"/>
                                 <constraint firstAttribute="height" constant="40" id="teP-QZ-9eL"/>
                             </constraints>
-                            <state key="normal" title="Button" image="icon_minus_red.png"/>
+                            <state key="normal" title="Button" image="icon_package_red.png"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qualtity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cx-w2-xlj">
                             <rect key="frame" x="145.5" y="39" width="65" height="21"/>
@@ -116,7 +116,7 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_minus_red.png" width="66" height="66"/>
+        <image name="icon_package_red.png" width="30" height="30"/>
         <image name="icon_plus_red.png" width="66" height="66"/>
     </resources>
 </document>

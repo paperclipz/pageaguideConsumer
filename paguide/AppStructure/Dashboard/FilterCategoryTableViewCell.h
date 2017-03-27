@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface FilterCategoryTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UISwitch *ibSwitch;
 
+
+@property(nonatomic,copy)VoidBlock didChangewitchBlock;
 @end

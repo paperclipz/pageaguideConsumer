@@ -8,6 +8,7 @@
 
 #import "CalenderViewController.h"
 #import <JTCalendar/JTCalendar.h>
+#import "ScheduleModel.h"
 
 @interface CalenderViewController () <JTCalendarDelegate>
 {
@@ -27,12 +28,30 @@
 @property (weak, nonatomic) IBOutlet JTHorizontalCalendarView *calendarContentView;
 @property (nonatomic) JTCalendarManager *calendarManager;
 @property (weak, nonatomic) IBOutlet UIButton *btnContinue;
+@property (nonatomic) PackageModel *packageModel;
+
 @end
 
 @implementation CalenderViewController
 - (IBAction)btnContinueClicked:(id)sender {
     
-    [self showQualtityView];
+    
+    if ([self haveEventForDay:_dateSelected]) {
+        
+        [self showQualtityView];
+        
+    }
+    else
+    {
+        [MessageManager showMessage:@"No Event Available" Type:TSMessageNotificationTypeError];
+    
+    }
+    
+}
+
+-(void)setupData:(PackageModel*)packageModel
+{
+    self.packageModel = packageModel;
 }
 
 - (void)viewDidLoad {
@@ -40,12 +59,13 @@
     
     [self initSelfView];
     
-    
     _calendarManager = [JTCalendarManager new];
     _calendarManager.delegate = self;
     
     // Generate random events sort by date using a dateformatter for the demonstration
-    [self createRandomEvents];
+ //   [self createRandomEvents];
+    
+    [self createDatesFromModels:self.packageModel.scheduled_datetime];
     
     [self createMinAndMaxDate];
 
@@ -266,15 +286,47 @@
     }
 }
 
+-(void)createDatesFromModels:(NSArray*)array
+{
+    
+    _eventsByDate = [NSMutableDictionary new];
+
+    for (int i = 0; i< array.count; i++) {
+       
+        ScheduleModel* model = array[i];
+        
+        NSString *dateString = model.scheduled_date;
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        // this is imporant - we set our input date format to match our input string
+        // if format doesn't match you'll get nil from your string, so be careful
+        [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+        NSDate *dateFromString = [[NSDate alloc] init];
+
+        dateFromString = [dateFormatter dateFromString:dateString];
+        
+        NSString *key = [[self dateFormatter] stringFromDate:dateFromString];
+        
+        if(!_eventsByDate[key]){
+            _eventsByDate[key] = [NSMutableArray new];
+        }
+        
+        [_eventsByDate[key] addObject:model];
+        
+    }
+}
+
+// convert schedule time to nsdate
 
 -(void)showQualtityView
 {
 
-    
     if (self.didContinueWithDateBlock) {
-        self.didContinueWithDateBlock(_dateSelected);
+        
+        NSString *key = [[self dateFormatter] stringFromDate:_dateSelected];
+        
+        self.didContinueWithDateBlock(key);
     }
-   
 }
 
 

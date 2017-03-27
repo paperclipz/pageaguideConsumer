@@ -268,8 +268,6 @@
                     
                     [LoadingManager hide];
                     
-                    NSLog(@"RESPONSE: %@", responseObject);
-
                     
                     [self validateAfterRequest:responseObject requestType:serverType withURL:fullURL completionBlock:success errorBlock:failure];
                     
@@ -435,7 +433,8 @@
             default:
                 break;
         }
-        
+    
+    
         NSLog(@"\n\n ===== [REQUEST SERVER WITH %@][URL] : %@ \n [REQUEST JSON] : %@\n\n",strNetworkType,fullURL,[parameter bv_jsonStringWithPrettyPrint:YES]);
     
         
@@ -621,13 +620,107 @@
             
             break;
             
+        case ServerRequestTypePostUserProfile:
+            
+            str = [NSString stringWithFormat:@"user/profile"];
+            
+            break;
+            
+        case ServerRequestTypePostUserUpdateProfile:
+            
+            str = [NSString stringWithFormat:@"user/updateprofile"];
+            
+            break;
+            
+
+            //  ========== PACKAGE  ========== //
         case ServerRequestTypePostPackageListing:
             
-            str = [NSString stringWithFormat:@"package/listing"];
+            str = [NSString stringWithFormat:@"packages/listing"];
+            
+            break;
+            
+        case ServerRequestTypePostPackagesCategoryList:
+            
+            str = [NSString stringWithFormat:@"packages/categorylist"];
             
             break;
 
+        case ServerRequestTypePostPackageDetailsInfo:
+            str = [NSString stringWithFormat:@"packages/packages-info"];
+            
+            break;
+            //  ========== PACKAGE  ========== //
 
+        case ServerRequestTypePostUserRequestFormFormat:
+            str = [NSString stringWithFormat:@"user/requestformformat"];
+            
+            break;
+            
+        case ServerRequestTypePostAppointmentListing:
+            str = [NSString stringWithFormat:@"appointment/listing"];
+            
+            break;
+            
+        case ServerRequestTypePostAppointmentComplete:
+            str = [NSString stringWithFormat:@"appointment/complete"];
+            
+            break;
+            
+        case ServerRequestTypePostAppointmentValidatecode:
+            str = [NSString stringWithFormat:@"appointment/validatecode"];
+            
+            break;
+            
+            
+            
+        case ServerRequestTypePostHistoryListing:
+            str = [NSString stringWithFormat:@"history/listing"];
+            
+            break;
+            
+        case ServerRequestTypePostPromocodeCheck:
+            str = [NSString stringWithFormat:@"promocode/check"];
+            
+            break;
+
+        case ServerRequestTypePostPackagePurchase:
+            
+            str = [NSString stringWithFormat:@"packages/purchase"];
+            
+            break;
+            
+        case ServerRequestTypePostRequestConsumerlisting:
+            
+            str = [NSString stringWithFormat:@"request/consumerlisting"];
+            
+            break;
+            
+        case ServerRequestTypePostPaymentStripeCharge:
+            
+            str = [NSString stringWithFormat:@"payment/stripe-charge"];
+            
+            break;
+
+            
+        case ServerRequestTypePostRequestBiddinglist:
+            
+            str = [NSString stringWithFormat:@"request/biddinglist"];
+            
+            break;
+            
+            
+        case ServerRequestTypePostRequestBidselection:
+            
+            str = [NSString stringWithFormat:@"request/bidselection"];
+            
+            break;
+            
+        case ServerRequestTypePostRequestCreate:
+            
+            str = [NSString stringWithFormat:@"request/create"];
+            
+            break;
 
             
             
@@ -656,12 +749,16 @@
 -(void)validateAfterRequest:(id)obj requestType:(ServerRequestType)type withURL:(NSString*)url completionBlock:(IDBlock)success errorBlock:(IDBlock)failure
 {
     
-    NSLog(@"\n\n\n [SUCCESS RESPONSE RESULT URL : %@] \n%@ \n\n\n", url,[obj bv_jsonStringWithPrettyPrint:YES]);
+    NSDictionary* dict = obj;
+    
+    
+    NSString* jsonString = [dict bv_jsonStringWithPrettyPrint:YES];
+    
+    NSLog(@"\n\n\n [SUCCESS RESPONSE RESULT URL : %@] \n%@ \n\n\n", url,jsonString);
 
     NSError* error;
 
     BaseModel* model = [[BaseModel alloc]initWithDictionary:obj error:&error];
-
     
     if (model.isSuccessful) {
         

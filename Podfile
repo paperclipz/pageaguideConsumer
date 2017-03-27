@@ -39,7 +39,10 @@ def shared_pods
     #pod 'PEPhotoCropEditor'
     # pod 'IAPHelper'
     pod 'GVUserDefaults'
+    pod 'DLFPhotosPicker'
     
+    #payment
+    pod 'Stripe'
 end
 
 target 'paguide' do

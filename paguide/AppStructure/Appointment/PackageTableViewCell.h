@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface PackageTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle1;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle2;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle3;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle4;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblPackage;
 @end

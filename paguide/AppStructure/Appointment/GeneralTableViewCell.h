@@ -11,4 +11,11 @@
 @interface GeneralTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblDescription;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle2;
+@property (weak, nonatomic) IBOutlet UILabel *lblDescription2;
+@property (weak, nonatomic) IBOutlet UIButton *btnSelection;
+
+
+@property(nonatomic,copy)VoidBlock didSelectBlock;
 @end

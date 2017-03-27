@@ -11,20 +11,36 @@
 
 @interface PromoCodeViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *btnContinue;
+@property (weak, nonatomic) IBOutlet UITextField *txtPromoCode;
 @property (weak, nonatomic) IBOutlet UIButton *btnCancel;
 
 @end
 
 @implementation PromoCodeViewController
+- (IBAction)btnNoPromoClicked:(id)sender {
+    
+    if (self.didApplyNoPromoBlock) {
+        self.didApplyNoPromoBlock();
+    }
+
+}
 - (IBAction)btnContinueClicked:(id)sender {
     
+    if ([Utils isStringNull:self.txtPromoCode.text]) {
+        
+        [MessageManager showMessage:@"Please Enter a promo code" Type:TSMessageNotificationTypeError];
+        
+        return;
+    }
+    
     if (self.didApplyPromoBlock) {
-        self.didApplyPromoBlock();
+        self.didApplyPromoBlock(self.txtPromoCode.text);
     }
 }
 - (IBAction)btnCancelClicked:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (void)viewDidLoad {

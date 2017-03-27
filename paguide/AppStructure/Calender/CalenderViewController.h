@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PackageModel.h"
 
 
 @interface CalenderViewController : UIViewController
 
 
-@property (nonatomic,copy)NSDateBlock didContinueWithDateBlock;
+@property (nonatomic,copy)StringBlock didContinueWithDateBlock;
+
+-(void)setupData:(PackageModel*)packageModel;
 @end

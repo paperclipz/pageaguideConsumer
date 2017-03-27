@@ -36,8 +36,8 @@
     // Initialization code
     
     
-    NSDictionary *linkAttributes = @{NSForegroundColorAttributeName: [UIColor redColor],
-                                     NSUnderlineColorAttributeName: [UIColor redColor],
+    NSDictionary *linkAttributes = @{NSForegroundColorAttributeName: APP_MAIN_COLOR,
+                                     NSUnderlineColorAttributeName: APP_MAIN_COLOR,
                                      NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
     
     // assume that textView is a UITextView previously created (either by code or Interface Builder)

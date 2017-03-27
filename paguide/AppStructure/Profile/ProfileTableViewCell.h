@@ -12,4 +12,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblDesc;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtDefault;
+@property (weak, nonatomic) IBOutlet UIButton *btnOne;
+
+@property (nonatomic, copy)StringBlock didUpdateStringBlock;
+
+@property (nonatomic, copy)VoidBlock didSelectBlock;
+
 @end

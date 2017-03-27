@@ -1,0 +1,209 @@
+//
+//  MyRequestListingViewController.m
+//  paguide
+//
+//  Created by Evan Beh on 20/03/2017.
+//  Copyright © 2017 Evan Beh. All rights reserved.
+//
+
+#import "MyRequestListingViewController.h"
+#import "PackageTableViewCell.h"
+#import "AppointmentWrapperModel.h"
+#import "AppointmentModel.h"
+#import "MyRequestDetailViewController.h"
+
+@interface MyRequestListingViewController () <UITableViewDelegate, UITableViewDataSource>
+{
+    AppointmentModel* apptModel;
+
+}
+@property (weak, nonatomic) IBOutlet UITableView *ibTableView;
+
+@property (nonatomic) PagingViewModel* vm_appointment_paging;
+@property (nonatomic) NSMutableArray<AppointmentModel>* arrAppointmentList;
+
+@end
+
+@implementation MyRequestListingViewController
+
+-(NSMutableArray<AppointmentModel>*)arrAppointmentList{
+    
+    if (!_arrAppointmentList) {
+        _arrAppointmentList = (NSMutableArray<AppointmentModel>*)[NSMutableArray new];
+    }
+    
+    return _arrAppointmentList;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (self.isNeedReload) {
+        
+        [self resetAndCallAppointmentListing];
+        
+        self.isNeedReload = NO;
+        
+        
+    }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.ibTableView.delegate = self;
+    self.ibTableView.dataSource = self;
+    
+    
+    [self.ibTableView pullToRefresh:^{
+        
+        [self resetAndCallAppointmentListing];
+        
+    }];
+    [self requestServerforMyRequestList];
+
+    // Do any additional setup after loading the view.
+}
+
+-(void)resetAndCallAppointmentListing
+{
+    _vm_appointment_paging = nil;
+    
+    [self.arrAppointmentList removeAllObjects];
+    
+    self.arrAppointmentList = nil;
+    
+    [self.ibTableView reloadData];
+    
+    
+    [self requestServerforMyRequestList];
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.arrAppointmentList.count;
+}
+
+// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PackageTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:@"packageCell"];
+    
+    AppointmentModel* model = self.arrAppointmentList[indexPath.row];
+    
+    
+    cell.lblTitle1.text = model.request_code;
+    
+    cell.lblTitle2.text = [model.request_info.specialty componentsJoinedByString:@","];
+    
+    
+    NSString* string1 = @"Appointment : ";
+    NSString* string2 = model.request_info.created_at;
+    
+    cell.lblTitle3.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string1,string2] StringToChange:string1];
+    
+    
+    
+    NSString* string3 = @"Status : ";
+    NSString* string4 = model.status;
+    
+    cell.lblTitle4.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string3,string4] StringToChange:string1];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    apptModel = self.arrAppointmentList[indexPath.row];
+    
+    [self performSegueWithIdentifier: @"myrequest_detail" sender:self];
+}
+
+-(NSMutableAttributedString*)convertAttributedStringFor:(NSString*)fullString StringToChange:(NSString*)substring
+{
+    
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:fullString];
+    
+    NSRange string1_range1 = [attributeString.string rangeOfString:substring];
+    
+    [attributeString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"Helvetica-Bold" size:15.0]
+                            range:string1_range1];
+    
+    
+    [attributeString addAttribute:NSForegroundColorAttributeName
+                            value:APP_MAIN_COLOR
+                            range:string1_range1];
+    
+    return attributeString;
+}
+
+#pragma mark - Request Server
+
+-(void)requestServerforMyRequestList
+{
+    
+    self.vm_appointment_paging.isLoading = YES;
+
+    NSDictionary* dict = @{@"token" : [Utils getToken]};
+    
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostRequestConsumerlisting parameter:dict appendString:nil success:^(id object) {
+        
+        self.vm_appointment_paging.isLoading = NO;
+
+        NSError* error;
+        
+        AppointmentWrapperModel* model = [[AppointmentWrapperModel alloc]initWithDictionary:object error:&error];
+        
+                
+        [self.vm_appointment_paging processPagingFrom:model.pageContent];
+        
+        [self.ibTableView stopRefresh];
+        
+        [self.arrAppointmentList addObjectsFromArray:model.arrAppointmentList];
+        
+        [self.ibTableView reloadData];
+        
+    } failure:^(id object) {
+     
+        self.vm_appointment_paging.isLoading = NO;
+
+    }];
+                           
+}
+
+-(PagingViewModel*)vm_appointment_paging
+{
+    if (!_vm_appointment_paging) {
+        _vm_appointment_paging = [PagingViewModel new];
+    }
+    
+    return _vm_appointment_paging;
+}
+
+//// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"myrequest_detail"]) {
+        
+        MyRequestDetailViewController *vc = [segue destinationViewController];
+        
+        [vc setupData:apptModel];
+        
+    }
+    
+    
+    
+}
+
+@end
