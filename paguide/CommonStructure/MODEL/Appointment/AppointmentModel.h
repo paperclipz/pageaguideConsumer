@@ -28,7 +28,7 @@
 @property (nonatomic,strong)NSMutableArray<MerchantProfileModel>* arr_Merchant_info;
 
 @property (nonatomic,strong)RequestModel* request_info;
-@property (nonatomic,strong)PackageModel* package_info;
+@property (nonatomic,strong)PackageModel* package_info_model;
 @property (nonatomic,strong)NSString* verify_time;
 
 @property (nonatomic,strong)NSString* promo_code;

@@ -8,6 +8,8 @@
 
 #import "Utils.h"
 #import "AppDelegate.h"
+#import "AppModel.h"
+#import <SAMKeychain.h>
 
 #define BORDER_WIDTH 1.0f
 #define KEY_APP_TOKEN @"app_token"
@@ -62,6 +64,25 @@
 
 #pragma mark - App Utils
 
++(NSString*)getUniqueDeviceIdentifier
+{
+
+    
+    NSString *appName = @"PAGEAGUIDE";
+    
+    NSString *strApplicationUUID = [SAMKeychain passwordForService:appName account:@"PAGEAGUIDE_ACCOUNT"];
+    
+    if (strApplicationUUID == nil)
+    {
+        strApplicationUUID  = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+        
+        [SAMKeychain setPassword:strApplicationUUID forService:appName account:@"PAGEAGUIDE_ACCOUNT"];
+    }
+    
+    return strApplicationUUID;
+    
+    
+}
 
 +(void)setAppToken:(NSString*)token
 {
@@ -102,11 +123,26 @@
         return token;
     }
     else{
+        
+        NSLog(@"NO Token Detected");
+
         return @"";
 
     }
-    
 
+}
+
+
++(BOOL)isUserLogin
+{
+    if ([Utils isStringNull:[Utils getToken]]) {
+        
+        return NO;
+    }
+    else{
+        return YES;
+
+    }
 }
 
 +(NSString*)getAppVersion
@@ -117,6 +153,16 @@
     NSString* version = oriVersion;
     
     return version;
+}
+
+
++(void)logout
+{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults removeObjectForKey:KEY_APP_TOKEN];
+
 }
 
 +(void)showRegisterPage
@@ -145,7 +191,90 @@
     //        if (!index.showTabBar) {
     
 }
+
++(void)checkIsNeedUpateApp:(StringBlock)updateAppBlock NoNeedUpdate:(VoidBlock)noNeedUpdateBlock
+{
+  
+        NSDictionary* dict = @{@"mobile_type" : @"ios"};
+    
+        [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostHomeVersion parameter:dict appendString:nil success:^(id object) {
+    
+    
+            NSError* error;
+    
+            AppModel* model = [[AppModel alloc]initWithDictionary:object[@"data"] error:&error];
+    
+    
+            NSString* serverVersion = model.ios_consumer_version;
+    
+            NSString* appVersion = APP_Version;
+    
+            if ([serverVersion compare:appVersion options:NSNumericSearch] == NSOrderedDescending) {
+            
+                if(updateAppBlock)
+                {
+                    updateAppBlock(model.ios_consumer_url);
+                }
+                
+            } else {
+               
+                NSLog(@"Latest Version");
+                if (noNeedUpdateBlock) {
+                    noNeedUpdateBlock();
+                }
+            }
+    
+        } failure:^(id object) {
+            
+        }];
+}
+
+
++(void)reloadAllAppointView
+{
+    UIViewController *rootController =(UIViewController*)[[(AppDelegate*)
+                                                           [[UIApplication sharedApplication]delegate] window] rootViewController];
+    
+    
+    
+
+    if ([rootController isKindOfClass:[UITabBarController class]]) {
+        
+        UITabBarController* tabBarcontroller = (UITabBarController*)rootController;
+        
+        NSArray* array = tabBarcontroller.viewControllers;
+        
+        for (int i = 0; i<array.count; i++) {
+            
+        
+            UIViewController* controller = array[i];
+            
+            if ([controller isKindOfClass:[UINavigationController class]]) {
+                
+                UINavigationController* navigationController = (UINavigationController*)controller;
+                
+                
+                if (![Utils isArrayNull:navigationController.viewControllers]) {
+                    UIViewController* innerViewController = navigationController.viewControllers[0];
+
+                    
+                    if ([innerViewController isKindOfClass:[BaseViewController class]]) {
+                        BaseViewController* baseController = (BaseViewController*)innerViewController;
+                        baseController.isNeedReload = YES;
+
+                    }
+                }
+               
+                
+            }
+        }
+    }
+    
+    
+}
+
 #pragma mark - User Utils
+
 
 
 

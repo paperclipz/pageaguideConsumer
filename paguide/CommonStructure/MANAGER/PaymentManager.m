@@ -121,8 +121,12 @@ didCreatePaymentResult:(STPPaymentResult *)paymentResult
     
     self.viewController = vc;
 
+//    STPTheme* theme = [[STPTheme alloc]init];
+//    theme.secondaryBackgroundColor = APP_MAIN_COLOR;
+    
     _addCardViewController = [[STPAddCardViewController alloc] init];
     _addCardViewController.delegate = self;
+
     // STPAddCardViewController must be shown inside a UINavigationController.
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.addCardViewController];
     [pViewController presentViewController:navigationController animated:YES completion:nil];

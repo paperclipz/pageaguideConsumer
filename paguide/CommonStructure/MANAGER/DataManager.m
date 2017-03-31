@@ -9,6 +9,7 @@
 #import "DataManager.h"
 #import "CountryModel.h"
 
+#define KEY_LOGIN_INFO @"key_login_info"
 
 @protocol CountryModel
 @end
@@ -75,6 +76,54 @@
         
     }];
 
+}
+
++(void)setLoginModel:(LoginViewModel*)model
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults removeObjectForKey:KEY_LOGIN_INFO];
+    
+    if (model) {
+        
+        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:model];
+        [defaults setObject:encodedObject forKey:KEY_LOGIN_INFO];
+        [defaults synchronize];
+        
+    }    
+}
+
++(LoginViewModel*)getLoginModel
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSData * data = [defaults objectForKey:KEY_LOGIN_INFO];
+    
+    LoginViewModel* model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    return model;
+    
+}
+
++(void)requestServerForRegisterDevice
+{
+    NSString* token  = [Utils getToken];
+    
+    NSString* device_serial = [Utils getUniqueDeviceIdentifier];
+    
+    NSString* firebaseToken = [[FIRInstanceID instanceID] token];
+    
+    NSDictionary* dict = @{@"device_serial" : IsNullConverstion(device_serial),
+                           @"device_id" : IsNullConverstion(firebaseToken),
+                           @"device_os" : @"ios",
+                           @"token" : IsNullConverstion(token)};
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserRegisterdevice parameter:dict appendString:nil success:^(id object) {
+        
+        
+    } failure:^(id object) {
+        
+    }];
 }
 
 

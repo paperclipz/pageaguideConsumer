@@ -14,6 +14,7 @@
 #import "AppointmentWrapperModel.h"
 #import "PackageDetailsTableViewCell.h"
 #import "RatingViewController.h"
+#import "MerchantProfileViewController.h"
 
 #define cell_title @"cell_title"
 #define cell_detail1 @"cell_detail1"
@@ -55,20 +56,17 @@
                 //[self showQuitView];
                 
             }];
-            
-            
-            
+                        
         }];
     }];
-
 }
 
 -(void)setupData:(AppointmentModel*)model
 {
     self.appointmentModel = model;
 }
+
 - (IBAction)btnVerifyClicked:(id)sender {
-    
     
     if ([Utils isStringNull:self.txtVerifyCode.text]) {
         
@@ -213,7 +211,7 @@
     
     if ([type isEqualToString:@"cell_title"]) {
         
-        return 80.0f;
+        return 120.0f;
     }
     else  if ([type isEqualToString:@"cell_detail1"]) {
         
@@ -244,6 +242,10 @@
         ApptHeaderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"appt_title"];
         
         cell.lblTitle.text = self.appointmentModel.merchant_info_model.name;
+        cell.lblTitle2.text = self.appointmentModel.merchant_info_model.mobile_number;
+        cell.lblTitle3.text = self.appointmentModel.merchant_info_model.email;
+        [cell.ratingView setupRatingOutOfFive:[self.appointmentModel.merchant_info_model.overall_rating intValue]];
+
         return cell;
         
     }
@@ -253,11 +255,13 @@
         cell.lblTitle.text = [NSString stringWithFormat:@"%@ %@",self.appointmentModel.currency,self.appointmentModel.price];
         cell.lblTitle2.text = [NSString stringWithFormat:@"%@ %@",@"Purchase Date :",self.appointmentModel.transaction_date];
         
-        cell.lblTitle3.text = self.appointmentModel.package_info.name;
+        cell.lblTitle3.text = self.appointmentModel.package_info_model.name;
 
         cell.lblTitle4.text = self.appointmentModel.appointment_code;
 
         cell.lblTitle5.text = self.appointmentModel.verify_time;
+        
+        
 
         return cell;
     }
@@ -267,20 +271,23 @@
         
         cell.lblTitle.text = @"Description";
         
-        cell.lblDescription.text = self.appointmentModel.package_info.desc;
         
-        //attributedText = [[NSAttributedString alloc] initWithData:[self.appointmentModel.package_info.desc dataUsingEncoding:NSUTF8StringEncoding]
-//                                         options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-//                                                   NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
-//                              documentAttributes:nil error:nil];
+        
+        UIFont *font = [UIFont fontWithName:@"Arial" size:12.0f];
+        cell.lblDescription.attributedText = [[NSAttributedString alloc] initWithData:[self.appointmentModel.package_info_model.desc dataUsingEncoding:NSUTF8StringEncoding]
+                                         options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                                                   
+                                                   NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding),
+                                                   NSFontAttributeName : font
+                                                   }
+                              documentAttributes:nil error:nil];
 
-        
         return cell;
     }
     else  if ([type isEqualToString:@"cell_map"]) {
         PackageDetailsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"appt_map"];
         
-        NSArray* coordinate = [self.appointmentModel.package_info.latlng componentsSeparatedByString:@","];
+        NSArray* coordinate = [self.appointmentModel.package_info_model.latlng componentsSeparatedByString:@","];
         
         float latitude = [coordinate[0] floatValue];
         
@@ -434,8 +441,9 @@
     if ([[segue identifier] isEqualToString:@"merchant_profile"]) {
         
         
-        
+        MerchantProfileViewController* mViewController = [segue destinationViewController];
        
+        [mViewController setUpMerchantProfile:self.appointmentModel.merchant_info_model];
     }
         
 

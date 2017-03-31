@@ -71,6 +71,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GVUserDefaults (1.0.2)
   - HexColors (2.3.0)
+  - Intercom (3.0.25)
   - IQKeyboardManager (4.0.8)
   - JSONModel (1.7.0)
   - JTCalendar (2.1.9)
@@ -84,10 +85,12 @@ PODS:
   - RMActionController (1.0.5)
   - RMDateSelectionViewController (2.0.3):
     - RMActionController (~> 1.0.5)
+  - SAMKeychain (1.5.2)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - Stripe (9.4.0)
+  - STPopup (1.8.2)
+  - Stripe (10.0.1)
   - SVPullToRefresh (0.4.1)
   - TSMessages (0.9.13):
     - HexColors (~> 2.3.0)
@@ -96,21 +99,24 @@ DEPENDENCIES:
   - ActionSheetPicker-3.0
   - AFNetworking (~> 3.0)
   - DLFPhotosPicker
-  - FBSDKCoreKit (~> 4.16.0)
-  - FBSDKLoginKit (~> 4.16.0)
-  - FBSDKShareKit (~> 4.16.0)
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - Firebase/Core
   - Firebase/Crash
   - Firebase/Messaging
   - Firebase/RemoteConfig
   - GVUserDefaults
+  - Intercom
   - IQKeyboardManager
   - JSONModel
   - JTCalendar (~> 2.0)
   - KVNProgress
   - MWPhotoBrowser
   - RMDateSelectionViewController (~> 2.0.3)
+  - SAMKeychain
   - SDWebImage
+  - STPopup
   - Stripe
   - SVPullToRefresh
   - TSMessages (from `https://github.com/KrauseFx/TSMessages.git`)
@@ -143,6 +149,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GVUserDefaults: 52d48cf8ba578b40a1a76312b196dfc9134ba36a
   HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
+  Intercom: 1111712850ab7a10e696efaee0373eb8066afeed
   IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   JTCalendar: beb2f4c1b639bf6880f680b4858227acf83a049c
@@ -152,11 +159,13 @@ SPEC CHECKSUMS:
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
   RMActionController: b83653e7452ed51492094d65dc82151c36443c03
   RMDateSelectionViewController: 354a0f1fe40bac01054528b7a8735f2973bbd813
+  SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  Stripe: 0957cc85df5c3df153e6fb44d307ea4b778b6bd1
+  STPopup: b69b3e7484ef7d2baec5f9ab2939f8a7bcdfe218
+  Stripe: dd6df0e2c6a8463e2f1ca9b15dc246e5ae1eee64
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   TSMessages: eb3cf27b6900684a21bad4fe9ea426e287b8c839
 
-PODFILE CHECKSUM: 0b1390b8ea4ac0b5acc0fb2897fd2f7bb1eb5bb7
+PODFILE CHECKSUM: 9927ccf54fecdd2f533b01b6880b442deecf1e17
 
 COCOAPODS: 1.0.1

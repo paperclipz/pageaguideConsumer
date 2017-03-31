@@ -22,6 +22,12 @@
 @property (nonatomic, strong)NSString* phoneNumber;
 @property (nonatomic, strong)NSString* prefix;
 
+
+@property (nonatomic, strong)NSString* fbid;
+@property (nonatomic, strong)NSString* fbToken;
+
+@property (nonatomic, strong)NSString* fullContactNumber;
+
 @end
 
 

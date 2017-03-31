@@ -28,6 +28,7 @@
 #import "MessageManager.h"
 #import "DataManager.h"
 #import "PaymentManager.h"
+#import "GeneralRequestManager.h"
 
 // Model
 #import "BaseModel.h"
@@ -44,3 +45,6 @@
 @import Firebase;
 
 #endif /* PrefixHeader_pch */
+
+#define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+

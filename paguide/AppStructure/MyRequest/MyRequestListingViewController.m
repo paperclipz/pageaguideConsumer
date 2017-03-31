@@ -43,7 +43,6 @@
         
         self.isNeedReload = NO;
         
-        
     }
 }
 
@@ -172,9 +171,14 @@
         
         [self.ibTableView reloadData];
         
+        [self.ibTableView stopFooterLoadingView];
+
+        
     } failure:^(id object) {
      
         self.vm_appointment_paging.isLoading = NO;
+
+        [self.ibTableView stopFooterLoadingView];
 
     }];
                            
@@ -205,5 +209,22 @@
     
     
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.ibTableView scrollViewDidScroll:scrollView activated:^{
+        
+        if (self.vm_appointment_paging.hasNext) {
+            
+            [self.ibTableView startFooterLoadingView];
+            
+            [self requestServerforMyRequestList];
+        }
+        
+    }];
+    
+    
+}// any offset changes
+
 
 @end

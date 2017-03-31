@@ -18,15 +18,16 @@
 @property (nonatomic,strong)NSString* mobile_number;
 @property (nonatomic,strong)NSString* country;
 @property (nonatomic,strong)NSString* status;
-@property (nonatomic,strong)NSString* push_notif;
-@property (nonatomic,strong)NSString* sms_notif;
 @property (nonatomic,strong)NSString* token;
 @property (nonatomic,strong)UIImage* uploadImage;
 @property (nonatomic,strong)NSString* name;
-
 // as view model
 @property (nonatomic,strong)NSString* temp_prefix;
 @property (nonatomic,strong)NSString* temp_mobile_number;
 -(void)processPrefix:(VoidBlock)completion;
+
+
+-(BOOL)getNotif_on;
+-(BOOL)getSMS_on;
 
 @end

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController">
+            <connections>
+                <outlet property="ibImgClose" destination="Om5-bO-Ft2" id="SMD-ry-cWZ"/>
+                <outlet property="ibWebView" destination="oeG-dO-Mev" id="eAb-GM-03e"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oeG-dO-Mev">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDd-HR-2QY">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_close_red.png" translatesAutoresizingMaskIntoConstraints="NO" id="CTc-Rh-f1g">
+                            <rect key="frame" x="10" y="34" width="20" height="20"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="9Y9-iI-kaG"/>
+                                <constraint firstAttribute="width" constant="20" id="liP-cs-ABr"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="imageRenderingMode">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Om5-bO-Ft2">
+                            <rect key="frame" x="10" y="14" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="7fn-cG-hbA"/>
+                                <constraint firstAttribute="height" constant="40" id="Qq1-Eq-mdd"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="btnCloseClicked:" destination="-1" eventType="touchUpInside" id="zYG-0k-MNw"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.81960784310000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Om5-bO-Ft2" firstAttribute="leading" secondItem="wDd-HR-2QY" secondAttribute="leading" constant="10" id="21p-BS-PHv"/>
+                        <constraint firstAttribute="bottom" secondItem="CTc-Rh-f1g" secondAttribute="bottom" constant="10" id="Z4F-um-Khs"/>
+                        <constraint firstAttribute="bottom" secondItem="Om5-bO-Ft2" secondAttribute="bottom" constant="10" id="g9v-QU-cGM"/>
+                        <constraint firstAttribute="height" constant="64" id="qof-YA-AkJ"/>
+                        <constraint firstItem="CTc-Rh-f1g" firstAttribute="leading" secondItem="wDd-HR-2QY" secondAttribute="leading" constant="10" id="u0q-M3-17Y"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="oeG-dO-Mev" secondAttribute="bottom" id="5DW-UQ-eSU"/>
+                <constraint firstAttribute="trailing" secondItem="oeG-dO-Mev" secondAttribute="trailing" id="L2O-p3-YFF"/>
+                <constraint firstItem="oeG-dO-Mev" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="QVS-9v-yBc"/>
+                <constraint firstItem="wDd-HR-2QY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Y8h-tF-Mth"/>
+                <constraint firstAttribute="trailing" secondItem="wDd-HR-2QY" secondAttribute="trailing" id="Ykd-a0-AJE"/>
+                <constraint firstItem="oeG-dO-Mev" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tWx-dd-hpJ"/>
+                <constraint firstItem="wDd-HR-2QY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yhT-dW-zPT"/>
+            </constraints>
+            <point key="canvasLocation" x="-25.5" y="59.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_close_red.png" width="30" height="30"/>
+    </resources>
+</document>

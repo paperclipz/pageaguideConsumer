@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ReviewModel.h"
+
+@protocol ReviewModel;
 
 @interface ReviewViewController : UIViewController
-
+@property(nonatomic,strong)NSArray<ReviewModel>* arrReviews;
 @end

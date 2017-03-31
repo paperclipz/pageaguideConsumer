@@ -21,12 +21,16 @@
 //
 +(BOOL)isArrayNull:(NSArray*)array;
 
++(void)logout;
 
 #pragma mark - UI Utils
 
 +(void)setRoundBorder:(UIView*)view color:(UIColor*)color borderRadius:(float)borderRadius;
 
 #pragma mark - App Utils
++(void)reloadAllAppointView;
+
++(NSString*)getUniqueDeviceIdentifier;
 
 +(NSString*)getToken;
 
@@ -37,6 +41,10 @@
 //+(void)linkRegisterPin:(NSString*)pin;
 //
 //+(NSString*)getAppVersion;
+
++(void)checkIsNeedUpateApp:(StringBlock)updateAppBlock NoNeedUpdate:(VoidBlock)noNeedUpdateBlock;
+
++(BOOL)isUserLogin;
 
 #pragma mark - User Utils
 //+(void)signOut;

@@ -16,7 +16,7 @@
 
 @protocol AppointmentModel;
 
-#define PER_PAGE @"10"
+#define PER_PAGE @"20"
 
 @interface HistoryListViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -50,6 +50,14 @@
     return _vm_appointment_paging;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (self.isNeedReload) {
+        
+        [self resetAndCallAppointmentListing];
+        self.isNeedReload = NO;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -147,10 +155,10 @@
         
         cell.lblTitle1.text = model.appointment_code;
         
-        cell.lblTitle2.text = model.package_info.name;
+        cell.lblTitle2.text = model.package_info_model.name;
         
         NSString* string1 = @"Appointment : ";
-        NSString* string2 = model.package_info.package_date;
+        NSString* string2 = model.package_info_model.package_date;
         
         cell.lblTitle3.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string1,string2] StringToChange:string1];
         
@@ -200,8 +208,14 @@
         
         [self.ibTableView reloadData];
         
+        [self.ibTableView stopFooterLoadingView];
+        
     } failure:^(id object) {
+        
         self.vm_appointment_paging.isLoading = NO;
+        
+        [self.ibTableView stopFooterLoadingView];
+
         
     }];
 }
@@ -247,6 +261,23 @@
     }
     
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.ibTableView scrollViewDidScroll:scrollView activated:^{
+        
+        if (self.vm_appointment_paging.hasNext) {
+            
+            [self.ibTableView startFooterLoadingView];
+            
+            [self requestServerForAppointmentList];
+        }
+        
+    }];
+    
+    
+}// any offset changes
+
 
 
 

@@ -12,9 +12,11 @@
 #import "AppointmentModel.h"
 #import "AppointmentWrapperModel.h"
 #import "AppointmentRequestViewController.h"
+#import "PackageModel.h"
+
 @protocol AppointmentModel;
 
-#define PER_PAGE @"10"
+#define PER_PAGE @"20"
 
 @interface AppointmentListViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -139,10 +141,10 @@
 
         cell.lblTitle1.text = model.appointment_code;
         
-        cell.lblTitle2.text = model.package_info.name;
+        cell.lblTitle2.text = model.package_info_model.name;
         
         NSString* string1 = @"Appointment : ";
-        NSString* string2 = model.package_info.package_date;
+        NSString* string2 = model.package_info_model.package_date;
         
         cell.lblTitle3.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string1,string2] StringToChange:string1];
         
@@ -153,7 +155,6 @@
         cell.lblTitle4.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string3,string4] StringToChange:string3];
     }
   
-    
     return cell;
 }
 
@@ -231,7 +232,6 @@
         NSError* error;
         
         AppointmentWrapperModel* model = [[AppointmentWrapperModel alloc]initWithDictionary:object error:&error];
-
         
         [self.vm_appointment_paging processPagingFrom:model.pageContent];
         
@@ -241,9 +241,14 @@
         
         [self.ibTableView reloadData];
         
+        [self.ibTableView stopFooterLoadingView];
+         
+        
     } failure:^(id object) {
         self.vm_appointment_paging.isLoading = NO;
         
+        [self.ibTableView stopFooterLoadingView];
+
     }];
 }
 
@@ -265,14 +270,22 @@
     
     return attributeString;
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.ibTableView scrollViewDidScroll:scrollView activated:^{
+        
+        if (self.vm_appointment_paging.hasNext) {
+            
+            [self.ibTableView startFooterLoadingView];
+            
+            [self requestServerForAppointmentList];
+        }
+        
+    }];
+    
+    
+}// any offset changes
+
 
 @end

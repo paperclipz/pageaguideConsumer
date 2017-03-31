@@ -668,7 +668,7 @@
         
         
         [self resetMainPage];
-
+        
         [self showQuitView];
         
         

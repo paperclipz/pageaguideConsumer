@@ -546,6 +546,7 @@
    
         [self requestServerForRequestForm];
         
+        [Utils reloadAllAppointView];
     
     } failure:^(id object) {
         

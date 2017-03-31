@@ -12,6 +12,7 @@
 @interface AppointmentModel()
 @property (nonatomic,strong)NSDictionary* merchant_info;
 
+@property (nonatomic,strong)NSDictionary* package_info;
 
 @end
 @implementation AppointmentModel
@@ -20,6 +21,19 @@
 {
     return YES;
 }
+
+-(PackageModel*)package_info_model
+{
+    if (!_package_info_model) {
+        
+        NSError* error;
+        _package_info_model = [[PackageModel alloc]initWithDictionary:_package_info error:&error];
+    }
+    
+    return _package_info_model;
+}
+
+
 //
 //+(JSONKeyMapper*)keyMapperz
 //{
@@ -42,7 +56,6 @@
     
     if (!_merchant_info_model && _merchant_info) {
         
-      
         
         if (![Utils isArrayNull:self.arr_Merchant_info]) {
             

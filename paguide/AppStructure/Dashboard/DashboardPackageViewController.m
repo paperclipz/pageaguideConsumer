@@ -13,6 +13,9 @@
 #import "RatingViewController.h"
 #import "PackageWrapperModel.h"
 #import "DashboardPackageFilterViewController.h"
+#import "UpdateViewController.h"
+
+@import Intercom;
 
 #define PER_PAGE @"10"
 @interface DashboardPackageViewController () <UITableViewDelegate,UITableViewDataSource>
@@ -25,13 +28,16 @@
 @property (nonatomic) PagingViewModel* vm_package_paging;
 @property (nonatomic) NSMutableArray<PackageModel>* arrPackageList;
 
-
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 @property (weak, nonatomic) IBOutlet UIButton *btnFilter;
 
 @end
 
 @implementation DashboardPackageViewController
+- (IBAction)btnIntercomClicked:(id)sender {
+    [Intercom presentConversationList];
+
+}
 - (IBAction)btnFilterClicked:(id)sender {
 }
 - (IBAction)btnLoginClicked:(id)sender {
@@ -63,12 +69,32 @@
 
     };
 
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (![Utils isUserLogin]) {
+        
+        [Utils showRegisterPage];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [Utils checkIsNeedUpateApp:^(NSString* urlString){
+        
+        UpdateViewController* uVC = [UpdateViewController new];
+        
+        uVC.updateURL = urlString;
+        
+        [self presentViewController:uVC animated:YES completion:^{
+            
+        }];
+        
+    } NoNeedUpdate:^{
+        
+    }];
     
     [self initSelfView];
 
@@ -83,6 +109,28 @@
       
     }];
 
+    
+    if (![Utils isUserLogin]) {
+        
+        [Intercom registerUnidentifiedUser];
+    }
+    else{
+        
+        [GeneralRequestManager getProfileData:NO CompleteWithData:^(ProfileModel *pModel) {
+            
+            [Intercom registerUserWithEmail:pModel.email];
+        }];
+    }
+    
+    
+    UITableView *view = (UITableView *)self.tabBarController.moreNavigationController.topViewController.view;
+    if ([[view subviews] count]) {
+        for (UITableViewCell *cell in [view visibleCells]) {
+            cell.textLabel.textColor = [UIColor darkGrayColor];
+            
+            [cell.textLabel setFont:[UIFont systemFontOfSize:15.0f]];
+        }
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -121,12 +169,10 @@
 
 -(void)initSelfView
 {
+    
+    [self.btnFilter setDefaultBorder];
     [Utils setRoundBorder:self.btnFilter color:[UIColor clearColor] borderRadius:self.btnFilter.frame.size.height/2];
-    
-    self.btnFilter.backgroundColor = [UIColor whiteColor];
-    
-    self.btnFilter.tintColor = [UIColor redColor];
-    
+
     self.btnFilter.layer.shadowColor = [UIColor blackColor].CGColor;
     self.btnFilter.layer.shadowOpacity = 0.5;
     self.btnFilter.layer.shadowRadius = 1;
@@ -200,11 +246,11 @@
 
 -(void)setupPackageInCell:(DashboardPackageTableViewCell*)cell With:(PackageModel*)model
 {
-    cell.lblTitle1.text = model.name;
+    cell.lblTitle2.text = model.name;
     
-    cell.lblTitle2.text = [NSString stringWithFormat:@"%@ %@",model.currency, model.price];
+    cell.lblTitle1.text = [NSString stringWithFormat:@"%@ %@",model.currency, model.price];
     
-    cell.lblTitle3.text = model.desc;
+    cell.lblTitle3.text = model.mode;
 
     [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:model.listing_img]];
 
@@ -309,12 +355,18 @@
         
         [self.ibTableView reloadData];
         
+        [self.ibTableView stopFooterLoadingView];
+
+        
     } failure:^(id object) {
         
         
         self.vm_package_paging.isLoading = NO;
 
         [self.ibTableView stopRefresh];
+        
+        [self.ibTableView stopFooterLoadingView];
+
 
     }];
 }
@@ -326,6 +378,8 @@
     
         if (self.vm_package_paging.hasNext) {
             
+            [self.ibTableView startFooterLoadingView];
+            
             [self requestServerForPackageListing];
         }
         
@@ -333,6 +387,7 @@
     
 
 }// any offset changes
+
 
 
 @end

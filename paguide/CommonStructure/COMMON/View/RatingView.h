@@ -12,5 +12,6 @@
 @interface RatingView : CommonView
 
 -(void)setupRatingOutOfFive:(int)rate;
+@property(nonatomic,strong)UIColor* hightlightTintColor;
 
 @end

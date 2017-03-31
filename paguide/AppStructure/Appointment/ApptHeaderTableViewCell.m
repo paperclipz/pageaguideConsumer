@@ -7,13 +7,10 @@
 //
 
 #import "ApptHeaderTableViewCell.h"
-#import "RatingView.h"
 
 @interface ApptHeaderTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UIView *ratingContentView;
-
-@property (strong, nonatomic) RatingView *ratingView;
 
 @end
 @implementation ApptHeaderTableViewCell
@@ -22,9 +19,12 @@
     [super awakeFromNib];
     // Initialization code
     
-    [self.ratingContentView addSubview:self.ratingView];
     
-    self.ratingView.frame = CGRectMake(0, 0, self.ratingContentView.frame.size.width, self.ratingContentView.frame.size.height);
+    if (self.ratingContentView) {
+        [self.ratingContentView addSubview:self.ratingView];
+        
+        self.ratingView.frame = CGRectMake(0, 0, self.ratingContentView.frame.size.width, self.ratingContentView.frame.size.height);
+    }
     
     [self.ratingView setupRatingOutOfFive:1];
 }

@@ -26,6 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    [self.btnClose setImage:[self.btnClose.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+
     self.ibtableView.delegate = self;
     self.ibtableView.dataSource = self;
     
@@ -52,6 +55,39 @@
 {
     return self.arrItemList.count;
 
+}
+
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row){
+       
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            //This code will run in the main thread:
+            CGRect frame = self.ibtableView.frame;
+            
+            frame.size.height = self.ibtableView.contentSize.height;
+            
+            float height = 0;
+            
+            float oriheight = frame.size.height;
+            float viewheight = self.view.frame.size.height - 100;
+            if (oriheight> viewheight) {
+                height = viewheight;
+            }
+            else{
+                height = frame.size.height;
+
+            }
+
+      
+            
+        self.ibtableView.frame = CGRectMake(self.ibtableView.frame.origin.x, (self.view.frame.size.height - height)/2, self.ibtableView.frame.size.width, height);
+            
+            [self.btnClose layoutIfNeeded];
+            
+        });
+    }
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:

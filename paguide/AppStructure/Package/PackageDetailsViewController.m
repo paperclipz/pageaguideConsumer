@@ -208,7 +208,11 @@
         self.lblDesc_bottom.attributedText = attributeString;
         
 
-        [self.ibImgProfileView sd_setImageWithURL:[NSURL URLWithString:self.packageModel.cover_img[0]] placeholderImage:PHOTO_PLACEHOLDER];
+        
+        if (![Utils isArrayNull:self.packageModel.cover_img]) {
+            [self.ibImgProfileView sd_setImageWithURL:[NSURL URLWithString:self.packageModel.cover_img[0]] placeholderImage:PHOTO_PLACEHOLDER];
+
+        }
         
         [self.ibTableView reloadData];
         
@@ -264,8 +268,10 @@
                                           [NSString stringWithFormat:@"%i",pax
                                            ]];
         
-        [self.ibImgProfileView sd_setImageWithURL:[NSURL URLWithString:self.packageModel.cover_img[0]] placeholderImage:PHOTO_PLACEHOLDER];
-        
+        if (![Utils isArrayNull:self.packageModel.cover_img]) {
+            [self.ibImgProfileView sd_setImageWithURL:[NSURL URLWithString:self.packageModel.cover_img[0]] placeholderImage:PHOTO_PLACEHOLDER];
+            
+        }
         [self.ibTableView reloadData];
     }
     
@@ -452,8 +458,11 @@
         PackageDetailsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"package_details_desc2"];
         
         cell.lblTitle.text = @"Cancellation Policy";
-        cell.lblDesc.text = self.packageModel.cancellation_policy;
         
+        cell.lblDesc.attributedText = [[NSAttributedString alloc] initWithData:[self.packageModel.cancellation_policy dataUsingEncoding:NSUTF8StringEncoding]
+                                                                               options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                                                                                         NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
+                                                                    documentAttributes:nil error:nil];
         return cell;
         
     }
@@ -950,6 +959,9 @@
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
         
         [MessageManager showMessage:model.generalMessage Type:TSMessageNotificationTypeSuccess inViewController:self];
+        
+        
+        [Utils reloadAllAppointView];
         
         [self showQuitView];
         

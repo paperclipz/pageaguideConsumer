@@ -7,22 +7,34 @@
 //
 
 #import "VerifyAccountViewController.h"
+#import <STPopup/STPopup.h>
+#import "EBActionSheetViewController.h"
+
+@protocol CountryModel;
 
 @interface VerifyAccountViewController ()
 {
     NSString* emailAddress;
     NSString* mobile_number;
+    NSString* mobile_prefix;
+
 }
+
+@property (nonatomic, strong)NSArray<CountryModel>* arrCountryList;
+
 @property (weak, nonatomic) IBOutlet UITextField *txtVerifyCode;
 @property (weak, nonatomic) IBOutlet UIButton *btnResend;
 @property (weak, nonatomic) IBOutlet UIButton *btnActivate;
 @property(nonatomic,copy)StringBlock didCompleteBlock;
+
+@property (nonatomic,strong)ResendVerificationCodeViewController* resendVerificationCodeViewController;
 @end
 
 @implementation VerifyAccountViewController
 - (IBAction)btnResendClicked:(id)sender {
     
-    [self requestServerResendOtp];
+   
+    
 }
 - (IBAction)btnActivateClicked:(id)sender {
     
@@ -40,23 +52,22 @@
         }
     }
   
-    
 }
 
-
--(void)setupOTPView:(NSString*)mobileNumber Email:(NSString*)email didFinishVerify:(StringBlock)completion
+-(void)setupOTPViewWitPhonePrefix:(NSString*)prefix PhoneNumber:(NSString*)mobileNumber Email:(NSString*)email didFinishVerify:(StringBlock)completion
 {
     emailAddress = email;
     mobile_number = mobileNumber;
+    mobile_prefix = prefix;
     
     self.didCompleteBlock = completion;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    self.txtVerifyCode.text = @"123456";
-    [self.btnActivate setDefaultBorder];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
+        [self.btnActivate setDefaultBorder];
     
     [self.btnResend setInvertedBorder];
     
@@ -69,26 +80,32 @@
 }
 
 
--(void)requestServerResendOtp
+-(void)requestServerResendOtpWithEmail:(NSString*)email Completion:(VoidBlock)completion
 {
     
-    NSDictionary* dict = @{@"mobile_number" :IsNullConverstion(mobile_number),
-                           
-                           @"email" : IsNullConverstion(emailAddress)
-                           
+    LoginViewModel* model = [DataManager getLoginModel];
+
+    NSString* fullContact = [NSString stringWithFormat:@"%@%@",model.prefix,model.phoneNumber];
+    
+    NSDictionary* dict = @{
+                           @"mobile_number" :IsNullConverstion(fullContact),
+                           @"email" : IsNullConverstion(email),
                            };
-    
-    
     
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserResendOTP parameter:dict appendString:nil success:^(id object) {
         
+        if (completion) {
+            completion();
+        }
+        
+
         NSError* error;
 
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
         
-        [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess inViewController:self];
+        [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess];
         
-
+      
         
     } failure:^(id object) {
         
@@ -96,21 +113,93 @@
 
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
         
-        [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeError inViewController:self];
+        [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeError];
         
 
     }];
 }
 
+-(void)showPrefixView:(StringBlock)completion
+{
+    
+    VoidBlock openPopOutView = ^(void)
+    {
+        EBActionSheetViewController* viewC = [[EBActionSheetViewController alloc]initWithNibName:@"EBActionSheetViewController" bundle:nil];
+        viewC.title = @"Prefix";
+        
+        viewC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        viewC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        
+        viewC.arrItemList = [self.arrCountryList valueForKey:@"c_prefix"];
+        
+        [self presentViewController:viewC animated:YES completion:nil];
+        
+        __weak typeof (viewC)weakVC = viewC;
+        
+        viewC.didSelectAtIndexBlock = ^(NSIndexPath* indexPath)
+        {
+            [weakVC dismissViewControllerAnimated:YES completion:^{
+                
+                CountryModel* model = self.arrCountryList[indexPath.row];
+                
+                NSString* prefix = model.c_prefix;
+                
+                if (completion) {
+                    completion(prefix);
+                }
+            }];
+            
+        };
+    };
+    
+    
+    [[DataManager Instance] getCountryList:^(NSArray *array) {
+        
+        self.arrCountryList = (NSArray<CountryModel>*)array;
+        
+        openPopOutView();
+        
+    }];
+    
+    
+}
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"pop_resend_verify"]) {
+        
+        self.resendVerificationCodeViewController = [segue destinationViewController];
+        
+        __weak typeof (self)weakSelf = self;
+        
+        self.resendVerificationCodeViewController.didSelectResendBlock = ^(void)
+        {
+            
+            if ([Utils isStringNull:weakSelf.resendVerificationCodeViewController.txtEmail.text]) {
+                [MessageManager showMessage:@"Please Input A Email Address" Type:TSMessageNotificationTypeError inViewController:weakSelf.resendVerificationCodeViewController];
+            }
+            else{
+            
+                [weakSelf requestServerResendOtpWithEmail:weakSelf.resendVerificationCodeViewController.txtEmail.text Completion:^{
+                    
+                    
+                    [weakSelf.popupController popViewControllerAnimated:YES];
+                }];
+                
+            }
+           
+
+        };
+    
+        
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

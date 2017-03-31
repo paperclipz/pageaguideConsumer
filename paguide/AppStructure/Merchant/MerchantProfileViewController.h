@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MerchantProfileModel.h"
 
 @interface MerchantProfileViewController : UIViewController
 
+-(void)setUpMerchantProfile:(MerchantProfileModel*)model;
 @end

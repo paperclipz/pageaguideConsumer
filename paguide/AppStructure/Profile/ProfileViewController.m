@@ -21,7 +21,6 @@
 
 @protocol CountryModel;
 
-
 @interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource,DLFPhotosPickerViewControllerDelegate>
 {
     int segmentedControlIndex;
@@ -45,7 +44,11 @@
 
 - (IBAction)tabProfileImage:(UITapGestureRecognizer *)sender {
     
-    [self showGalleryView];
+    
+    if (isEditable) {
+        [self showGalleryView];
+
+    }
 }
 - (IBAction)btnBackClicked:(id)sender {
     
@@ -59,9 +62,12 @@
         
         NSLog(@"edit profile : %@",self.editProfileModel);
         
-        [self.btnEdit setTitle:@"Submit"];
         
-        [self requestServerForUserUpdateProfile];
+        [self requestServerForUserUpdateProfile:^{
+            [self setNavigationButtonAsEdit:@"Edit"];
+            isEditable = !isEditable;
+
+        }];
     }
     else{
         
@@ -69,15 +75,24 @@
         
         _editProfileModel = self.profileModel;
         
-        [self.btnEdit setTitle:@"Edit"];
+        [self setNavigationButtonAsEdit:@"Submit"];
+        isEditable = !isEditable;
 
     }
-    isEditable = !isEditable;
     
     [self.ibTableView reloadData];
 
 }
 
+- (void)setNavigationButtonAsEdit:(NSString*)title
+{
+    UIBarButtonItem* editButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(title, @"")
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:self
+                                                                  action:@selector(btnEditClicked:)];
+    
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObject:editButton];
+}
 
 -(void)validateProfile
 {
@@ -93,20 +108,20 @@
     else if ([Utils isStringNull:self.editProfileModel.temp_prefix] || [self.editProfileModel.temp_prefix isEqualToString:@"Prefix"]) {
         
     }
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setNavigationButtonAsEdit:@"Edit"];
     isEditable = NO;
-    
-    
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     //[self.ibTableView setContentInset:UIEdgeInsetsMake(150,0,0,0)];
 
-    [self.ibProfileImgView sd_setImageWithURL:[NSURL URLWithString:@"https://s-media-cache-ak0.pinimg.com/736x/8b/b1/60/8bb160c9f3b45906ef8ffab6ac972870.jpg"]];
+    [self.ibProfileImgView sd_setImageWithURL:[NSURL URLWithString:self.profileModel.profile_img]placeholderImage:[UIImage imageNamed:@"placeholder_profile.png"]];
+
+    
     [Utils setRoundBorder:self.ibProfileImgView color:[UIColor clearColor] borderRadius:self.ibProfileImgView.frame.size.height/2];
     
     
@@ -118,7 +133,6 @@
     
     // Do any additional setup after loading the view.
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -192,7 +206,6 @@
             cell.didSelectBlock = ^(void)
             {
                 [self showPrefixView:^(NSString *str) {
-                    
                     
                     self.editProfileModel.temp_prefix = str;
                     
@@ -312,6 +325,11 @@
             
         }];
     }];
+}
+
+- (void)photosPickerDidCancel:(DLFPhotosPickerViewController *)photosPicker
+{
+    [photosPicker dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -450,14 +468,18 @@
         
         self.profileModel = [[ProfileModel alloc]initWithDictionary:object[@"data"] error:&error];
         
+        
         [self.profileModel processPrefix:^{
             
+            [GeneralRequestManager setuserProfile:self.profileModel];
+
             [self.ibTableView reloadData];
 
         }];
         
         self.lblEmail.text = self.profileModel.email;
 
+        [self.ibProfileImgView sd_setImageWithURL:[NSURL URLWithString:self.profileModel.profile_img]placeholderImage:[UIImage imageNamed:@"placeholder_profile.png"]];
         
     } failure:^(id object) {
         
@@ -470,47 +492,104 @@
     }];
 }
 
--(void)requestServerForUserUpdateProfile
+-(void)requestServerForUserUpdateProfile:(VoidBlock)completed
 {
     
     
     NSString* token = [Utils getToken];
-
+    
+    
     NSDictionary* dict = @{@"username" : IsNullConverstion(self.editProfileModel.username),
                            @"country" : IsNullConverstion(self.editProfileModel.country),
                            @"gender" : IsNullConverstion(self.editProfileModel.gender),
                            @"mobile_number" : IsNullConverstion(self.editProfileModel.mobile_number),
-//                           @"profile_img" : @"",
-                           
+                           //                           @"profile_img" : @"",
                            @"token" : token
                            };
+
+    if (self.editProfileModel.uploadImage) {
+        
+        NSData *imageData= UIImageJPEGRepresentation(self.editProfileModel.uploadImage, 0.5);
+        
+        [LoadingManager show];
+
+        [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserUpdateProfile parameter:dict ConstructBodyBlock:^(id<AFMultipartFormData> formData) {
+            
+
+            [formData appendPartWithFileData:imageData
+                                        name:@"profile_img"
+                                    fileName:@"avatar" mimeType:@"image/jpeg"];
+
+        } appendString:nil success:^(id object) {
+            
+            [LoadingManager hide];
+            
+            NSError* error;
+            
+            BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
+            
+            [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess];
+            
+            if (completed) {
+                completed();
+            }
+            
+            [self.ibTableView reloadData];
+            
+           
+
+        } failure:^(id object) {
+            
+            [LoadingManager hide];
+            NSError* error;
+            
+            
+            BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
+            
+            [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeError];
+            
+            
+
+        }];
+    }
+
+
+    else{
+        [LoadingManager show];
+
+        [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserUpdateProfile parameter:dict appendString:nil success:^(id object) {
+            
+            [LoadingManager hide];
+            
+            NSError* error;
+            
+            BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
+            
+            [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess];
+            
+            if (completed) {
+                completed();
+            }
+            [self.ibTableView reloadData];
+            
+            
+            
+            
+        } failure:^(id object) {
+            [LoadingManager hide];
+            NSError* error;
+            
+            
+            BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
+            
+            [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeError];
+            
+        }];
+
+    }
     
     
-    [LoadingManager show];
-    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserUpdateProfile parameter:dict appendString:nil success:^(id object) {
-        
-        [LoadingManager hide];
-
-        NSError* error;
-        
-        BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
-        
-        [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess];
-        
-        [self.ibTableView reloadData];
-        
-        
-    } failure:^(id object) {
-        [LoadingManager hide];
-        NSError* error;
-
-        
-        BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
-        
-        [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeError];
-
-    }];
-}
+   }
 
 #pragma mark - Navigation
 

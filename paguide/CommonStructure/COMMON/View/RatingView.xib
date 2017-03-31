@@ -11,11 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RatingView">
-            <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+            <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7lx-5C-BSE">
-                    <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+                    <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_grade" translatesAutoresizingMaskIntoConstraints="NO" id="TbT-L4-CQ9">
                             <rect key="frame" x="0.0" y="8" width="20" height="20"/>
@@ -58,7 +58,7 @@
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="noF-cM-CtG" firstAttribute="centerY" secondItem="ZM1-uU-e4B" secondAttribute="centerY" id="21h-QF-VqV"/>
                         <constraint firstItem="TbT-L4-CQ9" firstAttribute="leading" secondItem="7lx-5C-BSE" secondAttribute="leading" id="4Gm-ak-XDI"/>
@@ -91,7 +91,7 @@
                 <outletCollection property="ibCollectionRate" destination="v83-jb-ER8" id="ws9-RL-HB8"/>
                 <outletCollection property="ibCollectionRate" destination="WJV-eB-laA" id="eym-xa-YJM"/>
             </connections>
-            <point key="canvasLocation" x="-38.5" y="-220"/>
+            <point key="canvasLocation" x="-62" y="-220"/>
         </view>
     </objects>
     <resources>

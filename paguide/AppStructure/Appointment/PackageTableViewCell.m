@@ -15,6 +15,8 @@
     
     [Utils setRoundBorder:self.lblPackage color:APP_MAIN_COLOR borderRadius:5.0f];
     
+    [Utils setRoundBorder:self.ibBorderView color:[UIColor clearColor] borderRadius:5.0f];
+    
     // Initialization code
 }
 

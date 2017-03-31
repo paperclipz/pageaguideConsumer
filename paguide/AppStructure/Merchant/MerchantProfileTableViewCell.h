@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblDesc2;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblDesc1;
+@property (strong, nonatomic) RatingView *ratingView;
 @end

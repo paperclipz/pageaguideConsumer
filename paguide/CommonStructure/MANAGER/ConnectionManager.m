@@ -162,7 +162,111 @@
     [[ConnectionManager Instance]requestServerWithNSURLSession:networkType serverRequestType:serverType parameter:parameter appendString:appendString success:success failure:failure];
 }
 
++(void)requestServerWith:(AFNETWORK_TYPE)networkType serverRequestType:(ServerRequestType)serverType parameter:(NSDictionary*)parameter ConstructBodyBlock:(void (^)(id <AFMultipartFormData> formData))bodyData appendString:(NSString*)appendString success:(IDBlock)success failure:(IErrorBlock)failure
+{
+
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc]initWithDictionary:parameter];
+    
+    [dict addEntriesFromDictionary:@{@"services_token" : SERVICE_TOKEN}];
+
+    [[ConnectionManager Instance]requestServerWith:networkType serverRequestType:serverType parameter:dict ConstructBodyBlock:bodyData appendString:appendString success:success failure:failure];
+
+}
+
+
+
+
 #pragma mark - Main Connection Function
+
+
+-(void)requestServerWith:(AFNETWORK_TYPE)networkType serverRequestType:(ServerRequestType)serverType parameter:(NSDictionary*)parameter ConstructBodyBlock:(void (^)(id <AFMultipartFormData> formData))bodyData appendString:(NSString*)appendString success:(IDBlock)success failure:(IErrorBlock)failure{
+
+    NSString* fullURL;
+    
+    NSString* strNetworkType;
+    
+    if ([self validateBeforeRequest:serverType]) {
+        
+        if (failure) {
+            
+            failure(nil);
+        }
+        return;
+    }
+    else{
+        
+        if (![Utils isStringNull:appendString]) {
+            
+            fullURL = [NSString stringWithFormat:@"%@/%@",[self getFullURLwithType:serverType],appendString];
+        }
+        else
+        {
+            fullURL = [self getFullURLwithType:serverType];
+        }
+        
+    }
+    
+    AFHTTPSessionManager* manager = self.manager;
+
+    
+    strNetworkType = @"POST";
+    
+    
+    [manager POST:fullURL parameters:parameter constructingBodyWithBlock:bodyData
+        
+     progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        
+        [LoadingManager hide];
+        
+        
+        [self validateAfterRequest:responseObject requestType:serverType withURL:fullURL completionBlock:success errorBlock:failure];
+        
+
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"Error: %@", error);
+        
+        [LoadingManager hide];
+        
+        
+        [self showErrorHandling:task Error:error WithRecallingPreviousMethod:^(id object) {
+            
+            [manager POST:fullURL
+               parameters:parameter
+                 progress:^(NSProgress * _Nonnull uploadProgress) {
+                     
+                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                     
+                     [LoadingManager hide];
+                     
+                     [self validateAfterRequest:responseObject requestType:serverType withURL:fullURL completionBlock:success errorBlock:failure];
+                     
+                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                     
+                     NSLog(@"Error: %@", error);
+                     
+                     [LoadingManager hide];
+                     
+                     if (failure) {
+                         failure(error.description);
+                     }
+                     
+                 }];
+            
+        } ShowDefaultError:failure];
+
+    }];
+    
+    NSLog(@"\n\n ===== [REQUEST SERVER WITH %@][URL] : %@ \n [REQUEST JSON] : %@\n\n",strNetworkType,fullURL,[parameter bv_jsonStringWithPrettyPrint:YES]);
+
+
+    
+}
+
 -(void)requestServerWith:(AFNETWORK_TYPE)networkType serverRequestType:(ServerRequestType)serverType parameter:(NSDictionary*)parameter appendString:(NSString*)appendString success:(IDBlock)success failure:(IErrorBlock)failure
 {
     
@@ -190,7 +294,6 @@
         }
         
     }
-    
     
       AFHTTPSessionManager* manager = self.manager;
 //
@@ -441,144 +544,144 @@
 }
 
 
--(void)requestServerWithNSURLSession:(AFNETWORK_TYPE)networkType serverRequestType:(ServerRequestType)serverType parameter:(NSDictionary*)parameter appendString:(NSString*)appendString success:(IDBlock)success failure:(IErrorBlock)failure
-{
-    
-    NSString* fullURL;
-    
-    
-    if ([self validateBeforeRequest:serverType]) {
-        
-        if (failure) {
-            
-            failure(nil);
-        }
-        return;
-    }
-    else{
-        
-        if (![Utils isStringNull:appendString]) {
-            
-            fullURL = [NSString stringWithFormat:@"%@/%@",[self getFullURLwithType:serverType],appendString];
-        }
-        else
-        {
-            fullURL = [self getFullURLwithType:serverType];
-        }
-        
-    }
-
-    NSString* strNetworkType;
-
-    
-    switch (networkType) {
-        case AFNETWORK_POST:
-            strNetworkType = @"POST";
-            break;
-        case AFNETWORK_GET:
-            strNetworkType = @"GET";
-
-            break;
-        default:
-            break;
-    }
-    
-    NSError *error;
-    
-    NSURL *url = [NSURL URLWithString:fullURL];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:60.0];
-    
-//    NSString* jtw = @"";
+//-(void)requestServerWithNSURLSession:(AFNETWORK_TYPE)networkType serverRequestType:(ServerRequestType)serverType parameter:(NSDictionary*)parameter appendString:(NSString*)appendString success:(IDBlock)success failure:(IErrorBlock)failure
+//{
 //    
-//    NSLog(@"jwt : %@",jtw);
+//    NSString* fullURL;
 //    
-//    [request addValue:jtw forHTTPHeaderField:Header_X_Auth];
-    
-    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    
-    //[request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    [request setHTTPMethod:strNetworkType];
-  
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:parameter options:0 error:&error];
-    
-    [request setHTTPBody:postData];
-    
-
-    NSURLSessionDataTask *postDataTask = [[[self class] session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        NSError* jsonError;
-        
-        
-        
-        
-        if (error) {
-            NSLog(@"Error: %@", error);
-
-        }
-        else{
-          //  NSLog(@"%@ %@", response, response);
-            NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:data
-                                                                           options:kNilOptions
-                                                                             error:&jsonError];
-            //NSLog(@"response : %@",responseObject);
-
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                if ([[NSThread currentThread] isMainThread]){
-                
-                    [self validateAfterRequest:responseObject requestType:serverType withURL:fullURL completionBlock:success errorBlock:failure];
-
-                }
-                else{
-                }
-
-            });
-            
-            
-        }
-        
-
-
-    }];
-    
-    [postDataTask resume];
-    
-//    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:fullURL parameters:parameter constructingBodyWithBlock:block error:nil];
 //    
-//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-//    
-//    NSURLSessionUploadTask *uploadTask;
-//    uploadTask = [manager
-//                  uploadTaskWithStreamedRequest:request
-//                  progress:^(NSProgress * _Nonnull uploadProgress) {
-//                      // This is not called back on the main queue.
-//                      // You are responsible for dispatching to the main queue for UI updates
-//                      dispatch_async(dispatch_get_main_queue(), ^{
-//                          //Update the progress view
-//                      });
-//                  }
-//                  completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-//                      if (error) {
-//                          NSLog(@"Error: %@", error);
-//                      } else {
-//                          NSLog(@"%@ %@", response, responseObject);
-//                          
-//                          [self validateAfterRequest:responseObject requestType:serverType withURL:fullURL completionBlock:success errorBlock:failure];
+//    if ([self validateBeforeRequest:serverType]) {
+//        
+//        if (failure) {
+//            
+//            failure(nil);
+//        }
+//        return;
+//    }
+//    else{
+//        
+//        if (![Utils isStringNull:appendString]) {
+//            
+//            fullURL = [NSString stringWithFormat:@"%@/%@",[self getFullURLwithType:serverType],appendString];
+//        }
+//        else
+//        {
+//            fullURL = [self getFullURLwithType:serverType];
+//        }
+//        
+//    }
 //
-//                      }
-//                  }];
+//    NSString* strNetworkType;
+//
 //    
-//    [uploadTask resume];
-    
-    NSLog(@"\n\n ===== [REQUEST SERVER WITH %@][URL] : %@ \n [REQUEST JSON] : %@\n\n",strNetworkType,fullURL,[parameter bv_jsonStringWithPrettyPrint:YES]);
-
-
-}
+//    switch (networkType) {
+//        case AFNETWORK_POST:
+//            strNetworkType = @"POST";
+//            break;
+//        case AFNETWORK_GET:
+//            strNetworkType = @"GET";
+//
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//    NSError *error;
+//    
+//    NSURL *url = [NSURL URLWithString:fullURL];
+//    
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+//                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+//                                                       timeoutInterval:60.0];
+//    
+////    NSString* jtw = @"";
+////    
+////    NSLog(@"jwt : %@",jtw);
+////    
+////    [request addValue:jtw forHTTPHeaderField:Header_X_Auth];
+//    
+//    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    
+//    //[request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    
+//    [request setHTTPMethod:strNetworkType];
+//  
+//    NSData *postData = [NSJSONSerialization dataWithJSONObject:parameter options:0 error:&error];
+//    
+//    [request setHTTPBody:postData];
+//    
+//
+//    NSURLSessionDataTask *postDataTask = [[[self class] session] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        
+//        NSError* jsonError;
+//        
+//        
+//        
+//        
+//        if (error) {
+//            NSLog(@"Error: %@", error);
+//
+//        }
+//        else{
+//          //  NSLog(@"%@ %@", response, response);
+//            NSDictionary* responseObject = [NSJSONSerialization JSONObjectWithData:data
+//                                                                           options:kNilOptions
+//                                                                             error:&jsonError];
+//            //NSLog(@"response : %@",responseObject);
+//
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                
+//                if ([[NSThread currentThread] isMainThread]){
+//                
+//                    [self validateAfterRequest:responseObject requestType:serverType withURL:fullURL completionBlock:success errorBlock:failure];
+//
+//                }
+//                else{
+//                }
+//
+//            });
+//            
+//            
+//        }
+//        
+//
+//
+//    }];
+//    
+//    [postDataTask resume];
+//    
+////    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:fullURL parameters:parameter constructingBodyWithBlock:block error:nil];
+////    
+////    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+////    
+////    NSURLSessionUploadTask *uploadTask;
+////    uploadTask = [manager
+////                  uploadTaskWithStreamedRequest:request
+////                  progress:^(NSProgress * _Nonnull uploadProgress) {
+////                      // This is not called back on the main queue.
+////                      // You are responsible for dispatching to the main queue for UI updates
+////                      dispatch_async(dispatch_get_main_queue(), ^{
+////                          //Update the progress view
+////                      });
+////                  }
+////                  completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+////                      if (error) {
+////                          NSLog(@"Error: %@", error);
+////                      } else {
+////                          NSLog(@"%@ %@", response, responseObject);
+////                          
+////                          [self validateAfterRequest:responseObject requestType:serverType withURL:fullURL completionBlock:success errorBlock:failure];
+////
+////                      }
+////                  }];
+////    
+////    [uploadTask resume];
+//    
+//    NSLog(@"\n\n ===== [REQUEST SERVER WITH %@][URL] : %@ \n [REQUEST JSON] : %@\n\n",strNetworkType,fullURL,[parameter bv_jsonStringWithPrettyPrint:YES]);
+//
+//
+//}
 
 #pragma mark - APP URL
 -(NSString*)getFullURLwithType:(ServerRequestType)type
@@ -721,6 +824,19 @@
             str = [NSString stringWithFormat:@"request/create"];
             
             break;
+
+        case ServerRequestTypePostHomeVersion:
+            
+            str = [NSString stringWithFormat:@"home/version"];
+            
+            break;
+            
+        case ServerRequestTypePostUserRegisterdevice:
+            
+            str = [NSString stringWithFormat:@"user/registerdevice"];
+            
+            break;
+            
 
             
             

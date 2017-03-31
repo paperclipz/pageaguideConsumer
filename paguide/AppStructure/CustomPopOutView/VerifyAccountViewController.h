@@ -7,11 +7,15 @@
 //
 
 #import "CustomPopOutViewController.h"
+#import "ResendVerificationCodeViewController.h"
 
 @interface VerifyAccountViewController : CustomPopOutViewController
 
 
 
--(void)setupOTPView:(NSString*)mobileNumber Email:(NSString*)email didFinishVerify:(StringBlock)completion;
+-(void)setupOTPViewWitPhonePrefix:(NSString*)prefix PhoneNumber:(NSString*)mobileNumber Email:(NSString*)email didFinishVerify:(StringBlock)completion;
+
+
+@property (nonatomic,copy)VoidBlock didPressNotReceiveYetBlock;
 
 @end

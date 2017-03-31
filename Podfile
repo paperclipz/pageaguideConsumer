@@ -30,9 +30,13 @@ def shared_pods
     
     
     #facebook SDK
-    pod 'FBSDKCoreKit', '~>4.16.0'
-    pod 'FBSDKLoginKit', '~>4.16.0'
-    pod 'FBSDKShareKit', '~>4.16.0'
+#    pod 'FBSDKCoreKit', '~>4.16.0'
+#    pod 'FBSDKLoginKit', '~>4.16.0'
+#    pod 'FBSDKShareKit', '~>4.16.0'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKShareKit'
+
     pod 'MWPhotoBrowser'
     pod 'JTCalendar', '~> 2.0'
 
@@ -43,6 +47,15 @@ def shared_pods
     
     #payment
     pod 'Stripe'
+    pod 'Intercom'
+    pod 'STPopup'
+
+
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
+    pod 'Firebase/Crash'
+    pod 'SAMKeychain'
+
 end
 
 target 'paguide' do

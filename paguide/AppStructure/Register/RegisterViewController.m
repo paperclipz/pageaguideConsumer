@@ -13,6 +13,11 @@
 #import "LoginViewModel.h"
 #import "VerifyAccountViewController.h"
 #import "ForgotPasswordViewController.h"
+#import "WebViewController.h"
+#import "FBLoginManager.h"
+#import "RegisterViewController.h"
+#import <STPopup/STPopup.h>
+#import "ResendVerificationCodeViewController.h"
 
 #define viewTypeLogin @"login"
 #define viewTypeRegister @"register"
@@ -32,9 +37,15 @@
 // MODEL
 @property (nonatomic, strong)NSArray<CountryModel>* arrCountryList;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtEmail;
+@property (weak, nonatomic) IBOutlet UITextField *txtPassword;
+@property (nonatomic, strong)STPopupController* stPopupController;
+
+
 @end
 
 @implementation RegisterViewController
+
 - (IBAction)btnForgetPasswordClicked:(id)sender {
     
     [self showForgetPasswordView];
@@ -45,21 +56,40 @@
     
 }
 - (IBAction)btnFbLoginClicked:(id)sender {
+    
+    [FBLoginManager performFacebookGraphRequestWithLoginRequest:^(FacebookModel *modal) {
+        
+        self.fbModel = modal;
+        
+        [self requestServerForLoginWithFacebook:modal];
+
+        
+    } InViewController:self];
+    
+    
 }
 - (IBAction)btnSubmitClicked:(id)sender {
   
     if ([self.viewType isEqualToString:viewTypeRegister]) {
 
         
-        [self requestServerForRegister];
+        if (self.type == REGISTER_TYPE_FACEBOOK) {
+            
+            [self requestServerForRegisterFacebook:self.fbModel];
+
+        }
+        else{
+            [self requestServerForRegister];
+
+        }
 
 //        if (![self validateData]) {
 //            
 //            [self requestServerForRegister];
 //        };
-        
     }
 }
+
 - (IBAction)btnTestClicked:(id)sender {
     
    // self.definesPresentationContext = YES;
@@ -139,38 +169,66 @@
     
     if (!_arrItemList) {
         
-
-        NSMutableArray* arrayTemp = [NSMutableArray new];
-        
-        LoginViewModel* obj = [LoginViewModel new];
-        obj.type = REGISTER_CELL_TYPE_email_address;
-        [arrayTemp addObject:obj];
-        
-        obj = [LoginViewModel new];
-        obj.type = REGISTER_CELL_TYPE_name;
-        [arrayTemp addObject:obj];
-        
-        obj = [LoginViewModel new];
-        obj.type = REGISTER_CELL_TYPE_Password;
-        [arrayTemp addObject:obj];
-        
-        obj = [LoginViewModel new];
-        obj.type = REGISTER_CELL_TYPE_RE_Password;
-        [arrayTemp addObject:obj];
-        
-        obj = [LoginViewModel new];
-        obj.type = REGISTER_CELL_TYPE_country;
-        [arrayTemp addObject:obj];
-        
-        obj = [LoginViewModel new];
-        obj.type = REGISTER_CELL_TYPE_phone_number;
-        [arrayTemp addObject:obj];
-        
-        obj = [LoginViewModel new];
-        obj.type = REGISTER_CELL_TYPE_TNC;
-        [arrayTemp addObject:obj];
-        
-        _arrItemList = arrayTemp;
+        if (self.type == REGISTER_TYPE_FACEBOOK) {
+            
+            NSMutableArray* arrayTemp = [NSMutableArray new];
+            
+            LoginViewModel* obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_email_address;
+            [arrayTemp addObject:obj];
+            
+            obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_name;
+            [arrayTemp addObject:obj];
+            
+            obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_country;
+            [arrayTemp addObject:obj];
+            
+            obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_phone_number;
+            [arrayTemp addObject:obj];
+            
+            obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_TNC;
+            [arrayTemp addObject:obj];
+            
+            _arrItemList = arrayTemp;
+        }
+        else{
+            NSMutableArray* arrayTemp = [NSMutableArray new];
+            
+            LoginViewModel* obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_email_address;
+            [arrayTemp addObject:obj];
+            
+            obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_name;
+            [arrayTemp addObject:obj];
+            
+            obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_Password;
+            [arrayTemp addObject:obj];
+            
+            obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_RE_Password;
+            [arrayTemp addObject:obj];
+            
+            obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_country;
+            [arrayTemp addObject:obj];
+            
+            obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_phone_number;
+            [arrayTemp addObject:obj];
+            
+            obj = [LoginViewModel new];
+            obj.type = REGISTER_CELL_TYPE_TNC;
+            [arrayTemp addObject:obj];
+            
+            _arrItemList = arrayTemp;
+        }
+       
 
         
     }
@@ -198,7 +256,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     LoginViewModel* obj = self.arrItemList[indexPath.row];
     
     REGISTER_CELL_TYPE cellType = obj.type;
@@ -240,7 +297,6 @@
         }];
         return cell;
 
-
     }
     else if (cellType == REGISTER_CELL_TYPE_country)
     {
@@ -253,6 +309,9 @@
         
         cell.didSelectBlock = ^(void)
         {
+            
+            [self.view endEditing:YES];
+
             [self showCountryView:^(NSString *str) {
                 
                 weakCell.loginViewModel.countryName = str;
@@ -328,11 +387,23 @@
 {
     NSLog(@"showPrivacyView");
 
+    WebViewController* webView = [WebViewController new];
+        
+    webView.webViewURL = [NSString stringWithFormat:@"http://%@%@",[ConnectionManager getServerPath],@"/privacy"];
+
+    [self presentViewController:webView animated:YES completion:nil];
 }
 
 -(void)showTermOfUseView
 {
     NSLog(@"showTermOfUseView");
+    
+    WebViewController* webView = [WebViewController new];
+    
+    webView.webViewURL = [NSString stringWithFormat:@"http://%@%@",[ConnectionManager getServerPath],@"/terms"];
+
+    
+    [self presentViewController:webView animated:YES completion:nil];
 }
 
 -(void)showCountryView:(StringBlock)completion
@@ -373,54 +444,72 @@
         };
     };
     
-    if ([Utils isArrayNull:self.arrCountryList]) {
+    [[DataManager Instance] getCountryList:^(NSArray *array) {
         
-        [self requestServerForCountryList:^{
-            
-            openPopOutView();
-          //  openPopOutView();
-        }];
-    }
-    else{
+        self.arrCountryList = (NSArray<CountryModel>*)array;
+        
+        
         openPopOutView();
-
-    }
+        
+    }];
     
-  
 }
 
 -(void)showOTPView
 {
     
-    LoginViewModel* model = [self getData];
+    LoginViewModel* model = [DataManager getLoginModel];
     
-    _verifyAccountViewController = nil;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PopOut" bundle:nil];
     
-    self.verifyAccountViewController = [VerifyAccountViewController new];
+    self.verifyAccountViewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_popout"];
     
-    self.verifyAccountViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    self.stPopupController = [[STPopupController alloc] initWithRootViewController:self.verifyAccountViewController];
+
+    [self.verifyAccountViewController setupOTPViewWitPhonePrefix:model.prefix PhoneNumber:model.phoneNumber Email:model.emailAddress didFinishVerify:^(NSString *str) {
     
-    self.verifyAccountViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
-    [self presentViewController:self.verifyAccountViewController animated:YES completion:nil];
-    
-    
-    [self.verifyAccountViewController setupOTPView:model.phoneNumber Email:model.emailAddress didFinishVerify:^(NSString* otp){
-       
-        [self requestServerForVerifyOTP:otp];
+        [self requestServerForVerifyOTP:str Completion:^(NSString *str) {
+            
+            [MessageManager showMessage:str Type:TSMessageNotificationTypeSuccess inViewController:self];
+            
+            [self.stPopupController dismiss];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+
+        }];
+
     }];
+    
+   
+    [self.stPopupController presentInViewController:self];
 }
+
+
+-(void)showResendView
+{
+    
+    
+    
+    VerifyAccountViewController* viewC = [VerifyAccountViewController new];
+    
+    viewC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    
+    viewC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self presentViewController:viewC animated:YES completion:nil];
+    
+    
+
+}
+
+
 -(void)showPrefixView:(StringBlock)completion
 {
     
     VoidBlock openPopOutView = ^(void)
     {
         EBActionSheetViewController* viewC = [[EBActionSheetViewController alloc]initWithNibName:@"EBActionSheetViewController" bundle:nil];
-        viewC.title = @"Country Selection";
-        // viewC.view.backgroundColor = [UIColor colorWithRed:10 green:10 blue:10 alpha:0.5];
-        //  UINavigationController* navC = [[UINavigationController alloc]initWithRootViewController:viewC];
-        
-        // [navC setNavigationBarHidden:YES];
+        viewC.title = @"Prefix";
         
         viewC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         viewC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -430,11 +519,10 @@
         [self presentViewController:viewC animated:YES completion:nil];
         
         __weak typeof (viewC)weakVC = viewC;
-
+        
         viewC.didSelectAtIndexBlock = ^(NSIndexPath* indexPath)
         {
             [weakVC dismissViewControllerAnimated:YES completion:^{
-                
                 
                 CountryModel* model = self.arrCountryList[indexPath.row];
                 
@@ -444,27 +532,25 @@
                     completion(prefix);
                 }
             }];
-
+            
         };
     };
     
-    if ([Utils isArrayNull:self.arrCountryList]) {
+    
+    
+    [[DataManager Instance] getCountryList:^(NSArray *array) {
         
-        [self requestServerForCountryList:^{
-            
-            openPopOutView();
-            //  openPopOutView();
-        }];
-    }
-    else{
+        self.arrCountryList = (NSArray<CountryModel>*)array;
+        
+        
         openPopOutView();
         
-    }
-    
-    
+    }];
     
     
 }
+
+
 
 -(void)showForgetPasswordView
 {
@@ -478,9 +564,7 @@
     
     [self presentViewController:forgotPasswordViewController animated:YES completion:nil];
     
-
 }
-
 
 
 #pragma mark - Request Server
@@ -489,8 +573,12 @@
 -(void)requestServerForLogin
 {
     
-    NSDictionary* dict = @{@"email" : @"imexlight@gmail.com",
-                           @"password" : @"pa12345",
+//    NSDictionary* dict = @{@"email" : @"imexlight@gmail.com",
+//                           @"password" : @"pa12345",
+//                           };
+    
+    NSDictionary* dict = @{@"email" : IsNullConverstion(self.txtEmail.text),
+                           @"password" : IsNullConverstion(self.txtPassword.text),
                            };
     
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserLogin parameter:dict appendString:nil success:^(id object) {
@@ -505,25 +593,99 @@
             [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess];
             
         }];
+        
+        [DataManager requestServerForRegisterDevice];
 
     } failure:^(id object) {
         
+        BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
+        
+        if ([model.status_code  isEqual: @(202)]) {
+            
+            
+            [self performSegueWithIdentifier:@"register_fb" sender:self];
+            //[self requestServerForRegisterFacebook:model];
+            NSLog(@"fb ID not registered");
+        }
+        
+        else if ([model.status_code  isEqual: @(205)]) {
+            
+            [self showOTPView];
+            
+            
+        }
+        else
+        {
+            [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeError inViewController:self];
+
+        }
+
     }];
 
 }
--(void)requestServerForRegister
+
+-(void)requestServerForLoginWithFacebook:(FacebookModel*)model
 {
     
+    NSDictionary* dict = @{@"fbid" : model.uID,
+                           @"fb_access_token" : model.fbToken,
+                           };
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserLogin parameter:dict appendString:nil success:^(id object) {
+        
+        
+        BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
+        
+        [Utils setAppToken:model.token];
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+            [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess];
+            
+        }];
+        
+        [DataManager requestServerForRegisterDevice];
+
+        
+    } failure:^(id object) {
+
+        
+        BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
+        
+        if ([model.status_code  isEqual: @(202)]) {
+            
+            
+            [self performSegueWithIdentifier:@"register_fb" sender:self];
+            //[self requestServerForRegisterFacebook:model];
+            NSLog(@"fb ID not registered");
+        }
+        
+        else if ([model.status_code  isEqual: @(205)]) {
+
+            [self showOTPView];
+            
+            
+        }
+    }];
+    
+}
+
+-(void)requestServerForRegister
+{
     LoginViewModel* model = [self getData];
     
+    NSString* contactNo = [NSString stringWithFormat:@"%@%@",model.prefix,model.phoneNumber];
+
     NSDictionary* dict = @{@"email" : IsNullConverstion(model.emailAddress),
                            @"username" : IsNullConverstion(model.name),
                            @"password" : IsNullConverstion(model.password),
-                           @"mobile_number" : IsNullConverstion(model.phoneNumber),
+                           @"mobile_number" : IsNullConverstion(contactNo),
                            @"country" : IsNullConverstion(model.countryName),
                            };
 
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserRegister parameter:dict appendString:nil success:^(id object) {
+        
+        [DataManager setLoginModel:model];
         
         [self showOTPView];
 
@@ -541,29 +703,55 @@
     }];
 }
 
-
--(void)requestServerForCountryList:(VoidBlock)completionBlock
-{
-    
-    [[DataManager Instance] getCountryList:^(NSArray *array) {
-        
-        self.arrCountryList = (NSArray<CountryModel>*)array;
-        
-        if (completionBlock)
-        {
-            completionBlock();
-        }
-            
-    }];
-    
-}
-
--(void)requestServerForVerifyOTP:(NSString*)otp
+-(void)requestServerForRegisterFacebook:(FacebookModel*)fbModel
 {
     
     LoginViewModel* model = [self getData];
     
-    NSDictionary* dict = @{@"mobile_number" :IsNullConverstion(model.phoneNumber) ,
+    NSString* contactNo = [NSString stringWithFormat:@"%@%@",model.prefix,model.phoneNumber];
+    
+    NSDictionary* dict = @{@"email" : IsNullConverstion(model.emailAddress),
+                           @"username" : IsNullConverstion(model.name),
+                           @"mobile_number" : IsNullConverstion(contactNo),
+                           @"country" : IsNullConverstion(model.countryName),
+                           @"fbid" : IsNullConverstion(fbModel.uID),
+                           };
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserRegister parameter:dict appendString:nil success:^(id object) {
+        
+        LoginViewModel* viewModel = [LoginViewModel new];
+        
+        viewModel = model;
+        
+        viewModel.fbid = fbModel.uID;
+        
+        viewModel.fbToken = fbModel.fbToken;
+        
+        [DataManager setLoginModel:viewModel];
+        
+        [self showOTPView];
+        
+        BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
+        
+        [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess inViewController:self];
+        
+        
+    } failure:^(id object) {
+        
+        BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
+        
+        [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeError inViewController:self];
+        
+    }];
+}
+
+-(void)requestServerForVerifyOTP:(NSString*)otp Completion:(StringBlock)completion
+{
+    
+    LoginViewModel* model = [DataManager getLoginModel];
+    
+    
+    NSDictionary* dict = @{@"mobile_number" :IsNullConverstion(model.fullContactNumber) ,
                            
                            @"otp" : IsNullConverstion(otp),
                            };
@@ -575,15 +763,11 @@
         
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
         
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-            [self dismissViewControllerAnimated:YES completion:^{
-                [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess];
-
-            }];
- 
-        }];
-               
+        
+        if (completion) {
+            completion(model.displayMessage);
+        }
+        
         
     } failure:^(id object) {
         
@@ -591,12 +775,11 @@
         
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
         
-        [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeError inViewController:self.verifyAccountViewController];
+        [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeError];
         
         
     }];
 }
-
 
 #pragma mark - Validation
 
@@ -628,6 +811,7 @@
                 tempModel.prefix = model.prefix;
 
                 tempModel.phoneNumber = model.phoneNumber;
+                
 
                 break;
             case REGISTER_CELL_TYPE_TNC:
@@ -652,11 +836,11 @@
     
     //for testing only
   
-    tempModel.emailAddress = @"imexlight@gmail.com";
-    tempModel.name = @"paperclipz",
-    tempModel.phoneNumber = @"+60175168607";
-    tempModel.countryName = @"Malaysia";
-    tempModel.password = @"pa12345";
+//    tempModel.emailAddress = @"imexlight@gmail.com";
+//    tempModel.name = @"paperclipz",
+//    tempModel.phoneNumber = @"+60175168607";
+//    tempModel.countryName = @"Malaysia";
+//    tempModel.password = @"pa12345";
 
     return tempModel;
 }
@@ -723,6 +907,35 @@
     }
     
     return hasError;
+    
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"register_fb"]) {
+        
+        
+        RegisterViewController* viewC = [segue destinationViewController];
+        
+        viewC.fbModel = self.fbModel;
+
+        
+        viewC.type = REGISTER_TYPE_FACEBOOK;
+    }
+    else  if ([[segue identifier] isEqualToString:@"register_normal"]) {
+        
+        RegisterViewController* viewC = [segue destinationViewController];
+        
+        viewC.type = REGISTER_TYPE_NORMAL;
+    }
+    
+
+    
     
 }
 

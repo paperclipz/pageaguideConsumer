@@ -33,13 +33,12 @@
     if ([self.btnPrefix.titleLabel.text isEqualToString:@"Prefix"] ||
         [Utils isStringNull:self.btnPrefix.titleLabel.text]) {
         
-        [MessageManager showMessage:@"Please select a Prefix"Type:TSMessageNotificationTypeSuccess inViewController:self];
-
+        [MessageManager showMessage:@"Please select a Prefix"Type:TSMessageNotificationTypeError inViewController:self];
         
     }
     else if([Utils isStringNull:self.txtPhoneNumber.text])
     {
-        [MessageManager showMessage:@"Please input phone number"Type:TSMessageNotificationTypeSuccess inViewController:self];
+        [MessageManager showMessage:@"Please input phone number"Type:TSMessageNotificationTypeError inViewController:self];
 
     }
     [self requestServerForForgotPassword];
@@ -117,6 +116,8 @@
             
         };
     };
+    
+    
     
     
     [[DataManager Instance] getCountryList:^(NSArray *array) {

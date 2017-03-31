@@ -7,10 +7,12 @@
 //
 
 #import "RatingView.h"
+#import "UIImageView+Extra.h"
 
 @interface RatingView()
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *ibCollectionRate;
+
 
 @end
 @implementation RatingView
@@ -27,6 +29,8 @@
 {
     [super awakeFromNib];
     
+    self.hightlightTintColor = APP_MAIN_COLOR;
+    
 }
 
 -(void)setup
@@ -35,18 +39,17 @@
 
 }
 
-
 -(void)setupRatingOutOfFive:(int)rate
 {
     for (int i = 0; i<self.ibCollectionRate.count; i++) {
         
         UIImageView* imgRateView = self.ibCollectionRate[i];
-
+        
         imgRateView.tintColor = [UIColor lightGrayColor];
 
         if (i< rate) {
             
-            imgRateView.tintColor = APP_MAIN_COLOR;
+            imgRateView.tintColor = self.hightlightTintColor;
         }
         
     }

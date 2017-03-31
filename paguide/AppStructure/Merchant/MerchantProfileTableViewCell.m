@@ -10,7 +10,6 @@
 #import "RatingView.h"
 
 @interface MerchantProfileTableViewCell()
-@property (strong, nonatomic) RatingView *ratingView;
 @property (weak, nonatomic) IBOutlet UIView *ratingContentView;
 
 @end

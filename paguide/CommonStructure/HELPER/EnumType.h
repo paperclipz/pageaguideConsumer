@@ -56,6 +56,9 @@ typedef enum
     ServerRequestTypePostRequestBidselection,
     ServerRequestTypePostRequestCreate,
     
+    ServerRequestTypePostHomeVersion,
+    ServerRequestTypePostUserRegisterdevice,
+    
 }ServerRequestType;
 
 

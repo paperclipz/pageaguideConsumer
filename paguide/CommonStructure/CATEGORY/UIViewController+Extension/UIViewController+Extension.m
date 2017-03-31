@@ -9,6 +9,7 @@
 #import "UIViewController+Extension.h"
 
 #import "RegisterViewController.h"
+#import <STPopup/STPopup.h>
 
 @implementation UIViewController (Extension)
 
@@ -19,15 +20,15 @@
         UITabBarController *tabBarController = (UITabBarController *)self;
         return [tabBarController.selectedViewController topVisibleViewController];
     }
-//    else if ([self isKindOfClass:[UINavigationController class]])
-//    {
-//        UINavigationController *navigationController = (UINavigationController *)self;
-//        return [navigationController.visibleViewController topVisibleViewController];
-//    }
-//    else if (self.presentedViewController)
-//    {
-//        return [self.presentedViewController topVisibleViewController];
-//    }
+    else if ([self isKindOfClass:[UINavigationController class]])
+    {
+        UINavigationController *navigationController = (UINavigationController *)self;
+        return [navigationController.visibleViewController topVisibleViewController];
+    }
+    else if (self.presentedViewController)
+    {
+        return [self.presentedViewController topVisibleViewController];
+    }
     else if (self.childViewControllers.count > 0)
     {
         return [self.childViewControllers.lastObject topVisibleViewController];
@@ -35,7 +36,11 @@
     else if ([self isKindOfClass:[RegisterViewController class]]) {
         return self.parentViewController;// return parent view controller means dont want this to be top view controller
     }
-//    else if ([self isKindOfClass:[PromoPopOutViewController class]]) {
+    else if ([self isKindOfClass:[STPopupController class]]) {
+        return self.parentViewController;// return parent view controller means dont want this to be top view controller
+    }
+
+    //    else if ([self isKindOfClass:[PromoPopOutViewController class]]) {
 //        return self.parentViewController;
 //    }
     

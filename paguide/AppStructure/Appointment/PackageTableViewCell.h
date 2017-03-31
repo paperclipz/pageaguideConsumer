@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle3;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle4;
 
+@property (weak, nonatomic) IBOutlet UIView *ibBorderView;
 @property (weak, nonatomic) IBOutlet UILabel *lblPackage;
 @end

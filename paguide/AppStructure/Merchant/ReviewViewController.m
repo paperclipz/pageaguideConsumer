@@ -16,6 +16,7 @@
 
 @implementation ReviewViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -40,10 +41,9 @@
     
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.arrReviews.count;
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -53,7 +53,13 @@
 {
     MerchantProfileTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"merchant_review"];
     
-    cell.lblDesc2.text = @"abcd abcdabcdabcdabcdabcdabcd abcd abcdabcdabcd abcd abcd abcdabcdabcdabcdabcdabcd abcd abcdabcdabcd abcd abcd abcdabcdabcdabcdabcdabcd abcd abcdabcdabcd abcd abcd abcdabcdabcdabcdabcdabcd abcd abcdabcdabcd abcd abcd abcdabcdabcdabcdabcdabcd abcd abcdabcdabcd abcd ";
+    ReviewModel* rModel = self.arrReviews[indexPath.row];
+    
+    cell.lblDesc2.text = rModel.reviews;
+    
+    cell.lblDesc1.text = rModel.user_name;
+    
+    [cell.ratingView setupRatingOutOfFive:[rModel.rate intValue]];
     
     return cell;
 }
