@@ -55,6 +55,8 @@ def shared_pods
     pod 'Firebase/Messaging'
     pod 'Firebase/Crash'
     pod 'SAMKeychain'
+    pod 'Firebase/Database'
+
 
 end
 

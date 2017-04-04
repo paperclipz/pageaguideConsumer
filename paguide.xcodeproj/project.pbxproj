@@ -85,7 +85,6 @@
 		8A6B68AA1E6D557300D696DE /* icon_arrow_next_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68941E6D557300D696DE /* icon_arrow_next_red.png */; };
 		8A6B68AB1E6D557300D696DE /* icon_back_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68951E6D557300D696DE /* icon_back_red.png */; };
 		8A6B68AC1E6D557300D696DE /* icon_back_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68961E6D557300D696DE /* icon_back_white.png */; };
-		8A6B68AD1E6D557300D696DE /* icon_bookmark_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68971E6D557300D696DE /* icon_bookmark_red.png */; };
 		8A6B68AE1E6D557300D696DE /* icon_bookmark_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68981E6D557300D696DE /* icon_bookmark_white.png */; };
 		8A6B68AF1E6D557300D696DE /* icon_calendar_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68991E6D557300D696DE /* icon_calendar_grey.png */; };
 		8A6B68B11E6D557300D696DE /* icon_dropdown_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B689B1E6D557300D696DE /* icon_dropdown_red.png */; };
@@ -194,6 +193,16 @@
 		8A9F46241E604645005F1453 /* ConnectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F46231E604645005F1453 /* ConnectionHelper.m */; };
 		8ABC514A1E8E2D5100E31560 /* placeholder_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC51491E8E2D5100E31560 /* placeholder_photo.png */; };
 		8ABC514F1E8E341C00E31560 /* ServiceAccount.json in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC514E1E8E341C00E31560 /* ServiceAccount.json */; };
+		8ABC51561E8E523D00E31560 /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC51551E8E523D00E31560 /* package.json */; };
+		8ABC515A1E92248200E31560 /* EBActionSheetHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABC51591E92248200E31560 /* EBActionSheetHeaderView.m */; };
+		8ABC515C1E92248C00E31560 /* EBActionSheetHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC515B1E92248C00E31560 /* EBActionSheetHeaderView.xib */; };
+		8ABC51641E92368E00E31560 /* OfflineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABC51631E92368E00E31560 /* OfflineManager.m */; };
+		8ABC516A1E923BE000E31560 /* PackageBookmarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABC51691E923BE000E31560 /* PackageBookmarkTableViewController.m */; };
+		8ABC516D1E934DC100E31560 /* icon_bookmark_red@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC516B1E934DC100E31560 /* icon_bookmark_red@1x.png */; };
+		8ABC516E1E934DC100E31560 /* icon_bookmark_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC516C1E934DC100E31560 /* icon_bookmark_red@2x.png */; };
+		8ABC51711E93558700E31560 /* EmptyStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABC51701E93558700E31560 /* EmptyStateView.m */; };
+		8ABC51731E93559000E31560 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC51721E93559000E31560 /* EmptyStateView.xib */; };
+		8ABC51771E93700800E31560 /* NSString+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABC51761E93700800E31560 /* NSString+Extra.m */; };
 		8AD70D1B1E77A36A006F1A8E /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D1A1E77A36A006F1A8E /* LoginViewModel.m */; };
 		8AD70D1E1E77B167006F1A8E /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D1D1E77B167006F1A8E /* MessageManager.m */; };
 		8AD70D221E77B1A2006F1A8E /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D211E77B1A2006F1A8E /* UIViewController+Extension.m */; };
@@ -363,7 +372,6 @@
 		8A6B68941E6D557300D696DE /* icon_arrow_next_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow_next_red.png; sourceTree = "<group>"; };
 		8A6B68951E6D557300D696DE /* icon_back_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_back_red.png; sourceTree = "<group>"; };
 		8A6B68961E6D557300D696DE /* icon_back_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_back_white.png; sourceTree = "<group>"; };
-		8A6B68971E6D557300D696DE /* icon_bookmark_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_bookmark_red.png; sourceTree = "<group>"; };
 		8A6B68981E6D557300D696DE /* icon_bookmark_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_bookmark_white.png; sourceTree = "<group>"; };
 		8A6B68991E6D557300D696DE /* icon_calendar_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_calendar_grey.png; sourceTree = "<group>"; };
 		8A6B689B1E6D557300D696DE /* icon_dropdown_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_dropdown_red.png; sourceTree = "<group>"; };
@@ -536,6 +544,21 @@
 		8A9F46261E6047BE005F1453 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8ABC51491E8E2D5100E31560 /* placeholder_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder_photo.png; sourceTree = "<group>"; };
 		8ABC514E1E8E341C00E31560 /* ServiceAccount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ServiceAccount.json; sourceTree = "<group>"; };
+		8ABC51551E8E523D00E31560 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		8ABC51581E92248200E31560 /* EBActionSheetHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBActionSheetHeaderView.h; sourceTree = "<group>"; };
+		8ABC51591E92248200E31560 /* EBActionSheetHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBActionSheetHeaderView.m; sourceTree = "<group>"; };
+		8ABC515B1E92248C00E31560 /* EBActionSheetHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBActionSheetHeaderView.xib; sourceTree = "<group>"; };
+		8ABC51621E92368E00E31560 /* OfflineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineManager.h; sourceTree = "<group>"; };
+		8ABC51631E92368E00E31560 /* OfflineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineManager.m; sourceTree = "<group>"; };
+		8ABC51681E923BE000E31560 /* PackageBookmarkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackageBookmarkTableViewController.h; sourceTree = "<group>"; };
+		8ABC51691E923BE000E31560 /* PackageBookmarkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PackageBookmarkTableViewController.m; sourceTree = "<group>"; };
+		8ABC516B1E934DC100E31560 /* icon_bookmark_red@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_bookmark_red@1x.png"; sourceTree = "<group>"; };
+		8ABC516C1E934DC100E31560 /* icon_bookmark_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_bookmark_red@2x.png"; sourceTree = "<group>"; };
+		8ABC516F1E93558700E31560 /* EmptyStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyStateView.h; sourceTree = "<group>"; };
+		8ABC51701E93558700E31560 /* EmptyStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyStateView.m; sourceTree = "<group>"; };
+		8ABC51721E93559000E31560 /* EmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
+		8ABC51751E93700800E31560 /* NSString+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extra.h"; sourceTree = "<group>"; };
+		8ABC51761E93700800E31560 /* NSString+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extra.m"; sourceTree = "<group>"; };
 		8AD70D191E77A36A006F1A8E /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
 		8AD70D1A1E77A36A006F1A8E /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		8AD70D1C1E77B167006F1A8E /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
@@ -829,6 +852,9 @@
 				8A89BB6A1E84C77800F3B824 /* EmptyTableViewCell.h */,
 				8A89BB6B1E84C77800F3B824 /* EmptyTableViewCell.m */,
 				8A89BB6C1E84C77800F3B824 /* EmptyTableViewCell.xib */,
+				8ABC516F1E93558700E31560 /* EmptyStateView.h */,
+				8ABC51701E93558700E31560 /* EmptyStateView.m */,
+				8ABC51721E93559000E31560 /* EmptyStateView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -852,6 +878,9 @@
 				8A3C7B9C1E8A06900093BA62 /* UpdateViewController.h */,
 				8A3C7B9D1E8A06900093BA62 /* UpdateViewController.m */,
 				8A3C7B9E1E8A06900093BA62 /* UpdateViewController.xib */,
+				8ABC51581E92248200E31560 /* EBActionSheetHeaderView.h */,
+				8ABC51591E92248200E31560 /* EBActionSheetHeaderView.m */,
+				8ABC515B1E92248C00E31560 /* EBActionSheetHeaderView.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -859,6 +888,8 @@
 		8A6B68931E6D557300D696DE /* 66x66 */ = {
 			isa = PBXGroup;
 			children = (
+				8ABC516B1E934DC100E31560 /* icon_bookmark_red@1x.png */,
+				8ABC516C1E934DC100E31560 /* icon_bookmark_red@2x.png */,
 				8A23E9C11E7FDB46001FAB6D /* icon_check_red.png */,
 				8A23E9C21E7FDB46001FAB6D /* icon_uncheck_red.png */,
 				8A1176D51E6D6A0F00C72B5A /* icon_close_red@1x.png */,
@@ -866,7 +897,6 @@
 				8A6B68941E6D557300D696DE /* icon_arrow_next_red.png */,
 				8A6B68951E6D557300D696DE /* icon_back_red.png */,
 				8A6B68961E6D557300D696DE /* icon_back_white.png */,
-				8A6B68971E6D557300D696DE /* icon_bookmark_red.png */,
 				8A6B68981E6D557300D696DE /* icon_bookmark_white.png */,
 				8A6B68991E6D557300D696DE /* icon_calendar_grey.png */,
 				8A6B689B1E6D557300D696DE /* icon_dropdown_red.png */,
@@ -1001,6 +1031,7 @@
 		8A772B041E601D2F00763DF7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8ABC51541E8E522000E31560 /* Json */,
 				8ABC514E1E8E341C00E31560 /* ServiceAccount.json */,
 				8A1228BD1E8D0A0C0093C92C /* GoogleService-Info.plist */,
 				8AFA22CF1E6D53520090837C /* Resources */,
@@ -1038,6 +1069,8 @@
 				8A851FCC1E66D8D600904B6C /* ProfileHeaderFooterView.xib */,
 				8A1176D21E6D5F6600C72B5A /* ProfileTableViewCell.h */,
 				8A1176D31E6D5F6600C72B5A /* ProfileTableViewCell.m */,
+				8ABC51681E923BE000E31560 /* PackageBookmarkTableViewController.h */,
+				8ABC51691E923BE000E31560 /* PackageBookmarkTableViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1188,6 +1221,7 @@
 		8A9F460B1E603DA8005F1453 /* CATEGORY */ = {
 			isa = PBXGroup;
 			children = (
+				8ABC51741E936FF800E31560 /* NSString+Extension */,
 				8A8DB9861E89399600DE467D /* UIImageView+Extension */,
 				8A89BB661E84C64300F3B824 /* UILabel+Extension */,
 				8A23E9A61E7FC520001FAB6D /* NSDate+Extension */,
@@ -1259,6 +1293,8 @@
 				8A3C7BA51E8A1F4F0093BA62 /* GeneralRequestManager.m */,
 				8A1228B81E8CF6180093C92C /* PushNotificationManager.h */,
 				8A1228B91E8CF6180093C92C /* PushNotificationManager.m */,
+				8ABC51621E92368E00E31560 /* OfflineManager.h */,
+				8ABC51631E92368E00E31560 /* OfflineManager.m */,
 			);
 			path = MANAGER;
 			sourceTree = "<group>";
@@ -1293,6 +1329,23 @@
 				8A1228B11E8BEE010093C92C /* ReviewModel.m */,
 			);
 			path = MODEL;
+			sourceTree = "<group>";
+		};
+		8ABC51541E8E522000E31560 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				8ABC51551E8E523D00E31560 /* package.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		8ABC51741E936FF800E31560 /* NSString+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8ABC51751E93700800E31560 /* NSString+Extra.h */,
+				8ABC51761E93700800E31560 /* NSString+Extra.m */,
+			);
+			path = "NSString+Extension";
 			sourceTree = "<group>";
 		};
 		8AD70D181E77A356006F1A8E /* VIEWMODEL */ = {
@@ -1379,6 +1432,7 @@
 				2FD58F7354D4A04928DC44B7 /* [CP] Embed Pods Frameworks */,
 				E7C5936E0206D9FFACDE2C84 /* [CP] Copy Pods Resources */,
 				8ABC514B1E8E316B00E31560 /* Firebase Crash Report */,
+				8ABC515D1E92287100E31560 /* Increment Built Script */,
 			);
 			buildRules = (
 			);
@@ -1490,6 +1544,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ABC516D1E934DC100E31560 /* icon_bookmark_red@1x.png in Resources */,
 				8ABC514A1E8E2D5100E31560 /* placeholder_photo.png in Resources */,
 				8A6B68EF1E6D593600D696DE /* icon_package_red@2x.png in Resources */,
 				8A6B68AC1E6D557300D696DE /* icon_back_white.png in Resources */,
@@ -1499,6 +1554,7 @@
 				8A6B68AA1E6D557300D696DE /* icon_arrow_next_red.png in Resources */,
 				8A9BD7101E77E2A40043D171 /* VerifyAccountViewController.xib in Resources */,
 				8A851FCD1E66D8D600904B6C /* ProfileHeaderFooterView.xib in Resources */,
+				8ABC51561E8E523D00E31560 /* package.json in Resources */,
 				8AFA22CE1E6D3EF90090837C /* GalleryViewController.xib in Resources */,
 				8A6B68B81E6D557300D696DE /* icon_profile_red@2x.png in Resources */,
 				8A3C7BBA1E8B79830093BA62 /* PopOut.storyboard in Resources */,
@@ -1538,6 +1594,7 @@
 				8A5B3EC61E6682D6005BE083 /* LICENSE in Resources */,
 				8A6B68E81E6D593600D696DE /* icon_appointment_red@1x.png in Resources */,
 				8A6B68B91E6D557300D696DE /* icon_search_grey.png in Resources */,
+				8ABC516E1E934DC100E31560 /* icon_bookmark_red@2x.png in Resources */,
 				8A772B0F1E601D3000763DF7 /* Main.storyboard in Resources */,
 				8A8E30471E6FAFA500A16002 /* CalenderViewController.xib in Resources */,
 				8A6B68E91E6D593600D696DE /* icon_appointment_red@2x.png in Resources */,
@@ -1561,9 +1618,9 @@
 				8A5637671E697A6300ACAF2B /* GalleryTableViewCell.xib in Resources */,
 				8A56371A1E68056900ACAF2B /* RatingView.xib in Resources */,
 				8A1228BE1E8D0A0C0093C92C /* GoogleService-Info.plist in Resources */,
-				8A6B68AD1E6D557300D696DE /* icon_bookmark_red.png in Resources */,
 				8A8E307A1E6FB12700A16002 /* Info.plist in Resources */,
 				8A23E9C41E7FDB46001FAB6D /* icon_uncheck_red.png in Resources */,
+				8ABC51731E93559000E31560 /* EmptyStateView.xib in Resources */,
 				8A6B68B41E6D557300D696DE /* icon_merchant_profile_red.png in Resources */,
 				8A6B68F01E6D593600D696DE /* icon_request_red@1x.png in Resources */,
 				8A6B68ED1E6D593600D696DE /* icon_history_red@2x.png in Resources */,
@@ -1571,6 +1628,7 @@
 				8A6B68B61E6D557300D696DE /* icon_plus_red.png in Resources */,
 				8A6B68BC1E6D557300D696DE /* icon_star_full_red.png in Resources */,
 				8A6B68BF1E6D557300D696DE /* icon_star_outline_white.png in Resources */,
+				8ABC515C1E92248C00E31560 /* EBActionSheetHeaderView.xib in Resources */,
 				8A6B68F11E6D593600D696DE /* icon_request_red@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1681,6 +1739,20 @@
 			shellPath = /bin/sh;
 			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\n#GOOGLE_APP_ID=1:713251433912:ios:26b58b3414eb76c8\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n\n#\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"${PROJECT_DIR}/paguide/ServiceAccount.json\"\n";
 		};
+		8ABC515D1E92287100E31560 /* Increment Built Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Built Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
 		958CAD60123586F011A7A52E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1746,6 +1818,7 @@
 				8A23E9D51E7FF185001FAB6D /* PackageSelectionTableViewCell.m in Sources */,
 				8A1176DC1E6D91C500C72B5A /* PackageDetailsViewController.m in Sources */,
 				8A9BD70B1E77E0880043D171 /* GVUserDefaults+Extra.m in Sources */,
+				8ABC515A1E92248200E31560 /* EBActionSheetHeaderView.m in Sources */,
 				8A772B091E601D2F00763DF7 /* AppDelegate.m in Sources */,
 				8A851FBB1E66C5CA00904B6C /* DashboardPackageViewController.m in Sources */,
 				8A5637721E698FE100ACAF2B /* CommonTableViewCell.m in Sources */,
@@ -1771,6 +1844,7 @@
 				8A56375D1E6924E800ACAF2B /* MerchantProfileTableViewCell.m in Sources */,
 				8A8E306D1E6FB12700A16002 /* FSCalendarCalculator.m in Sources */,
 				8A9BD7141E77FF0C0043D171 /* ForgotPasswordViewController.m in Sources */,
+				8ABC51771E93700800E31560 /* NSString+Extra.m in Sources */,
 				8A1176DF1E6E973400C72B5A /* PackageDetailsTableViewCell.m in Sources */,
 				8A3C7B9F1E8A06900093BA62 /* UpdateViewController.m in Sources */,
 				8A56374B1E69182100ACAF2B /* PackageTableViewCell.m in Sources */,
@@ -1821,6 +1895,7 @@
 				8A8E30771E6FB12700A16002 /* FSCalendarStickyHeader.m in Sources */,
 				8A9BD71E1E78E96E0043D171 /* PaginationModel.m in Sources */,
 				8A3C7BBD1E8B79900093BA62 /* PopOutViewController.m in Sources */,
+				8ABC51641E92368E00E31560 /* OfflineManager.m in Sources */,
 				8A81E90D1E7947C50073DC23 /* ProfileModel.m in Sources */,
 				8A1228B61E8CCB8C0093C92C /* SettingPopoutViewController.m in Sources */,
 				8A5637601E6970EE00ACAF2B /* HeaderView.m in Sources */,
@@ -1845,9 +1920,11 @@
 				8AFA22C61E6D19850090837C /* FilterCategoryTableViewCell.m in Sources */,
 				8A1228BA1E8CF6180093C92C /* PushNotificationManager.m in Sources */,
 				8A8E30461E6FAFA500A16002 /* CalenderViewController.m in Sources */,
+				8ABC516A1E923BE000E31560 /* PackageBookmarkTableViewController.m in Sources */,
 				8A6EB1BC1E71218B0022ABA2 /* QuantitySelectionViewController.m in Sources */,
 				8A6EB1C21E714EB30022ABA2 /* PromoCodeViewController.m in Sources */,
 				8A8DB9841E89359000DE467D /* WebViewController.m in Sources */,
+				8ABC51711E93558700E31560 /* EmptyStateView.m in Sources */,
 				8A9F461D1E603DA8005F1453 /* AppConstant.m in Sources */,
 				8A5637151E68011B00ACAF2B /* RatingView.m in Sources */,
 				8A3C7BAC1E8A27C70093BA62 /* FacebookModel.m in Sources */,
@@ -1944,7 +2021,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1983,7 +2060,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1998,7 +2075,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: PAGE ADVISOR PTE. LTD.";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2023,7 +2100,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: PAGE ADVISOR PTE. LTD.";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;

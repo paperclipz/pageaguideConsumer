@@ -56,6 +56,7 @@
 
     
     [self configureNotificaiton:application];
+    
   //  do app update checking
     
     return YES;

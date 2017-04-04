@@ -68,6 +68,9 @@
         
     }];
     
+    [self.ibTableView setupCustomEmptyView];
+
+    
     [self requestServerForAppointmentList];
 
     
@@ -210,13 +213,16 @@
         
         [self.ibTableView stopFooterLoadingView];
         
+        [self.ibTableView customTableViewReloadData];
+        
     } failure:^(id object) {
         
         self.vm_appointment_paging.isLoading = NO;
         
         [self.ibTableView stopFooterLoadingView];
 
-        
+        [self.ibTableView customTableViewReloadData];
+
     }];
 }
 

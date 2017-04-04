@@ -12,6 +12,7 @@
 #import "ApptHeaderTableViewCell.h"
 #import "GeneralTableViewCell.h"
 #import "EmptyTableViewCell.h"
+#import "NSString+Extra.h"
 
 #import "UILabel+Extra.h"
 #import "PromoCodeViewController.h"
@@ -20,10 +21,14 @@
 #define cell_request_guide @"MY Request Guide"
 
 
+#define cell_request_language @"Language"
+#define cell_request_date @"Date"
+#define cell_request_period @"Period"
+#define cell_request_times @"Times"
+#define cell_request_specialty @"Specialty"
+#define cell_request_qualifications @"Qualifications"
+#define cell_request_noOfPeople @"Pax"
 
-#define cell_request_language @"Prefer Language"
-#define cell_request_noOfPeople @"Number of People"
-#define cell_request_tourGuide @"Your Guide"
 
 @interface MyRequestDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
@@ -89,8 +94,9 @@
      [self.ibTableView registerNib:[UINib nibWithNibName:@"EmptyTableViewCell" bundle:nil] forCellReuseIdentifier:@"empty_cell"];
     
     arrCellList = @[cell_title,cell_merchant_offer,cell_request_guide];
-    arrCellDetailsList = @[cell_request_language,cell_request_noOfPeople,cell_request_tourGuide];
-    
+
+    arrCellDetailsList = @[cell_request_language,cell_request_date,cell_request_period,cell_request_times,cell_request_specialty,cell_request_qualifications,cell_request_noOfPeople];
+
     
     if (![Utils isStringNull:self.appointmentModel.request_id]) {
         [self requestServerForBiddingList];
@@ -272,11 +278,7 @@
                 
                 cell.lblTitle2.text = @"Bid Detail";
                 
-                
-                cell.lblDescription2.attributedText = [[NSAttributedString alloc] initWithData:[aModel.offer_details dataUsingEncoding:NSUTF8StringEncoding]
-                                                         options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                                                                   NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
-                                              documentAttributes:nil error:nil];
+                cell.lblDescription2.attributedText = [aModel.offer_details getAttributedText];
                 
                 return cell;
             }
@@ -323,11 +325,36 @@
             [cell.lblDescription setCustomText:self.appointmentModel.request_info.language];
             
         }
+        else if ([request_guide_detail isEqualToString:cell_request_date]) {
+            
+        
+            cell.lblDescription.text = [self.appointmentModel.request_info.created_at getFormattedDateFrom:@"yyyy-MM-dd hh:mm:ss" ToType:@"yyyy-MM-dd"];
+            
+        }
+        
+        else if ([request_guide_detail isEqualToString:cell_request_period]) {
+            cell.lblDescription.text = [self.appointmentModel.request_info.period stringValue];
+            
+        }
+        else if ([request_guide_detail isEqualToString:cell_request_times]) {
+            cell.lblDescription.text = [self.appointmentModel.request_info.times componentsJoinedByString:@","];
+            
+        }
+        else if ([request_guide_detail isEqualToString:cell_request_specialty]) {
+            cell.lblDescription.text = [self.appointmentModel.request_info.specialty componentsJoinedByString:@","];
+            
+        }
+        
+        else if ([request_guide_detail isEqualToString:cell_request_qualifications]) {
+            cell.lblDescription.text = [self.appointmentModel.request_info.qualifications componentsJoinedByString:@","];
+            
+        }
+        
         else if ([request_guide_detail isEqualToString:cell_request_noOfPeople]) {
             cell.lblDescription.text = [self.appointmentModel.request_info.pax stringValue];
             
         }
-        else if ([request_guide_detail isEqualToString:cell_request_tourGuide]) {
+        else if ([request_guide_detail isEqualToString:cell_request_noOfPeople]) {
             cell.lblDescription.text = [self.appointmentModel.request_info.pax stringValue];
             
         }

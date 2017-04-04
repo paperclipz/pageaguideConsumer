@@ -31,13 +31,28 @@
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 @property (weak, nonatomic) IBOutlet UIButton *btnFilter;
 
+//@property (strong, nonatomic) FIRDatabaseReference *ref;
+
 @end
 
 @implementation DashboardPackageViewController
 - (IBAction)btnIntercomClicked:(id)sender {
-    [Intercom presentConversationList];
+    
+     [Intercom presentConversationList];
 
 }
+
+
+-(NSDictionary*)getPacakgeJson
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"package" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    
+    return json;
+}
+
 - (IBAction)btnFilterClicked:(id)sender {
 }
 - (IBAction)btnLoginClicked:(id)sender {
@@ -47,27 +62,9 @@
 }
 - (IBAction)btnTest2Clicked:(id)sender {
     
-    [Utils showRegisterPage];
-
     
-    return;
+   // self.ref = [[FIRDatabase database] reference];
 
-
-    RatingViewController* rVC = [RatingViewController new];
-    rVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    rVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
-    [self.tabBarController presentViewController:rVC animated:YES completion:nil];
-    
-    
-    __weak typeof (rVC)weakRatingVC = rVC;
-    rVC.didFinishRateBlock = ^(void)
-    {
-        NSLog(@"txt:%@",weakRatingVC.txtRating.text);
-        
-        NSLog(@"rating:%i",weakRatingVC.rating);
-
-    };
 
 }
 
@@ -77,6 +74,8 @@
         
         [Utils showRegisterPage];
     }
+    
+ 
 }
 
 - (void)viewDidLoad {
@@ -378,7 +377,10 @@
     
         if (self.vm_package_paging.hasNext) {
             
-            [self.ibTableView startFooterLoadingView];
+            if ([[self.ibTableView visibleCells]count]>0) {
+               
+                [self.ibTableView startFooterLoadingView];
+            }
             
             [self requestServerForPackageListing];
         }

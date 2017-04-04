@@ -18,7 +18,7 @@
 
 #define SUCCESSFUL @"00"
 
-#define APP_Version @"1.0.0"
+//#define APP_Version @"1.0.2"
 
 #define IS_SIMULATOR NO
 

@@ -9,11 +9,10 @@
 #import "EBActionSheetViewController.h"
 #import "EBActionSheetTableViewCell.h"
 #import "TTTAttributedLabel.h"
+#import "EBActionSheetHeaderView.h"
 
 @interface EBActionSheetViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *ibtableView;
-@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
-@property (weak, nonatomic) IBOutlet UIButton *btnClose;
 
 @end
 
@@ -27,16 +26,12 @@
     [super viewDidLoad];
     
     
-    [self.btnClose setImage:[self.btnClose.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
-
-    self.ibtableView.delegate = self;
+       self.ibtableView.delegate = self;
     self.ibtableView.dataSource = self;
     
     [self.ibtableView registerNib:[UINib nibWithNibName:@"EBActionSheetTableViewCell" bundle:nil] forCellReuseIdentifier:@"customcell"];
     
-    self.lblTitle.text = self.title;
-    
-    [Utils setRoundBorder:self.btnClose color:[UIColor clearColor] borderRadius:self.btnClose.frame.size.height/2];
+   // self.lblTitle.text = self.title;
     
     [Utils setRoundBorder:self.ibtableView color:[UIColor clearColor] borderRadius:5];
 //    int numberOfCellToShow = 5;
@@ -46,11 +41,48 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)setInitial:(NSIndexPath*)indexPath
+{
+    
+    if (indexPath) {
+        [self.ibtableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+  
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 44.0f;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView* view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"headerView"];
+    
+    EBActionSheetHeaderView* headerView = (EBActionSheetHeaderView*)view;
+    
+    if (!view) {
+        
+        headerView = [EBActionSheetHeaderView initializeCustomView];
+        
+    }
+    
+    headerView.lblTitle.text = self.title;
+    
+    headerView.didCloseBlock = ^(void)
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+
+    };
+
+    return headerView;
+    
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.arrItemList.count;
@@ -83,8 +115,6 @@
       
             
         self.ibtableView.frame = CGRectMake(self.ibtableView.frame.origin.x, (self.view.frame.size.height - height)/2, self.ibtableView.frame.size.width, height);
-            
-            [self.btnClose layoutIfNeeded];
             
         });
     }

@@ -1,3 +1,4 @@
+
 //
 //  Utils.m
 //  Beep
@@ -207,7 +208,7 @@
     
             NSString* serverVersion = model.ios_consumer_version;
     
-            NSString* appVersion = APP_Version;
+            NSString* appVersion = [Utils getAppVersion];
     
             if ([serverVersion compare:appVersion options:NSNumericSearch] == NSOrderedDescending) {
             

@@ -80,6 +80,23 @@
 }
 */
 
+-(NSArray*)getPrefixList:(NSArray*)countryList
+{
+    
+    NSMutableArray* array = [NSMutableArray new];
+    
+    for (int i = 0; i<countryList.count; i++) {
+        
+        CountryModel* model = countryList[i];
+        
+        NSString* combinedString = [NSString stringWithFormat:@"%@ (%@)",model.c_prefix,model.c_name];
+        
+        [array addObject:combinedString];
+    }
+    
+    return array;
+}
+
 -(void)showPrefixView:(StringBlock)completion
 {
     
@@ -87,18 +104,16 @@
     {
         EBActionSheetViewController* viewC = [[EBActionSheetViewController alloc]initWithNibName:@"EBActionSheetViewController" bundle:nil];
         viewC.title = @"Prefix";
-        // viewC.view.backgroundColor = [UIColor colorWithRed:10 green:10 blue:10 alpha:0.5];
-        //  UINavigationController* navC = [[UINavigationController alloc]initWithRootViewController:viewC];
-        
-        // [navC setNavigationBarHidden:YES];
         
         viewC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         viewC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         
-        viewC.arrItemList = [self.arrCountryList valueForKey:@"c_prefix"];
+        viewC.arrItemList = [self getPrefixList:self.arrCountryList];
         
         [self presentViewController:viewC animated:YES completion:nil];
         
+        [viewC setInitial:[NSIndexPath indexPathForRow:[self getSingaporeIndexPath] inSection:0]];
+
         __weak typeof (viewC)weakVC = viewC;
         
         viewC.didSelectAtIndexBlock = ^(NSIndexPath* indexPath)
@@ -119,19 +134,39 @@
     
     
     
-    
     [[DataManager Instance] getCountryList:^(NSArray *array) {
         
         self.arrCountryList = (NSArray<CountryModel>*)array;
         
-      
+        
         openPopOutView();
-
+        
     }];
     
     
 }
 
+-(int)getSingaporeIndexPath
+{
+    
+    int index = 0;
+    
+    for (int i = 0; i<self.arrCountryList.count; i++) {
+        
+        
+        CountryModel* model = self.arrCountryList[i];
+        
+        if ([model.c_name isEqualToString:@"Singapore"]) {
+            
+            index = i;
+            
+            return index;
+            
+        }
+    }
+    
+    return index;
+}
 
 
 

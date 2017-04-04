@@ -9,7 +9,6 @@
 #import "UITableView+Extra.h"
 #import <objc/runtime.h>
 
-
 static const NSString *REFRESH_CONTROL = @"refreshControl";
 
 static const NSString *REFRESH_BLOCK = @"refreshblock";
@@ -152,5 +151,61 @@ static const NSString *INDICATOR_KEY = @"indicator_key";
     }
 }
 
+@end
+
+static const NSString *KEY_EMPTY_STATE_VIEW = @"empty_state_view";
+
+@implementation UITableView(EmptyState)
+
+- (EmptyStateView *)customEmptyStateView;
+{
+    return objc_getAssociatedObject(self, &KEY_EMPTY_STATE_VIEW);
+}
+
+- (void)setCustomEmptyStateView:(EmptyStateView *)customEmptyStateView
+{
+    
+    objc_setAssociatedObject(self, &KEY_EMPTY_STATE_VIEW, customEmptyStateView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+}
+
+-(void)setupCustomEmptyView
+{
+    self.customEmptyStateView = [EmptyStateView initializeCustomView];
+    self.customEmptyStateView.lblDesc.text = (@"There's no data available");
+    self.customEmptyStateView.lblTitle.text = (@"");
+  //  self.backgroundView = self.customEmptyStateView;
+    
+}
+
+//-(void)showLoading
+//{
+//    [self.customEmptyStateView showLoading];
+//}
+
+-(void)showEmptyState
+{
+
+    self.backgroundView = self.customEmptyStateView;
+
+}
+
+-(void)hideAll
+{
+    
+    self.backgroundView = nil;
+    
+}
+
+-(void)customTableViewReloadData
+{
+    if ([self.dataSource tableView:self numberOfRowsInSection:0]>0) {
+        
+        [self hideAll];
+    }
+    else{
+        [self showEmptyState];
+    }
+}
 @end
 

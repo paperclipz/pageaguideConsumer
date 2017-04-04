@@ -14,4 +14,6 @@
 @property (nonatomic,strong)NSArray* arrItemList;
 
 @property(nonatomic,copy)IndexPathBlock didSelectAtIndexBlock;
+
+-(void)setInitial:(NSIndexPath*)indexPath;
 @end

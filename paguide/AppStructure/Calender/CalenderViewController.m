@@ -100,13 +100,13 @@
     if([dayView isFromAnotherMonth]){
         dayView.hidden = YES;
     }
-    // Today
-    else if([_calendarManager.dateHelper date:[NSDate date] isTheSameDayThan:dayView.date]){
-        dayView.circleView.hidden = NO;
-        dayView.circleView.backgroundColor = [UIColor blueColor];
-        dayView.dotView.backgroundColor = [UIColor whiteColor];
-        dayView.textLabel.textColor = [UIColor whiteColor];
-    }
+//    // Today
+//    else if([_calendarManager.dateHelper date:[NSDate date] isTheSameDayThan:dayView.date]){
+//        dayView.circleView.hidden = YES;
+//        dayView.circleView.backgroundColor = [UIColor whiteColor];
+//        dayView.dotView.backgroundColor = [UIColor whiteColor];
+//        dayView.textLabel.textColor = [UIColor blackColor];
+//    }
     // Selected date
     else if(_dateSelected && [_calendarManager.dateHelper date:_dateSelected isTheSameDayThan:dayView.date]){
         dayView.circleView.hidden = NO;

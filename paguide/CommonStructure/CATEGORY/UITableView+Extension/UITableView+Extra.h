@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FooterView.h"
+#import "EmptyStateView.h"
 
 @interface UITableView(refresh)
 
@@ -31,5 +32,18 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView activated:(VoidBlock)activate;
 
 @end
+
+
+@interface UITableView(EmptyState)
+
+@property (nonatomic, strong) EmptyStateView *customEmptyStateView;
+
+-(void)setupCustomEmptyView;
+-(void)hideAll;
+-(void)showEmptyState;
+-(void)customTableViewReloadData;
+
+@end
+
 
 

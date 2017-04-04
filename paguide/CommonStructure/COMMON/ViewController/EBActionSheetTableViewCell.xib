@@ -18,16 +18,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zgp-aa-Uvk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtN-fF-AMY">
-                                <rect key="frame" x="10" y="9.5" width="42" height="20.5"/>
+                                <rect key="frame" x="10" y="12" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I41-R6-xmd">
-                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="39.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="44.5"/>
                                 <color key="backgroundColor" red="0.91372549020000005" green="0.31372549020000001" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="kgZ-rF-HZa"/>
@@ -48,7 +48,7 @@
                     <constraint firstItem="Zgp-aa-Uvk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="AhQ-uQ-Fn6"/>
                     <constraint firstItem="Zgp-aa-Uvk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Pd3-ir-VOT"/>
                     <constraint firstAttribute="trailing" secondItem="Zgp-aa-Uvk" secondAttribute="trailing" id="ZyY-A0-Sf5"/>
-                    <constraint firstAttribute="bottom" secondItem="Zgp-aa-Uvk" secondAttribute="bottom" constant="10" id="tDa-hJ-1T9"/>
+                    <constraint firstAttribute="bottom" secondItem="Zgp-aa-Uvk" secondAttribute="bottom" constant="5" id="tDa-hJ-1T9"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>

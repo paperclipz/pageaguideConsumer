@@ -425,6 +425,9 @@
         
         [self presentViewController:viewC animated:YES completion:nil];
         
+        [viewC setInitial:[NSIndexPath indexPathForRow:[self getSingaporeIndexPath] inSection:0]];
+
+        
         __weak typeof (viewC)weakVC = viewC;
         
         viewC.didSelectAtIndexBlock = ^(NSIndexPath* indexPath)
@@ -502,6 +505,22 @@
 
 }
 
+-(NSArray*)getPrefixList:(NSArray*)countryList
+{
+    
+    NSMutableArray* array = [NSMutableArray new];
+    
+    for (int i = 0; i<countryList.count; i++) {
+     
+        CountryModel* model = countryList[i];
+        
+        NSString* combinedString = [NSString stringWithFormat:@"%@ (%@)",model.c_prefix,model.c_name];
+        
+        [array addObject:combinedString];
+    }
+    
+    return array;
+}
 
 -(void)showPrefixView:(StringBlock)completion
 {
@@ -514,9 +533,11 @@
         viewC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         viewC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         
-        viewC.arrItemList = [self.arrCountryList valueForKey:@"c_prefix"];
+        viewC.arrItemList = [self getPrefixList:self.arrCountryList];
         
         [self presentViewController:viewC animated:YES completion:nil];
+        
+        [viewC setInitial:[NSIndexPath indexPathForRow:[self getSingaporeIndexPath] inSection:0]];
         
         __weak typeof (viewC)weakVC = viewC;
         
@@ -550,6 +571,28 @@
     
 }
 
+-(int)getSingaporeIndexPath
+{
+    
+    int index = 0;
+    
+    for (int i = 0; i<self.arrCountryList.count; i++) {
+        
+        
+        CountryModel* model = self.arrCountryList[i];
+        
+        if ([model.c_name isEqualToString:@"Singapore"]) {
+            
+            index = i;
+            
+            return index;
+            
+        }
+    }
+    
+    return index;
+}
+
 
 
 -(void)showForgetPasswordView
@@ -566,7 +609,6 @@
     
 }
 
-
 #pragma mark - Request Server
 
 
@@ -581,9 +623,12 @@
                            @"password" : IsNullConverstion(self.txtPassword.text),
                            };
     
+    [LoadingManager show];
+    
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserLogin parameter:dict appendString:nil success:^(id object) {
         
-        
+        [LoadingManager hide];
+
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
         
         [Utils setAppToken:model.token];
@@ -598,6 +643,8 @@
 
     } failure:^(id object) {
         
+        [LoadingManager hide];
+
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
         
         if ([model.status_code  isEqual: @(202)]) {

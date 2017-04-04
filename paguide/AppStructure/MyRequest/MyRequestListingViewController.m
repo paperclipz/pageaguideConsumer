@@ -12,6 +12,8 @@
 #import "AppointmentModel.h"
 #import "MyRequestDetailViewController.h"
 
+#define PER_PAGE @"20"
+
 @interface MyRequestListingViewController () <UITableViewDelegate, UITableViewDataSource>
 {
     AppointmentModel* apptModel;
@@ -58,6 +60,9 @@
         [self resetAndCallAppointmentListing];
         
     }];
+    
+    [self.ibTableView setupCustomEmptyView];
+
     [self requestServerforMyRequestList];
 
     // Do any additional setup after loading the view.
@@ -102,7 +107,7 @@
     cell.lblTitle2.text = [model.request_info.specialty componentsJoinedByString:@","];
     
     
-    NSString* string1 = @"Appointment : ";
+    NSString* string1 = @"Requested Date : ";
     NSString* string2 = model.request_info.created_at;
     
     cell.lblTitle3.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string1,string2] StringToChange:string1];
@@ -149,10 +154,19 @@
 -(void)requestServerforMyRequestList
 {
     
+
+    if (self.vm_appointment_paging.isLoading || !self.vm_appointment_paging.hasNext) {
+        return;
+        
+    }
+    
     self.vm_appointment_paging.isLoading = YES;
 
-    NSDictionary* dict = @{@"token" : [Utils getToken]};
-    
+    NSDictionary* dict = @{@"token" : [Utils getToken],
+                           @"per_page" : PER_PAGE,
+                           @"page" : @(self.vm_appointment_paging.currentPage + 1)
+
+                           };
     
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostRequestConsumerlisting parameter:dict appendString:nil success:^(id object) {
         
@@ -172,6 +186,8 @@
         [self.ibTableView reloadData];
         
         [self.ibTableView stopFooterLoadingView];
+        
+        [self.ibTableView customTableViewReloadData];
 
         
     } failure:^(id object) {
@@ -179,6 +195,8 @@
         self.vm_appointment_paging.isLoading = NO;
 
         [self.ibTableView stopFooterLoadingView];
+
+        [self.ibTableView customTableViewReloadData];
 
     }];
                            

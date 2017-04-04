@@ -15,6 +15,8 @@
 #import "PromoCodeViewController.h"
 #import "AppDelegate.h"
 #import "SelectPackageViewController.h"
+#import "OfflineManager.h"
+#import "NSString+Extra.h"
 
 #define cell_type_title @"title"
 #define cell_type_details @"details"
@@ -22,7 +24,7 @@
 #define cell_type_desc @"description"
 #define cell_type_cancellation @"cancellation_policy"
 
-
+#define cell_detail_packageCode @"Package Code"
 #define cell_detail_mode @"Mode"
 #define cell_detail_duration @"Duration"
 #define cell_detail_itinerary @"Itinerary"
@@ -31,12 +33,14 @@
 #define cell_detail_include @"Include"
 #define cell_detail_type @"Type"
 
-@interface PackageDetailsViewController () <STPAddCardViewControllerDelegate,UITableViewDelegate, UITableViewDataSource>
+@interface PackageDetailsViewController () <UITableViewDelegate, UITableViewDataSource>
 {
     __weak IBOutlet NSLayoutConstraint *constHeight_availability;
     __weak IBOutlet NSLayoutConstraint *constHeight_makepayment;
     NSArray* arrCellList;
     NSArray* arrCellDetailsList;
+    
+    BOOL isPackageBookmarked;
 
 }
 
@@ -77,16 +81,36 @@
 
 #pragma mark - IBAction
 
+- (IBAction)btnBookmarkClicked:(id)sender {
+    
+    
+    if (isPackageBookmarked) {
+        
+        [OfflineManager deleteBookMarked:self.packageModel.packages_code];
+
+        
+    }
+    else{
+        [OfflineManager storePackageList:self.packageModel];
+        
+    }
+  
+
+    isPackageBookmarked = !isPackageBookmarked;
+
+    [self changeItemBarBookedmarked:isPackageBookmarked];
+
+    
+}
+
 - (IBAction)btnMakePaymentClicked:(id)sender {
     
     [self showPromoCodeView];
 }
 
 - (IBAction)btnAvailableClicked:(id)sender {
-    
 
     [self showCalenderView];
-    
     
 }
 
@@ -97,10 +121,35 @@
 
 -(void)setupPackageID:(NSString*)packageID
 {
-
     self.packageID = packageID;
 }
 
+-(void)changeItemBarBookedmarked:(BOOL)isBookmarked
+{
+    
+    if (isBookmarked) {
+        UIImage* image = [[UIImage imageNamed:@"icon_bookmark_red.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        UIBarButtonItem* editButton = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(btnBookmarkClicked:)];
+        
+        editButton.tintColor = APP_MAIN_COLOR;
+        
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObject:editButton];
+
+    }
+    else{
+    
+        UIImage* image = [[UIImage imageNamed:@"icon_bookmark_red.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        UIBarButtonItem* editButton = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(btnBookmarkClicked:)];
+        
+        editButton.tintColor = [UIColor darkGrayColor];
+        
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObject:editButton];
+
+    }
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -111,7 +160,8 @@
     
     arrCellList = @[cell_type_title,cell_type_details,cell_type_desc,cell_type_map,cell_type_cancellation];
    
-    arrCellDetailsList = @[cell_detail_mode,
+    arrCellDetailsList = @[cell_detail_packageCode,
+                           cell_detail_mode,
                            cell_detail_duration,
                            cell_detail_itinerary,
                            cell_detail_language,
@@ -134,6 +184,8 @@
 -(void)initSelfView
 {
 
+    self.title = @"Package Details";
+    
     if (_viewType == PACKAGE_VIEW_TYPE_AVAILABILIY) {
         constHeight_makepayment.constant = 0;
         constHeight_availability.constant = 70;
@@ -171,6 +223,10 @@
     
     // setup view for check availability
 
+    isPackageBookmarked = [OfflineManager checkIsPackageBookmarked:self.packageModel.packages_code];
+    
+    [self changeItemBarBookedmarked:isPackageBookmarked];
+    
     if (_viewType == PACKAGE_VIEW_TYPE_AVAILABILIY) {
         
         NSString* display_price = [NSString stringWithFormat:@"%@ %@",self.packageModel.currency,self.packageModel.price];
@@ -310,15 +366,18 @@
         
         
     }
-    else if ([type isEqualToString:cell_type_details]) {
-        
-        return 30;
-        
-        
-    }
+//    else if ([type isEqualToString:cell_type_details]) {
+//        
+//        return 30;
+//        
+//        
+//    }
+//    
+    
 
     return UITableViewAutomaticDimension;
 }
+
 //
 //- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{
@@ -420,7 +479,6 @@
         PackageDetailsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"package_details_desc"];
         
         
-        
         [self populateCellDescription:cell IndexPath:indexPath];
         
         
@@ -459,10 +517,8 @@
         
         cell.lblTitle.text = @"Cancellation Policy";
         
-        cell.lblDesc.attributedText = [[NSAttributedString alloc] initWithData:[self.packageModel.cancellation_policy dataUsingEncoding:NSUTF8StringEncoding]
-                                                                               options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                                                                                         NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
-                                                                    documentAttributes:nil error:nil];
+        cell.lblDesc.attributedText = [self.packageModel.cancellation_policy getAttributedText];
+
         return cell;
         
     }
@@ -480,7 +536,7 @@
     NSRange string1_range1 = [attributeString.string rangeOfString:substring];
 
     [attributeString addAttribute:NSFontAttributeName
-                            value:[UIFont fontWithName:@"Helvetica-Bold" size:15.0]
+                            value:[UIFont boldSystemFontOfSize:12.0f]
                             range:string1_range1];
     
     
@@ -507,6 +563,15 @@
         cell.lblTitle.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@ %@",string1,string2] StringToChange:string1];
         
 
+    }
+    else if ([type isEqualToString:cell_detail_packageCode]) {
+        
+        NSString* string1 = @"Package Code :";
+        
+        NSString* string2 = [NSString stringWithFormat:@"%@",self.packageModel.packages_code];
+        
+        cell.lblTitle.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@ %@",string1,string2] StringToChange:string1];
+        
     }
     else if ([type isEqualToString:cell_detail_duration]) {
         
@@ -620,6 +685,14 @@
 
 -(void)showCalenderView
 {
+    
+    if (![self validateEventDate:self.packageModel.scheduled_datetime]) {
+        
+        [MessageManager showMessage:@"No Available Date" Type:TSMessageNotificationTypeError];
+        
+        return;
+    }
+    
     CalenderViewController* viewC = [CalenderViewController new];
     viewC.hidesBottomBarWhenPushed = YES;
     
@@ -1018,6 +1091,56 @@
     
 }
 
+-(BOOL)validateEventDate:(NSArray*)array
+{
+    
+    for (int i = 0; i< array.count; i++) {
+        ScheduleModel* model = array[i];
+        
+        NSDateFormatter* dateFormatter = [self dateFormatter1];
+        
+        NSDate* date = [dateFormatter dateFromString:model.scheduled_date];
+        
+        NSDate* dateServer = date;
+        
+        
+        NSString* strDateToday = [[self dateFormatter1]stringFromDate:[NSDate date]];
+        NSDate* dateToday = [[self dateFormatter1]dateFromString:strDateToday];
+        
+        
+        if ([dateServer compare:dateToday] >= NSOrderedDescending) {
+            NSLog(@"date1 is later than date2");
+            
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+-(NSDateFormatter*)getCustomDateFormatter
+{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+   
+    dateFormatter.calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+   
+    
+    return dateFormatter;
+}
+
+- (NSDateFormatter *)dateFormatter1 {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    
+    
+    return dateFormatter;
+}
 #pragma mark - Navigation
 //
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

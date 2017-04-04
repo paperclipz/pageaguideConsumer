@@ -35,6 +35,9 @@ PODS:
   - Firebase/Crash (3.13.0):
     - Firebase/Core
     - FirebaseCrash (= 1.1.6)
+  - Firebase/Database (3.13.0):
+    - Firebase/Core
+    - FirebaseDatabase (= 3.1.2)
   - Firebase/Messaging (3.13.0):
     - Firebase/Core
     - FirebaseMessaging (= 1.2.2)
@@ -53,6 +56,8 @@ PODS:
     - GoogleToolboxForMac/Logger (~> 2.1)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - Protobuf (~> 3.1)
+  - FirebaseDatabase (3.1.2):
+    - FirebaseAnalytics (~> 3.7)
   - FirebaseInstanceID (1.0.9)
   - FirebaseMessaging (1.2.2):
     - FirebaseAnalytics (~> 3.7)
@@ -104,6 +109,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - Firebase/Core
   - Firebase/Crash
+  - Firebase/Database
   - Firebase/Messaging
   - Firebase/RemoteConfig
   - GVUserDefaults
@@ -143,6 +149,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
   FirebaseCore: 1c0a13bf59bb95cdd19577252499f0ec6a03e999
   FirebaseCrash: db4c05d9c75baa050744d31b36357c8f1efba481
+  FirebaseDatabase: 05c96d7b43a7368dc91c07791adb49683e1738d1
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   FirebaseMessaging: df8267f378580a24174ce7861233aa11d5c90109
   FirebaseRemoteConfig: f8625d0693b8a6737cdd867a9c6e9ea0e3c70a6a
@@ -166,6 +173,6 @@ SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   TSMessages: eb3cf27b6900684a21bad4fe9ea426e287b8c839
 
-PODFILE CHECKSUM: 9927ccf54fecdd2f533b01b6880b442deecf1e17
+PODFILE CHECKSUM: bb9bc1ed58a84ca3be1758a35a924f0cd419f48c
 
 COCOAPODS: 1.0.1

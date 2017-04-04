@@ -70,6 +70,9 @@
         [self resetAndCallAppointmentListing];
         
     }];
+    
+    [self.ibTableView setupCustomEmptyView];
+    
     [self requestServerForAppointmentList];
 
     // Do any additional setup after loading the view.
@@ -243,11 +246,15 @@
         
         [self.ibTableView stopFooterLoadingView];
          
+        [self.ibTableView customTableViewReloadData];
         
     } failure:^(id object) {
         self.vm_appointment_paging.isLoading = NO;
         
         [self.ibTableView stopFooterLoadingView];
+        
+        [self.ibTableView customTableViewReloadData];
+
 
     }];
 }

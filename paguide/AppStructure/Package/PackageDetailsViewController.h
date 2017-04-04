@@ -21,9 +21,9 @@ typedef enum
 
 @property(nonatomic, assign)PACKAGE_VIEW_TYPE viewType;
 
--(void)setupData:(PackageModel*)model;
+-(void)setupData:(PackageModel*)model;//for payment detail make payment (2nd)
 
--(void)setupPackageID:(NSString*)packageID;
+-(void)setupPackageID:(NSString*)packageID; // for verification page (1st)
 
 -(void)setupPackageDetailPayment:(ScheduleModel*)model;
 @end
