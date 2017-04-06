@@ -10,6 +10,9 @@
 #import "PackageModel.h"
 
 #define KEY_OFFLINE_PACKAGE @"key_offline_package_v1"
+
+@protocol PackageRMLModel;
+
 @implementation OfflineManager
 
 + (id)Instance {
@@ -30,16 +33,18 @@
     return self;
 }
 
+
 +(void)storePackageList:(PackageModel*)pModel
 {
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc]initWithSuiteName:[Utils getUserEmail]];
     
+    NSData * data = [defaults objectForKey:KEY_OFFLINE_PACKAGE];
+
     if (pModel) {
         
         NSDictionary* dict = @{pModel.packages_code : [pModel toJSONData]};
         
-        NSData * data = [defaults objectForKey:KEY_OFFLINE_PACKAGE];
         
         NSDictionary* dictTemp = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         
@@ -52,7 +57,6 @@
         else{
             dictStored = [[NSMutableDictionary alloc]initWithDictionary:dict];
         }
-        
         NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:dictStored];
         
         [defaults setObject:encodedObject forKey:KEY_OFFLINE_PACKAGE];
@@ -64,7 +68,7 @@
 
 +(NSArray*)getPackageList
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc]initWithSuiteName:[Utils getUserEmail]];
     
     NSData * data = [defaults objectForKey:KEY_OFFLINE_PACKAGE];
     
@@ -95,7 +99,7 @@
 {
     BOOL isBookmarked = NO;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc]initWithSuiteName:[Utils getUserEmail]];
     
     NSData * data = [defaults objectForKey:KEY_OFFLINE_PACKAGE];
     
@@ -119,7 +123,7 @@
 +(void)deleteBookMarked:(NSString*)packageCode
 {
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [[NSUserDefaults alloc]initWithSuiteName:[Utils getUserEmail]];
     
     NSData * data = [defaults objectForKey:KEY_OFFLINE_PACKAGE];
     

@@ -36,6 +36,11 @@
 
 +(void)setAppToken:(NSString*)token;
 
++(NSString*)getUserEmail;
+
++(void)setUserEmail:(NSString*)email;
+
+
 +(void)showRegisterPage;
 
 //+(void)linkRegisterPin:(NSString*)pin;
@@ -63,6 +68,7 @@
 
 
 #pragma mark - UI
++(void)setSelectedTabbarIndex:(int)index;
 
 
 #pragma mark - App List Options

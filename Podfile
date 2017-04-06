@@ -50,12 +50,13 @@ def shared_pods
     pod 'Intercom'
     pod 'STPopup'
 
+    pod 'SAMKeychain'
 
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'Firebase/Crash'
-    pod 'SAMKeychain'
-    pod 'Firebase/Database'
+
+    pod 'Realm'
 
 
 end

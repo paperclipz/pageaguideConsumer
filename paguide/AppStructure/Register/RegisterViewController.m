@@ -25,7 +25,6 @@
 @protocol KeyValueModel;
 @protocol CountryModel;
 
-
 @interface RegisterViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 @property (strong, nonatomic)VerifyAccountViewController* verifyAccountViewController;
@@ -623,6 +622,8 @@
                            @"password" : IsNullConverstion(self.txtPassword.text),
                            };
     
+    [self.view endEditing:YES];
+    
     [LoadingManager show];
     
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserLogin parameter:dict appendString:nil success:^(id object) {
@@ -632,6 +633,10 @@
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
         
         [Utils setAppToken:model.token];
+        
+        [Utils setUserEmail:self.txtEmail.text];
+        
+        [Utils setSelectedTabbarIndex:0];
         
         [self dismissViewControllerAnimated:YES completion:^{
             
@@ -678,16 +683,27 @@
                            @"fb_access_token" : model.fbToken,
                            };
     
+    [self.view endEditing:YES];
+
+    [LoadingManager show];
+    
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostUserLogin parameter:dict appendString:nil success:^(id object) {
         
+        BaseModel* bmodel = [[BaseModel alloc]initWithDictionary:object error:nil];
         
-        BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
+        [Utils setAppToken:bmodel.token];
         
-        [Utils setAppToken:model.token];
+        [Utils setUserEmail:model.uID];
+
+        [Utils setSelectedTabbarIndex:0];
+
         
+        [LoadingManager hide];
+
+
         [self dismissViewControllerAnimated:YES completion:^{
             
-            [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess];
+            [MessageManager showMessage:bmodel.displayMessage Type:TSMessageNotificationTypeSuccess];
             
         }];
         
@@ -696,7 +712,8 @@
         
     } failure:^(id object) {
 
-        
+        [LoadingManager hide];
+
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
         
         if ([model.status_code  isEqual: @(202)]) {

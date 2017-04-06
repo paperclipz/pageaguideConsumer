@@ -14,8 +14,9 @@
 
 #define BORDER_WIDTH 1.0f
 #define KEY_APP_TOKEN @"app_token"
-@implementation Utils
+#define KEY_APP_USER_EMAIL @"user_email"
 
+@implementation Utils
 
 +(BOOL)isStringNull:(NSString*)str
 {
@@ -85,6 +86,45 @@
     
 }
 
++(void)setUserEmail:(NSString*)email
+{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults removeObjectForKey:KEY_APP_USER_EMAIL];
+    
+    if (![Utils isStringNull:email]) {
+        
+        [defaults setObject:email forKey:KEY_APP_USER_EMAIL];
+        
+        [defaults synchronize];
+        
+    }
+    
+}
+
++(NSString*)getUserEmail
+{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString * email = [defaults objectForKey:KEY_APP_USER_EMAIL];
+    
+    
+    if (![Utils isStringNull:email]) {
+        
+        return email;
+    }
+    else{
+        
+        NSLog(@"NO user email Detected");
+        
+        return @"";
+        
+    }
+    
+}
+
 +(void)setAppToken:(NSString*)token
 {
     
@@ -107,30 +147,22 @@
 +(NSString*)getToken
 {
     
-   // return @"j77u4ZtdKb6xs7gTOqc4m6mXSLftiUhBgCo9VF5ABcQ";
-    
-    //NSString* token  = [GVUserDefaults standardUserDefaults].token;
-
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     NSString * token = [defaults objectForKey:KEY_APP_TOKEN];
     
-   // NSString* token = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-
-    
-    
     if (![Utils isStringNull:token]) {
-    
+        
         return token;
     }
     else{
         
         NSLog(@"NO Token Detected");
-
+        
         return @"";
-
+        
     }
-
+    
 }
 
 
@@ -163,6 +195,10 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [defaults removeObjectForKey:KEY_APP_TOKEN];
+    
+    [defaults removeObjectForKey:KEY_APP_USER_EMAIL];
+    
+    [defaults synchronize];
 
 }
 
@@ -272,6 +308,22 @@
     }
     
     
+}
++(void)setSelectedTabbarIndex:(int)index
+{
+    UIViewController *rootController =(UIViewController*)[[(AppDelegate*)
+                                                           [[UIApplication sharedApplication]delegate] window] rootViewController];
+    
+    
+    
+    
+    if ([rootController isKindOfClass:[UITabBarController class]]) {
+     
+        UITabBarController* tabBarcontroller = (UITabBarController*)rootController;
+        
+        tabBarcontroller.selectedIndex = index;
+
+    }
 }
 
 #pragma mark - User Utils

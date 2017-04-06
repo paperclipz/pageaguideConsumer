@@ -8,6 +8,7 @@
 
 #import <JSONModel/JSONModel.h>
 #import "MerchantProfileModel.h"
+
 @protocol ScheduleModel;
 
 
@@ -49,7 +50,6 @@
 
 @property (nonatomic, strong) NSString* package_date;
 @property (nonatomic, strong) NSString* package_time;
-
 
 
 

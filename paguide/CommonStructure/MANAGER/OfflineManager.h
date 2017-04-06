@@ -10,10 +10,14 @@
 #import "PackageModel.h"
 
 @interface OfflineManager : NSObject
+
+
 + (id)Instance;
 +(void)storePackageList:(PackageModel*)pModel;
 +(NSArray*)getPackageList;
 +(void)deleteBookMarked:(NSString*)packageCode;
 +(BOOL)checkIsPackageBookmarked:(NSString*)packageCode;
+
+
 
 @end

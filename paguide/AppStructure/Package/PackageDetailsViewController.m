@@ -84,6 +84,13 @@
 - (IBAction)btnBookmarkClicked:(id)sender {
     
     
+    
+    if (![Utils isUserLogin]) {
+        
+        [MessageManager showMessage:@"Please Login first To Bookmark" Type:TSMessageNotificationTypeWarning];
+        
+        return;
+    }
     if (isPackageBookmarked) {
         
         [OfflineManager deleteBookMarked:self.packageModel.packages_code];
@@ -222,7 +229,7 @@
 {
     
     // setup view for check availability
-
+   
     isPackageBookmarked = [OfflineManager checkIsPackageBookmarked:self.packageModel.packages_code];
     
     [self changeItemBarBookedmarked:isPackageBookmarked];

@@ -106,4 +106,41 @@
     
     return self;
 }
+
+//-(id)initWithPackageRMLModel:(PackageRMLModel*)model
+//{
+//    
+//        self = [super init];
+//        if(!self) return nil;
+//        
+//        for (NSString *key in [model codableProperties])
+//        {
+//            for (NSString *innerKey in [self codableProperties])
+//            {
+//                
+//                if ([key isEqualToString:innerKey]) {
+//                    
+//                    
+//                    id key_value = [model valueForKey:key];
+//                    
+//                    if (key_value) {
+//                        
+//                        [self setValue:[model valueForKey:key] forKey:innerKey];
+//
+//                    }
+//                    
+//                }
+//                
+//            }
+//            
+//            
+//        }
+//        
+//        
+//        
+//        
+//        return self;
+//
+//}
+
 @end

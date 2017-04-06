@@ -185,7 +185,6 @@
     
     if ([model.type isEqualToString:cell_type_option]) {
         
-        
         RequestGuideTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell_request_multipleselection"];
 
         KeyValueModel* kModel = model.arrOptionsList[indexPath.row];
@@ -383,7 +382,7 @@
                 }
             }
             
-            if (isOptionEmpty) {
+            if (isOptionEmpty && [model.required isEqualToString:@"yes"]) {
                 
                 [MessageManager showMessage:[NSString stringWithFormat:@"Please select %@",model.parameter] Type:TSMessageNotificationTypeWarning];
                 
@@ -393,7 +392,7 @@
         else if ([model.type isEqualToString:cell_type_number])
         {
             
-            if ([Utils isStringNull:model.viewModel.value]) {
+            if ([Utils isStringNull:model.viewModel.value] && [model.required isEqualToString:@"yes"]) {
                 
                 [MessageManager showMessage:[NSString stringWithFormat:@"Please input a number for %@",model.parameter] Type:TSMessageNotificationTypeWarning];
 
@@ -404,7 +403,7 @@
         else if ([model.type isEqualToString:cell_type_date])
         {
             
-            if (!model.viewModel.choosenDate) {
+            if (!model.viewModel.choosenDate && [model.required isEqualToString:@"yes"]) {
                 
                 [MessageManager showMessage:[NSString stringWithFormat:@"Please select a date for %@",model.parameter] Type:TSMessageNotificationTypeWarning];
                 
@@ -445,7 +444,6 @@
                     
                     break;
 
-                    
                 }
 
             }

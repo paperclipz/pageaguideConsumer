@@ -26,12 +26,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Bookmark";
+    
     self.arrPackageList = [[OfflineManager getPackageList] mutableCopy];
     
     [self.tableView reloadData];
     
     [self.tableView pullToRefresh:^{
-        
         
         [self.tableView stopRefresh];
         

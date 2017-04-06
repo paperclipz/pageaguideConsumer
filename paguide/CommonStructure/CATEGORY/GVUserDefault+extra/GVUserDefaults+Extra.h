@@ -13,4 +13,5 @@
 @property (nonatomic, weak) NSString *userName;
 @property (nonatomic, weak) NSNumber *userId;
 @property (nonatomic, weak) NSString *token;
+
 @end

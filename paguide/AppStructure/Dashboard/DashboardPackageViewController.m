@@ -14,11 +14,16 @@
 #import "PackageWrapperModel.h"
 #import "DashboardPackageFilterViewController.h"
 #import "UpdateViewController.h"
+#import "OfflineManager.h"
+
+#import "RequestGuideViewController.h"
+#import "MyRequestListingViewController.h"
+#import "AppointmentListViewController.h"
 
 @import Intercom;
 
 #define PER_PAGE @"10"
-@interface DashboardPackageViewController () <UITableViewDelegate,UITableViewDataSource>
+@interface DashboardPackageViewController () <UITableViewDelegate,UITableViewDataSource, UITabBarControllerDelegate>
 {
     PackageModel* selectedPackageModel;
     
@@ -31,13 +36,12 @@
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 @property (weak, nonatomic) IBOutlet UIButton *btnFilter;
 
-//@property (strong, nonatomic) FIRDatabaseReference *ref;
 
 @end
 
 @implementation DashboardPackageViewController
 - (IBAction)btnIntercomClicked:(id)sender {
-    
+   
      [Intercom presentConversationList];
 
 }
@@ -61,20 +65,12 @@
     [Utils showRegisterPage];
 }
 - (IBAction)btnTest2Clicked:(id)sender {
-    
-    
-   // self.ref = [[FIRDatabase database] reference];
-
-
+ 
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if (![Utils isUserLogin]) {
-        
-        [Utils showRegisterPage];
-    }
-    
+ 
  
 }
 
@@ -92,8 +88,16 @@
         }];
         
     } NoNeedUpdate:^{
+       
         
+        if (![Utils isUserLogin]) {
+            
+            [Utils showRegisterPage];
+        }
     }];
+    
+   
+    
     
     [self initSelfView];
 
@@ -176,6 +180,9 @@
     self.btnFilter.layer.shadowOpacity = 0.5;
     self.btnFilter.layer.shadowRadius = 1;
     self.btnFilter.layer.shadowOffset = CGSizeMake(5.0f, 5.0f);
+    
+    self.tabBarController.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -242,7 +249,6 @@
     return cell;
 }
 
-
 -(void)setupPackageInCell:(DashboardPackageTableViewCell*)cell With:(PackageModel*)model
 {
     cell.lblTitle2.text = model.name;
@@ -266,6 +272,24 @@
 
 #pragma mark - Navigation
 
+
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(nullable id)sender{
+    
+    if ([identifier isEqualToString:@"profile_detail"]) {
+    
+        if (![Utils isUserLogin]) {
+            
+            
+            [self showPromptToLogin];
+            return NO;
+        }
+      
+    }
+
+    return YES;
+
+}
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
@@ -315,6 +339,8 @@
     
     return _vm_package_paging;
 }
+
+
 #pragma mark - Request Server
 
 -(void)requestServerForPackageListing
@@ -355,7 +381,7 @@
         [self.ibTableView reloadData];
         
         [self.ibTableView stopFooterLoadingView];
-
+        
         
     } failure:^(id object) {
         
@@ -390,6 +416,85 @@
 
 }// any offset changes
 
+-(IBAction)showPromptToLogin
+{
+    
+    
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"You need to login first"
+                                  message:@""
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             
 
+                             [Utils showRegisterPage];
+                             
+                         }];
+    [alert addAction:ok]; // add action to uialertcontroller
+    
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alert addAction:cancel];
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+}
+
+#pragma mark - UItabbarcontroller delegate
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    
+    UIViewController* tempViewController;
+    
+    if ([viewController isKindOfClass:[UINavigationController class]]) {
+        
+        UINavigationController* navigationContoller = (UINavigationController*)viewController;
+
+        tempViewController = navigationContoller.viewControllers[0];
+    }
+    
+    else{
+        tempViewController = viewController;
+    }
+    if ([Utils isUserLogin]) {
+        
+        return YES;
+    }
+    else
+    {
+        if ([tempViewController isKindOfClass:[RequestGuideViewController class]] ||
+            [tempViewController isKindOfClass:[MyRequestListingViewController class]] ||
+            [tempViewController isKindOfClass:[AppointmentListViewController class]]) {
+            
+            
+            [self showPromptToLogin];
+            
+            return NO;
+            
+            
+        }
+        else
+        {
+            return YES;
+        }
+    }
+   
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+
+}
 
 @end
