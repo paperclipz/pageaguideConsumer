@@ -10,7 +10,7 @@
 #import "Utils.h"
 #import "AppDelegate.h"
 #import "AppModel.h"
-#import <SAMKeychain.h>
+#import <SAMKeychain/SAMKeychain.h>
 #import "AppointmentPageViewController.h"
 
 #define BORDER_WIDTH 1.0f

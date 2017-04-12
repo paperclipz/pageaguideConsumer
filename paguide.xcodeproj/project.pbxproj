@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5943473CA93A98F410E510D9 /* libPods-paguide.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCCCB89213773B27E867D63 /* libPods-paguide.a */; };
+		3A595E63E2BF1091C4138518 /* Pods_paguideTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5E528DFEE92B5A7492DE021 /* Pods_paguideTests.framework */; };
+		707863EAC196CA2940B5E388 /* Pods_paguideUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C37FC2E3EBE7F8029204E6F /* Pods_paguideUITests.framework */; };
 		8A1176D41E6D5F6600C72B5A /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1176D31E6D5F6600C72B5A /* ProfileTableViewCell.m */; };
 		8A1176DC1E6D91C500C72B5A /* PackageDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1176DB1E6D91C500C72B5A /* PackageDetailsViewController.m */; };
 		8A1176DF1E6E973400C72B5A /* PackageDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1176DE1E6E973400C72B5A /* PackageDetailsTableViewCell.m */; };
@@ -231,8 +232,7 @@
 		8AFFDE441E769B0900C55B55 /* CountryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFDE431E769B0900C55B55 /* CountryModel.m */; };
 		8AFFDE4B1E76A1A900C55B55 /* NSArray+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFDE481E76A1A900C55B55 /* NSArray+JSON.m */; };
 		8AFFDE4C1E76A1A900C55B55 /* NSArray+value.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFDE4A1E76A1A900C55B55 /* NSArray+value.m */; };
-		DB80E34B9755E728BF06E46F /* libPods-paguideUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB1D574CF8888961838CBCF /* libPods-paguideUITests.a */; };
-		E683741508F3F61E040113D7 /* libPods-paguideTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA09E971CBF4BE8F95E4260E /* libPods-paguideTests.a */; };
+		D84C6442035A4C4DDE229337 /* Pods_paguide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACE4E0FAC57E983CA04981C /* Pods_paguide.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,8 +253,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DCCCB89213773B27E867D63 /* libPods-paguide.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-paguide.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B2D3FDEBCBB5DC537D9CD79 /* Pods-paguideTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguideTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-paguideTests/Pods-paguideTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1EACF9C8E52B6FFF0561B927 /* Pods-paguideTests.itunes_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguideTests.itunes_release.xcconfig"; path = "Pods/Target Support Files/Pods-paguideTests/Pods-paguideTests.itunes_release.xcconfig"; sourceTree = "<group>"; };
+		6DD5A42D79002941A6CC6501 /* Pods-paguide.itunes_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguide.itunes_release.xcconfig"; path = "Pods/Target Support Files/Pods-paguide/Pods-paguide.itunes_release.xcconfig"; sourceTree = "<group>"; };
+		71BB03365A8DD6AFCD86C539 /* Pods-paguideUITests.itunes_sandbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguideUITests.itunes_sandbox.xcconfig"; path = "Pods/Target Support Files/Pods-paguideUITests/Pods-paguideUITests.itunes_sandbox.xcconfig"; sourceTree = "<group>"; };
+		7C37FC2E3EBE7F8029204E6F /* Pods_paguideUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_paguideUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83820EDC6CAE497B16FD3398 /* Pods-paguide.itunes_sandbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguide.itunes_sandbox.xcconfig"; path = "Pods/Target Support Files/Pods-paguide/Pods-paguide.itunes_sandbox.xcconfig"; sourceTree = "<group>"; };
 		8A1176D21E6D5F6600C72B5A /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
 		8A1176D31E6D5F6600C72B5A /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
 		8A1176DA1E6D91C500C72B5A /* PackageDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackageDetailsViewController.h; sourceTree = "<group>"; };
@@ -613,13 +617,15 @@
 		8AFFDE481E76A1A900C55B55 /* NSArray+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JSON.m"; sourceTree = "<group>"; };
 		8AFFDE491E76A1A900C55B55 /* NSArray+value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+value.h"; sourceTree = "<group>"; };
 		8AFFDE4A1E76A1A900C55B55 /* NSArray+value.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+value.m"; sourceTree = "<group>"; };
+		AACE4E0FAC57E983CA04981C /* Pods_paguide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_paguide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE14A459BB761AAFF26A8CF9 /* Pods-paguideUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguideUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-paguideUITests/Pods-paguideUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AFE23AD73FEED76DD412BAA2 /* Pods-paguideUITests.itunes_release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguideUITests.itunes_release.xcconfig"; path = "Pods/Target Support Files/Pods-paguideUITests/Pods-paguideUITests.itunes_release.xcconfig"; sourceTree = "<group>"; };
 		B4E2A6F102445162C625E9AD /* Pods-paguideUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguideUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-paguideUITests/Pods-paguideUITests.release.xcconfig"; sourceTree = "<group>"; };
-		BA09E971CBF4BE8F95E4260E /* libPods-paguideTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-paguideTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC2B6A990CF507391786FFC8 /* Pods-paguideTests.itunes_sandbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguideTests.itunes_sandbox.xcconfig"; path = "Pods/Target Support Files/Pods-paguideTests/Pods-paguideTests.itunes_sandbox.xcconfig"; sourceTree = "<group>"; };
 		C65B861D085B3C934625737A /* Pods-paguide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguide.release.xcconfig"; path = "Pods/Target Support Files/Pods-paguide/Pods-paguide.release.xcconfig"; sourceTree = "<group>"; };
 		C89E3227AB44762BCC1BC7BE /* Pods-paguideTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguideTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-paguideTests/Pods-paguideTests.release.xcconfig"; sourceTree = "<group>"; };
-		CBB1D574CF8888961838CBCF /* libPods-paguideUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-paguideUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD661A108E5381634F4A28E2 /* Pods-paguide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-paguide.debug.xcconfig"; path = "Pods/Target Support Files/Pods-paguide/Pods-paguide.debug.xcconfig"; sourceTree = "<group>"; };
+		E5E528DFEE92B5A7492DE021 /* Pods_paguideTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_paguideTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -628,7 +634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A56371C1E68369D00ACAF2B /* MapKit.framework in Frameworks */,
-				5943473CA93A98F410E510D9 /* libPods-paguide.a in Frameworks */,
+				D84C6442035A4C4DDE229337 /* Pods_paguide.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +642,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E683741508F3F61E040113D7 /* libPods-paguideTests.a in Frameworks */,
+				3A595E63E2BF1091C4138518 /* Pods_paguideTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,7 +650,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB80E34B9755E728BF06E46F /* libPods-paguideUITests.a in Frameworks */,
+				707863EAC196CA2940B5E388 /* Pods_paguideUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +666,12 @@
 				C89E3227AB44762BCC1BC7BE /* Pods-paguideTests.release.xcconfig */,
 				AE14A459BB761AAFF26A8CF9 /* Pods-paguideUITests.debug.xcconfig */,
 				B4E2A6F102445162C625E9AD /* Pods-paguideUITests.release.xcconfig */,
+				83820EDC6CAE497B16FD3398 /* Pods-paguide.itunes_sandbox.xcconfig */,
+				6DD5A42D79002941A6CC6501 /* Pods-paguide.itunes_release.xcconfig */,
+				BC2B6A990CF507391786FFC8 /* Pods-paguideTests.itunes_sandbox.xcconfig */,
+				1EACF9C8E52B6FFF0561B927 /* Pods-paguideTests.itunes_release.xcconfig */,
+				71BB03365A8DD6AFCD86C539 /* Pods-paguideUITests.itunes_sandbox.xcconfig */,
+				AFE23AD73FEED76DD412BAA2 /* Pods-paguideUITests.itunes_release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1450,9 +1462,9 @@
 			isa = PBXGroup;
 			children = (
 				8A56371B1E68369D00ACAF2B /* MapKit.framework */,
-				0DCCCB89213773B27E867D63 /* libPods-paguide.a */,
-				BA09E971CBF4BE8F95E4260E /* libPods-paguideTests.a */,
-				CBB1D574CF8888961838CBCF /* libPods-paguideUITests.a */,
+				AACE4E0FAC57E983CA04981C /* Pods_paguide.framework */,
+				E5E528DFEE92B5A7492DE021 /* Pods_paguideTests.framework */,
+				7C37FC2E3EBE7F8029204E6F /* Pods_paguideUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1534,7 +1546,7 @@
 				TargetAttributes = {
 					8A772B001E601D2F00763DF7 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 4KJSSCCKPM;
+						DevelopmentTeam = S8YV349CW3;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2125,13 +2137,14 @@
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Evan Beh (LZD9FTFZF5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4KJSSCCKPM;
+				DEVELOPMENT_TEAM = "";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = paguide/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.pageaguide.consumer;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pageaguide.consumer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2148,15 +2161,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: PAGE ADVISOR PTE. LTD. (4KJSSCCKPM)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: PAGE ADVISOR PTE. LTD.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4KJSSCCKPM;
+				DEVELOPMENT_TEAM = "";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = paguide/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.pageaguide.consumer;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pageaguide.consumer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2266,20 +2280,21 @@
 		};
 		8A7DD37C1E9DD54000D91A10 /* Itunes_Sandbox */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD661A108E5381634F4A28E2 /* Pods-paguide.debug.xcconfig */;
+			baseConfigurationReference = 83820EDC6CAE497B16FD3398 /* Pods-paguide.itunes_sandbox.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Evan Beh (LZD9FTFZF5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4KJSSCCKPM;
+				DEVELOPMENT_TEAM = "";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = paguide/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.pageaguide.consumer;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pageaguide.consumer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2291,7 +2306,7 @@
 		};
 		8A7DD37D1E9DD54000D91A10 /* Itunes_Sandbox */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B2D3FDEBCBB5DC537D9CD79 /* Pods-paguideTests.debug.xcconfig */;
+			baseConfigurationReference = BC2B6A990CF507391786FFC8 /* Pods-paguideTests.itunes_sandbox.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = paguideTests/Info.plist;
@@ -2305,7 +2320,7 @@
 		};
 		8A7DD37E1E9DD54000D91A10 /* Itunes_Sandbox */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE14A459BB761AAFF26A8CF9 /* Pods-paguideUITests.debug.xcconfig */;
+			baseConfigurationReference = 71BB03365A8DD6AFCD86C539 /* Pods-paguideUITests.itunes_sandbox.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = paguideUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2357,20 +2372,21 @@
 		};
 		8A7DD3801E9DD55C00D91A10 /* Itunes_Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C65B861D085B3C934625737A /* Pods-paguide.release.xcconfig */;
+			baseConfigurationReference = 6DD5A42D79002941A6CC6501 /* Pods-paguide.itunes_release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PAGE ADVISOR PTE. LTD.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4KJSSCCKPM;
+				DEVELOPMENT_TEAM = "";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = paguide/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.pageaguide.consumer;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pageaguide.consumer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2381,7 +2397,7 @@
 		};
 		8A7DD3811E9DD55C00D91A10 /* Itunes_Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C89E3227AB44762BCC1BC7BE /* Pods-paguideTests.release.xcconfig */;
+			baseConfigurationReference = 1EACF9C8E52B6FFF0561B927 /* Pods-paguideTests.itunes_release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = paguideTests/Info.plist;
@@ -2395,7 +2411,7 @@
 		};
 		8A7DD3821E9DD55C00D91A10 /* Itunes_Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4E2A6F102445162C625E9AD /* Pods-paguideUITests.release.xcconfig */;
+			baseConfigurationReference = AFE23AD73FEED76DD412BAA2 /* Pods-paguideUITests.itunes_release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = paguideUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -284,7 +284,7 @@
         
         if (selectedScheduleModel.quantity) {
             
-            displayTitle = [NSString stringWithFormat:@"%@ %@",[selectedScheduleModel.quantity stringValue],@"Pax"];
+            displayTitle = [NSString stringWithFormat:@"%@ %@",[selectedScheduleModel.quantity stringValue],@"pax"];
 
         }
         else
@@ -307,6 +307,7 @@
         cell.didUpdateQuantitytBlock = ^(int value)
         {
             selectedScheduleModel.quantity = @(value);
+            
         };
         
         return cell;

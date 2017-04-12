@@ -82,9 +82,6 @@ PODS:
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
   - Protobuf (3.2.0)
-  - Realm (2.5.0):
-    - Realm/Headers (= 2.5.0)
-  - Realm/Headers (2.5.0)
   - RMActionController (1.0.5)
   - RMDateSelectionViewController (2.0.3):
     - RMActionController (~> 1.0.5)
@@ -116,7 +113,6 @@ DEPENDENCIES:
   - JTCalendar (~> 2.0)
   - KVNProgress
   - MWPhotoBrowser
-  - Realm
   - RMDateSelectionViewController (~> 2.0.3)
   - SAMKeychain
   - SDWebImage
@@ -161,7 +157,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
-  Realm: 62abce501668580092d2be9b6ba7324a3d5f906a
   RMActionController: b83653e7452ed51492094d65dc82151c36443c03
   RMDateSelectionViewController: 354a0f1fe40bac01054528b7a8735f2973bbd813
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
@@ -171,6 +166,6 @@ SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   TSMessages: eb3cf27b6900684a21bad4fe9ea426e287b8c839
 
-PODFILE CHECKSUM: 194cea67dbed7f220b1938d6641fac787c1a8a32
+PODFILE CHECKSUM: d4dee63880a4ca72ec4a0ed67534d73cc5c693dc
 
 COCOAPODS: 1.0.1

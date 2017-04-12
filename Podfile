@@ -56,9 +56,9 @@ def shared_pods
     pod 'Firebase/Messaging'
     pod 'Firebase/Crash'
 
-    pod 'Realm'
     pod 'RMDateSelectionViewController', '~> 2.0.3'
 
+    use_frameworks!
 
 
 end

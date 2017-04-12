@@ -22,7 +22,7 @@
         self.selectedNumber = [NSNumber numberWithInteger:[self.selectedNumber integerValue] -1];
     }
     
-    self.lblTitle.text = [self.selectedNumber stringValue];
+    self.lblTitle.text = [NSString stringWithFormat:@"%@ pax",[self.selectedNumber stringValue]];
     
     if (self.didUpdateQuantitytBlock)
     {
@@ -37,7 +37,7 @@
         self.selectedNumber = [NSNumber numberWithInteger:[self.selectedNumber integerValue] +1];
     }
     
-    self.lblTitle.text = [self.selectedNumber stringValue];
+    self.lblTitle.text = [NSString stringWithFormat:@"%@ pax",[self.selectedNumber stringValue]];
 
     if (self.didUpdateQuantitytBlock)
     {

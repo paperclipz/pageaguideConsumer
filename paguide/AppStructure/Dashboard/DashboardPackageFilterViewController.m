@@ -89,7 +89,7 @@
         else{
         
             
-            if ([model.title isEqualToString:@"price"]) {
+            if ([model.title isEqualToString:@"price"] || [model.title isEqualToString:@"rating"]) {
                 
                 NSArray* array = [self getArrayOptionsSelectedArray:model.arrOptionsList];
 
@@ -433,10 +433,18 @@
         [self.arrFilterList addObject:model2
          ];
         
-        
         FormDataModel* model3 = [FormDataModel new];
-        model3.title = @"keyword";
-        [self.arrFilterList addObject:model3];
+        model3.type = cell_type_option;
+        model3.title = @"rating";
+        model3.answer_list = @[@"high_low",@"low_high"];
+        [self.arrFilterList addObject:model3
+         ];
+
+        
+        
+        FormDataModel* model4 = [FormDataModel new];
+        model4.title = @"keyword";
+        [self.arrFilterList addObject:model4];
         
         [self.ibTableView reloadData];
 
