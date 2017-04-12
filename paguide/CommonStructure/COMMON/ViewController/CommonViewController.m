@@ -7,6 +7,7 @@
 //
 
 #import "CommonViewController.h"
+#import "AppointmentPageViewController.h"
 
 @interface CommonViewController ()
 
@@ -23,6 +24,13 @@
         BaseViewController* bVC = (BaseViewController*)viewC;
         
         bVC.isNeedReload = YES;
+    }
+    else if ([viewC isKindOfClass:[AppointmentPageViewController class]])
+    {
+        AppointmentPageViewController* bVC = (AppointmentPageViewController*)viewC;
+
+        bVC.isNeedReload = YES;
+
     }
 
 }

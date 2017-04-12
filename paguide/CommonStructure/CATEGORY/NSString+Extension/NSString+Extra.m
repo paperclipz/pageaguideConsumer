@@ -27,7 +27,6 @@ static const NSString *KEY_ATTRIBUTED_TEXT = @"KEY_ATTRIBUTED_TEXT";
     
 }
 
-
 -(NSAttributedString*)getAttributedText
 {
     
@@ -49,6 +48,19 @@ static const NSString *KEY_ATTRIBUTED_TEXT = @"KEY_ATTRIBUTED_TEXT";
 }
 
 
+
+-(NSString*)validateText{
+   
+    if ([Utils isStringNull:self]) {
+        
+        
+        return @"-";
+    }
+    else
+    {
+        return self;
+    }
+}
 @end
 
 @implementation NSString (Date)

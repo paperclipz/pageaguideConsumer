@@ -26,7 +26,6 @@
 @property (nonatomic) PagingViewModel* vm_appointment_paging;
 @property (nonatomic) NSMutableArray<AppointmentModel>* arrAppointmentList;
 
-@property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 @end
 
 @implementation AppointmentListViewController
@@ -64,6 +63,7 @@
     self.ibTableView.delegate = self;
     self.ibTableView.dataSource = self;
     
+
     
     [self.ibTableView pullToRefresh:^{
         
@@ -126,7 +126,7 @@
         
         
         NSString* string1 = @"Appointment : ";
-        NSString* string2 = model.request_info.date;
+        NSString* string2 = model.transaction_date;
         
         cell.lblTitle3.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string1,string2] StringToChange:string1];
         
@@ -218,6 +218,11 @@
         
     }
     
+    
+    if (self.vm_appointment_paging.currentPage == 0) {
+        
+        [LoadingManager show];
+    }
     self.vm_appointment_paging.isLoading = YES;
     
     NSString* token =  [Utils getToken];
@@ -230,6 +235,8 @@
     
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostAppointmentListing parameter:dict appendString:nil success:^(id object) {
         
+        [LoadingManager hide];
+
         self.vm_appointment_paging.isLoading = NO;
         
         NSError* error;
@@ -255,6 +262,7 @@
         
         [self.ibTableView customTableViewReloadData];
 
+        [LoadingManager hide];
 
     }];
 }
@@ -294,5 +302,14 @@
     
 }// any offset changes
 
+- (NSDateFormatter *)dateFormatter
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"dd-MM-yyyy";
+    }
+    return dateFormatter;
+}
 
 @end

@@ -103,7 +103,7 @@
 -(NSString*)countryName
 {
     if ([Utils isStringNull:_countryName]) {
-        return @"Country";
+        return @"Nationality";
     }
     else{
         return _countryName;

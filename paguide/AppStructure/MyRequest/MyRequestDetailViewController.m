@@ -16,24 +16,16 @@
 
 #import "UILabel+Extra.h"
 #import "PromoCodeViewController.h"
+#import "FormDataModel.h"
+
+
 #define cell_title @"cell_title"
 #define cell_merchant_offer @"cell_merchant_offer"
 #define cell_request_guide @"MY Request Guide"
 
-
-#define cell_request_language @"Language"
-#define cell_request_date @"Date"
-#define cell_request_period @"Period"
-#define cell_request_times @"Times"
-#define cell_request_specialty @"Specialty"
-#define cell_request_qualifications @"Qualifications"
-#define cell_request_noOfPeople @"Pax"
-
-
-@interface MyRequestDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface MyRequestDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 {
     NSArray* arrCellList;
-    NSArray* arrCellDetailsList;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *btnMakePayment;
@@ -57,16 +49,6 @@
 -(void)setupData:(AppointmentModel*)model
 {
     self.appointmentModel = model;
-    
-    MerchantProfileModel* pmodel = [MerchantProfileModel new];
-    
-    pmodel.name = @"John";
-    
-    pmodel.offer_currency = @"RM";
-    
-    pmodel.offer_price = @"10.00";
-    
-    
 
 }
 
@@ -94,8 +76,6 @@
      [self.ibTableView registerNib:[UINib nibWithNibName:@"EmptyTableViewCell" bundle:nil] forCellReuseIdentifier:@"empty_cell"];
     
     arrCellList = @[cell_title,cell_merchant_offer,cell_request_guide];
-
-    arrCellDetailsList = @[cell_request_language,cell_request_date,cell_request_period,cell_request_times,cell_request_specialty,cell_request_qualifications,cell_request_noOfPeople];
 
     
     if (![Utils isStringNull:self.appointmentModel.request_id]) {
@@ -211,7 +191,7 @@
     }
     
     else if ([type isEqualToString:cell_request_guide]) {
-        return arrCellDetailsList.count;
+        return self.appointmentModel.request_info.arrRequest_field.count;
         
     }
     return 0;
@@ -315,49 +295,12 @@
     else if ([type isEqualToString:cell_request_guide]) {
         GeneralTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"appt_request_detail"];
         
-        NSString* request_guide_detail = arrCellDetailsList[indexPath.row];
+        FormDataModel* fModel = self.appointmentModel.request_info.arrRequest_field[indexPath.row];
         
-        cell.lblTitle.text = request_guide_detail;
-        
-        if ([request_guide_detail isEqualToString:cell_request_language]) {
-            
-            
-            [cell.lblDescription setCustomText:self.appointmentModel.request_info.language];
-            
-        }
-        else if ([request_guide_detail isEqualToString:cell_request_date]) {
-            
-        
-            cell.lblDescription.text = [self.appointmentModel.request_info.created_at getFormattedDateFrom:@"yyyy-MM-dd hh:mm:ss" ToType:@"yyyy-MM-dd"];
-            
-        }
-        
-        else if ([request_guide_detail isEqualToString:cell_request_period]) {
-            cell.lblDescription.text = [self.appointmentModel.request_info.period stringValue];
-            
-        }
-        else if ([request_guide_detail isEqualToString:cell_request_times]) {
-            cell.lblDescription.text = [self.appointmentModel.request_info.times componentsJoinedByString:@","];
-            
-        }
-        else if ([request_guide_detail isEqualToString:cell_request_specialty]) {
-            cell.lblDescription.text = [self.appointmentModel.request_info.specialty componentsJoinedByString:@","];
-            
-        }
-        
-        else if ([request_guide_detail isEqualToString:cell_request_qualifications]) {
-            cell.lblDescription.text = [self.appointmentModel.request_info.qualifications componentsJoinedByString:@","];
-            
-        }
-        
-        else if ([request_guide_detail isEqualToString:cell_request_noOfPeople]) {
-            cell.lblDescription.text = [self.appointmentModel.request_info.pax stringValue];
-            
-        }
-        else if ([request_guide_detail isEqualToString:cell_request_noOfPeople]) {
-            cell.lblDescription.text = [self.appointmentModel.request_info.pax stringValue];
-            
-        }
+        cell.lblTitle.text = fModel.title;
+    
+        cell.lblDescription.text = fModel.value;
+
         return cell;
     }
     
@@ -692,7 +635,6 @@
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
         
         [MessageManager showMessage:model.generalMessage Type:TSMessageNotificationTypeSuccess inViewController:self];
-        
         
         [self resetMainPage];
         

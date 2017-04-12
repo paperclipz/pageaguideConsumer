@@ -18,6 +18,7 @@
 #define cell_Privacy @"Privacy Policy"
 #define cell_Logout @"Logout"
 #define cell_Login @"Login"
+#define cell_Version @"Version"
 
 
 @interface SettingTableViewController ()
@@ -48,12 +49,14 @@
                              cell_Term,
                              cell_Privacy,
                              cell_Logout,
+                             cell_Version,
                              ];
         
     }
     else{
         self.arrCellList = @[
                              cell_Login,
+                             cell_Version,
                              ];
     }
     
@@ -91,7 +94,15 @@
     cell.textLabel.text = self.arrCellList[indexPath.row];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    // Configure the cell...
+    
+    NSString* type = self.arrCellList[indexPath.row];
+
+    if ([type isEqualToString:cell_Version]) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@",type,[Utils getAppVersion]];
+
+    }
     
     return cell;
 }
@@ -189,6 +200,9 @@
         [Utils showRegisterPage];
 
     }
+    
+ 
+
    
 }
 
@@ -237,7 +251,7 @@
     
     viewController.didSubmitClickedBlock = ^{
         
-        [self requestSeverToUpdateNotif:self.settingPopoutViewController.ibSwitchOne.on SMSOn:self.settingPopoutViewController.ibSwitchOne.on Completion:^(BOOL isSuccess) {
+        [self requestSeverToUpdateNotif:self.settingPopoutViewController.ibSwitchOne.on SMSOn:self.settingPopoutViewController.ibSwitchTwo.on Completion:^(BOOL isSuccess) {
             
             if (isSuccess) {
                 [weakSelf.settingPopoutViewController.popupController dismiss];

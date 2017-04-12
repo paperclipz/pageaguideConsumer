@@ -11,8 +11,8 @@
 
 @interface RequestGuideTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblDesc;
 @property (weak, nonatomic) IBOutlet UIButton *btnSelection;
-
 @property (weak, nonatomic) IBOutlet UITextField *txtField;
 
 -(void)setupformData:(KeyValueModel*)data;

@@ -12,4 +12,6 @@
 
 @interface AppointmentListViewController : BaseViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *ibTableView;
+
 @end

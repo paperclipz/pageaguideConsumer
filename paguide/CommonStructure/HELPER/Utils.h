@@ -28,6 +28,9 @@
 +(void)setRoundBorder:(UIView*)view color:(UIColor*)color borderRadius:(float)borderRadius;
 
 #pragma mark - App Utils
+
++(NSString*)getAppVersion;
+
 +(void)reloadAllAppointView;
 
 +(NSString*)getUniqueDeviceIdentifier;

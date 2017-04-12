@@ -38,6 +38,10 @@
 @property (nonatomic,strong)NSString* updated_at;
 @property (nonatomic,strong)NSString* packages_id;
 @property (nonatomic,strong)NSString* packages_code;
+@property (nonatomic,strong)NSString* ratings;
+
+@property (nonatomic,assign)BOOL isScheduled;
+
 
 
 //@property (nonatomic,strong)NSArray<ScheduleModel,Ignore>* arrScheduled_datetime;

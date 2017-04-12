@@ -18,4 +18,7 @@
 
 
 @property(nonatomic,copy)VoidBlock didSelectBlock;
+
+@property(nonatomic,copy)VoidBlock didSelectInnerButton1Block;
+
 @end

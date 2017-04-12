@@ -10,6 +10,7 @@
 
 @interface DashboardPackageTableViewCell()
 @property (weak, nonatomic) IBOutlet UIView *ibContentView;
+@property (weak, nonatomic) IBOutlet UIView *ibRatingContentView;
 
 @end
 
@@ -20,6 +21,14 @@
     
     [Utils setRoundBorder:self.ibContentView color:[UIColor clearColor] borderRadius:5.0f];
     
+    
+    if (self.ibRatingContentView) {
+        [self.ibRatingContentView addSubview:self.ratingView];
+        
+        self.ratingView.frame = CGRectMake(0, 0, self.ibRatingContentView.frame.size.width, self.ibRatingContentView.frame.size.height);
+    }
+    
+    [self.ratingView setupRatingOutOfFive:1];
     // Initialization code
 }
 
@@ -29,4 +38,14 @@
     // Configure the view for the selected state
 }
 
+-(RatingView*)ratingView
+{
+    if (!_ratingView) {
+        _ratingView = [RatingView initializeCustomView];
+        
+        
+    }
+    
+    return _ratingView;
+}
 @end

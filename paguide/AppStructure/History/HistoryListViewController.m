@@ -185,6 +185,11 @@
         return;
         
     }
+    
+    if (self.vm_appointment_paging.currentPage == 0)
+    {
+        [LoadingManager show];
+    }
     self.vm_appointment_paging.isLoading = YES;
     
     //IsNullConverstion([GVUserDefaults standardUserDefaults].token)
@@ -197,6 +202,8 @@
     
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostHistoryListing parameter:dict appendString:nil success:^(id object) {
         
+        [LoadingManager hide];
+
         self.vm_appointment_paging.isLoading = NO;
         
         NSError* error;
@@ -222,6 +229,8 @@
         [self.ibTableView stopFooterLoadingView];
 
         [self.ibTableView customTableViewReloadData];
+
+        [LoadingManager hide];
 
     }];
 }

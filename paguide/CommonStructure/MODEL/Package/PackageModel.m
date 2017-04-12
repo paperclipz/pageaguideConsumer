@@ -48,6 +48,18 @@
 //}
 //
 
+
+-(BOOL)isScheduled
+{
+    if ([_scheduled isEqualToString:@"no"]) {
+        _isScheduled = NO;
+    }
+    else{
+        _isScheduled = YES;
+    }
+    
+    return _isScheduled;
+}
 -(NSString*)package_date
 {
     

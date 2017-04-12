@@ -43,6 +43,28 @@
     return nil;
 }
 
+
++ (id)initializeCustomView:(NSString*)name
+{
+    NSString* viewName;
+    
+    viewName = name;
+    
+    //    NSLog(@"name == %@",viewName);
+    NSArray *objects = [[NSBundle mainBundle] loadNibNamed:viewName owner:nil options:nil];
+    
+    for (id currentObject in objects ){
+        if ([currentObject isKindOfClass:[self class]])
+            // NSLog(@"Nib View Added To [%@]", NSStringFromClass([self class]));
+            
+            [currentObject initSelfView];
+        return currentObject;
+    }
+    //  NSLog(@"Nib View NOT Added To [%@]", NSStringFromClass([self class]));
+    
+    return nil;
+}
+
 -(void)initSelfView
 {
     

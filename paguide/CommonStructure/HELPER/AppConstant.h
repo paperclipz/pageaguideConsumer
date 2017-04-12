@@ -8,22 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
+#define intercom_key @"ios_sdk-1eb6d861cfa6e01d9a894110a348906601d33fe7"
+
+#define intercom_appID @"zex5tsam"
+
+#define SERVICE_TOKEN @"iw-V8JRku6nEmUnz7GJOpsJ_0-D7z0resdYmnJQirsU"
+
+#define STRIPE_KEY @"pk_test_useqkPsXfsDnNPCl6F4VIgMO"
+
+
+
+@interface AppConstant : NSObject
+
+#define SUCCESSFUL @"00"
+
 #define APP_MAIN_COLOR [UIColor colorWithRed:209.0/255.0f green:18.0f/255.0f blue:18.0f/255.0f alpha:1]
 
 #define PHOTO_PLACEHOLDER [UIImage imageNamed:@"placeholder_photo.png"]
 
 #define AVATAR_PLACEHOLDER [UIImage imageNamed:@"placeholder_profile.png"]
 
-@interface AppConstant : NSObject
-
-#define SUCCESSFUL @"00"
-
 //#define APP_Version @"1.0.2"
 
 #define IS_SIMULATOR NO
-
-#define SERVICE_TOKEN @"iw-V8JRku6nEmUnz7GJOpsJ_0-D7z0resdYmnJQirsU"
-
 #pragma mark - App Definition
 #define T_N_C @"By registring I had agree with the Terms of Service and Privacy Policy."//
 

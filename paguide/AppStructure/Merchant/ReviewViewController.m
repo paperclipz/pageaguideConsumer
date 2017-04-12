@@ -59,7 +59,7 @@
     
     cell.lblDesc1.text = rModel.user_name;
     
-    [cell.ratingView setupRatingOutOfFive:[rModel.rate intValue]];
+    [cell.ratingView setupRatingOutOfFive:round([rModel.rate doubleValue])];
     
     return cell;
 }

@@ -12,21 +12,17 @@
 #import "HeaderView.h"
 #import "RatingViewController.h"
 #import "AppointmentViewController.h"
+#import "FormDataModel.h"
+#import "MerchantProfileViewController.h"
 
 #define cell_title @"cell_title"
 #define cell_merchant_offer @"cell_merchant_offer"
 #define cell_request_guide @"MY Request Guide"
 
 
-
-#define cell_request_language @"Prefer Language"
-#define cell_request_noOfPeople @"Number of People"
-#define cell_request_tourGuide @"Your Guide"
-
 @interface AppointmentRequestViewController () <UITableViewDelegate, UITableViewDataSource>
 {
     NSArray* arrCellList;
-    NSArray* arrCellDetailsList;
 
     __weak IBOutlet NSLayoutConstraint *constHeight_verify;
 
@@ -134,7 +130,6 @@
     self.title = @"Request Guide";
     
     arrCellList = @[cell_title,cell_merchant_offer,cell_request_guide];
-    arrCellDetailsList = @[cell_request_language,cell_request_noOfPeople,cell_request_tourGuide];
     
     [Utils setRoundBorder:self.btnVerify color:[UIColor clearColor] borderRadius:5.0f];
     
@@ -245,7 +240,7 @@
     }
    
     else if ([type isEqualToString:cell_request_guide]) {
-        return arrCellDetailsList.count;
+        return self.appointmentModel.request_info.arrRequest_field.count;
 
     }
     return 0;
@@ -297,6 +292,11 @@
                                                                                              NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
                                                                         documentAttributes:nil error:nil];
             
+            
+            cell.didSelectInnerButton1Block = ^{
+            
+                [self performSegueWithIdentifier:@"merchant_profile" sender:self];
+            };
             return cell;
         }
         else{
@@ -308,6 +308,12 @@
             
             cell.lblDescription.text = model.name;
             
+            cell.didSelectInnerButton1Block = ^{
+                
+                [self performSegueWithIdentifier:@"merchant_profile" sender:self];
+
+            };
+            
             return cell;
             
         }
@@ -318,24 +324,13 @@
     else if ([type isEqualToString:cell_request_guide]) {
         GeneralTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"appt_request_detail"];
         
-        NSString* request_guide_detail = arrCellDetailsList[indexPath.row];
+        FormDataModel* fModel = self.appointmentModel.request_info.arrRequest_field[indexPath.row];
         
-        cell.lblTitle.text = request_guide_detail;
+        cell.lblTitle.text = fModel.title;
         
-        if ([request_guide_detail isEqualToString:cell_request_language]) {
-            
-            
-            cell.lblDescription.text = self.appointmentModel.request_info.language;
-            
-        }
-        else if ([request_guide_detail isEqualToString:cell_request_noOfPeople]) {
-            cell.lblDescription.text = [self.appointmentModel.request_info.pax stringValue];
+        cell.lblDescription.text = fModel.value;
 
-        }
-        else if ([request_guide_detail isEqualToString:cell_request_tourGuide]) {
-            cell.lblDescription.text = [self.appointmentModel.request_info.pax stringValue];
-
-        }
+      
         return cell;
     }
     
@@ -365,7 +360,6 @@
     }
     
 }
-
 
 #pragma mark - Show View
 -(void)showRatingView:(RateAndReviewBlock)rateNreview
@@ -469,14 +463,22 @@
         [MessageManager showMessage:model.generalMessage Type:TSMessageNotificationTypeError];
     }];
 }
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"merchant_profile"]) {
+        
+        
+        MerchantProfileViewController* mViewController = [segue destinationViewController];
+        
+        [mViewController setUpMerchantProfile:self.appointmentModel.merchant_info_model];
+    }
 }
-*/
+
 
 @end

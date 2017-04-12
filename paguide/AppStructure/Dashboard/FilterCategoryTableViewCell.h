@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UITextField+Blocks.h"
 
 @interface FilterCategoryTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UISwitch *ibSwitch;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtField;
 
 @property(nonatomic,copy)VoidBlock didChangewitchBlock;
+
+
 @end

@@ -1,10 +1,7 @@
 #import "ConnectionManager.h"
-//#import "NSArray+JSON.h"
 #import "AFNetworking.h"
 #import "ConnectionHelper.h"
 
-
-//#define SERVER_PATH_LIVE @"vmi85167.contabo.host:8080/beep-server/rest"
 
 #define SERVER_PATH_LIVE @"devpage.pageadvisor.com"
 
@@ -69,41 +66,16 @@
     
 }
 
--(AFHTTPSessionManager*)createNewDataManager
-{
-    
-    if (!_manager) {
-        _manager = [AFHTTPSessionManager manager];
-        
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-        _manager.responseSerializer = [AFJSONResponseSerializer serializer];
-        
-        _manager.securityPolicy.allowInvalidCertificates = YES;
-        
-        _manager.securityPolicy.validatesDomainName = NO;
-        
-        _manager.responseSerializer =[AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-        _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/plain",nil];
-        
-    }
-    
-    return _manager;
-    
-}
-
 +(DataManager*)dataManager
 {
     return [[ConnectionManager Instance] dataManager];
 }
-
 
 #pragma mark - Connection Checking
 +(BOOL)isNetworkAvailable
 {
     
     BOOL isReachable = [AFNetworkReachabilityManager sharedManager].reachable;
-    
     
     return isReachable;
 }
@@ -956,7 +928,7 @@
     
     if ([response statusCode] == 503)
     {
-        
+
     }
     else if([response statusCode] == 401)
     {

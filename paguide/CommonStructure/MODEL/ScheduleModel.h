@@ -19,6 +19,9 @@
 @property (nonatomic,strong)NSString* created_at;
 @property (nonatomic,strong)NSString* updated_at;
 
+
 @property (nonatomic,strong)NSNumber* quantity;//viewmodel
 
+@property (nonatomic,strong)NSDate* selectedDate;
+@property (nonatomic,strong)NSString* inputLanguage;
 @end

@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "AppModel.h"
 #import <SAMKeychain.h>
+#import "AppointmentPageViewController.h"
 
 #define BORDER_WIDTH 1.0f
 #define KEY_APP_TOKEN @"app_token"
@@ -299,6 +300,13 @@
                         BaseViewController* baseController = (BaseViewController*)innerViewController;
                         baseController.isNeedReload = YES;
 
+                    }
+                    else if ([innerViewController isKindOfClass:[AppointmentPageViewController class]])
+                    {
+                        
+                        AppointmentPageViewController* apptPageViewController = (AppointmentPageViewController*)innerViewController;
+                        apptPageViewController.isNeedReload = YES;
+                        
                     }
                 }
                

@@ -163,6 +163,7 @@
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0D9-29-Pfq">
                                                 <rect key="frame" x="316" y="4.5" width="51" height="31"/>
+                                                <color key="onTintColor" red="0.81960784310000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                             </switch>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -186,6 +187,9 @@
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jDT-om-vxe">
                                                 <rect key="frame" x="316" y="4.5" width="51" height="31"/>
+                                                <color key="tintColor" red="0.81960784310000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="onTintColor" red="0.81960784310000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </switch>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -392,7 +396,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDE-K8-Fqt">
-                                        <rect key="frame" x="138" y="68" width="207" height="30"/>
+                                        <rect key="frame" x="137.5" y="68" width="207.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="LNt-T8-M0R"/>
                                         </constraints>
@@ -401,14 +405,14 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hk-6R-tgs">
-                                        <rect key="frame" x="10" y="98" width="107" height="1"/>
+                                        <rect key="frame" x="10" y="98" width="107.5" height="1"/>
                                         <color key="backgroundColor" red="0.81960784310000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Qui-VP-dDV"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYf-Bf-5D1">
-                                        <rect key="frame" x="10" y="68" width="108" height="30"/>
+                                        <rect key="frame" x="10" y="68" width="107.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="aFs-gY-xdb"/>
                                         </constraints>
@@ -421,7 +425,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYU-tY-fDe">
-                                        <rect key="frame" x="137" y="98" width="208" height="1"/>
+                                        <rect key="frame" x="136.5" y="98" width="208.5" height="1"/>
                                         <color key="backgroundColor" red="0.81960784310000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="T4v-MI-i7e"/>

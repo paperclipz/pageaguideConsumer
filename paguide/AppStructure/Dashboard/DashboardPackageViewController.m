@@ -260,6 +260,8 @@
     [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:model.listing_img]];
 
     cell.lblTitle4.text = model.category;
+    
+    [cell.ratingView setupRatingOutOfFive:round([model.ratings doubleValue])];
 
 }
 
@@ -363,6 +365,10 @@
         [mDict addEntriesFromDictionary:@{@"filter" : IsNullConverstion(strFilter)}];
     }
     
+    if (self.vm_package_paging.currentPage == 0) {
+        [LoadingManager show];
+    }
+    
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostPackageListing parameter:mDict appendString:nil success:^(id object) {
         
         
@@ -382,6 +388,8 @@
         
         [self.ibTableView stopFooterLoadingView];
         
+        [LoadingManager hide];
+        
         
     } failure:^(id object) {
         
@@ -391,6 +399,8 @@
         [self.ibTableView stopRefresh];
         
         [self.ibTableView stopFooterLoadingView];
+
+        [LoadingManager hide];
 
 
     }];

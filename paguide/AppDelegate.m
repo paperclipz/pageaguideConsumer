@@ -17,7 +17,6 @@
 
 @import Intercom;
 
-#define STRIPE_KEY @"pk_test_useqkPsXfsDnNPCl6F4VIgMO"
 
 
 #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
@@ -68,7 +67,7 @@
  
     [[STPPaymentConfiguration sharedConfiguration] setPublishableKey:STRIPE_KEY];
     
-    [Intercom setApiKey:@"ios_sdk-1eb6d861cfa6e01d9a894110a348906601d33fe7" forAppId:@"zex5tsam"];
+    [Intercom setApiKey:intercom_key forAppId:intercom_appID];
 
     
 }

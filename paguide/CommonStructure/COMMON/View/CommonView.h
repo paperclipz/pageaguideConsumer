@@ -11,5 +11,6 @@
 @interface CommonView : UIView
 + (id)initializeCustomView;
 -(void)initSelfView;
++ (id)initializeCustomView:(NSString*)name;
 
 @end

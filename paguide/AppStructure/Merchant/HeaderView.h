@@ -12,6 +12,7 @@
 @interface HeaderView : CommonView
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle1;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle2;
+@property (weak, nonatomic) IBOutlet UIImageView *ibImageView;
 
 @property(nonatomic,copy)VoidBlock didSelectBlock;
 @end

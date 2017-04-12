@@ -57,6 +57,8 @@ def shared_pods
     pod 'Firebase/Crash'
 
     pod 'Realm'
+    pod 'RMDateSelectionViewController', '~> 2.0.3'
+
 
 
 end

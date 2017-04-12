@@ -91,7 +91,7 @@
     [Utils setRoundBorder: self.ibMerchantProfileView color:[UIColor clearColor] borderRadius:self.ibMerchantProfileView.frame.size.height/2];
     [self setUpRatingView];
     
-    [self.ratingView setupRatingOutOfFive:[self.merchantProfileModel.overall_rating intValue]];
+    [self.ratingView setupRatingOutOfFive:round([self.merchantProfileModel.overall_rating doubleValue])];
     
   //  [self.ibTableView registerClass:[GalleryTableViewCell class] forCellReuseIdentifier:@"gallery_cell"];
     
@@ -153,7 +153,6 @@
 
     headerView.lblTitle2.textColor = APP_MAIN_COLOR;
 
-    
     headerView.lblTitle2.hidden = YES;
 
     if ([type isEqualToString:cell_review]) {
@@ -180,7 +179,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 50.0f;
+    return 30.0f;
 }
 
 
@@ -308,7 +307,7 @@
         
         cell.lblDesc1.text = rModel.user_name;
         
-        [cell.ratingView setupRatingOutOfFive:[rModel.rate intValue]];
+        [cell.ratingView setupRatingOutOfFive:round([rModel.rate doubleValue])];
         
         return cell;
     }

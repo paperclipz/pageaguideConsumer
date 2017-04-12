@@ -20,4 +20,6 @@
 
 -(NSString*)getFormattedDateFrom:(NSString*)fromType ToType:(NSString*)toType;
 
+-(NSString*)validateText;
+
 @end

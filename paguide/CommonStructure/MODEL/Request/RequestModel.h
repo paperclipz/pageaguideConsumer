@@ -8,6 +8,8 @@
 
 #import <JSONModel/JSONModel.h>
 
+@protocol FormDataModel;
+
 @interface RequestModel : JSONModel
 
 
@@ -21,5 +23,6 @@
 @property(nonatomic,strong)NSString* created_at;
 @property(nonatomic,strong)NSString* updated_at;
 @property(nonatomic,strong)NSArray* specialty;
+@property (nonatomic,strong)NSArray* arrRequest_field;
 
 @end

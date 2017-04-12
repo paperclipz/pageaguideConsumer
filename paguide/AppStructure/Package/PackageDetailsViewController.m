@@ -17,6 +17,7 @@
 #import "SelectPackageViewController.h"
 #import "OfflineManager.h"
 #import "NSString+Extra.h"
+#import "MerchantProfileViewController.h"
 
 #define cell_type_title @"title"
 #define cell_type_details @"details"
@@ -101,7 +102,6 @@
         [OfflineManager storePackageList:self.packageModel];
         
     }
-  
 
     isPackageBookmarked = !isPackageBookmarked;
 
@@ -121,6 +121,12 @@
     
 }
 
+
+- (IBAction)btnPurchaseClicked:(id)sender {
+    
+    [self showPackageSelectionViewNonSecheduled];
+}
+
 -(void)setupData:(PackageModel*)model
 {
     self.packageModel = model;
@@ -131,6 +137,27 @@
     self.packageID = packageID;
 }
 
+
+-(void)setupButton
+{
+    [self.btnAvailability removeTarget:nil
+                       action:NULL
+             forControlEvents:UIControlEventAllEvents];
+    
+    if (self.packageModel.isScheduled) {
+        
+        [self.btnAvailability setTitle:@"Check Availability" forState:UIControlStateNormal];
+        
+        [self.btnAvailability addTarget:self action:@selector(btnAvailableClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else{
+        [self.btnAvailability setTitle:@"Purchase" forState:UIControlStateNormal];
+
+        [self.btnAvailability addTarget:self action:@selector(btnPurchaseClicked:) forControlEvents:UIControlEventTouchUpInside];
+
+    }
+    
+}
 -(void)changeItemBarBookedmarked:(BOOL)isBookmarked
 {
     
@@ -190,7 +217,6 @@
 
 -(void)initSelfView
 {
-
     self.title = @"Package Details";
     
     if (_viewType == PACKAGE_VIEW_TYPE_AVAILABILIY) {
@@ -223,12 +249,17 @@
     
         self.ratingView.frame = CGRectMake(0, 0, self.ibRatingContentView.frame.size.width, self.ibRatingContentView.frame.size.height);
     
-        [self.ratingView setupRatingOutOfFive:4];
+        [self.ratingView setupRatingOutOfFive:round([self.packageModel.ratings doubleValue])];
 }
 -(void)initData
 {
     
     // setup view for check availability
+    
+    [self addRating];
+    
+    [self setupButton];
+
    
     isPackageBookmarked = [OfflineManager checkIsPackageBookmarked:self.packageModel.packages_code];
     
@@ -246,8 +277,6 @@
         
         NSRange string1_range1 = [attributeString.string rangeOfString:display_price];
         NSRange string1_range2 = [attributeString.string rangeOfString:display_unit];
-        
-        
         
         [attributeString addAttribute:NSFontAttributeName
                                 value:[UIFont fontWithName:@"Helvetica-Bold" size:15.0]
@@ -278,6 +307,7 @@
         }
         
         [self.ibTableView reloadData];
+     
         
     }
     
@@ -534,6 +564,17 @@
     return  nil;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString* type = arrCellList[indexPath.section];
+    
+    if ([type isEqualToString:cell_type_title]) {
+        
+        [self performSegueWithIdentifier:@"package_details_merchant" sender:self];
+
+    }
+}
+
 
 -(NSMutableAttributedString*)convertAttributedStringFor:(NSString*)fullString StringToChange:(NSString*)substring
 {
@@ -747,11 +788,6 @@
 {
     
     
-    UIViewController *rootController =(UIViewController*)[[(AppDelegate*)
-                                                           [[UIApplication sharedApplication]delegate] window] rootViewController];
-    
-    
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PackageSelection" bundle:nil];
     UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_package_selection"];
     
@@ -775,21 +811,40 @@
     };
     
     [self.tabBarController presentViewController:viewController animated:YES completion:nil];
-    
-    
-    
-    
-//    __weak typeof (self)weakSelf = self;
-//    
-//    self.quantitySelectionViewController.didSelectQuantityBlock = ^(int count)
-//    {
-//        [weakSelf.quantitySelectionViewController dismissViewControllerAnimated:YES completion:^{
-//            
-//            [weakSelf showPaymentPackageDetailView];
-//        }];
-//    };
-//    
+ 
 }
+
+
+-(void)showPackageSelectionViewNonSecheduled
+{
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PackageSelection" bundle:nil];
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_package_selection"];
+    
+    
+    viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    _selectPackageViewController = (SelectPackageViewController*)viewController;
+    
+    [self.selectPackageViewController setuDataWithPackage:self.packageModel];
+    
+    __weak typeof (self)weakSelf = self;
+    
+    self.selectPackageViewController.didFinishSelectScheduleBlock = ^(ScheduleModel* model)
+    {
+        [weakSelf.selectPackageViewController dismissViewControllerAnimated:YES completion:^{
+            
+            [weakSelf showPaymentPackageDetailView:model];
+        }];
+    };
+    
+    [self.tabBarController presentViewController:viewController animated:YES completion:nil];
+    
+    
+}
+
 
 -(void)showPaymentPackageDetailView:(ScheduleModel*)model
 {
@@ -927,11 +982,27 @@
 {
     NSDictionary* dict;
 
-    NSString* date_language_pax_time = [NSString stringWithFormat:@"%@|%@|%@|%@",
-                                        self.selectedScheduleModel.scheduled_date,
-                                        self.selectedScheduleModel.language,
-                                        self.selectedScheduleModel.quantity,
-                                        self.selectedScheduleModel.scheduled_time];
+    NSString* date_language_pax_time;
+    
+    if (self.packageModel.isScheduled) {
+        
+       
+        date_language_pax_time = [NSString stringWithFormat:@"%@|%@|%@|%@",
+                                            self.selectedScheduleModel.scheduled_date,
+                                            self.selectedScheduleModel.language,
+                                            self.selectedScheduleModel.quantity,
+                                            self.selectedScheduleModel.scheduled_time];
+    }
+    else{
+        
+        date_language_pax_time = [NSString stringWithFormat:@"%@|%@|%@|%@",
+                                  [[self dateFormatter1] stringFromDate:self.selectedScheduleModel.selectedDate],
+                                  self.selectedScheduleModel.inputLanguage,
+                                  self.selectedScheduleModel.quantity,
+                                  [[self timeFormatter] stringFromDate:self.selectedScheduleModel.selectedDate]
+                                  ];
+    }
+ 
     
     if ([Utils isStringNull:promoCode]) {
 
@@ -1125,18 +1196,6 @@
     return NO;
 }
 
--(NSDateFormatter*)getCustomDateFormatter
-{
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-   
-    dateFormatter.calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-
-    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
-   
-    
-    return dateFormatter;
-}
 
 - (NSDateFormatter *)dateFormatter1 {
     
@@ -1149,22 +1208,32 @@
     return dateFormatter;
 }
 #pragma mark - Navigation
-//
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    // Get the new view controller using [segue destinationViewController].
-//    // Pass the selected object to the new view controller.
-//    
-//    if ([[segue identifier] isEqualToString:@"package_details"]) {
-//        
-//        PackageDetailsViewController *vc = [segue destinationViewController];
-//        
-//        vc.viewType = PACKAGE_VIEW_TYPE_PAYMENT;
-//        
-//    }
-//}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"package_details_merchant"]) {
+        
+        MerchantProfileViewController *vc = [segue destinationViewController];
+        
+        [vc setUpMerchantProfile:self.packageModel.merchant_info];
+        
+    }
+}
 
 
 
+- (NSDateFormatter *)timeFormatter
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"HHmm";
+    }
+    
+    return dateFormatter;
+}
 
 
 @end

@@ -15,6 +15,9 @@
 #import "PackageDetailsTableViewCell.h"
 #import "RatingViewController.h"
 #import "MerchantProfileViewController.h"
+#import "NSString+Extra.h"
+
+
 
 #define cell_title @"cell_title"
 #define cell_detail1 @"cell_detail1"
@@ -40,12 +43,13 @@
 @implementation AppointmentViewController
 - (IBAction)btnCompleteClicked:(id)sender {
     
+    [self.view endEditing:YES];
+
     [self showRatingView:^(int rate, NSString *reviews) {
         
         [self requestServerForAppointmentRating:rate Review:reviews AppointmentID:self.appointmentModel.appointment_id Completion:^{
             
             [self.ratingViewController dismissViewControllerAnimated:YES completion:^{
-                
                 
                 
                 [self resetMainPage];
@@ -67,6 +71,8 @@
 }
 
 - (IBAction)btnVerifyClicked:(id)sender {
+    
+    [self.view endEditing:YES];
     
     if ([Utils isStringNull:self.txtVerifyCode.text]) {
         
@@ -215,7 +221,7 @@
     }
     else  if ([type isEqualToString:@"cell_detail1"]) {
         
-        return 130.0f;
+        return UITableViewAutomaticDimension;
     }
     else  if ([type isEqualToString:@"cell_map"]) {
         
@@ -241,10 +247,10 @@
     if ([type isEqualToString:@"cell_title"]) {
         ApptHeaderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"appt_title"];
         
-        cell.lblTitle.text = self.appointmentModel.merchant_info_model.name;
-        cell.lblTitle2.text = self.appointmentModel.merchant_info_model.mobile_number;
-        cell.lblTitle3.text = self.appointmentModel.merchant_info_model.email;
-        [cell.ratingView setupRatingOutOfFive:[self.appointmentModel.merchant_info_model.overall_rating intValue]];
+        cell.lblTitle.text = self.appointmentModel.merchant_info_model.name.validateText;
+        cell.lblTitle2.text = self.appointmentModel.merchant_info_model.mobile_number.validateText;
+        cell.lblTitle3.text = self.appointmentModel.merchant_info_model.email.validateText;
+        [cell.ratingView setupRatingOutOfFive:round([self.appointmentModel.merchant_info_model.overall_rating doubleValue])];
 
         return cell;
         
@@ -255,14 +261,14 @@
         cell.lblTitle.text = [NSString stringWithFormat:@"%@ %@",self.appointmentModel.currency,self.appointmentModel.price];
         cell.lblTitle2.text = [NSString stringWithFormat:@"%@ %@",@"Purchase Date :",self.appointmentModel.transaction_date];
         
-        cell.lblTitle3.text = self.appointmentModel.package_info_model.name;
+        cell.lblTitle3.text = self.appointmentModel.package_info_model.name.validateText;
 
-        cell.lblTitle4.text = self.appointmentModel.appointment_code;
+        cell.lblTitle4.text = self.appointmentModel.appointment_code.validateText;
 
-        cell.lblTitle5.text = self.appointmentModel.verify_time;
+        cell.lblTitle5.text = [NSString stringWithFormat:@"Appointment Date : %@",self.appointmentModel.package_info_model.package_date];
+
+        cell.lblTitle6.text = [NSString stringWithFormat:@"Pax : %@ pax",self.appointmentModel.package_info_model.pax];
         
-        
-
         return cell;
     }
     

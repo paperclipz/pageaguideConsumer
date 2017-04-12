@@ -52,9 +52,9 @@
     [self.btnSubmit setDefaultBorder];
     
     
-    self.ibSwitchOne.on = isSMSon;
+    self.ibSwitchOne.on = isPNotificationOn;
     
-    self.ibSwitchTwo.on = isPNotificationOn;
+    self.ibSwitchTwo.on = isSMSon;
     
     // Do any additional setup after loading the view from its nib.
 }

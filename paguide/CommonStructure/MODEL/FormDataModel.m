@@ -10,10 +10,10 @@
 
 @interface FormDataModel()
 
-@property(nonatomic,strong)NSArray* answer_list;
 
 @end
 @implementation FormDataModel
+
 
 -(id)copyWithZone:(NSZone *)zone
 {
@@ -41,7 +41,6 @@
         NSMutableArray* array = [NSMutableArray new];
 
         if (![Utils isArrayNull:_answer_list]) {
-            
             
             for (int i = 0; i<_answer_list.count; i++) {
                 
@@ -72,5 +71,16 @@
     return _viewModel;
 }
 
+
+-(BOOL)isRequired
+{
+    if ([self.required isEqualToString:@"yes"]) {
+        return YES;
+    }
+    else{
+        return NO;
+        
+    }
+}
 
 @end

@@ -17,4 +17,7 @@
 -(void)setuDataWithPackage:(PackageModel*)pModel SelectedDate:(NSString*)selectedDate;
 
 @property(nonatomic,copy)ScheduleModelBlock didFinishSelectScheduleBlock;
+
+-(void)setuDataWithPackage:(PackageModel*)pModel;
+
 @end
