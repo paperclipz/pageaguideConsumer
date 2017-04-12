@@ -34,6 +34,7 @@
 #import "BaseModel.h"
 #import "GVUserDefaults+Extra.h"
 #import "UIButton+System.h"
+#import "NSString+Extra.h"
 
 #import "PagingViewModel.h"
 #import "NSDate+Extra.h"

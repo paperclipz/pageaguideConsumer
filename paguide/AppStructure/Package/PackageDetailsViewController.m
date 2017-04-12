@@ -112,11 +112,21 @@
 
 - (IBAction)btnMakePaymentClicked:(id)sender {
     
+    
     [self showPromoCodeView];
 }
 
 - (IBAction)btnAvailableClicked:(id)sender {
 
+    
+    if (![Utils isUserLogin]) {
+        
+        [self showPromptToLogin];
+        
+        return;
+    }
+
+    
     [self showCalenderView];
     
 }
@@ -124,6 +134,12 @@
 
 - (IBAction)btnPurchaseClicked:(id)sender {
     
+    if (![Utils isUserLogin]) {
+        
+        [self showPromptToLogin];
+        
+        return;
+    }
     [self showPackageSelectionViewNonSecheduled];
 }
 
@@ -1222,6 +1238,39 @@
     }
 }
 
+-(IBAction)showPromptToLogin
+    {
+        
+        
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"You need to login first"
+                                      message:@""
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 
+                                 
+                                 [Utils showRegisterPage];
+                                 
+                             }];
+        [alert addAction:ok]; // add action to uialertcontroller
+        
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alert addAction:cancel];
+        
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
+    }
 
 
 - (NSDateFormatter *)timeFormatter

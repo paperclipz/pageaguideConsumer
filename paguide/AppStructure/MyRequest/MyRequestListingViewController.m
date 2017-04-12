@@ -104,8 +104,7 @@
     
     cell.lblTitle1.text = model.request_code;
     
-    cell.lblTitle2.text = [model.request_info.specialty componentsJoinedByString:@","];
-    
+    cell.lblTitle2.text = model.request_info.title.validateText;
     
     NSString* string1 = @"Requested Date : ";
     NSString* string2 = model.request_info.created_at;

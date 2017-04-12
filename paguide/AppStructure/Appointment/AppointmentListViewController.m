@@ -122,8 +122,7 @@
         
         cell.lblTitle1.text = model.appointment_code;
         
-        cell.lblTitle2.text = [model.request_info.specialty componentsJoinedByString:@","];
-        
+        cell.lblTitle2.text = model.request_info.title.validateText;
         
         NSString* string1 = @"Appointment : ";
         NSString* string2 = model.transaction_date;

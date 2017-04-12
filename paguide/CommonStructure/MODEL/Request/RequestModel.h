@@ -13,6 +13,9 @@
 @interface RequestModel : JSONModel
 
 
+    
+    
+@property(nonatomic,strong)NSString* title;
 @property(nonatomic,strong)NSString* language;
 @property(nonatomic,strong)NSString* date;
 @property(nonatomic,strong)NSNumber* period;
