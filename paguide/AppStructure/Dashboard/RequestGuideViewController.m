@@ -25,6 +25,8 @@
 {
     NSArray* arrCellList;
     
+    NSDictionary* data;
+    
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
@@ -137,6 +139,15 @@
         [self.arrFormDataList replaceObjectAtIndex:section withObject:model];
         
         [self reloadSection:section];
+        
+        if (model.isExpand) {
+            
+            if ([model.type isEqualToString:cell_type_option] ||
+                [model.type isEqualToString:cell_type_multi_select_option]) {
+                
+                [self.ibTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            }
+        }
     };
     
     return headerView;
@@ -388,7 +399,6 @@
     
     
     
-    
     return nil;
     
 }
@@ -425,8 +435,9 @@
             
             [self.arrFormDataList replaceObjectAtIndex:indexPath.section withObject:model];
             
-           
             [self reloadSection:indexPath.section];
+            
+            [self.ibTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 
         }
        
@@ -455,6 +466,8 @@
             [self.arrFormDataList replaceObjectAtIndex:indexPath.section withObject:model];
 
             [self reloadSection:indexPath.section];
+
+            [self.ibTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 
         }
         
@@ -489,17 +502,10 @@
         
         [LoadingManager hide];
 
-        NSError* error;
+        data = object;
         
-        BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
-        
-        if (model.isSuccessful) {
-            
-             self.arrFormDataList = [FormDataModel arrayOfModelsFromDictionaries:object[@"data"] error:&error];
-            
-        }
-        
-        [self.ibTableView reloadData];
+        [self processData];
+
         
     } failure:^(id object) {
         
@@ -510,10 +516,34 @@
     }];
 }
 
+-(void)processData
+{
+    NSError* error;
+    
+    BaseModel* model = [[BaseModel alloc]initWithDictionary:data error:&error];
+    
+    if (model.isSuccessful) {
+        
+        [self.arrFormDataList removeAllObjects];
+       
+        self.arrFormDataList = nil;
+        
+        self.arrFormDataList = [FormDataModel arrayOfModelsFromDictionaries:data[@"data"] error:&error];
+        
+        [self.ibTableView reloadData];
+
+        [self.ibTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+
+    }
+    
+    
+    
+
+}
+
 
 -(BOOL)validate
 {
-    
     
     for (int i = 0; i<self.arrFormDataList.count; i++) {
         
@@ -530,7 +560,6 @@
                 
                 if (kModel.isSelected) {
                     
-                    
                     isOptionEmpty = NO;
                     
                     break;
@@ -539,7 +568,9 @@
             
             if (isOptionEmpty && [model.required isEqualToString:@"yes"]) {
                 
-                [MessageManager showMessage:[NSString stringWithFormat:@"Please select %@",model.parameter] Type:TSMessageNotificationTypeWarning];
+                [MessageManager showMessage:[NSString stringWithFormat:@"Please select %@",model.title] Type:TSMessageNotificationTypeWarning];
+                
+                [self.ibTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] atScrollPosition:UITableViewScrollPositionTop animated:YES];
                 
                 return NO;
             }
@@ -551,7 +582,9 @@
             
             if ([Utils isStringNull:model.viewModel.value] && [model.required isEqualToString:@"yes"]) {
                 
-                [MessageManager showMessage:[NSString stringWithFormat:@"Please input %@",model.parameter] Type:TSMessageNotificationTypeWarning];
+                [MessageManager showMessage:[NSString stringWithFormat:@"Please input %@",model.title] Type:TSMessageNotificationTypeWarning];
+
+                [self.ibTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 
                 return NO;
             }
@@ -562,8 +595,10 @@
             
             if (!model.viewModel.choosenDate && [model.required isEqualToString:@"yes"]) {
                 
-                [MessageManager showMessage:[NSString stringWithFormat:@"Please select a date for %@",model.parameter] Type:TSMessageNotificationTypeWarning];
+                [MessageManager showMessage:[NSString stringWithFormat:@"Please select a date for %@",model.title] Type:TSMessageNotificationTypeWarning];
                 
+                [self.ibTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+
                 return NO;
             }
         }
@@ -713,18 +748,24 @@
     
     NSLog(@"final : %@",dict);
     
+    [LoadingManager show];
+    
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostRequestCreate parameter:dict appendString:nil success:^(id object) {
         
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
         
         [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess inViewController:self];
    
-        [self requestServerForRequestForm];
+        [LoadingManager hide];
+
+        [self processData];
         
-        [Utils reloadAllAppointView];
+        [Utils reloadAllFrontView];
     
     } failure:^(id object) {
         
+        [LoadingManager hide];
+
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:nil];
         
         [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeError inViewController:self];

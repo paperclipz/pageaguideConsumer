@@ -63,9 +63,7 @@
     
     if (isEditable) {
         
-        
         NSLog(@"edit profile : %@",self.editProfileModel);
-        
         
         [self requestServerForUserUpdateProfile:^{
             [self setNavigationButtonAsEdit:@"Edit"];
@@ -336,7 +334,6 @@
     [photosPicker dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 -(void)showCountryView:(StringBlock)completion
 {
     VoidBlock openPopOutView = ^(void)
@@ -349,19 +346,62 @@
         
         viewC.arrItemList = [self.arrCountryList valueForKey:@"c_name"];
         
+        CountryModel* defaultSelection = [DataManager getDefaultCountry];
+        
+        NSArray* arrDefault;
+        
+        if (defaultSelection) {
+            
+            arrDefault = @[defaultSelection];
+            
+            [viewC setDefaultData:[arrDefault valueForKey:@"c_name"]];
+        }
+        
+        
         [self presentViewController:viewC animated:YES completion:nil];
         
-        [viewC setInitial:[NSIndexPath indexPathForRow:[self getSingaporeIndexPath] inSection:0]];
+      //  [viewC setInitial:[NSIndexPath indexPathForRow:[self getSingaporeIndexPath] inSection:0]];
 
         __weak typeof (viewC)weakVC = viewC;
         
         viewC.didSelectAtIndexBlock = ^(NSIndexPath* indexPath)
         {
             [weakVC dismissViewControllerAnimated:YES completion:^{
+         
+                NSString* country;
+
+                if ([Utils isArrayNull:arrDefault]) {
+                    
+                    CountryModel* model = self.arrCountryList[indexPath.row];
+                    
+                    country = model.c_name;
+                    
+                    [DataManager saveDefaultCountry:model];
                 
-                CountryModel* model = self.arrCountryList[indexPath.row];
+                }
+                else{
+                    
+                    
+                    if (indexPath.section == 0) {
+                      
+                        CountryModel* model = arrDefault[indexPath.row];
+                        
+                        country = model.c_name;
+                    }
+                    else{
+                        
+                        CountryModel* model = self.arrCountryList[indexPath.row];
+                        
+                        country = model.c_name;
+                        
+                        [DataManager saveDefaultCountry:model];
+                    }
+                    
+                }
+
                 
-                NSString* country = model.c_name;
+                
+                
                 
                 if (completion) {
                     completion(country);
@@ -403,7 +443,6 @@
 
 -(void)showPrefixView:(StringBlock)completion
 {
-    
     VoidBlock openPopOutView = ^(void)
     {
         EBActionSheetViewController* viewC = [[EBActionSheetViewController alloc]initWithNibName:@"EBActionSheetViewController" bundle:nil];
@@ -414,19 +453,57 @@
         
         viewC.arrItemList = [self getPrefixList:self.arrCountryList];
         
+        CountryModel* defaultSelection = [DataManager getDefaultPrefix];
+        NSArray* arrDefault;
+        
+        if (defaultSelection) {
+            
+            arrDefault = @[defaultSelection];
+            
+            [viewC setDefaultData:[self getPrefixList:arrDefault]];
+        }
+        
+        viewC.arrItemList = [self getPrefixList:self.arrCountryList];
+        
         [self presentViewController:viewC animated:YES completion:nil];
         
-        [viewC setInitial:[NSIndexPath indexPathForRow:[self getSingaporeIndexPath] inSection:0]];
-
+        //   [viewC setInitial:[NSIndexPath indexPathForRow:[self getSingaporeIndexPath] inSection:[Utils isArrayNull:arrDefault]?0:1]];
+        
         __weak typeof (viewC)weakVC = viewC;
         
         viewC.didSelectAtIndexBlock = ^(NSIndexPath* indexPath)
         {
             [weakVC dismissViewControllerAnimated:YES completion:^{
+                NSString* prefix;
                 
-                CountryModel* model = self.arrCountryList[indexPath.row];
+                if ([Utils isArrayNull:arrDefault]) {
+                    
+                    CountryModel* model = self.arrCountryList[indexPath.row];
+                    
+                    prefix = model.c_prefix;
+                    
+                    [DataManager saveDefaultPrefix:model];
+                }
+                else{
+                    
+                    
+                    if (indexPath.section == 0) {
+                        CountryModel* model = arrDefault[indexPath.row];
+                        
+                        prefix = model.c_prefix;
+                    }
+                    else{
+                        
+                        CountryModel* model = self.arrCountryList[indexPath.row];
+                        
+                        prefix = model.c_prefix;
+                        
+                        [DataManager saveDefaultPrefix:model];
+                        
+                    }
+                    
+                }
                 
-                NSString* prefix = model.c_prefix;
                 
                 if (completion) {
                     completion(prefix);
@@ -435,8 +512,6 @@
             
         };
     };
-    
-    
     
     [[DataManager Instance] getCountryList:^(NSArray *array) {
         

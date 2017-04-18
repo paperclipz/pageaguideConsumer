@@ -31,7 +31,7 @@
 
 +(NSString*)getAppVersion;
 
-+(void)reloadAllAppointView;
++(void)reloadAllFrontView;
 
 +(NSString*)getUniqueDeviceIdentifier;
 

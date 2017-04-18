@@ -13,6 +13,7 @@
 
 @interface EBActionSheetViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *ibtableView;
+@property (strong, nonatomic) NSArray* arrDefaultList;
 
 @end
 
@@ -21,6 +22,12 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+-(void)setDefaultData:(NSArray*)arrDefault
+{
+    self.arrDefaultList = arrDefault;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,6 +62,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+    if ([Utils isArrayNull:self.arrDefaultList]) {
+        
+        return 1;
+    }
+    else{
+        return 2;
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 44.0f;
@@ -72,20 +90,56 @@
         
     }
     
-    headerView.lblTitle.text = self.title;
+    
+    
+    if ([Utils isArrayNull:self.arrDefaultList]) {
+    
+        headerView.lblTitle.text = self.title;
+        headerView.btnClose.hidden = NO;
+
+    }
+    else{
+        if (section == 0) {
+            headerView.lblTitle.text = @"Custom";
+            headerView.btnClose.hidden = NO;
+
+        }
+        else{
+            headerView.lblTitle.text = self.title;
+            headerView.btnClose.hidden = YES;
+
+        }
+    }
     
     headerView.didCloseBlock = ^(void)
     {
         [self dismissViewControllerAnimated:YES completion:nil];
-
+        
     };
 
+  
     return headerView;
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrItemList.count;
+    
+    if ([Utils isArrayNull:self.arrDefaultList]) {
+    
+        return self.arrItemList.count;
+
+    }
+    else{
+    
+        if (section == 0) {
+            
+            return 1;
+        }
+        else{
+            return self.arrItemList.count;
+
+        }
+    }
 
 }
 
@@ -111,7 +165,6 @@
                 height = frame.size.height;
 
             }
-
       
             
         self.ibtableView.frame = CGRectMake(self.ibtableView.frame.origin.x, (self.view.frame.size.height - height)/2, self.ibtableView.frame.size.width, height);
@@ -128,9 +181,26 @@
 {
     EBActionSheetTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"customcell"];
     
-    NSString* title = self.arrItemList[indexPath.row];
+    if ([Utils isArrayNull:self.arrDefaultList]) {
     
-    cell.lblTitle.text = title;
+        NSString* title = self.arrItemList[indexPath.row];
+        
+        cell.lblTitle.text = title;
+    }
+    else{
+    
+        if (indexPath.section == 0) {
+            
+            cell.lblTitle.text = self.arrDefaultList[indexPath.row];
+
+        }
+        else{
+            NSString* title = self.arrItemList[indexPath.row];
+            
+            cell.lblTitle.text = title;
+        }
+    }
+   
     
     return cell;
 }

@@ -66,6 +66,7 @@ static const NSString *INDICATOR_KEY = @"indicator_key";
 
 -(void)setupFooterView
 {
+    
     self.footerView = [FooterView initializeCustomView];
     
         if (self.footerView.ibCustomActivityIndicator) {

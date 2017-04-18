@@ -50,7 +50,19 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if (self.isNeedReload) {
+    
+    if (![Utils isUserLogin])
+    {
+        
+        [self.arrAppointmentList removeAllObjects];
+        
+        self.arrAppointmentList = nil;
+        
+        [self.ibTableView reloadData];
+        
+    }
+    
+    else if (self.isNeedReload) {
         
         [self resetAndCallAppointmentListing];
         self.isNeedReload = NO;
@@ -72,6 +84,9 @@
     }];
     
     [self.ibTableView setupCustomEmptyView];
+    
+    
+    [self.ibTableView setupFooterView];
     
     [self requestServerForAppointmentList];
 
@@ -289,7 +304,7 @@
 {
     [self.ibTableView scrollViewDidScroll:scrollView activated:^{
         
-        if (self.vm_appointment_paging.hasNext) {
+        if (self.vm_appointment_paging.hasNext && self.vm_appointment_paging.currentPage > 0) {
             
             [self.ibTableView startFooterLoadingView];
             

@@ -19,7 +19,7 @@
 #import "RequestGuideViewController.h"
 #import "MyRequestListingViewController.h"
 #import "AppointmentListViewController.h"
-
+#import "AppointmentPageViewController.h"
 @import Intercom;
 
 #define PER_PAGE @"10"
@@ -485,7 +485,9 @@
     {
         if ([tempViewController isKindOfClass:[RequestGuideViewController class]] ||
             [tempViewController isKindOfClass:[MyRequestListingViewController class]] ||
-            [tempViewController isKindOfClass:[AppointmentListViewController class]]) {
+            [tempViewController isKindOfClass:[AppointmentListViewController class]] ||
+            [tempViewController isKindOfClass:[AppointmentPageViewController class]]
+            ) {
             
             
             [self showPromptToLogin];

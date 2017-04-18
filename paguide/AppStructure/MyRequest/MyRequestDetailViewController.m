@@ -425,14 +425,26 @@
             
             [weakSelf requetServerToPurchaseBidRequestPromoCode:promocode Success:^(NSString *str) {
                 
-                [weakSelf requestForStripeToken:^{
+                
+                [weakSelf.promoCodeViewController dismissViewControllerAnimated:YES completion:^{
                     
-                    [weakSelf requestServerForPayment:weakSelf.transactionModel];
-                    
-                } Failure:^{
+                    [weakSelf showAlert:[NSString stringWithFormat:@"Purchase price is %@ %@",weakSelf.transactionModel.currency,weakSelf.transactionModel.total_price] Message:@"" OK:^{
+                        
+                        [weakSelf requestForStripeToken:^{
+                            
+                            [weakSelf requestServerForPayment:weakSelf.transactionModel];
+                            
+                        } Failure:^{
+                            
+                        }];
+                        
+                    } Cancel:nil];
                     
                 }];
+                
+                
 
+               
             } Failure:^(NSString *str) {
                 
                 [MessageManager showMessage:str Type:TSMessageNotificationTypeError];
@@ -449,13 +461,21 @@
         
         [weakSelf requetServerToPurchaseBidRequestPromoCode:@"" Success:^(NSString *str) {
             
-            [weakSelf requestForStripeToken:^{
-                
-                [weakSelf requestServerForPayment:weakSelf.transactionModel];
-                
-            } Failure:^{
+            
+            [weakSelf.promoCodeViewController dismissViewControllerAnimated:YES  completion:^{
+               
+                [weakSelf requestForStripeToken:^{
+                    
+                    [weakSelf requestServerForPayment:weakSelf.transactionModel];
+                    
+                } Failure:^{
+                    
+                }];
                 
             }];
+            
+            
+           
             
         } Failure:^(NSString *str) {
             
@@ -565,7 +585,7 @@
         
         BaseModel* bModel = [[BaseModel alloc]initWithDictionary:object error:&error];
         
-        [MessageManager showMessage:bModel.displayMessage Type:TSMessageNotificationTypeSuccess inViewController:self.promoCodeViewController];
+        [MessageManager showMessage:bModel.generalMessage Type:TSMessageNotificationTypeSuccess inViewController:self.promoCodeViewController];
         
         if (completion) {
             completion();
@@ -577,7 +597,7 @@
         
         BaseModel* bModel = [[BaseModel alloc]initWithDictionary:object error:&error];
         
-        [MessageManager showMessage:bModel.displayMessage Type:TSMessageNotificationTypeError inViewController:self.promoCodeViewController];
+        [MessageManager showMessage:bModel.generalMessage Type:TSMessageNotificationTypeError inViewController:self.promoCodeViewController];
     }];
 }
 
@@ -586,29 +606,25 @@
 {
     PaymentManager* manager = [PaymentManager Instance];
     
-    
-    [self dismissViewControllerAnimated:YES completion:^{
+    [manager setupCardPayment:self Success:^(STPToken *token) {
         
-        [manager setupCardPayment:self Success:^(STPToken *token) {
-            
-            
-            self.transactionModel.stripetoken = token.tokenId;
-            
-            if (completion) {
-                completion();
-            }
-            
-            
-        } Failure:^(NSError * _Nullable error) {
-            
-            
-            if (failure) {
-                failure();
-            }
-            
-        } PresentIn:self];
-    }];
-    
+        
+        self.transactionModel.stripetoken = token.tokenId;
+        
+        if (completion) {
+            completion();
+        }
+        
+        
+    } Failure:^(NSError * _Nullable error) {
+        
+        
+        if (failure) {
+            failure();
+        }
+        
+    } PresentIn:self];
+
     
 }
 
@@ -629,7 +645,6 @@
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostPaymentStripeCharge parameter:dict appendString:nil success:^(id object) {
         [LoadingManager hide];
         
-        
         NSError* error;
         
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
@@ -638,6 +653,8 @@
         
         [self resetMainPage];
         
+        [Utils reloadAllFrontView];
+
         [self showQuitView];
         
         
@@ -721,5 +738,39 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+-(void)showAlert:(NSString*)title Message:(NSString*)message OK:(VoidBlock)okAction Cancel:(VoidBlock)cancelAction
+{
+    
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             
+                             if (okAction) {
+                                 okAction();
+                             }
+                             
+                         }];
+    [alert addAction:ok]; // add action to uialertcontroller
+    
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        if (cancelAction) {
+            cancelAction();
+        }
+    }];
+    
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+}
 @end

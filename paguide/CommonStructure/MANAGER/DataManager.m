@@ -10,6 +10,8 @@
 #import "CountryModel.h"
 
 #define KEY_LOGIN_INFO @"key_login_info"
+#define KEY_DEFAULT_PREFIX @"key_default_prefix"
+#define KEY_DEFAULT_COUNTRY @"key_default_country"
 
 @protocol CountryModel
 @end
@@ -126,6 +128,67 @@
     } failure:^(id object) {
         
     }];
+}
+
+#pragma mark - Default Prefix
+
++(void)saveDefaultPrefix:(CountryModel*)model
+{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults removeObjectForKey:KEY_DEFAULT_PREFIX];
+    
+    if (model) {
+        
+        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:model];
+        [defaults setObject:encodedObject forKey:KEY_DEFAULT_PREFIX];
+        [defaults synchronize];
+        
+    }
+
+    
+    
+}
++(CountryModel*)getDefaultPrefix
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSData * data = [defaults objectForKey:KEY_DEFAULT_PREFIX];
+    
+    CountryModel* model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    return model;
+
+}
+
++(void)saveDefaultCountry:(CountryModel*)model
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults removeObjectForKey:KEY_DEFAULT_COUNTRY];
+    
+    if (model) {
+        
+        NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:model];
+        [defaults setObject:encodedObject forKey:KEY_DEFAULT_COUNTRY];
+        [defaults synchronize];
+        
+    }
+    
+    
+    
+}
++(CountryModel*)getDefaultCountry
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSData * data = [defaults objectForKey:KEY_DEFAULT_COUNTRY];
+    
+    CountryModel* model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    return model;
+    
 }
 
 

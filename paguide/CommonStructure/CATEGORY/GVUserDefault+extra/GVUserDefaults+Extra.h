@@ -14,4 +14,6 @@
 @property (nonatomic, weak) NSNumber *userId;
 @property (nonatomic, weak) NSString *token;
 
+//@property (nonatomic, weak) CountryModel *selectedCountry;
+
 @end

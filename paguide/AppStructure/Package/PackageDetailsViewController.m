@@ -542,7 +542,7 @@
         PackageDetailsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"package_details_desc2"];
         
         cell.lblTitle.text = @"Description";
-        cell.lblDesc.text = self.packageModel.desc;
+        cell.lblDesc.attributedText = self.packageModel.desc.getAttributedText;
         
         return cell;
     }
@@ -874,7 +874,6 @@
 
 }
 
-
 -(void)showPromoCodeView
 {
     self.promoCodeViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -889,23 +888,43 @@
         
         [weakSelf requestServerToCheckPromoCode:promocode Completion:^{
             
+            
             [weakSelf requestServerToPurchasePackage:promocode Success:^(NSString *str) {
                 
                 
-                [weakSelf requestForStripeToken:^{
+                [weakSelf.promoCodeViewController dismissViewControllerAnimated:YES completion:^{
                     
-                    [weakSelf requestServerForPayment:weakSelf.transactionModel];
                     
-                } Failure:^{
+                    [weakSelf showAlert:[NSString stringWithFormat:@"Purchase price is %@ %@",weakSelf.transactionModel.currency,weakSelf.transactionModel.total_price] Message:@"" OK:^{
+                        
+                        
+                        [weakSelf requestForStripeToken:^{
+                            
+                            [weakSelf requestServerForPayment:weakSelf.transactionModel];
+                            
+                        } Failure:^{
+                            
+                        }];
+                        
+                    } Cancel:^{
+                        
+                    }];
                     
                 }];
-            
                 
+                
+               
+
             } Failure:^(NSString *str) {
                 
                 [MessageManager showMessage:str Type:TSMessageNotificationTypeError];
-
+                
             }];
+            
+
+            
+            
+            
         }];
 
     };
@@ -914,19 +933,20 @@
     self.promoCodeViewController.didApplyNoPromoBlock = ^(void)
     {
         
-
         [weakSelf requestServerToPurchasePackage:nil Success:^(NSString *str) {
             
             
-            [weakSelf requestForStripeToken:^ {
+            [weakSelf.promoCodeViewController dismissViewControllerAnimated:YES completion:^{
                 
-                [weakSelf requestServerForPayment:weakSelf.transactionModel];
-                
-            } Failure:^{
+                [weakSelf requestForStripeToken:^ {
+                    
+                    [weakSelf requestServerForPayment:weakSelf.transactionModel];
+                    
+                } Failure:^{
+                    
+                }];
                 
             }];
-
-            
             
         } Failure:^(NSString *str) {
             
@@ -974,11 +994,11 @@
     
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostPromocodeCheck parameter:dict appendString:nil success:^(id object) {
         
-        NSError* error;
+     //   NSError* error;
         
-        BaseModel* bModel = [[BaseModel alloc]initWithDictionary:object error:&error];
+    //    BaseModel* bModel = [[BaseModel alloc]initWithDictionary:object error:&error];
         
-        [MessageManager showMessage:bModel.displayMessage Type:TSMessageNotificationTypeSuccess inViewController:self.promoCodeViewController];
+      //  [MessageManager showMessage:bModel.generalMessage Type:TSMessageNotificationTypeSuccess inViewController:self];
     
         if (completion) {
             completion();
@@ -990,7 +1010,7 @@
         
         BaseModel* bModel = [[BaseModel alloc]initWithDictionary:object error:&error];
         
-        [MessageManager showMessage:bModel.displayMessage Type:TSMessageNotificationTypeError inViewController:self.promoCodeViewController];
+        [MessageManager showMessage:bModel.generalMessage Type:TSMessageNotificationTypeError inViewController:self.promoCodeViewController];
     }];
 }
 
@@ -1078,27 +1098,23 @@
     PaymentManager* manager = [PaymentManager Instance];
     
     
-    [self dismissViewControllerAnimated:YES completion:^{
-       
-        [manager setupCardPayment:self Success:^(STPToken *token) {
-            
-            
-            self.transactionModel.stripetoken = token.tokenId;
-            
-            if (completion) {
-                completion();
-            }
-            
-            
-        } Failure:^(NSError * _Nullable error) {
-            
-            
-            if (failure) {
-                failure();
-            }
-            
-        } PresentIn:self];
-    }];
+    [manager setupCardPayment:self Success:^(STPToken *token) {
+        
+        self.transactionModel.stripetoken = token.tokenId;
+        
+        if (completion) {
+            completion();
+        }
+        
+        
+    } Failure:^(NSError * _Nullable error) {
+        
+        
+        if (failure) {
+            failure();
+        }
+        
+    } PresentIn:self];
    
 
 }
@@ -1128,7 +1144,7 @@
         [MessageManager showMessage:model.generalMessage Type:TSMessageNotificationTypeSuccess inViewController:self];
         
         
-        [Utils reloadAllAppointView];
+        [Utils reloadAllFrontView];
         
         [self showQuitView];
         
@@ -1284,5 +1300,41 @@
     return dateFormatter;
 }
 
+
+-(void)showAlert:(NSString*)title Message:(NSString*)message OK:(VoidBlock)okAction Cancel:(VoidBlock)cancelAction
+{
+    
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:message
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             
+                             if (okAction) {
+                                 okAction();
+                             }
+                             
+                         }];
+    [alert addAction:ok]; // add action to uialertcontroller
+    
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+       
+        if (cancelAction) {
+            cancelAction();
+        }
+    }];
+    
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+
+}
 
 @end

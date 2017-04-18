@@ -33,6 +33,13 @@
         self.appointmentListViewController.isNeedReload = YES;
         self.historyListViewController.isNeedReload  = YES;
         
+        currentPage = 0;
+        
+        self.segmentedControl.selectedSegmentIndex = currentPage;
+
+        [self setViewControllers:@[self.appointmentListViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+
+        
     }
         _isNeedReload = NO;
 

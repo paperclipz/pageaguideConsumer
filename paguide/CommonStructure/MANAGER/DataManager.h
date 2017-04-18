@@ -9,13 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "LoginViewModel.h"
 
+
 @interface DataManager : NSObject
 + (id)Instance;
-
 
 -(void)getCountryList:(NSArrayBlock)completionBlock;
 +(void)setLoginModel:(LoginViewModel*)model;
 +(LoginViewModel*)getLoginModel;
 +(void)requestServerForRegisterDevice;
 
+
+
++(void)saveDefaultPrefix:(CountryModel*)model;
++(CountryModel*)getDefaultPrefix;
+
++(CountryModel*)getDefaultCountry;
++(void)saveDefaultCountry:(CountryModel*)model;
 @end

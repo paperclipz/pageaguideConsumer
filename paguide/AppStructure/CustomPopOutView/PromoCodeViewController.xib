@@ -42,7 +42,7 @@
                             <rect key="frame" x="50" y="85" width="255" height="17"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <textInputTraits key="textInputTraits"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QP-Rl-jaS">
                             <rect key="frame" x="15" y="117" width="325" height="1"/>

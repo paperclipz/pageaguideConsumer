@@ -267,15 +267,11 @@
         }];
 }
 
-
-+(void)reloadAllAppointView
++(void)reloadAllFrontView
 {
     UIViewController *rootController =(UIViewController*)[[(AppDelegate*)
                                                            [[UIApplication sharedApplication]delegate] window] rootViewController];
     
-    
-    
-
     if ([rootController isKindOfClass:[UITabBarController class]]) {
         
         UITabBarController* tabBarcontroller = (UITabBarController*)rootController;
@@ -291,11 +287,9 @@
                 
                 UINavigationController* navigationController = (UINavigationController*)controller;
                 
-                
                 if (![Utils isArrayNull:navigationController.viewControllers]) {
                     UIViewController* innerViewController = navigationController.viewControllers[0];
 
-                    
                     if ([innerViewController isKindOfClass:[BaseViewController class]]) {
                         BaseViewController* baseController = (BaseViewController*)innerViewController;
                         baseController.isNeedReload = YES;

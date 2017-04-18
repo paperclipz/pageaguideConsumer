@@ -39,7 +39,19 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    if (self.isNeedReload) {
+    
+    if (![Utils isUserLogin])
+    {
+
+        [self.arrAppointmentList removeAllObjects];
+        
+        self.arrAppointmentList = nil;
+        
+        [self.ibTableView reloadData];
+        
+    }
+    
+    else if (self.isNeedReload) {
         
         [self resetAndCallAppointmentListing];
         
@@ -64,6 +76,9 @@
     [self.ibTableView setupCustomEmptyView];
 
     [self requestServerforMyRequestList];
+    
+    [self.ibTableView setupFooterView];
+
 
     // Do any additional setup after loading the view.
 }
@@ -159,6 +174,11 @@
         
     }
     
+    
+    if (self.vm_appointment_paging.currentPage == 0) {
+        
+        [LoadingManager show];
+    }
     self.vm_appointment_paging.isLoading = YES;
 
     NSDictionary* dict = @{@"token" : [Utils getToken],
@@ -168,6 +188,8 @@
                            };
     
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostRequestConsumerlisting parameter:dict appendString:nil success:^(id object) {
+        
+        [LoadingManager hide];
         
         self.vm_appointment_paging.isLoading = NO;
 
@@ -191,6 +213,8 @@
         
     } failure:^(id object) {
      
+        [LoadingManager hide];
+
         self.vm_appointment_paging.isLoading = NO;
 
         [self.ibTableView stopFooterLoadingView];
@@ -231,7 +255,7 @@
 {
     [self.ibTableView scrollViewDidScroll:scrollView activated:^{
         
-        if (self.vm_appointment_paging.hasNext) {
+        if (self.vm_appointment_paging.hasNext && self.vm_appointment_paging.currentPage > 0) {
             
             [self.ibTableView startFooterLoadingView];
             

@@ -10,10 +10,12 @@
 
 @interface EBActionSheetViewController : UIViewController
 
-
 @property (nonatomic,strong)NSArray* arrItemList;
 
 @property(nonatomic,copy)IndexPathBlock didSelectAtIndexBlock;
 
 -(void)setInitial:(NSIndexPath*)indexPath;
+
+-(void)setDefaultData:(NSArray*)arrDefault;
+
 @end
