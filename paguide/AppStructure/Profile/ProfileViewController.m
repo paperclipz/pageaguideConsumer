@@ -598,7 +598,7 @@
         
         [self.profileModel processPrefix:^{
             
-            [GeneralRequestManager setuserProfile:self.profileModel];
+            [DataManager setUserProfile:self.profileModel];
 
             [self.ibTableView reloadData];
 

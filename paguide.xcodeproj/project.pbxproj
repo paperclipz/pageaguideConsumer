@@ -39,7 +39,6 @@
 		8A3C7B9F1E8A06900093BA62 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C7B9D1E8A06900093BA62 /* UpdateViewController.m */; };
 		8A3C7BA01E8A06900093BA62 /* UpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3C7B9E1E8A06900093BA62 /* UpdateViewController.xib */; };
 		8A3C7BA31E8A0DD60093BA62 /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C7BA21E8A0DD60093BA62 /* AppModel.m */; };
-		8A3C7BA61E8A1F4F0093BA62 /* GeneralRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C7BA51E8A1F4F0093BA62 /* GeneralRequestManager.m */; };
 		8A3C7BA91E8A27060093BA62 /* FBLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C7BA81E8A27060093BA62 /* FBLoginManager.m */; };
 		8A3C7BAC1E8A27C70093BA62 /* FacebookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C7BAB1E8A27C70093BA62 /* FacebookModel.m */; };
 		8A3C7BB11E8B72A70093BA62 /* ResendVerificationCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C7BAF1E8B72A70093BA62 /* ResendVerificationCodeViewController.m */; };
@@ -309,8 +308,6 @@
 		8A3C7B9E1E8A06900093BA62 /* UpdateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateViewController.xib; sourceTree = "<group>"; };
 		8A3C7BA11E8A0DD60093BA62 /* AppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppModel.h; sourceTree = "<group>"; };
 		8A3C7BA21E8A0DD60093BA62 /* AppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppModel.m; sourceTree = "<group>"; };
-		8A3C7BA41E8A1F4F0093BA62 /* GeneralRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralRequestManager.h; sourceTree = "<group>"; };
-		8A3C7BA51E8A1F4F0093BA62 /* GeneralRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralRequestManager.m; sourceTree = "<group>"; };
 		8A3C7BA71E8A27060093BA62 /* FBLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginManager.h; sourceTree = "<group>"; };
 		8A3C7BA81E8A27060093BA62 /* FBLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginManager.m; sourceTree = "<group>"; };
 		8A3C7BAA1E8A27C70093BA62 /* FacebookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookModel.h; sourceTree = "<group>"; };
@@ -1340,8 +1337,6 @@
 				8AF5F8EE1E812377004A7322 /* PaymentManager.m */,
 				8AF5F8F51E812BC5004A7322 /* MyAPIClient.h */,
 				8AF5F8F61E812BC5004A7322 /* MyAPIClient.m */,
-				8A3C7BA41E8A1F4F0093BA62 /* GeneralRequestManager.h */,
-				8A3C7BA51E8A1F4F0093BA62 /* GeneralRequestManager.m */,
 				8A1228B81E8CF6180093C92C /* PushNotificationManager.h */,
 				8A1228B91E8CF6180093C92C /* PushNotificationManager.m */,
 				8ABC51621E92368E00E31560 /* OfflineManager.h */,
@@ -1885,7 +1880,6 @@
 				8A8E30741E6FB12700A16002 /* FSCalendarExtensions.m in Sources */,
 				8A3C7BA91E8A27060093BA62 /* FBLoginManager.m in Sources */,
 				8A5637651E697A4400ACAF2B /* GalleryTableViewCell.m in Sources */,
-				8A3C7BA61E8A1F4F0093BA62 /* GeneralRequestManager.m in Sources */,
 				8A8E30721E6FB12700A16002 /* FSCalendarDelegationFactory.m in Sources */,
 				8A9BD73C1E791FBA0043D171 /* MerchantProfileModel.m in Sources */,
 				8A9F46201E603DA8005F1453 /* DataManager.m in Sources */,

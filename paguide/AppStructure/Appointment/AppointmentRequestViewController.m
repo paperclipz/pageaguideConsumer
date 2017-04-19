@@ -370,22 +370,22 @@
     
     [self.tabBarController presentViewController:self.ratingViewController animated:YES completion:nil];
     
-    __weak typeof (self.ratingViewController)weakRatingVC = self.ratingViewController;
+    __weak typeof (self)weakSelf = self;
     self.ratingViewController.didFinishRateBlock = ^(void)
     {
         
-        if ([Utils isStringNull:weakRatingVC.txtRating.text]) {
-            [MessageManager showMessage:@"Please Input A Review" Type:TSMessageNotificationTypeError inViewController:self.ratingViewController];
+        if ([Utils isStringNull:weakSelf.ratingViewController.txtRating.text]) {
+            [MessageManager showMessage:@"Please Input A Review" Type:TSMessageNotificationTypeError inViewController:weakSelf.ratingViewController];
         }
         else{
             
             if (rateNreview) {
-                rateNreview(weakRatingVC.rating, weakRatingVC.txtRating.text);
+                rateNreview(weakSelf.ratingViewController.rating, weakSelf.ratingViewController.txtRating.text);
             }
         }
-        NSLog(@"txt:%@",weakRatingVC.txtRating.text);
+        NSLog(@"txt:%@",weakSelf.ratingViewController.txtRating.text);
         
-        NSLog(@"rating:%i",weakRatingVC.rating);
+        NSLog(@"rating:%i",weakSelf.ratingViewController.rating);
         
     };
     

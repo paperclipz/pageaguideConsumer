@@ -259,7 +259,7 @@
         }];
     };
 
-    [GeneralRequestManager getProfileData:NO CompleteWithData:^(ProfileModel *pModel) {
+    [DataManager getUserProfile:^(ProfileModel *pModel) {
         
         STPopupController* popVC = [[STPopupController alloc] initWithRootViewController:viewController];
         
@@ -322,7 +322,7 @@
         
         [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess inViewController:self];
         
-        [GeneralRequestManager reloadProfileData:^(ProfileModel *pModel) {
+        [DataManager reloadUserProfile:^(ProfileModel *pModel) {
           
             if(completion)
             {

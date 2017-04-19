@@ -18,7 +18,6 @@
 #import "PromoCodeViewController.h"
 #import "FormDataModel.h"
 
-
 #define cell_title @"cell_title"
 #define cell_merchant_offer @"cell_merchant_offer"
 #define cell_request_guide @"MY Request Guide"
@@ -95,13 +94,10 @@
     
 }
 
-
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     
     NSString* type = arrCellList[section];
-    
-    
     
     if ([type isEqualToString:cell_merchant_offer]) {
         

@@ -119,7 +119,7 @@
     }
     else{
         
-        [GeneralRequestManager getProfileData:NO CompleteWithData:^(ProfileModel *pModel) {
+        [DataManager getUserProfile:^(ProfileModel *pModel) {
             
             [Intercom registerUserWithEmail:pModel.email];
         }];

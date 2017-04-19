@@ -28,7 +28,6 @@
 #import "MessageManager.h"
 #import "DataManager.h"
 #import "PaymentManager.h"
-#import "GeneralRequestManager.h"
 
 // Model
 #import "BaseModel.h"
