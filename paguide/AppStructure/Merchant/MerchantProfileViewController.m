@@ -73,17 +73,15 @@
     
     self.ibTableView.rowHeight = UITableViewAutomaticDimension;
     
-    self.arrImageList = @[@"http://www.interviewmagazine.com/files/2013/09/28/img-scarlett-johansson_160222925524.jpg",@"http://esq.h-cdn.co/assets/cm/15/07/54daf94090795_-_esq-scarlet-johansson-2005-01-de.jpg"];
-    
     [self.ibMerchantProfileView sd_setImageWithURL:[NSURL URLWithString:self.merchantProfileModel.profile_img] placeholderImage:AVATAR_PLACEHOLDER];
     
     
     [self.ibMerchantCoverPhoto sd_setImageWithURL:[NSURL URLWithString:self.merchantProfileModel.cover_img] placeholderImage:PHOTO_PLACEHOLDER];
     
     
-    self.lblRating.text = [NSString stringWithFormat:@"%@ Out Of 5",self.merchantProfileModel.overall_rating];
+    self.lblRating.text = [NSString stringWithFormat:@"%@ Out Of 5",self.merchantProfileModel.overall_rating?self.merchantProfileModel.overall_rating:@"0.0"];
     
-    self.lblMerchantName.text  = self.merchantProfileModel.name;
+    self.lblMerchantName.text  = self.merchantProfileModel.name?self.merchantProfileModel.name:self.merchantProfileModel.username;
     
     self.lblNumberOfReviews.text = [NSString stringWithFormat:@"%@ review(s)",@(self.merchantProfileModel.reviews.count)];
     
@@ -248,7 +246,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     NSString* type = arrCellList[indexPath.section];
     
     if ([type isEqualToString:cell_about]) {

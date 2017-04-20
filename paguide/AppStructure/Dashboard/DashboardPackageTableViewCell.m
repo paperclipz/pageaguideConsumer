@@ -11,6 +11,7 @@
 @interface DashboardPackageTableViewCell()
 @property (weak, nonatomic) IBOutlet UIView *ibContentView;
 @property (weak, nonatomic) IBOutlet UIView *ibRatingContentView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintWidth;
 
 @end
 
@@ -35,6 +36,13 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
+    
+    if (selected) {
+        self.constraintWidth.constant = 5.0f;
+    }
+    else{
+        self.constraintWidth.constant = 0.0f;
+    }
     // Configure the view for the selected state
 }
 

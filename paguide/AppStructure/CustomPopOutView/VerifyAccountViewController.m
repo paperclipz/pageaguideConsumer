@@ -8,19 +8,15 @@
 
 #import "VerifyAccountViewController.h"
 #import <STPopup/STPopup.h>
-#import "EBActionSheetViewController.h"
 
-@protocol CountryModel;
 
 @interface VerifyAccountViewController ()
 {
-    NSString* emailAddress;
-    NSString* mobile_number;
-    NSString* mobile_prefix;
-
+    BOOL isNeedAskForContact;
+    
 }
+@property (strong, nonatomic)  NSString* emailAddress;
 
-@property (nonatomic, strong)NSArray<CountryModel>* arrCountryList;
 
 @property (weak, nonatomic) IBOutlet UITextField *txtVerifyCode;
 @property (weak, nonatomic) IBOutlet UIButton *btnResend;
@@ -33,7 +29,14 @@
 @implementation VerifyAccountViewController
 - (IBAction)btnResendClicked:(id)sender {
     
-   
+    if (isNeedAskForContact) {
+        
+        [self performSegueWithIdentifier:@"resendVerification_withoutNumber" sender:self];
+    }
+    else{
+        [self performSegueWithIdentifier:@"resendVerification" sender:self];
+
+    }
     
 }
 - (IBAction)btnActivateClicked:(id)sender {
@@ -54,11 +57,18 @@
   
 }
 
--(void)setupOTPViewWitPhonePrefix:(NSString*)prefix PhoneNumber:(NSString*)mobileNumber Email:(NSString*)email didFinishVerify:(StringBlock)completion
+-(void)setupOTPViewWithEmail:(NSString*)email didFinishVerify:(StringBlock)completion
 {
-    emailAddress = email;
-    mobile_number = mobileNumber;
-    mobile_prefix = prefix;
+    _emailAddress = email;
+    
+    LoginViewModel* model = [DataManager getLoginModel];
+    
+    if (![self.emailAddress isEqualToString:model.emailAddress] ||
+        [Utils isStringNull:model.prefix] ||
+        [Utils isStringNull:model.phoneNumber]) {
+        
+        isNeedAskForContact = YES;
+    }
     
     self.didCompleteBlock = completion;
 }
@@ -83,7 +93,7 @@
 {
     
     LoginViewModel* model = [DataManager getLoginModel];
-
+    
     NSString* fullContact = [NSString stringWithFormat:@"%@%@",model.prefix,model.phoneNumber];
     
     NSDictionary* dict = @{
@@ -97,15 +107,12 @@
             completion();
         }
         
-
         NSError* error;
 
         BaseModel* model = [[BaseModel alloc]initWithDictionary:object error:&error];
         
         [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess];
-        
       
-        
     } failure:^(id object) {
         
         NSError* error;
@@ -118,128 +125,6 @@
     }];
 }
 
--(NSArray*)getPrefixList:(NSArray*)countryList
-{
-    
-    NSMutableArray* array = [NSMutableArray new];
-    
-    for (int i = 0; i<countryList.count; i++) {
-        
-        CountryModel* model = countryList[i];
-        
-        NSString* combinedString = [NSString stringWithFormat:@"%@ (%@)",model.c_prefix,model.c_name];
-        
-        [array addObject:combinedString];
-    }
-    
-    return array;
-}
-
--(void)showPrefixView:(StringBlock)completion
-{
-    VoidBlock openPopOutView = ^(void)
-    {
-        EBActionSheetViewController* viewC = [[EBActionSheetViewController alloc]initWithNibName:@"EBActionSheetViewController" bundle:nil];
-        viewC.title = @"Prefix";
-        
-        viewC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        viewC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        
-        viewC.arrItemList = [self getPrefixList:self.arrCountryList];
-        
-        CountryModel* defaultSelection = [DataManager getDefaultPrefix];
-        NSArray* arrDefault;
-        
-        if (defaultSelection) {
-            
-            arrDefault = @[defaultSelection];
-            
-            [viewC setDefaultData:[self getPrefixList:arrDefault]];
-        }
-        
-        viewC.arrItemList = [self getPrefixList:self.arrCountryList];
-        
-        [self presentViewController:viewC animated:YES completion:nil];
-        
-        //   [viewC setInitial:[NSIndexPath indexPathForRow:[self getSingaporeIndexPath] inSection:[Utils isArrayNull:arrDefault]?0:1]];
-        
-        __weak typeof (viewC)weakVC = viewC;
-        
-        viewC.didSelectAtIndexBlock = ^(NSIndexPath* indexPath)
-        {
-            [weakVC dismissViewControllerAnimated:YES completion:^{
-                NSString* prefix;
-                
-                if ([Utils isArrayNull:arrDefault]) {
-                    
-                    CountryModel* model = self.arrCountryList[indexPath.row];
-                    
-                    prefix = model.c_prefix;
-                    
-                    [DataManager saveDefaultPrefix:model];
-                }
-                else{
-                    
-                    
-                    if (indexPath.section == 0) {
-                        CountryModel* model = arrDefault[indexPath.row];
-                        
-                        prefix = model.c_prefix;
-                    }
-                    else{
-                        
-                        CountryModel* model = self.arrCountryList[indexPath.row];
-                        
-                        prefix = model.c_prefix;
-                        
-                        [DataManager saveDefaultPrefix:model];
-                        
-                    }
-                    
-                }
-                
-                
-                if (completion) {
-                    completion(prefix);
-                }
-            }];
-            
-        };
-    };
-    
-    [[DataManager Instance] getCountryList:^(NSArray *array) {
-        
-        self.arrCountryList = (NSArray<CountryModel>*)array;
-        
-        
-        openPopOutView();
-        
-    }];
-    
-    
-}
-
--(int)getSingaporeIndexPath
-{
-    
-    int index = 0;
-    
-    for (int i = 0; i<self.arrCountryList.count; i++) {
-        
-        
-        CountryModel* model = self.arrCountryList[i];
-        
-        if ([model.c_name isEqualToString:@"Singapore"]) {
-            
-            index = i;
-            
-            return index;
-            
-        }
-    }
-    
-    return index;
-}
 
 
 #pragma mark - Navigation
@@ -247,11 +132,20 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([[segue identifier] isEqualToString:@"pop_resend_verify"]) {
+    if ([[segue identifier] isEqualToString:@"resendVerification"] || [[segue identifier] isEqualToString:@"resendVerification_withoutNumber"]) {
         
         self.resendVerificationCodeViewController = [segue destinationViewController];
         
         __weak typeof (self)weakSelf = self;
+        
+        if (isNeedAskForContact) {
+            
+            self.resendVerificationCodeViewController.isWithoutPhoneNumber = YES;
+        }
+        else{
+            self.resendVerificationCodeViewController.isWithoutPhoneNumber = NO;
+
+        }
         
         self.resendVerificationCodeViewController.didSelectResendBlock = ^(void)
         {
@@ -271,9 +165,52 @@
            
 
         };
+        
+        self.resendVerificationCodeViewController.didSelectResendWithNumberBlock = ^(NSString* prefix, NSString* number)
+        {
+            if ([Utils isStringNull:prefix]) {
+                [MessageManager showMessage:@"Please select prefix" Type:TSMessageNotificationTypeError inViewController:weakSelf.resendVerificationCodeViewController];
+            }
+            else if([Utils isStringNull:number]){
+               
+                [MessageManager showMessage:@"Please input phone number" Type:TSMessageNotificationTypeError inViewController:weakSelf.resendVerificationCodeViewController];
+            }
+            
+            else{
+                
+                LoginViewModel* model = [DataManager getLoginModel];
+                
+                
+                if (!model) {
+                    
+                    model = [LoginViewModel new];
+                    
+                }
+                
+                model.prefix = prefix;
+                
+                model.phoneNumber = number;
+                
+                model.emailAddress = weakSelf.emailAddress;
+                
+                [DataManager setLoginModel:model];
+                
+                [weakSelf requestServerResendOtpWithEmail:weakSelf.resendVerificationCodeViewController.txtEmail.text Completion:^{
+                    
+                    
+                    [weakSelf.popupController popViewControllerAnimated:YES];
+                }];
+                
+            }
+            
+            
+        };
+
     
         
     }
+
+
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

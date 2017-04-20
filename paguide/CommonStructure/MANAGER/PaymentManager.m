@@ -122,8 +122,8 @@ didCreatePaymentResult:(STPPaymentResult *)paymentResult
     self.viewController = vc;
 
 //    STPTheme* theme = [[STPTheme alloc]init];
-//    theme.secondaryBackgroundColor = APP_MAIN_COLOR;
-    
+//    theme.secondaryForegroundColor = APP_MAIN_COLOR;
+//    
     _addCardViewController = [[STPAddCardViewController alloc] init];
     _addCardViewController.delegate = self;
 

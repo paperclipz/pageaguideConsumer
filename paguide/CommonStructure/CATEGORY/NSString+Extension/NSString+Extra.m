@@ -48,7 +48,6 @@ static const NSString *KEY_ATTRIBUTED_TEXT = @"KEY_ATTRIBUTED_TEXT";
 }
 
 
-
 -(NSString*)validateText{
    
     if ([Utils isStringNull:self]) {
@@ -84,6 +83,19 @@ static const NSString *KEY_ATTRIBUTED_TEXT = @"KEY_ATTRIBUTED_TEXT";
     return strDateDisplay;
 
 
+}
+
++(NSString*)validateText:(NSString*)string{
+    
+    if ([Utils isStringNull:string]) {
+        
+        
+        return @"-";
+    }
+    else
+    {
+        return string;
+    }
 }
 
 @end

@@ -247,9 +247,9 @@
     if ([type isEqualToString:@"cell_title"]) {
         ApptHeaderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"appt_title"];
         
-        cell.lblTitle.text = self.appointmentModel.merchant_info_model.name.validateText;
-        cell.lblTitle2.text = self.appointmentModel.merchant_info_model.mobile_number.validateText;
-        cell.lblTitle3.text = self.appointmentModel.merchant_info_model.email.validateText;
+        cell.lblTitle.text = [NSString validateText:self.appointmentModel.merchant_info_model.name];
+        cell.lblTitle2.text = [NSString validateText:self.appointmentModel.merchant_info_model.mobile_number];
+        cell.lblTitle3.text = [NSString validateText:self.appointmentModel.merchant_info_model.email];
         [cell.ratingView setupRatingOutOfFive:round([self.appointmentModel.merchant_info_model.overall_rating doubleValue])];
 
         return cell;
@@ -261,9 +261,9 @@
         cell.lblTitle.text = [NSString stringWithFormat:@"%@ %@",self.appointmentModel.currency,self.appointmentModel.price];
         cell.lblTitle2.text = [NSString stringWithFormat:@"%@ %@",@"Purchase Date :",self.appointmentModel.transaction_date];
         
-        cell.lblTitle3.text = self.appointmentModel.package_info_model.name.validateText;
+        cell.lblTitle3.text = [NSString validateText:self.appointmentModel.package_info_model.name];
 
-        cell.lblTitle4.text = self.appointmentModel.appointment_code.validateText;
+        cell.lblTitle4.text = [NSString validateText:self.appointmentModel.appointment_code];
 
         cell.lblTitle5.text = [NSString stringWithFormat:@"Appointment Date : %@",self.appointmentModel.package_info_model.package_date];
 

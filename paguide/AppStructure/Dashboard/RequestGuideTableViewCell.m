@@ -19,7 +19,6 @@
 {
     self.model = data;
     
-    
     if (self.model.isSelected) {
         
         [self.btnSelection setImage:[UIImage imageNamed:@"icon_check_red.png"] forState:UIControlStateNormal];

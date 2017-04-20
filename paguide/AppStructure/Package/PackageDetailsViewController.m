@@ -622,7 +622,7 @@
 
         NSString* string1 = @"Mode :";
         
-        NSString* string2 = self.packageModel.mode;
+        NSString* string2 = [NSString validateText:self.packageModel.mode];
         
         cell.lblTitle.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@ %@",string1,string2] StringToChange:string1];
         
@@ -650,7 +650,7 @@
       
         NSString* string1 = @"Itinerary :";
         
-        NSString* string2 = self.packageModel.itinerary;
+        NSString* string2 = [NSString validateText:self.packageModel.itinerary];
         
         cell.lblTitle.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@ %@",string1,string2] StringToChange:string1];
 
@@ -669,7 +669,7 @@
 
         NSString* string1 = @"Recommended :";
         
-        NSString* string2 = self.packageModel.recommended;
+        NSString* string2 = [NSString validateText:self.packageModel.recommended];
         
         cell.lblTitle.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@ %@",string1,string2] StringToChange:string1];
 
@@ -678,14 +678,14 @@
 
         NSString* string1 = @"Include :";
         
-        NSString* string2 = self.packageModel.include;
+        NSString* string2 = [NSString validateText:self.packageModel.include];
         
         cell.lblTitle.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@ %@",string1,string2] StringToChange:string1];
     }
     else if ([type isEqualToString:cell_detail_type]) {
         NSString* string1 = @"Type :";
         
-        NSString* string2 = self.packageModel.type;
+        NSString* string2 = [NSString validateText:self.packageModel.type];
         
         cell.lblTitle.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@ %@",string1,string2] StringToChange:string1];
 

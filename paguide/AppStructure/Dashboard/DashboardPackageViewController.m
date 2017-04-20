@@ -32,27 +32,24 @@
 
 @property (nonatomic) PagingViewModel* vm_package_paging;
 @property (nonatomic) NSMutableArray<PackageModel>* arrPackageList;
-
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 @property (weak, nonatomic) IBOutlet UIButton *btnFilter;
-
 
 @end
 
 @implementation DashboardPackageViewController
+
 - (IBAction)btnIntercomClicked:(id)sender {
    
-     [Intercom presentConversationList];
+     [Intercom presentMessageComposer];
 
 }
-
 
 -(NSDictionary*)getPacakgeJson
 {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"package" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    
     
     return json;
 }
@@ -71,11 +68,30 @@
 -(void)viewWillAppear:(BOOL)animated
 {
  
+    if (self.isNeedReload) {
+        
+        if (![Utils isUserLogin]) {
+            
+            [Intercom registerUnidentifiedUser];
+        }
+        else{
+            
+            [DataManager getUserProfile:^(ProfileModel *pModel) {
+                
+                [Intercom registerUserWithEmail:pModel.email];
+            }];
+        }
+        
+        self.isNeedReload = NO;
+
+    }
  
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     
     [Utils checkIsNeedUpateApp:^(NSString* urlString){
         
@@ -112,7 +128,6 @@
       
     }];
 
-    
     if (![Utils isUserLogin]) {
         
         [Intercom registerUnidentifiedUser];

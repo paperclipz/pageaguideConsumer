@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ResendVerificationCodeViewController : UIViewController
+typedef void(^DoubleStringBlock) (NSString* prefix, NSString* number);
 
+@interface ResendVerificationCodeViewController : UIViewController
+@property(nonatomic,assign)BOOL isWithoutPhoneNumber;
 @property(nonatomic,copy)VoidBlock didSelectResendBlock;
 @property (weak, nonatomic) IBOutlet UITextField *txtEmail;
+@property(nonatomic,copy)DoubleStringBlock didSelectResendWithNumberBlock;
 
 @end

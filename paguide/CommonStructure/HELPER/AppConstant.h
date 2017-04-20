@@ -8,13 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+
+// ======================== General Declaration ======================== //
 #define intercom_key @"ios_sdk-1eb6d861cfa6e01d9a894110a348906601d33fe7"
-
 #define intercom_appID @"zex5tsam"
-
 #define SERVICE_TOKEN @"iw-V8JRku6nEmUnz7GJOpsJ_0-D7z0resdYmnJQirsU"
 
+
+
+// ======================== DEV Declaration ======================== //
+
+#define SERVER_PATH_LIVE @"devpage.pageadvisor.com"
 #define STRIPE_KEY @"pk_test_useqkPsXfsDnNPCl6F4VIgMO"
+
+
+
+// ======================== LIVE Declaration ======================== //
+
+//#define SERVER_PATH_LIVE @"api.pageaguide.co"
+//#define STRIPE_KEY @"pk_live_IOkEGSzykdC7NpYukrik4Oh7"
+
 
 
 

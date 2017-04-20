@@ -289,6 +289,8 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     NSLog(@"device Token From Default : %@",hexToken);
     
+    [Intercom setDeviceToken:deviceToken];
+
     [[FIRInstanceID instanceID] setAPNSToken:deviceToken type:FIRInstanceIDAPNSTokenTypeUnknown];
     
     }

@@ -13,7 +13,7 @@
 
 
 
--(void)setupOTPViewWitPhonePrefix:(NSString*)prefix PhoneNumber:(NSString*)mobileNumber Email:(NSString*)email didFinishVerify:(StringBlock)completion;
+-(void)setupOTPViewWithEmail:(NSString*)email didFinishVerify:(StringBlock)completion;
 
 
 @property (nonatomic,copy)VoidBlock didPressNotReceiveYetBlock;

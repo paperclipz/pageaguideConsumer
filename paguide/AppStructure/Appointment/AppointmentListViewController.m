@@ -137,7 +137,7 @@
         
         cell.lblTitle1.text = model.appointment_code;
         
-        cell.lblTitle2.text = model.request_info.title.validateText;
+        cell.lblTitle2.text = [NSString validateText:model.request_info.title];
         
         NSString* string1 = @"Appointment : ";
         NSString* string2 = model.transaction_date;

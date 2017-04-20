@@ -2,11 +2,6 @@
 #import "AFNetworking.h"
 #import "ConnectionHelper.h"
 
-
-#define SERVER_PATH_LIVE @"devpage.pageadvisor.com"
-
-//#define SERVER_PATH_LIVE @"api.pageaguide.co"
-
 #define Header_X_Auth @"X-Authorization"
 @interface ConnectionManager()
 {

@@ -381,7 +381,6 @@
 }
 
 
-
 -(void)showPrivacyView
 {
     NSLog(@"showPrivacyView");
@@ -497,27 +496,24 @@
 
 -(void)showOTPView
 {
-    
-    LoginViewModel* model = [DataManager getLoginModel];
-    
+        
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PopOut" bundle:nil];
     
     self.verifyAccountViewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_popout"];
     
     self.stPopupController = [[STPopupController alloc] initWithRootViewController:self.verifyAccountViewController];
 
-    [self.verifyAccountViewController setupOTPViewWitPhonePrefix:model.prefix PhoneNumber:model.phoneNumber Email:model.emailAddress didFinishVerify:^(NSString *str) {
-    
-        [self requestServerForVerifyOTP:str Completion:^(NSString *str) {
+    [self.verifyAccountViewController setupOTPViewWithEmail:self.txtEmail.text didFinishVerify:^(NSString *str) {
+        
+        [self requestServerForVerifyOTP:str Completion:^(NSString *message) {
             
-            [MessageManager showMessage:str Type:TSMessageNotificationTypeSuccess inViewController:self];
+            [MessageManager showMessage:message Type:TSMessageNotificationTypeSuccess inViewController:self];
             
             [self.stPopupController dismiss];
             
             [self.navigationController popToRootViewControllerAnimated:YES];
-
+            
         }];
-
     }];
     
    

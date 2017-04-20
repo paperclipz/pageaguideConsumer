@@ -785,16 +785,7 @@
         if (completionWithDate) {
             completionWithDate( ((UIDatePicker *)controller.contentView).date);
         }
-//        NSInteger time = interval/1000.0;
-//        
-//        NSString* tentativeDate = [NSString stringWithFormat:@"%li",(long)time];
-//        
-//        
-//        NSLog(@"time interval selected : %@",tentativeDate);
-//        
-//        [self.ibTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        
+
     }];
     
     //Create cancel action
@@ -805,7 +796,7 @@
     //Create date selection view controller
     RMDateSelectionViewController *dateSelectionController = [RMDateSelectionViewController actionControllerWithStyle:RMActionControllerStyleDefault selectAction:selectAction andCancelAction:cancelAction];
     dateSelectionController.title = @"Test";
-    dateSelectionController.message = @"This is a test message.\nPlease choose a date and press 'Select' or 'Cancel'.";
+    dateSelectionController.message = @"Please choose a date and press 'Select' or 'Cancel'.";
     
     //Now just present the date selection controller using the standard iOS presentation method
     

@@ -60,7 +60,7 @@
                                         </constraints>
                                         <state key="normal" title="No Receive Yet"/>
                                         <connections>
-                                            <segue destination="n6w-Qi-17J" kind="show" identifier="pop_resend_verify" id="mIm-Hr-OLf"/>
+                                            <action selector="btnResendClicked:" destination="dcn-MI-6Fo" eventType="touchUpInside" id="xdn-ah-6oI"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -107,6 +107,8 @@
                         <outlet property="btnActivate" destination="N44-ma-otC" id="bJi-Rh-m2P"/>
                         <outlet property="btnResend" destination="HYr-3Q-gUk" id="mMn-uM-EjC"/>
                         <outlet property="txtVerifyCode" destination="OFC-kG-33z" id="7kQ-Hw-kxn"/>
+                        <segue destination="n6w-Qi-17J" kind="show" identifier="resendVerification" id="Snm-os-zA3"/>
+                        <segue destination="XtN-lI-UuN" kind="show" identifier="resendVerification_withoutNumber" id="De2-IZ-slP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RkE-O5-mmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -373,7 +375,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVn-h6-Jl0">
                                         <rect key="frame" x="15" y="155" width="325" height="1"/>
@@ -383,15 +385,14 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZU-a6-wck">
-                                        <rect key="frame" x="10" y="166" width="330" height="30"/>
+                                        <rect key="frame" x="10" y="166" width="330" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="T7g-kF-UfM"/>
+                                            <constraint firstAttribute="height" constant="50" id="T7g-kF-UfM"/>
                                         </constraints>
                                         <state key="normal" title="Resend"/>
                                         <connections>
-                                            <action selector="btnActivateClicked:" destination="XtN-lI-UuN" eventType="touchUpInside" id="lEp-Zn-G5e"/>
-                                            <action selector="btnResendClicked:" destination="XtN-lI-UuN" eventType="touchUpInside" id="f69-8I-gRd"/>
+                                            <action selector="btnResendClicked:" destination="XtN-lI-UuN" eventType="touchUpInside" id="Hky-jT-CNe"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDE-K8-Fqt">
@@ -401,7 +402,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hk-6R-tgs">
                                         <rect key="frame" x="10" y="98" width="107.5" height="1"/>
@@ -420,7 +421,7 @@
                                             <color key="titleColor" red="0.81960784310000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="btnShowPrefixClicked:" destination="XtN-lI-UuN" eventType="touchUpInside" id="tLE-X6-Wca"/>
+                                            <action selector="btnPrefixClicked:" destination="XtN-lI-UuN" eventType="touchUpInside" id="Wve-Ui-0rt"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYU-tY-fDe">
@@ -481,9 +482,10 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="btnPrefix" destination="OYf-Bf-5D1" id="iTz-UM-awE"/>
                         <outlet property="btnResend" destination="mZU-a6-wck" id="OLn-7B-JOh"/>
                         <outlet property="txtEmail" destination="8Dz-Sq-1h7" id="mB5-hn-0cf"/>
-                        <outlet property="txtPhoneNumber" destination="gDE-K8-Fqt" id="WHA-UB-Ly0"/>
+                        <outlet property="txtPhoneNumber" destination="gDE-K8-Fqt" id="1ts-Y7-ut1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93O-J9-zRF" userLabel="First Responder" sceneMemberID="firstResponder"/>

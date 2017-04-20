@@ -119,7 +119,7 @@
     
     cell.lblTitle1.text = model.request_code;
     
-    cell.lblTitle2.text = model.request_info.title.validateText;
+    cell.lblTitle2.text = [NSString validateText:model.request_info.title];
     
     NSString* string1 = @"Requested Date : ";
     NSString* string2 = model.request_info.created_at;
