@@ -55,6 +55,11 @@
 
 #pragma mark - UI Utils
 
++(CGRect)getWindowFrame
+{
+    return [[UIScreen mainScreen] bounds];
+}
+
 +(void)setRoundBorder:(UIView*)view color:(UIColor*)color borderRadius:(float)borderRadius
 {
     
@@ -66,6 +71,19 @@
 }
 
 #pragma mark - App Utils
+
++(BOOL)isDevBuilt
+{
+    if ([SERVER_PATH_LIVE containsString:@"dev"]) {
+        
+        return YES;
+    }
+    
+    else
+    {
+        return NO;
+    }
+}
 
 +(NSString*)getUniqueDeviceIdentifier
 {

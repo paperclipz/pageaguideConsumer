@@ -27,6 +27,15 @@
 @end
 
 @implementation VerifyAccountViewController
+
+-(void)awakeFromNib
+{
+    
+    [super awakeFromNib];
+    self.contentSizeInPopup = CGSizeMake([Utils getWindowFrame].size.width - 50, self.contentSizeInPopup.height);
+    self.landscapeContentSizeInPopup = CGSizeMake([Utils getWindowFrame].size.width - 100, self.contentSizeInPopup.height);
+}
+
 - (IBAction)btnResendClicked:(id)sender {
     
     if (isNeedAskForContact) {

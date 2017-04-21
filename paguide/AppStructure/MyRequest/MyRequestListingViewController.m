@@ -37,7 +37,7 @@
     return _arrAppointmentList;
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     
     if (![Utils isUserLogin])
@@ -85,6 +85,11 @@
 
 -(void)resetAndCallAppointmentListing
 {
+    if (self.vm_appointment_paging.isLoading)
+    {
+        return;
+    }
+    
     _vm_appointment_paging = nil;
     
     [self.arrAppointmentList removeAllObjects];
@@ -92,7 +97,6 @@
     self.arrAppointmentList = nil;
     
     [self.ibTableView reloadData];
-    
     
     [self requestServerforMyRequestList];
     
@@ -173,13 +177,12 @@
         return;
         
     }
-    
-    
+    self.vm_appointment_paging.isLoading = YES;
+
     if (self.vm_appointment_paging.currentPage == 0) {
         
         [LoadingManager show];
     }
-    self.vm_appointment_paging.isLoading = YES;
 
     NSDictionary* dict = @{@"token" : [Utils getToken],
                            @"per_page" : PER_PAGE,

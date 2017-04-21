@@ -7,6 +7,7 @@
 //
 
 #import "SettingPopoutViewController.h"
+#import <STPopup/STPopup.h>
 
 @interface SettingPopoutViewController ()
 {
@@ -20,6 +21,14 @@
 @end
 
 @implementation SettingPopoutViewController
+
+-(void)awakeFromNib
+{
+    
+    [super awakeFromNib];
+    self.contentSizeInPopup = CGSizeMake([Utils getWindowFrame].size.width - 50, self.contentSizeInPopup.height);
+    self.landscapeContentSizeInPopup = CGSizeMake([Utils getWindowFrame].size.width - 100, self.contentSizeInPopup.height);
+}
 
 - (IBAction)btnSubmitClicked:(id)sender {
     

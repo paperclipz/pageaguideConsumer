@@ -25,9 +25,13 @@
 
 #pragma mark - UI Utils
 
++(CGRect)getWindowFrame;
+
 +(void)setRoundBorder:(UIView*)view color:(UIColor*)color borderRadius:(float)borderRadius;
 
 #pragma mark - App Utils
+
++(BOOL)isDevBuilt;
 
 +(NSString*)getAppVersion;
 

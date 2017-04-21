@@ -11,6 +11,7 @@
 
 @interface CommonViewController : UIViewController
 
+@property (nonatomic, assign) BOOL isMiddleOfLoadingPage;
 
 -(void)resetMainPage;
 @end

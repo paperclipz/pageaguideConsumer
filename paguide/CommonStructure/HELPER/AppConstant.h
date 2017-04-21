@@ -15,12 +15,10 @@
 #define SERVICE_TOKEN @"iw-V8JRku6nEmUnz7GJOpsJ_0-D7z0resdYmnJQirsU"
 
 
-
 // ======================== DEV Declaration ======================== //
 
 #define SERVER_PATH_LIVE @"devpage.pageadvisor.com"
 #define STRIPE_KEY @"pk_test_useqkPsXfsDnNPCl6F4VIgMO"
-
 
 
 // ======================== LIVE Declaration ======================== //

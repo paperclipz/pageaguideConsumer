@@ -144,6 +144,7 @@
 		8A772B141E601D3000763DF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A772B121E601D3000763DF7 /* LaunchScreen.storyboard */; };
 		8A772B1F1E601D3000763DF7 /* paguideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A772B1E1E601D3000763DF7 /* paguideTests.m */; };
 		8A772B2A1E601D3000763DF7 /* paguideUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A772B291E601D3000763DF7 /* paguideUITests.m */; };
+		8A7BDE581EA9E8D40036E1E2 /* GoogleService-Info-itunes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A7BDE571EA9E8D40036E1E2 /* GoogleService-Info-itunes.plist */; };
 		8A80C0001E9C9C8100AFC150 /* UITextField+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A80BFFF1E9C9C8100AFC150 /* UITextField+Blocks.m */; };
 		8A81E90D1E7947C50073DC23 /* ProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A81E90C1E7947C50073DC23 /* ProfileModel.m */; };
 		8A851FB81E66C5B300904B6C /* RequestGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A851FB71E66C5B300904B6C /* RequestGuideViewController.m */; };
@@ -456,6 +457,7 @@
 		8A772B251E601D3000763DF7 /* paguideUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = paguideUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A772B291E601D3000763DF7 /* paguideUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = paguideUITests.m; sourceTree = "<group>"; };
 		8A772B2B1E601D3100763DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A7BDE571EA9E8D40036E1E2 /* GoogleService-Info-itunes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-itunes.plist"; sourceTree = "<group>"; };
 		8A80BFFE1E9C9C8100AFC150 /* UITextField+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Blocks.h"; sourceTree = "<group>"; };
 		8A80BFFF1E9C9C8100AFC150 /* UITextField+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Blocks.m"; sourceTree = "<group>"; };
 		8A81E90B1E7947C50073DC23 /* ProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileModel.h; sourceTree = "<group>"; };
@@ -1071,6 +1073,7 @@
 			children = (
 				8ABC51541E8E522000E31560 /* Json */,
 				8ABC514E1E8E341C00E31560 /* ServiceAccount.json */,
+				8A7BDE571EA9E8D40036E1E2 /* GoogleService-Info-itunes.plist */,
 				8A1228BD1E8D0A0C0093C92C /* GoogleService-Info.plist */,
 				8AFA22CF1E6D53520090837C /* Resources */,
 				8A9F46261E6047BE005F1453 /* PrefixHeader.pch */,
@@ -1541,7 +1544,7 @@
 				TargetAttributes = {
 					8A772B001E601D2F00763DF7 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = S8YV349CW3;
+						DevelopmentTeam = 4KJSSCCKPM;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -1661,6 +1664,7 @@
 				8A76569D1E9B906300A99C4E /* icon_dropdown_red.png in Resources */,
 				8A6B68F31E6D593600D696DE /* icon_concierge_grey.png in Resources */,
 				8A4CB6051E63E82500A8BCDA /* Register.storyboard in Resources */,
+				8A7BDE581EA9E8D40036E1E2 /* GoogleService-Info-itunes.plist in Resources */,
 				8A6B68EB1E6D593600D696DE /* icon_concierge_red@2x.png in Resources */,
 				8AFA22F51E6D53520090837C /* 1080x1920.png in Resources */,
 				8A1228AB1E8BD5B80093C92C /* icon_setting_red_Tab@2x.png in Resources */,
@@ -2284,6 +2288,13 @@
 				DEVELOPMENT_TEAM = 4KJSSCCKPM;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"$(inherited)",
+					"GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1",
+					is_itunes,
+				);
 				INFOPLIST_FILE = paguide/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2376,6 +2387,13 @@
 				DEVELOPMENT_TEAM = 4KJSSCCKPM;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"$(inherited)",
+					"GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS=1",
+					is_itunes,
+				);
 				INFOPLIST_FILE = paguide/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

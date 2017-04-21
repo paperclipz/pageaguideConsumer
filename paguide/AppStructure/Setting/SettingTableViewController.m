@@ -100,7 +100,7 @@
     if ([type isEqualToString:cell_Version]) {
         cell.accessoryType = UITableViewCellAccessoryNone;
 
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@",type,[Utils getAppVersion]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ :%@%@",type,[Utils isDevBuilt]?@"Dev":@" ",[Utils getAppVersion]];
 
     }
     
@@ -203,7 +203,6 @@
     
  
 
-   
 }
 
 
@@ -213,7 +212,7 @@
     
     WebViewController* webView = [WebViewController new];
     
-    webView.webViewURL = [NSString stringWithFormat:@"http://%@%@",[ConnectionManager getServerPath],@"/terms"];
+    webView.webViewURL = [NSString stringWithFormat:@"https://%@%@",[ConnectionManager getServerPath],@"/terms"];
     
     
     [self presentViewController:webView animated:YES completion:nil];
@@ -225,7 +224,7 @@
     
     WebViewController* webView = [WebViewController new];
     
-    webView.webViewURL = [NSString stringWithFormat:@"http://%@%@",[ConnectionManager getServerPath],@"/privacy"];
+    webView.webViewURL = [NSString stringWithFormat:@"https://%@%@",[ConnectionManager getServerPath],@"/privacy"];
     
     [self presentViewController:webView animated:YES completion:nil];
 }
@@ -239,7 +238,6 @@
     
     
     self.settingPopoutViewController = viewController;
-    
     
     __weak typeof (self)weakSelf = self;
     

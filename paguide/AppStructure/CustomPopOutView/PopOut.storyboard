@@ -97,7 +97,7 @@
                     <size key="freeformSize" width="375" height="220"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="size" keyPath="contentSizeInPopup">
-                            <size key="value" width="355" height="220"/>
+                            <size key="value" width="300" height="220"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="size" keyPath="keyPath">
                             <size key="value" width="400" height="220"/>
@@ -332,7 +332,7 @@
                     <size key="freeformSize" width="375" height="220"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="size" keyPath="contentSizeInPopup">
-                            <size key="value" width="355" height="220"/>
+                            <size key="value" width="300" height="220"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="size" keyPath="landscapeContentSizeInPopup">
                             <size key="value" width="400" height="220"/>
@@ -475,7 +475,7 @@
                     <size key="freeformSize" width="355" height="350"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="size" keyPath="contentSizeInPopup">
-                            <size key="value" width="355" height="300"/>
+                            <size key="value" width="300" height="300"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="size" keyPath="landscapeContentSizeInPopup">
                             <size key="value" width="400" height="300"/>

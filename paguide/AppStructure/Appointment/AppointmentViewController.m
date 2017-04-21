@@ -411,6 +411,9 @@
         
         [self showAppointmentComleteview];
         
+        [self resetMainPage];
+
+        
     } failure:^(id object) {
        
         NSError* error;

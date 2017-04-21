@@ -8,6 +8,7 @@
 
 #import "ResendVerificationCodeViewController.h"
 #import "EBActionSheetViewController.h"
+#import <STPopup/STPopup.h>
 
 @protocol CountryModel;
 
@@ -21,6 +22,14 @@
 @end
 
 @implementation ResendVerificationCodeViewController
+
+-(void)awakeFromNib
+{
+    
+    [super awakeFromNib];
+    self.contentSizeInPopup = CGSizeMake([Utils getWindowFrame].size.width - 50, self.contentSizeInPopup.height);
+    self.landscapeContentSizeInPopup = CGSizeMake([Utils getWindowFrame].size.width - 100, self.contentSizeInPopup.height);
+}
 
 - (IBAction)btnPrefixClicked:(id)sender {
     

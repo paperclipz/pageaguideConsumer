@@ -28,7 +28,10 @@
 
     __weak IBOutlet NSLayoutConstraint *constHeight_complete;
     
+    
 }
+@property (strong, nonatomic) MerchantProfileModel* selectedMerchantProfileModel;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnComplete;
 @property (weak, nonatomic) IBOutlet UIButton *btnVerify;
 @property (weak, nonatomic) IBOutlet UITextField *txtVerify;
@@ -65,16 +68,7 @@
             [self.ratingViewController dismissViewControllerAnimated:YES completion:^{
                 
                 
-                
-                
-                UIViewController* viewC = self.navigationController.viewControllers[0];
-                
-                if ([viewC isKindOfClass:[BaseViewController class]]) {
-                    
-                    BaseViewController* bVC = (BaseViewController*)viewC;
-                    
-                    bVC.isNeedReload = YES;
-                }
+                [self resetMainPage];
                 
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 
@@ -295,6 +289,8 @@
             
             cell.didSelectInnerButton1Block = ^{
             
+                self.selectedMerchantProfileModel = self.appointmentModel.arr_Merchant_info[indexPath.row];
+
                 [self performSegueWithIdentifier:@"merchant_profile" sender:self];
             };
             return cell;
@@ -309,6 +305,9 @@
             cell.lblDescription.text = model.name;
             
             cell.didSelectInnerButton1Block = ^{
+                
+                
+                self.selectedMerchantProfileModel = self.appointmentModel.arr_Merchant_info[indexPath.row];
                 
                 [self performSegueWithIdentifier:@"merchant_profile" sender:self];
 
@@ -397,7 +396,7 @@
     
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    AppointmentViewController *appointmentViewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_appointment_detail"];
+    AppointmentRequestViewController *appointmentViewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_appointment_request_details"];
     
     [appointmentViewController setupData:self.appointmentModel];
     
@@ -454,6 +453,8 @@
         
         [self showAppointmentComleteview];
         
+        [self resetMainPage];
+        
     } failure:^(id object) {
         
         NSError* error;
@@ -476,7 +477,7 @@
         
         MerchantProfileViewController* mViewController = [segue destinationViewController];
         
-        [mViewController setUpMerchantProfile:self.appointmentModel.merchant_info_model];
+        [mViewController setUpMerchantProfile:self.selectedMerchantProfileModel];
     }
 }
 

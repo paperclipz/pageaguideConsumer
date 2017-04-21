@@ -95,6 +95,11 @@
 
 -(void)resetAndCallAppointmentListing
 {
+    
+    if (self.vm_appointment_paging.isLoading)
+    {
+        return;
+    }
     _vm_appointment_paging = nil;
     
     [self.arrAppointmentList removeAllObjects];
@@ -130,7 +135,6 @@
     
     AppointmentModel* model = self.arrAppointmentList[indexPath.row];
 
-    
     if ([model.type isEqualToString:@"request"]) {
         
         cell.lblPackage.hidden = YES;
@@ -140,14 +144,14 @@
         cell.lblTitle2.text = [NSString validateText:model.request_info.title];
         
         NSString* string1 = @"Appointment : ";
-        NSString* string2 = model.transaction_date;
+        NSString* string2 = [NSString validateText:model.transaction_date];
         
         cell.lblTitle3.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string1,string2] StringToChange:string1];
         
         
         
         NSString* string3 = @"Merchant : ";
-        NSString* string4 = model.merchant_info_model.name;
+        NSString* string4 = [NSString validateText:model.merchant_info_model.name];
         
         cell.lblTitle4.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string3,string4] StringToChange:string1];
     }
@@ -158,16 +162,16 @@
 
         cell.lblTitle1.text = model.appointment_code;
         
-        cell.lblTitle2.text = model.package_info_model.name;
+        cell.lblTitle2.text = [NSString validateText:model.package_info_model.name];
         
         NSString* string1 = @"Appointment : ";
-        NSString* string2 = model.package_info_model.package_date;
+        NSString* string2 = [NSString validateText:model.package_info_model.package_date];
         
         cell.lblTitle3.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string1,string2] StringToChange:string1];
         
         
         NSString* string3 = @"Merchant : ";
-        NSString* string4 = model.merchant_info_model.name;
+        NSString* string4 = [NSString validateText:model.merchant_info_model.name];
         
         cell.lblTitle4.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string3,string4] StringToChange:string3];
     }
@@ -199,8 +203,16 @@
     if ([[segue identifier] isEqualToString:@"appointment_details"]) {
 
         AppointmentViewController *vc = [segue destinationViewController];
+        
+        if ([Utils isStringNull:apptModel.verify_time])
+        {
+            vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
 
-        vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
+        }
+        else{
+            vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
+
+        }
 
         [vc setupData:apptModel];
         
@@ -212,9 +224,16 @@
         
         AppointmentRequestViewController *vc = [segue destinationViewController];
         
+        if ([Utils isStringNull:apptModel.verify_time])
+        {
+            vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
+            
+        }
+        else{
+            vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
+            
+        }
         
-        vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
-
         [vc setupData:apptModel];
         
     }

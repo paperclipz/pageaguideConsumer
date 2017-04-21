@@ -18,7 +18,6 @@
 @import Intercom;
 
 
-
 #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 @import UserNotifications;
 #endif
@@ -180,9 +179,28 @@
     // [END register_for_notifications]
     
     
-    // [START configure_firebase]
-    [FIRApp configure];
-    // [END configure_firebase]
+    // ================================ [START configure_firebase] ================================
+    
+#ifdef is_itunes
+    
+#define google_service_info [[NSBundle mainBundle]pathForResource:@"GoogleService-Info-itunes" ofType:@"plist"]
+
+    NSLog(@"is Itunes Built");
+#else
+    
+#define google_service_info [[NSBundle mainBundle]pathForResource:@"GoogleService-Info" ofType:@"plist"]
+    
+    NSLog(@"is Enterprise Built");
+
+#endif
+    
+    FIROptions* options = [[FIROptions alloc]initWithContentsOfFile:google_service_info];
+    
+    [FIRApp configureWithOptions:options];
+    
+    // ================================  [END configure_firebase] ================================
+    
+    
     // Add observer for InstanceID token refresh callback.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenRefreshNotification:)
                                                  name:kFIRInstanceIDTokenRefreshNotification object:nil];
@@ -196,7 +214,7 @@
     [[FIRMessaging messaging] connectWithCompletion:^(NSError * _Nullable error) {
         if (error != nil) {
         } else {
-            NSString *refreshedToken = [[FIRInstanceID instanceID] token];
+           // NSString *refreshedToken = [[FIRInstanceID instanceID] token];
             
            
         }
@@ -269,7 +287,6 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     NSLog(@"%@", userInfo);
     
 
-    
 }
 
 -(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings

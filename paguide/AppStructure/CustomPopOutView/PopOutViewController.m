@@ -21,7 +21,7 @@
 {
     if (self = [super init]) {
         self.title = @"Apple";
-        self.contentSizeInPopup = CGSizeMake(300, 400);
+        self.contentSizeInPopup = CGSizeMake([Utils getWindowFrame].size.width - 50, 220);
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
     }
     return self;

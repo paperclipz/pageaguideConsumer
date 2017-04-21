@@ -50,6 +50,9 @@
 
 @property (nonatomic,strong)NSString* offer_id;
 
+@property (nonatomic,strong)NSString* complete_time;
+
+
 
 
 

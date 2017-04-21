@@ -37,6 +37,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.isMiddleOfLoadingPage = NO;
     // Do any additional setup after loading the view.
 }
 

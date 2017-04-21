@@ -28,4 +28,6 @@
 @property(nonatomic,strong)NSArray* specialty;
 @property (nonatomic,strong)NSArray* arrRequest_field;
 
+
+
 @end

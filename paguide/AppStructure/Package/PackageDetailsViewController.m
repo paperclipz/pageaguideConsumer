@@ -42,7 +42,6 @@
     NSArray* arrCellDetailsList;
     
     BOOL isPackageBookmarked;
-
 }
 
 
@@ -251,6 +250,15 @@
     
     self.ibTableView.rowHeight = UITableViewAutomaticDimension;
     
+    if (_viewType == PACKAGE_VIEW_TYPE_AVAILABILIY) {
+
+        [self.ibTableView pullToRefresh:^{
+           
+            
+            [self requestServerForPackageDetails];
+
+        }];
+    }
 
 
     [Utils setRoundBorder:self.btnAvailability color:[UIColor clearColor] borderRadius:5.0f];
@@ -493,6 +501,11 @@
 {
     NSString* type = arrCellList[section];
     
+    
+    if (self.isMiddleOfLoadingPage) {
+        
+        return 0;
+    }
     if ([type isEqualToString:cell_type_map]||
         [type isEqualToString:cell_type_desc] ||
         [type isEqualToString:cell_type_cancellation]||
@@ -965,9 +978,25 @@
     
     [LoadingManager show];
 
+    if (self.isMiddleOfLoadingPage)
+    {
+        return;
+    }
+    
+    self.isMiddleOfLoadingPage = YES;
+    
+    [self.ibTableView reloadData];
+    
     NSDictionary* dict = @{@"packages_id" : IsNullConverstion(self.packageID)};
     
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostPackageDetailsInfo parameter:dict appendString:nil success:^(id object) {
+        
+        
+        self.isMiddleOfLoadingPage = NO;
+
+        
+        [self.ibTableView stopRefresh];
+        
         
         [LoadingManager hide];
 
@@ -981,6 +1010,10 @@
 
     } failure:^(id object) {
         
+        self.isMiddleOfLoadingPage = NO;
+
+        [self.ibTableView stopRefresh];
+
         [LoadingManager hide];
 
     }];

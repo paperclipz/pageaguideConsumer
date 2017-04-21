@@ -17,7 +17,7 @@ typedef enum
     
 }PACKAGE_VIEW_TYPE;
 
-@interface PackageDetailsViewController : UIViewController
+@interface PackageDetailsViewController : CommonViewController
 
 @property(nonatomic, assign)PACKAGE_VIEW_TYPE viewType;
 

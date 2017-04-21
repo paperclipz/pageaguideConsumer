@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppointmentModel.h"
 
-@interface AppointmentRequestViewController : UIViewController
+@interface AppointmentRequestViewController : CommonViewController
 
 -(void)setupData:(AppointmentModel*)model;
 @property (nonatomic,assign)APPOITNMENT_VIEW_TYPE viewType;;
