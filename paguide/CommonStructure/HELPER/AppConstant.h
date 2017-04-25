@@ -17,16 +17,14 @@
 
 // ======================== DEV Declaration ======================== //
 
+
 #define SERVER_PATH_LIVE @"devpage.pageadvisor.com"
 #define STRIPE_KEY @"pk_test_useqkPsXfsDnNPCl6F4VIgMO"
-
 
 // ======================== LIVE Declaration ======================== //
 
 //#define SERVER_PATH_LIVE @"api.pageaguide.co"
 //#define STRIPE_KEY @"pk_live_IOkEGSzykdC7NpYukrik4Oh7"
-
-
 
 
 @interface AppConstant : NSObject

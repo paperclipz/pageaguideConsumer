@@ -45,7 +45,7 @@
         self.arrCellList = @[
                              cell_change_password,
                              cell_notification,
-                             cell_FAQ,
+                             //cell_FAQ,
                              cell_Term,
                              cell_Privacy,
                              cell_Logout,

@@ -677,7 +677,7 @@
     
     UIAlertController * alert=   [UIAlertController
                                   alertControllerWithTitle:@"Confirm"
-                                  message:@"Do You still want to continue with this purchase?"
+                                  message:@"Do you still want to stay on this page?"
                                   preferredStyle:UIAlertControllerStyleAlert];
     
     

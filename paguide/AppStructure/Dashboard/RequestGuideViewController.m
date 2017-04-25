@@ -129,11 +129,11 @@
     else if ([model.type isEqualToString:cell_type_date]) {
         
     }
-
-
     
     headerView.didSelectBlock = ^{
     
+        [self.view endEditing:YES];
+        
         model.isExpand = !model.isExpand;
         
         [self.arrFormDataList replaceObjectAtIndex:section withObject:model];
@@ -406,8 +406,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
     FormDataModel* model = self.arrFormDataList[indexPath.section];
+    
+    [self.view endEditing:YES];
     
     if ([model.type isEqualToString:cell_type_option]) {
         
@@ -778,6 +779,7 @@
 -(void)showDatePickerView:(NSIndexPath*)indexPath Completion:(NSDateBlock)completionWithDate
 {
     //Create select action
+    
     RMAction *selectAction = [RMAction actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMActionController *controller) {
         NSLog(@"Successfully selected date: %@", ((UIDatePicker *)controller.contentView).date);
         
@@ -788,14 +790,14 @@
 
     }];
     
-    //Create cancel action
+        //Create cancel action
     RMAction *cancelAction = [RMAction actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:^(RMActionController *controller) {
         NSLog(@"Date selection was canceled");
     }];
     
     //Create date selection view controller
-    RMDateSelectionViewController *dateSelectionController = [RMDateSelectionViewController actionControllerWithStyle:RMActionControllerStyleDefault selectAction:selectAction andCancelAction:cancelAction];
-    dateSelectionController.title = @"Test";
+    RMDateSelectionViewController *dateSelectionController = [RMDateSelectionViewController actionControllerWithStyle:RMActionControllerStyleBlack selectAction:selectAction andCancelAction:cancelAction];
+    dateSelectionController.title = @"Date";
     dateSelectionController.message = @"Please choose a date and press 'Select' or 'Cancel'.";
     
     //Now just present the date selection controller using the standard iOS presentation method

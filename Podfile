@@ -5,7 +5,7 @@
 def shared_pods
     pod 'SVPullToRefresh'
     pod 'JSONModel'
-    pod 'SDWebImage'
+    #pod 'SDWebImage'
     pod 'AFNetworking', '~> 3.0'
     pod 'IQKeyboardManager'
     pod 'ActionSheetPicker-3.0'
