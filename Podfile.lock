@@ -115,6 +115,7 @@ DEPENDENCIES:
   - MWPhotoBrowser
   - RMDateSelectionViewController (~> 2.0.3)
   - SAMKeychain
+  - SDWebImage
   - STPopup
   - Stripe
   - SVPullToRefresh
@@ -165,6 +166,6 @@ SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   TSMessages: eb3cf27b6900684a21bad4fe9ea426e287b8c839
 
-PODFILE CHECKSUM: cf09ee87286bcf983dc7a8e1714e8286a3973a0c
+PODFILE CHECKSUM: d4dee63880a4ca72ec4a0ed67534d73cc5c693dc
 
 COCOAPODS: 1.0.1

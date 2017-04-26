@@ -14,17 +14,23 @@
 #define intercom_appID @"zex5tsam"
 #define SERVICE_TOKEN @"iw-V8JRku6nEmUnz7GJOpsJ_0-D7z0resdYmnJQirsU"
 
-
+#if IS_DEV
 // ======================== DEV Declaration ======================== //
 
 
 #define SERVER_PATH_LIVE @"devpage.pageadvisor.com"
 #define STRIPE_KEY @"pk_test_useqkPsXfsDnNPCl6F4VIgMO"
 
+
+#else
 // ======================== LIVE Declaration ======================== //
 
-//#define SERVER_PATH_LIVE @"api.pageaguide.co"
-//#define STRIPE_KEY @"pk_live_IOkEGSzykdC7NpYukrik4Oh7"
+#define SERVER_PATH_LIVE @"api.pageaguide.co"
+#define STRIPE_KEY @"pk_live_IOkEGSzykdC7NpYukrik4Oh7"
+
+
+#endif
+
 
 
 @interface AppConstant : NSObject
