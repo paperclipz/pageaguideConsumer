@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "TTTAttributedLabel.h"
 
 @interface PackageDetailsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblDesc;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *lblTTDesc;
 @property (weak, nonatomic) IBOutlet MKMapView *ibMapView;
 
 -(void)setLocation:(CLLocation*)location;

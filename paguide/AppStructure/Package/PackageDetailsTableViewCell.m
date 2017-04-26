@@ -45,7 +45,7 @@
     MKCoordinateRegion zoomIn = self.ibMapView.region;
     zoomIn.span.latitudeDelta *= 0.9;
     zoomIn.span.longitudeDelta *= 0.9;
-    [self.ibMapView setRegion:zoomIn animated:YES];
+    [self.ibMapView setRegion:zoomIn animated:NO];
 
     
 }

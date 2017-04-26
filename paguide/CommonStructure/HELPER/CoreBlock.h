@@ -23,6 +23,7 @@ typedef void (^IndexPathBlock)(NSIndexPath* indexPath);
 typedef void(^StringBlock) (NSString* str);
 typedef void (^NSDateBlock)(NSDate* date);
 typedef void(^NSArrayBlock) (NSArray* array);
+typedef void(^NSAttributedSringBlock) (NSAttributedString* attStr);
 
 
 typedef void (^IDBlock)(id object);

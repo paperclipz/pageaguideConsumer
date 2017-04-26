@@ -47,6 +47,37 @@ static const NSString *KEY_ATTRIBUTED_TEXT = @"KEY_ATTRIBUTED_TEXT";
 
 }
 
+-(void)getAttributedText:(NSAttributedSringBlock)completion
+{
+    if (self.customAttributedText) {
+        
+        if (completion) {
+            completion(self.customAttributedText);
+        }
+    }
+    else{
+    
+        
+        dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            NSAttributedString* string = [[NSAttributedString alloc] initWithData:[self dataUsingEncoding:NSUTF8StringEncoding]
+                                                                          options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                                                                                    NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
+                                                               documentAttributes:nil error:nil];
+            
+            dispatch_async( dispatch_get_main_queue(), ^{
+              
+                self.customAttributedText = string;
+                
+                if (completion) {
+                    completion(self.customAttributedText);
+                }
+
+            });
+        });
+        
+    }
+}
 
 -(NSString*)validateText{
    

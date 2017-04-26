@@ -22,4 +22,6 @@
 
 +(NSString*)validateText:(NSString*)string;
 
+-(void)getAttributedText:(NSAttributedSringBlock)completion;
+
 @end

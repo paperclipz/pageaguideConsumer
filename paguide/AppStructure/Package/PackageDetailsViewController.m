@@ -555,8 +555,26 @@
         PackageDetailsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"package_details_desc2"];
         
         cell.lblTitle.text = @"Description";
-        cell.lblDesc.attributedText = self.packageModel.desc.getAttributedText;
+      
         
+        if (self.packageModel.desc.customAttributedText) {
+            
+            cell.lblTTDesc.attributedText = self.packageModel.desc.customAttributedText;
+        }
+        else{
+            
+            [self.packageModel.desc getAttributedText:^(NSAttributedString *attStr) {
+                
+                cell.lblTTDesc.attributedText = attStr;
+                
+                [self.ibTableView reloadData];
+                
+                
+            }];
+            
+        }
+        
+
         return cell;
     }
     
@@ -583,8 +601,23 @@
         
         cell.lblTitle.text = @"Cancellation Policy";
         
-        cell.lblDesc.attributedText = [self.packageModel.cancellation_policy getAttributedText];
+        if (self.packageModel.cancellation_policy.customAttributedText) {
+            
+            cell.lblTTDesc.attributedText = self.packageModel.cancellation_policy.customAttributedText;
+        }
+        else{
+        
+            [self.packageModel.cancellation_policy getAttributedText:^(NSAttributedString *attStr) {
+                
+                cell.lblTTDesc.attributedText = attStr;
+                
+                [self.ibTableView reloadData];
+                
 
+            }];
+
+        }
+        
         return cell;
         
     }
