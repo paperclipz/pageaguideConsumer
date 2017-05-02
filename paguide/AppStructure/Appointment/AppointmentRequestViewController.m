@@ -281,12 +281,8 @@
             cell.lblTitle2.text = @"Bid Detail";
             
             
-            cell.lblDescription2.attributedText = [[NSAttributedString alloc] initWithData:[model.offer_details dataUsingEncoding:NSUTF8StringEncoding]
-                                                                                   options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                                                                                             NSCharacterEncodingDocumentAttribute: @(NSUTF8StringEncoding)}
-                                                                        documentAttributes:nil error:nil];
-            
-            
+            cell.lblDescription2.attributedText = [model.offer_details getAttributedText];
+
             cell.didSelectInnerButton1Block = ^{
             
                 self.selectedMerchantProfileModel = self.appointmentModel.arr_Merchant_info[indexPath.row];

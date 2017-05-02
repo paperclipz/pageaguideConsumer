@@ -17,6 +17,7 @@
 #import "UILabel+Extra.h"
 #import "PromoCodeViewController.h"
 #import "FormDataModel.h"
+#import "MerchantProfileViewController.h"
 
 #define cell_title @"cell_title"
 #define cell_merchant_offer @"cell_merchant_offer"
@@ -26,6 +27,8 @@
 {
     NSArray* arrCellList;
 }
+
+@property (strong, nonatomic) MerchantProfileModel* selectedMerchantProfileModel;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnMakePayment;
 @property (strong, nonatomic)AppointmentModel* appointmentModel;
@@ -256,6 +259,14 @@
                 
                 cell.lblDescription2.attributedText = [aModel.offer_details getAttributedText];
                 
+                cell.didSelectInnerButton1Block = ^{
+                    
+                    self.selectedMerchantProfileModel = model;
+                    
+                    [self performSegueWithIdentifier:@"merchant_profile" sender:self];
+                };
+
+                
                 return cell;
             }
             else{
@@ -279,6 +290,14 @@
                 
                 [cell.btnSelection setImage:[self getImageForSelection:model.isSelect] forState:UIControlStateNormal];
 
+                cell.didSelectInnerButton1Block = ^{
+                    
+                    self.selectedMerchantProfileModel = model;
+                    
+                    [self performSegueWithIdentifier:@"merchant_profile" sender:self];
+                    
+                };
+                
                 return cell;
 
             }
@@ -320,7 +339,6 @@
         model.isExpand = !model.isExpand;
         
         [self.arrAppointmentList replaceObjectAtIndex:indexPath.row withObject:aModel];
-        
         
         [self.ibTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
 
@@ -769,4 +787,20 @@
     
     
 }
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"merchant_profile"]) {
+        
+        MerchantProfileViewController* mViewController = [segue destinationViewController];
+        
+        [mViewController setUpMerchantProfile:self.selectedMerchantProfileModel];
+    }
+}
+
 @end

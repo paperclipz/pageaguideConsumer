@@ -81,6 +81,7 @@ PODS:
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
+  - NSDate-Escort (1.7.0)
   - Protobuf (3.2.0)
   - RMActionController (1.0.5)
   - RMDateSelectionViewController (2.0.3):
@@ -113,6 +114,7 @@ DEPENDENCIES:
   - JTCalendar (~> 2.0)
   - KVNProgress
   - MWPhotoBrowser
+  - NSDate-Escort
   - RMDateSelectionViewController (~> 2.0.3)
   - SAMKeychain
   - SDWebImage
@@ -156,6 +158,7 @@ SPEC CHECKSUMS:
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
+  NSDate-Escort: 3469fefab423c094108c2e864416b61b6ac0edbc
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
   RMActionController: b83653e7452ed51492094d65dc82151c36443c03
   RMDateSelectionViewController: 354a0f1fe40bac01054528b7a8735f2973bbd813
@@ -166,6 +169,6 @@ SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   TSMessages: eb3cf27b6900684a21bad4fe9ea426e287b8c839
 
-PODFILE CHECKSUM: d4dee63880a4ca72ec4a0ed67534d73cc5c693dc
+PODFILE CHECKSUM: 7cde0616571ecb0c6e16888ab781618eb9f8c8cd
 
 COCOAPODS: 1.0.1
