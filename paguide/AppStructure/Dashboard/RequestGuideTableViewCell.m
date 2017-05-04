@@ -8,7 +8,7 @@
 
 #import "RequestGuideTableViewCell.h"
 
-@interface RequestGuideTableViewCell() <UITextFieldDelegate>
+@interface RequestGuideTableViewCell() <UITextFieldDelegate, UITextViewDelegate>
 
 @property(nonatomic,strong)KeyValueModel* model;
 
@@ -34,6 +34,8 @@
     [super awakeFromNib];
     
     self.txtField.delegate = self;
+    
+    self.txtView.delegate = self;
     // Initialization code
 
 }
@@ -57,5 +59,18 @@
     
     return YES;
 }
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    //NSLog(@"textView : %@",textView.text);
+    
+    NSString * finalString = textView.text;
+
+    if (self.didUpdateStringBlock)
+    {
+        self.didUpdateStringBlock(finalString);
+    }
+}
+
 
 @end

@@ -13,7 +13,7 @@
 #import "MWPhotoBrowser.h"
 #import "ReviewModel.h"
 #import "ReviewViewController.h"
-
+#import "RequestGuideViewController.h"
 
 #define cell_about @"About"
 #define cell_detail @"Detail"
@@ -31,7 +31,10 @@
     
     NSArray* arrCellDetailList;
 
+    
+    BOOL isNeedRequestGuide;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constBottomHeight_tblView;
 @property (weak, nonatomic) IBOutlet UILabel *lblRating;
 @property (weak, nonatomic) IBOutlet UIView *ibRatingContentView;
 @property (weak, nonatomic) IBOutlet UILabel *lblMerchantName;
@@ -45,6 +48,7 @@
 @property (strong,nonatomic)NSMutableArray* arrMWImageList;
 @property (strong,nonatomic)MerchantProfileModel* merchantProfileModel;
 @property (strong,nonatomic)RatingView* ratingView;
+@property (weak, nonatomic) IBOutlet UIButton *btnRequestClicked;
 
 
 @end
@@ -54,6 +58,21 @@
 -(void)setUpMerchantProfile:(MerchantProfileModel*)model
 {
     self.merchantProfileModel = model;
+    
+    isNeedRequestGuide = NO;
+
+}
+
+-(void)setUpMerchantProfileWithRequestGuide:(MerchantProfileModel*)model
+{
+    self.merchantProfileModel = model;
+
+    isNeedRequestGuide = YES;
+}
+
+- (IBAction)btnRequestClicked:(id)sender {
+    
+    [self performSegueWithIdentifier:@"request_guide_merchant" sender:self];
 }
 
 - (void)viewDidLoad {
@@ -93,6 +112,19 @@
     
   //  [self.ibTableView registerClass:[GalleryTableViewCell class] forCellReuseIdentifier:@"gallery_cell"];
     
+    [self.btnRequestClicked setDefaultBorder];
+    
+    [self.btnRequestClicked setTitle:@"Request Guide" forState:UIControlStateNormal];
+    
+    
+    if (isNeedRequestGuide) {
+        self.constBottomHeight_tblView.constant = 70.0f;
+        
+    }
+    else{
+        self.constBottomHeight_tblView.constant = 0.0f;
+
+    }
 }
 
 
@@ -394,6 +426,23 @@
 }
 
 
+-(void)requestServerForMerchantID:(NSString*)merchantID Completion:(NSDictionaryBlock)completion Fail:(NSDictionaryBlock)failure
+{
+    
+    NSDictionary* dict = @{@"merchant_id" : IsNullConverstion(merchantID)};
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostMerchantDetails parameter:dict appendString:nil success:^(id object) {
+        
+        if (completion) {
+            completion(object);
+        }
+    } failure:^(id object) {
+        
+        if (failure) {
+            failure(object);
+        }
+    }];
+}
 
 #pragma mark - Navigation
 
@@ -408,7 +457,17 @@
         
         reviewController.arrReviews = self.merchantProfileModel.reviews;
         
+    }    if ([[segue identifier] isEqualToString:@"request_guide_merchant"]) {
+
+        
+        RequestGuideViewController* requestGuideVC = [segue destinationViewController];
+        
+        requestGuideVC.title = self.merchantProfileModel.username;
+        
+        [requestGuideVC setupDataWithMerchantID:self.merchantProfileModel.merchant_id];
     }
+    
+    
 }
 
 

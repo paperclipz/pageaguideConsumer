@@ -806,7 +806,23 @@
             break;
             
 
+        case ServerRequestTypePostMerchantCategorylist:
+            str = [NSString stringWithFormat:@"merchant/categorylist"];
             
+            break;
+            
+        case ServerRequestTypePostMerchantListing:
+            str = [NSString stringWithFormat:@"merchant/listing"];
+            
+            break;
+
+            
+        case ServerRequestTypePostMerchantDetails:
+            str = [NSString stringWithFormat:@"merchant/details"];
+            
+            break;
+            
+
             
         default:
             break;

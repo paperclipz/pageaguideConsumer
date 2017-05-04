@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "CommonView.h"
 
+
+//width for this view is 100
 @interface RatingView : CommonView
 
 -(void)setupRatingOutOfFive:(int)rate;

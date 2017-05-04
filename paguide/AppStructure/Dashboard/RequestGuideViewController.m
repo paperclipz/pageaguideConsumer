@@ -12,6 +12,8 @@
 #import "HeaderView.h"
 #import "FormDataModel.h"
 #import "RMDateSelectionViewController.h"
+#import "GeneralCalenderViewController.h"
+#import "UITextView+Placeholder.h"
 
 
 #define cell_type_option @"option"
@@ -19,6 +21,10 @@
 #define cell_type_date @"datetime"
 #define cell_type_number @"number"
 #define cell_type_string @"text"
+#define cell_type_textarea @"textarea"
+
+#define cell_type_header @"header"
+#define cell_type_title @"title"
 
 
 @interface RequestGuideViewController ()  <UITableViewDelegate,UITableViewDataSource>
@@ -28,15 +34,28 @@
     NSDictionary* data;
     
 }
+@property (nonatomic,readonly) NSString* d_view_type;
+@property (nonatomic) GeneralCalenderViewController* generalCalenderViewController;
+
+
+@property (nonatomic) NSString* merchantID;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 
 @property (nonatomic,strong)NSMutableArray* arrFormDataList;
-
+@property (weak, nonatomic) IBOutlet UILabel *lblTopTblHeaderTitle;
+//@property(nonatomic)WWCalendarTimeSelector* wwCalendarTimeSelector;
 
 @end
 
 @implementation RequestGuideViewController
+- (IBAction)btnTourGuideSearchClicked:(id)sender {
+    
+    [self performSegueWithIdentifier:@"merchant_list" sender:self];
+    
+}
+
 - (IBAction)btnSubmitClicked:(id)sender {
     
     [self showAlertView:@"Are you sure you want to submit this form?" Success:^{
@@ -47,12 +66,30 @@
     }];
 }
 
-
 -(void)initSelfView
 {
     [self.btnSubmit setDefaultBorder];
+    
+    self.lblTopTblHeaderTitle.text = @"Search Tour Guide";
+    
+    if ([self.d_view_type isEqualToString:@"requestGuide"]) {
+        
+        self.viewType = RG_VIEW_TYPE_requestGuide;
+    }
+    else{
+        self.viewType = RG_VIEW_TYPE_withMerchant;
 
+    }
+    
+    
 }
+
+
+-(void)setupDataWithMerchantID:(NSString*)merchantID
+{
+    self.merchantID = merchantID;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -163,6 +200,10 @@
     {
         return 80.0f;
     }
+    else if ([model.type isEqualToString:cell_type_textarea])
+    {
+        return 120.0f;
+    }
     
     else if ([model.type isEqualToString:cell_type_date])
     {
@@ -223,7 +264,8 @@
         return 1;
     }
     else if ([model.type isEqualToString:cell_type_number]||
-             [model.type isEqualToString:cell_type_string]) {
+             [model.type isEqualToString:cell_type_string] ||
+              [model.type isEqualToString:cell_type_textarea]) {
         
         
         return 1;
@@ -344,6 +386,7 @@
         
         cell_number.txtField.keyboardType = UIKeyboardTypeNumberPad;
         
+        
         cell_number.txtField.placeholder = [NSString stringWithFormat:@"Please input %@",model.title];
         
         if (![Utils isStringNull:model.viewModel.value]) {
@@ -392,6 +435,54 @@
             tempModel.viewModel.value = string;
             
             [self.arrFormDataList replaceObjectAtIndex:indexPath.section withObject:tempModel];
+        };
+        
+        return cell_number;
+    }
+    
+    else if ([model.type isEqualToString:cell_type_textarea]) {
+        
+        RequestGuideTableViewCell* cell_number = [tableView dequeueReusableCellWithIdentifier:@"cell_request_string"];
+        
+        cell_number.txtView.keyboardType = UIKeyboardTypeDefault;
+        
+        cell_number.txtView.placeholder = [NSString stringWithFormat:@"Please input %@",model.title];
+
+
+        if (![Utils isStringNull:model.viewModel.value]) {
+            
+            cell_number.txtView.text = model.viewModel.value;
+        }
+        else{
+            cell_number.txtView.text = @"";
+            
+        }
+        
+        FormDataModel* tempModel = self.arrFormDataList[indexPath.section];
+        
+        cell_number.didUpdateStringBlock = ^(NSString* string)
+        {
+            
+            
+            //CGPoint point = self.ibTableView.contentOffset;
+            
+            tempModel.viewModel.value = string;
+            
+            [self.arrFormDataList replaceObjectAtIndex:indexPath.section withObject:tempModel];
+
+            
+//            [UIView setAnimationsEnabled:NO];
+//            
+//            [self.ibTableView beginUpdates];
+//            
+//           
+//            [self.ibTableView endUpdates];
+//            
+//            [UIView setAnimationsEnabled:YES];
+//
+//            [self.ibTableView setContentOffset:point animated:NO];
+            
+            
         };
         
         return cell_number;
@@ -475,6 +566,14 @@
     }
     else if ([model.type isEqualToString:cell_type_date]) {
         
+        
+//        [self showCalenderViewWithDate:model.viewModel.choosenDate Completion:^(NSDate *date) {
+//            
+//            model.viewModel.choosenDate = date;
+//            
+//            [self reloadSection:indexPath.section];
+//            
+//        }];
         [self showDatePickerView:indexPath Completion:^(NSDate *date) {
             
             model.viewModel.choosenDate = date;
@@ -487,6 +586,8 @@
         }];
     }
 }
+
+#pragma mark - Declaration
 
 
 #pragma mark - Request Server
@@ -533,8 +634,7 @@
         
         [self.ibTableView reloadData];
 
-        [self.ibTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-
+        [self scrollToTop];
     }
     
     
@@ -542,6 +642,11 @@
 
 }
 
+-(void)scrollToTop
+{
+    [self.ibTableView scrollsToTop];
+
+}
 
 -(BOOL)validate
 {
@@ -577,7 +682,9 @@
             }
         }
         else if ([model.type isEqualToString:cell_type_number]||
-                 [model.type isEqualToString:cell_type_string]
+                 [model.type isEqualToString:cell_type_string] ||
+                 [model.type isEqualToString:cell_type_textarea]
+
                  )
         {
             
@@ -703,7 +810,9 @@
         }
         
         else if ([model.type isEqualToString:cell_type_number]||
-                 [model.type isEqualToString:cell_type_string])
+                 [model.type isEqualToString:cell_type_string]||
+                 [model.type isEqualToString:cell_type_textarea])
+
         {
             if (![Utils isStringNull:model.viewModel.value]) {
                 
@@ -734,19 +843,22 @@
                            };
     
     
-    NSDictionary* options = [self getOptionData];
     
+    NSDictionary* options = [self getOptionData];
     
     NSMutableDictionary* dict = [[NSMutableDictionary alloc]initWithDictionary:dictToken];
     
     [dict addEntriesFromDictionary:options];
     
-//    NSDictionary* dictTimes = @{@"times" : @""};
-//    NSDictionary* dictSpecialty = @{@"specialty" : @""};
-//    NSDictionary* dictQualifications = @{@"qualifications" : @""};
-//
+    if (![Utils isStringNull:self.merchantID]) {
+        
+        
+        NSDictionary* dictMerchant = @{@"merchant_id" : IsNullConverstion(self.merchantID)};
+        
+        [dict addEntriesFromDictionary:dictMerchant];
 
-    
+    }
+
     NSLog(@"final : %@",dict);
     
     [LoadingManager show];
@@ -762,6 +874,17 @@
         [self processData];
         
         [Utils reloadAllFrontView];
+        
+        if (![Utils isStringNull:self.merchantID]) {
+            
+            
+            [self showAlertView:[NSString stringWithFormat:@"Do you still want to request another guide from %@",self.title] Success:^{
+                
+            } Cancel:^{
+                
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }];
+        }
     
     } failure:^(id object) {
         
@@ -773,9 +896,38 @@
     }];
 }
 
-
 #pragma mark - Show View
 
+
+-(void)showCalenderViewWithDate:(NSDate*)date Completion:(NSDateBlock)completionWithDate
+{
+
+    
+//    self.generalCalenderViewController = [GeneralCalenderViewController new];
+//    
+//    
+//    [self.generalCalenderViewController setupDateSelected:date];
+//    
+//    [self.tabBarController presentViewController:self.generalCalenderViewController animated:YES completion:nil];
+//    
+//    
+//    __weak typeof (self)weakSelf = self;
+//    self.generalCalenderViewController.didContinueWithDateBlock = ^(NSDate* date)
+//    {
+//        
+//        [weakSelf.generalCalenderViewController dismissViewControllerAnimated:YES completion:^{
+//            
+//            if (completionWithDate) {
+//                completionWithDate(date);
+//            }
+//        }];
+//       
+//    };
+//
+    
+
+    
+}
 -(void)showDatePickerView:(NSIndexPath*)indexPath Completion:(NSDateBlock)completionWithDate
 {
     //Create select action
@@ -800,10 +952,26 @@
     dateSelectionController.title = @"Date";
     dateSelectionController.message = @"Please choose a date and press 'Select' or 'Cancel'.";
     
-    //Now just present the date selection controller using the standard iOS presentation method
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *currentDate = [NSDate date];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setYear:1];
+    NSDate *maxDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+ 
+    
+    [comps setYear:0];
+    [comps setDay:1];
+    NSDate *minDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+    
+    
+    dateSelectionController.datePicker.minimumDate = minDate;
+    dateSelectionController.datePicker.maximumDate = maxDate;
     
     [self.tabBarController presentViewController:dateSelectionController animated:YES completion:nil];
 }
+
+
 
 -(IBAction)showAlertView:(NSString*)title Success:(VoidBlock)sucess Cancel:(VoidBlock)cancelBlock
 {
@@ -829,7 +997,7 @@
                          }];
     [alert addAction:ok]; // add action to uialertcontroller
     
-    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
         
         if (cancelBlock) {

@@ -11,6 +11,7 @@
 @protocol ReviewModel;
 @interface MerchantProfileModel : JSONModel
 
+@property (nonatomic, strong)NSString* merchant_id;
 @property (nonatomic, strong)NSString* username;
 @property (nonatomic, strong)NSString* gender;
 @property (nonatomic, strong)NSString* profile_img;

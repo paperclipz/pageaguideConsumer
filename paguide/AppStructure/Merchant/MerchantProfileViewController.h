@@ -12,4 +12,8 @@
 @interface MerchantProfileViewController : UIViewController
 
 -(void)setUpMerchantProfile:(MerchantProfileModel*)model;
+
+-(void)requestServerForMerchantID:(NSString*)merchantID Completion:(NSDictionaryBlock)completion Fail:(NSDictionaryBlock)failure;//call this before setup merchant if the merchant data is not retreive
+
+-(void)setUpMerchantProfileWithRequestGuide:(MerchantProfileModel*)model;
 @end

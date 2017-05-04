@@ -36,6 +36,8 @@
 		8A23E9CD1E7FE9FC001FAB6D /* SelectPackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A23E9CB1E7FE9FC001FAB6D /* SelectPackageViewController.xib */; };
 		8A23E9CF1E7FEC25001FAB6D /* PackageSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A23E9CE1E7FEC25001FAB6D /* PackageSelection.storyboard */; };
 		8A23E9D51E7FF185001FAB6D /* PackageSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E9D41E7FF185001FAB6D /* PackageSelectionTableViewCell.m */; };
+		8A2463E01EB9CD3D0000734B /* GeneralCalenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2463DE1EB9CD3D0000734B /* GeneralCalenderViewController.m */; };
+		8A2463E11EB9CD3D0000734B /* GeneralCalenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2463DF1EB9CD3D0000734B /* GeneralCalenderViewController.xib */; };
 		8A3C7B9F1E8A06900093BA62 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C7B9D1E8A06900093BA62 /* UpdateViewController.m */; };
 		8A3C7BA01E8A06900093BA62 /* UpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3C7B9E1E8A06900093BA62 /* UpdateViewController.xib */; };
 		8A3C7BA31E8A0DD60093BA62 /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C7BA21E8A0DD60093BA62 /* AppModel.m */; };
@@ -79,6 +81,9 @@
 		8A5B3ED21E669600005BE083 /* KeyValueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B3ED11E669600005BE083 /* KeyValueModel.m */; };
 		8A61AD801E6597CA002383A3 /* EBActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A61AD7E1E6597CA002383A3 /* EBActionSheetViewController.m */; };
 		8A61AD811E6597CA002383A3 /* EBActionSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A61AD7F1E6597CA002383A3 /* EBActionSheetViewController.xib */; };
+		8A68F5D61EBB080E0087A613 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8A68F5D11EBB080E0087A613 /* LICENSE */; };
+		8A68F5D71EBB080E0087A613 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8A68F5D21EBB080E0087A613 /* README.md */; };
+		8A68F5D81EBB080E0087A613 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A68F5D51EBB080E0087A613 /* UITextView+Placeholder.m */; };
 		8A6B68E81E6D593600D696DE /* icon_appointment_red@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68D81E6D593600D696DE /* icon_appointment_red@1x.png */; };
 		8A6B68E91E6D593600D696DE /* icon_appointment_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68D91E6D593600D696DE /* icon_appointment_red@2x.png */; };
 		8A6B68EA1E6D593600D696DE /* icon_concierge_red@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B68DA1E6D593600D696DE /* icon_concierge_red@1x.png */; };
@@ -216,6 +221,10 @@
 		8AD70D1B1E77A36A006F1A8E /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D1A1E77A36A006F1A8E /* LoginViewModel.m */; };
 		8AD70D1E1E77B167006F1A8E /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D1D1E77B167006F1A8E /* MessageManager.m */; };
 		8AD70D221E77B1A2006F1A8E /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D211E77B1A2006F1A8E /* UIViewController+Extension.m */; };
+		8AE22C8F1EB8699000F58C72 /* FilterTourGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE22C8E1EB8699000F58C72 /* FilterTourGuideViewController.m */; };
+		8AE22C931EB8705800F58C72 /* MechantListWrapperModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE22C921EB8705800F58C72 /* MechantListWrapperModel.m */; };
+		8AF384B21EB8589800583031 /* TourGuideProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF384B11EB8589800583031 /* TourGuideProfileCollectionViewCell.m */; };
+		8AF384B51EB858B700583031 /* TourGuideListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF384B41EB858B700583031 /* TourGuideListingViewController.m */; };
 		8AF5F8EF1E812377004A7322 /* PaymentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5F8EE1E812377004A7322 /* PaymentManager.m */; };
 		8AF5F8F71E812BC5004A7322 /* MyAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5F8F61E812BC5004A7322 /* MyAPIClient.m */; };
 		8AF5F8FD1E8221F6004A7322 /* TransactionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5F8FC1E8221F6004A7322 /* TransactionModel.m */; };
@@ -309,6 +318,9 @@
 		8A23E9CE1E7FEC25001FAB6D /* PackageSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PackageSelection.storyboard; sourceTree = "<group>"; };
 		8A23E9D31E7FF185001FAB6D /* PackageSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackageSelectionTableViewCell.h; sourceTree = "<group>"; };
 		8A23E9D41E7FF185001FAB6D /* PackageSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PackageSelectionTableViewCell.m; sourceTree = "<group>"; };
+		8A2463DD1EB9CD3D0000734B /* GeneralCalenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralCalenderViewController.h; sourceTree = "<group>"; };
+		8A2463DE1EB9CD3D0000734B /* GeneralCalenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralCalenderViewController.m; sourceTree = "<group>"; };
+		8A2463DF1EB9CD3D0000734B /* GeneralCalenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralCalenderViewController.xib; sourceTree = "<group>"; };
 		8A3C7B9C1E8A06900093BA62 /* UpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateViewController.h; sourceTree = "<group>"; };
 		8A3C7B9D1E8A06900093BA62 /* UpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateViewController.m; sourceTree = "<group>"; };
 		8A3C7B9E1E8A06900093BA62 /* UpdateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateViewController.xib; sourceTree = "<group>"; };
@@ -383,6 +395,11 @@
 		8A61AD7D1E6597CA002383A3 /* EBActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBActionSheetViewController.h; sourceTree = "<group>"; };
 		8A61AD7E1E6597CA002383A3 /* EBActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBActionSheetViewController.m; sourceTree = "<group>"; };
 		8A61AD7F1E6597CA002383A3 /* EBActionSheetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBActionSheetViewController.xib; sourceTree = "<group>"; };
+		8A68F5CD1EBAF8DC0087A613 /* paguide-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "paguide-Bridging-Header.h"; sourceTree = "<group>"; };
+		8A68F5D11EBB080E0087A613 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8A68F5D21EBB080E0087A613 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8A68F5D41EBB080E0087A613 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		8A68F5D51EBB080E0087A613 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
 		8A6B68D81E6D593600D696DE /* icon_appointment_red@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_appointment_red@1x.png"; sourceTree = "<group>"; };
 		8A6B68D91E6D593600D696DE /* icon_appointment_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_appointment_red@2x.png"; sourceTree = "<group>"; };
 		8A6B68DA1E6D593600D696DE /* icon_concierge_red@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_concierge_red@1x.png"; sourceTree = "<group>"; };
@@ -593,6 +610,14 @@
 		8AD70D1D1E77B167006F1A8E /* MessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageManager.m; sourceTree = "<group>"; };
 		8AD70D201E77B1A2006F1A8E /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
 		8AD70D211E77B1A2006F1A8E /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
+		8AE22C8D1EB8699000F58C72 /* FilterTourGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTourGuideViewController.h; sourceTree = "<group>"; };
+		8AE22C8E1EB8699000F58C72 /* FilterTourGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTourGuideViewController.m; sourceTree = "<group>"; };
+		8AE22C911EB8705800F58C72 /* MechantListWrapperModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MechantListWrapperModel.h; sourceTree = "<group>"; };
+		8AE22C921EB8705800F58C72 /* MechantListWrapperModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MechantListWrapperModel.m; sourceTree = "<group>"; };
+		8AF384B01EB8589800583031 /* TourGuideProfileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourGuideProfileCollectionViewCell.h; sourceTree = "<group>"; };
+		8AF384B11EB8589800583031 /* TourGuideProfileCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourGuideProfileCollectionViewCell.m; sourceTree = "<group>"; };
+		8AF384B31EB858B700583031 /* TourGuideListingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourGuideListingViewController.h; sourceTree = "<group>"; };
+		8AF384B41EB858B700583031 /* TourGuideListingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourGuideListingViewController.m; sourceTree = "<group>"; };
 		8AF5F8ED1E812377004A7322 /* PaymentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentManager.h; sourceTree = "<group>"; };
 		8AF5F8EE1E812377004A7322 /* PaymentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentManager.m; sourceTree = "<group>"; };
 		8AF5F8F51E812BC5004A7322 /* MyAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAPIClient.h; sourceTree = "<group>"; };
@@ -710,6 +735,7 @@
 		8A20DB161E63D0F900C2F060 /* AppStructure */ = {
 			isa = PBXGroup;
 			children = (
+				8AF384AF1EB8450000583031 /* SearchTourGuide */,
 				8A1228AC1E8BD6160093C92C /* Setting */,
 				8A23E9B01E7FCF76001FAB6D /* MyRequest */,
 				8A6EB1BE1E714EA30022ABA2 /* CustomPopOutView */,
@@ -721,6 +747,7 @@
 				8A851FBF1E66D0A100904B6C /* Profile */,
 				8A4E85A31E63D849002DC150 /* Dashboard */,
 				8A20DB171E63D0F900C2F060 /* Register */,
+				8A68F5CD1EBAF8DC0087A613 /* paguide-Bridging-Header.h */,
 			);
 			path = AppStructure;
 			sourceTree = "<group>";
@@ -929,6 +956,25 @@
 				8ABC515B1E92248C00E31560 /* EBActionSheetHeaderView.xib */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A68F5D01EBB080E0087A613 /* UITextView+Placeholder */ = {
+			isa = PBXGroup;
+			children = (
+				8A68F5D11EBB080E0087A613 /* LICENSE */,
+				8A68F5D21EBB080E0087A613 /* README.md */,
+				8A68F5D31EBB080E0087A613 /* Sources */,
+			);
+			path = "UITextView+Placeholder";
+			sourceTree = "<group>";
+		};
+		8A68F5D31EBB080E0087A613 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8A68F5D41EBB080E0087A613 /* UITextView+Placeholder.h */,
+				8A68F5D51EBB080E0087A613 /* UITextView+Placeholder.m */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		8A6B68D71E6D593600D696DE /* 75x75 */ = {
@@ -1173,6 +1219,9 @@
 				8A6EB1B91E71218B0022ABA2 /* QuantitySelectionViewController.h */,
 				8A6EB1BA1E71218B0022ABA2 /* QuantitySelectionViewController.m */,
 				8A6EB1BB1E71218B0022ABA2 /* QuantitySelectionViewController.xib */,
+				8A2463DD1EB9CD3D0000734B /* GeneralCalenderViewController.h */,
+				8A2463DE1EB9CD3D0000734B /* GeneralCalenderViewController.m */,
+				8A2463DF1EB9CD3D0000734B /* GeneralCalenderViewController.xib */,
 			);
 			path = Calender;
 			sourceTree = "<group>";
@@ -1283,6 +1332,7 @@
 		8A9F460B1E603DA8005F1453 /* CATEGORY */ = {
 			isa = PBXGroup;
 			children = (
+				8A68F5D01EBB080E0087A613 /* UITextView+Placeholder */,
 				8A80BFFD1E9C9C8100AFC150 /* UITextField+Extension */,
 				8ABC51741E936FF800E31560 /* NSString+Extension */,
 				8A8DB9861E89399600DE467D /* UIImageView+Extension */,
@@ -1363,6 +1413,7 @@
 		8A9F461C1E603DA8005F1453 /* MODEL */ = {
 			isa = PBXGroup;
 			children = (
+				8AE22C901EB8702600F58C72 /* MerchantList */,
 				8A3C7BAA1E8A27C70093BA62 /* FacebookModel.h */,
 				8A3C7BAB1E8A27C70093BA62 /* FacebookModel.m */,
 				8AF5F8FB1E8221F6004A7322 /* TransactionModel.h */,
@@ -1429,6 +1480,28 @@
 				8AD70D211E77B1A2006F1A8E /* UIViewController+Extension.m */,
 			);
 			path = "UIViewController+Extension";
+			sourceTree = "<group>";
+		};
+		8AE22C901EB8702600F58C72 /* MerchantList */ = {
+			isa = PBXGroup;
+			children = (
+				8AE22C911EB8705800F58C72 /* MechantListWrapperModel.h */,
+				8AE22C921EB8705800F58C72 /* MechantListWrapperModel.m */,
+			);
+			path = MerchantList;
+			sourceTree = "<group>";
+		};
+		8AF384AF1EB8450000583031 /* SearchTourGuide */ = {
+			isa = PBXGroup;
+			children = (
+				8AF384B01EB8589800583031 /* TourGuideProfileCollectionViewCell.h */,
+				8AF384B11EB8589800583031 /* TourGuideProfileCollectionViewCell.m */,
+				8AF384B31EB858B700583031 /* TourGuideListingViewController.h */,
+				8AF384B41EB858B700583031 /* TourGuideListingViewController.m */,
+				8AE22C8D1EB8699000F58C72 /* FilterTourGuideViewController.h */,
+				8AE22C8E1EB8699000F58C72 /* FilterTourGuideViewController.m */,
+			);
+			path = SearchTourGuide;
 			sourceTree = "<group>";
 		};
 		8AFA22CF1E6D53520090837C /* Resources */ = {
@@ -1587,6 +1660,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 8A772AF81E601D2F00763DF7;
 			productRefGroup = 8A772B021E601D2F00763DF7 /* Products */;
@@ -1606,6 +1681,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A76569A1E9B906300A99C4E /* icon_collapse_down_red@2x.png in Resources */,
+				8A2463E11EB9CD3D0000734B /* GeneralCalenderViewController.xib in Resources */,
 				8ABC514A1E8E2D5100E31560 /* placeholder_photo.png in Resources */,
 				8A7656A91E9B906300A99C4E /* icon_share_white.png in Resources */,
 				8A76568F1E9B906300A99C4E /* icon_arrow_next_red.png in Resources */,
@@ -1646,6 +1722,7 @@
 				8A76569F1E9B906300A99C4E /* icon_dropdown_red@2x.png in Resources */,
 				8A6EB1D11E715F1A0022ABA2 /* RatingViewController.xib in Resources */,
 				8A7656A71E9B906300A99C4E /* icon_search_grey.png in Resources */,
+				8A68F5D61EBB080E0087A613 /* LICENSE in Resources */,
 				8A6B68F51E6D593600D696DE /* icon_package_grey.png in Resources */,
 				8A7656981E9B906300A99C4E /* icon_close_red@2x.png in Resources */,
 				8A7656911E9B906300A99C4E /* icon_back_white.png in Resources */,
@@ -1882,8 +1959,10 @@
 				8A8E306F1E6FB12700A16002 /* FSCalendarCollectionView.m in Sources */,
 				8A5B3ED21E669600005BE083 /* KeyValueModel.m in Sources */,
 				8A5B3ECF1E66857C005BE083 /* TTTAttributedLabel+Block.m in Sources */,
+				8A68F5D81EBB080E0087A613 /* UITextView+Placeholder.m in Sources */,
 				8A9BD70F1E77E2A40043D171 /* VerifyAccountViewController.m in Sources */,
 				8AFA22CD1E6D3EF90090837C /* GalleryViewController.m in Sources */,
+				8AF384B21EB8589800583031 /* TourGuideProfileCollectionViewCell.m in Sources */,
 				8A23E9D51E7FF185001FAB6D /* PackageSelectionTableViewCell.m in Sources */,
 				8A1176DC1E6D91C500C72B5A /* PackageDetailsViewController.m in Sources */,
 				8A9BD70B1E77E0880043D171 /* GVUserDefaults+Extra.m in Sources */,
@@ -1898,6 +1977,7 @@
 				8A5637651E697A4400ACAF2B /* GalleryTableViewCell.m in Sources */,
 				8A8E30721E6FB12700A16002 /* FSCalendarDelegationFactory.m in Sources */,
 				8A9BD73C1E791FBA0043D171 /* MerchantProfileModel.m in Sources */,
+				8A2463E01EB9CD3D0000734B /* GeneralCalenderViewController.m in Sources */,
 				8A9F46201E603DA8005F1453 /* DataManager.m in Sources */,
 				8A89BB691E84C65400F3B824 /* UILabel+Extra.m in Sources */,
 				8A9BD7341E78F6C20043D171 /* FooterView.m in Sources */,
@@ -1914,6 +1994,7 @@
 				8A8E306D1E6FB12700A16002 /* FSCalendarCalculator.m in Sources */,
 				8A9BD7141E77FF0C0043D171 /* ForgotPasswordViewController.m in Sources */,
 				8ABC51771E93700800E31560 /* NSString+Extra.m in Sources */,
+				8A68F5D71EBB080E0087A613 /* README.md in Sources */,
 				8A1176DF1E6E973400C72B5A /* PackageDetailsTableViewCell.m in Sources */,
 				8A3C7B9F1E8A06900093BA62 /* UpdateViewController.m in Sources */,
 				8A56374B1E69182100ACAF2B /* PackageTableViewCell.m in Sources */,
@@ -1961,6 +2042,7 @@
 				8A5B3EBE1E6676C2005BE083 /* EBActionSheetTableViewCell.m in Sources */,
 				8A89BB6D1E84C77800F3B824 /* EmptyTableViewCell.m in Sources */,
 				8A23E9CC1E7FE9FC001FAB6D /* SelectPackageViewController.m in Sources */,
+				8AF384B51EB858B700583031 /* TourGuideListingViewController.m in Sources */,
 				8A9BD72B1E78F1870043D171 /* PagingViewModel.m in Sources */,
 				8A8E30771E6FB12700A16002 /* FSCalendarStickyHeader.m in Sources */,
 				8A9BD71E1E78E96E0043D171 /* PaginationModel.m in Sources */,
@@ -1985,6 +2067,7 @@
 				8A1228B21E8BEE010093C92C /* ReviewModel.m in Sources */,
 				8AF5F8EF1E812377004A7322 /* PaymentManager.m in Sources */,
 				8A9BD72F1E78F53B0043D171 /* UITableView+Extra.m in Sources */,
+				8AE22C8F1EB8699000F58C72 /* FilterTourGuideViewController.m in Sources */,
 				8AF5F8FD1E8221F6004A7322 /* TransactionModel.m in Sources */,
 				8A5637751E6992A200ACAF2B /* ReviewViewController.m in Sources */,
 				8AFA22C61E6D19850090837C /* FilterCategoryTableViewCell.m in Sources */,
@@ -1995,6 +2078,7 @@
 				8A6EB1C21E714EB30022ABA2 /* PromoCodeViewController.m in Sources */,
 				8A8DB9841E89359000DE467D /* WebViewController.m in Sources */,
 				8ABC51711E93558700E31560 /* EmptyStateView.m in Sources */,
+				8AE22C931EB8705800F58C72 /* MechantListWrapperModel.m in Sources */,
 				8A9F461D1E603DA8005F1453 /* AppConstant.m in Sources */,
 				8A5637151E68011B00ACAF2B /* RatingView.m in Sources */,
 				8A3C7BAC1E8A27C70093BA62 /* FacebookModel.m in Sources */,
@@ -2057,6 +2141,7 @@
 		8A7597141EAF57960053EBF9 /* Debug_Dev */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -2077,6 +2162,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2105,11 +2191,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 70D2358888F58F9C38066375 /* Pods-paguide.debug_dev.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yiwen beh (CGR599YP24)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
@@ -2165,6 +2253,7 @@
 		8A772B2C1E601D3100763DF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -2185,6 +2274,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2212,6 +2302,7 @@
 		8A772B2D1E601D3100763DF7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -2232,6 +2323,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2254,11 +2346,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD661A108E5381634F4A28E2 /* Pods-paguide.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yiwen beh (CGR599YP24)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
@@ -2281,11 +2375,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C65B861D085B3C934625737A /* Pods-paguide.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PAGE ADVISOR PTE. LTD.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
@@ -2298,6 +2394,7 @@
 				PROVISIONING_PROFILE = "c949336e-e26b-4cc9-ba5d-b7d15b623c72";
 				PROVISIONING_PROFILE_SPECIFIER = "Enterprise PageAGuide Consumer v2";
 				SWIFT_OBJC_BRIDGING_HEADER = "paguide/AppStructure/paguide-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2360,6 +2457,7 @@
 		8A7DD37B1E9DD54000D91A10 /* Itunes_Sandbox */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -2380,6 +2478,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2408,11 +2507,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83820EDC6CAE497B16FD3398 /* Pods-paguide.itunes_sandbox.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Evan Beh (LZD9FTFZF5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 4KJSSCCKPM;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
@@ -2468,6 +2569,7 @@
 		8A7DD37F1E9DD55C00D91A10 /* Itunes_Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -2488,6 +2590,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2510,11 +2613,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6DD5A42D79002941A6CC6501 /* Pods-paguide.itunes_release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PAGE ADVISOR PTE. LTD. (4KJSSCCKPM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 4KJSSCCKPM;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
@@ -2534,6 +2639,7 @@
 				PROVISIONING_PROFILE = "3076411d-32ea-452e-ab75-bf9cd1920110";
 				PROVISIONING_PROFILE_SPECIFIER = "PG Consumer iTunes Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "paguide/AppStructure/paguide-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2569,6 +2675,7 @@
 		8AC543DF1EAF00BF008D635E /* Release_Dev */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -2589,6 +2696,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2611,11 +2719,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 94F35A7568299E10408C91B7 /* Pods-paguide.release_dev.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PAGE ADVISOR PTE. LTD.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
@@ -2635,6 +2745,7 @@
 				PROVISIONING_PROFILE = "c949336e-e26b-4cc9-ba5d-b7d15b623c72";
 				PROVISIONING_PROFILE_SPECIFIER = "Enterprise PageAGuide Consumer v2";
 				SWIFT_OBJC_BRIDGING_HEADER = "paguide/AppStructure/paguide-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -14,6 +14,8 @@
 
 -(NSAttributedString*)getAttributedText;
 
+-(void)getAttributedText:(NSAttributedSringBlock)completion;
+
 @end
 
 @interface NSString (Date)
@@ -22,6 +24,5 @@
 
 +(NSString*)validateText:(NSString*)string;
 
--(void)getAttributedText:(NSAttributedSringBlock)completion;
 
 @end

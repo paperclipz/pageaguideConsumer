@@ -24,6 +24,7 @@ typedef void(^StringBlock) (NSString* str);
 typedef void (^NSDateBlock)(NSDate* date);
 typedef void(^NSArrayBlock) (NSArray* array);
 typedef void(^NSAttributedSringBlock) (NSAttributedString* attStr);
+typedef void(^NSDictionaryBlock) (NSDictionary* dict);
 
 
 typedef void (^IDBlock)(id object);

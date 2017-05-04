@@ -55,7 +55,7 @@
 -(void)storeServerData:(id)obj requestType:(ServerRequestType)type
 {
     
-    NSError* dictError;
+   // NSError* dictError;
     
     //make checking for status fail or success here
     switch (type) {

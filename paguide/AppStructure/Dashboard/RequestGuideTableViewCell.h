@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblDesc;
 @property (weak, nonatomic) IBOutlet UIButton *btnSelection;
 @property (weak, nonatomic) IBOutlet UITextField *txtField;
+@property (weak, nonatomic) IBOutlet UITextView *txtView;
 
 -(void)setupformData:(KeyValueModel*)data;
 

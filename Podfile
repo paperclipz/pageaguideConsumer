@@ -1,8 +1,11 @@
 # Uncomment this line to define a global platform for your project
- platform :ios, '8.0'
+ platform :ios, '9.0'
 
 
 def shared_pods
+    
+    use_frameworks!
+
     pod 'SVPullToRefresh'
     pod 'JSONModel'
     pod 'SDWebImage'
@@ -57,9 +60,8 @@ def shared_pods
     pod 'Firebase/Crash'
 
     pod 'RMDateSelectionViewController', '~> 2.0.3'
-    pod 'NSDate-Escort'
+    #  pod 'WWCalendarTimeSelector'
 
-    use_frameworks!
 
 
 end

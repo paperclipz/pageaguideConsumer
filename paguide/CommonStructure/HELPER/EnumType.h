@@ -59,6 +59,12 @@ typedef enum
     ServerRequestTypePostHomeVersion,
     ServerRequestTypePostUserRegisterdevice,
     
+    //  ==========  [ Merchant List ]  ==========  //
+
+    ServerRequestTypePostMerchantCategorylist,
+    ServerRequestTypePostMerchantListing,
+    ServerRequestTypePostMerchantDetails,
+    //  ==========  [ Merchant List ]  ==========  //
 }ServerRequestType;
 
 
