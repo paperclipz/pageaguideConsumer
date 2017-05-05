@@ -637,8 +637,6 @@
         [self scrollToTop];
     }
     
-    
-    
 
 }
 
@@ -802,7 +800,7 @@
         
             if (model.viewModel.choosenDate) {
                 
-                NSDictionary* dictOptions = @{model.parameter : model.viewModel.choosenDate.toString};
+                NSDictionary* dictOptions = @{model.parameter : model.viewModel.choosenDate.toServerString};
 
                 [dict addEntriesFromDictionary:dictOptions];
 

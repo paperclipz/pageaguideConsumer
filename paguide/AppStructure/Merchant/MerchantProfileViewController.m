@@ -187,11 +187,18 @@
 
     if ([type isEqualToString:cell_review]) {
         
-        if (true) {
-            
+        
+        
+        if (self.merchantProfileModel.reviews.count >= 3) {
             headerView.lblTitle2.hidden = NO;
-            
+
         }
+        else{
+            headerView.lblTitle2.hidden = YES;
+
+        }
+
+        
     }
     
     headerView.didSelectBlock = ^(void)

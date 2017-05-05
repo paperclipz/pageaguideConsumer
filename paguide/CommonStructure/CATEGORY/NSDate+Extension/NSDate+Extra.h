@@ -10,7 +10,7 @@
 
 @interface NSDate(Extra)
 
--(NSString*)toString;
+//-(NSString*)toString;
 
 -(NSString*)toLocalTime;
 

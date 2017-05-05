@@ -35,7 +35,6 @@
     
     dateFormat.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     
-    
     NSString *theDate = [dateFormat stringFromDate:self];
     
     return theDate;
