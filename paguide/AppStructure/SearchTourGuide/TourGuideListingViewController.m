@@ -13,7 +13,7 @@
 #import "FilterTourGuideViewController.h"
 #import "MerchantProfileViewController.h"
 
-#define PER_PAGE @"30"
+#define PER_PAGE @"50"
 
 @interface TourGuideListingViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 {
@@ -26,16 +26,80 @@
 @property (nonatomic) NSMutableArray* arrMerchantList;
 @property (nonatomic) MerchantProfileViewController* merchantProfileViewController;
 
+@property  (nonatomic)UIRefreshControl* refreshControl;
+
+@property  (nonatomic,assign)MERCHANT_LISTING_TYPE viewType;
+
 @end
 
 @implementation TourGuideListingViewController
+
+- (void)refreshControl:(id)sender {
+   
+
+    [self resetAndCallMerchantListing];
+}
+
+
+-(void)resetAndCallMerchantListing
+{
+    _vm_package_paging = nil;
+    
+    [self.arrMerchantList removeAllObjects];
+    
+    self.arrMerchantList = nil;
+    
+    [self.ibCollectionView reloadData];
+    
+    
+    
+    if (self.viewType == MERCHANT_LISTING_TYPE_FAVOURITE) {
+        [self requestServerForFavouriteMerchantListing];
+    }
+    else{
+        [self requestServerForMerchantListing];
+
+    }
+    
+}
+
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.viewType = MERCHANT_LISTING_TYPE_NORMAL;
+
+}
+
+-(void)setupFavouriteTourGuideScreen
+{
+    self.viewType = MERCHANT_LISTING_TYPE_FAVOURITE;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
 
-    [self requestServerForMerchantListing];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(refreshControl:)
+                  forControlEvents:UIControlEventValueChanged];
+    
+    [self.ibCollectionView addSubview:self.refreshControl];
+  
+    self.ibCollectionView.alwaysBounceVertical = YES;
+
+    
+    if (self.viewType == MERCHANT_LISTING_TYPE_NORMAL) {
+        [self requestServerForMerchantListing];
+
+    }
+    else{
+        [self requestServerForFavouriteMerchantListing];
+
+    }
 
         // Do any additional setup after loading the view.
 }
@@ -81,7 +145,7 @@ return cell;
     
     [LoadingManager show];
     
-    [self.merchantProfileViewController requestServerForMerchantID:mModel.merchant_id Completion:^(NSDictionary *dict) {
+    [MerchantProfileViewController requestServerForMerchantID:mModel.merchant_id Completion:^(NSDictionary *dict) {
         
         [LoadingManager hide];
 
@@ -143,16 +207,71 @@ return cell;
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostMerchantListing parameter:mDict appendString:nil success:^(id object) {
         
         [LoadingManager hide];
+        
+        self.vm_package_paging.isLoading = NO;
 
         MechantListWrapperModel* wModel = [[MechantListWrapperModel alloc]initWithDictionary:object error:nil];
         
+        [self.vm_package_paging processPagingFrom:wModel.pageContent];
+
         [self.arrMerchantList addObjectsFromArray:wModel.arrMerchantList];
+        
+        [self.refreshControl endRefreshing];
         
         [self.ibCollectionView reloadData];
         
     } failure:^(id object) {
-        [LoadingManager hide];
+        
+        self.vm_package_paging.isLoading = NO;
 
+        [LoadingManager hide];
+        
+        [self.refreshControl endRefreshing];
+
+    }];
+}
+
+-(void)requestServerForFavouriteMerchantListing
+{
+    
+    if (self.vm_package_paging.isLoading || !self.vm_package_paging.hasNext) {
+        return;
+        
+    }
+    
+    self.vm_package_paging.isLoading = YES;
+    
+    NSString* token = [Utils getToken];
+    
+    NSDictionary* dict = @{@"token" : IsNullConverstion(token),
+                           };
+
+
+    [LoadingManager show];
+
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostMerchantFavouriteListing parameter:dict appendString:nil success:^(id object) {
+        
+        [LoadingManager hide];
+        
+        self.vm_package_paging.isLoading = NO;
+        
+        NSError* error;
+        
+        self.arrMerchantList = [MerchantProfileModel arrayOfModelsFromDictionaries:object[@"data"] error:&error];
+        
+        [self.refreshControl endRefreshing];
+        
+        [self.ibCollectionView reloadData];
+        
+    } failure:^(id object) {
+        
+        self.vm_package_paging.isLoading = NO;
+        
+        [LoadingManager hide];
+        
+        [self.refreshControl endRefreshing];
+        
     }];
 }
 
@@ -228,6 +347,22 @@ return cell;
     
     
     
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.frame.size.height)
+    {
+        //LOAD MORE
+        // you can also add a isLoading bool value for better dealing :D
+        
+            if (self.vm_package_paging.hasNext) {
+                
+                
+                [self requestServerForMerchantListing];
+            }
+            
+    }
 }
 
 

@@ -387,7 +387,7 @@
 
     WebViewController* webView = [WebViewController new];
         
-    webView.webViewURL = [NSString stringWithFormat:@"http://%@%@",[ConnectionManager getServerPath],@"/privacy"];
+    webView.webViewURL = [NSString stringWithFormat:@"https://%@%@",[ConnectionManager getServerPath],@"/privacy"];
 
     [self presentViewController:webView animated:YES completion:nil];
 }
@@ -398,7 +398,7 @@
     
     WebViewController* webView = [WebViewController new];
     
-    webView.webViewURL = [NSString stringWithFormat:@"http://%@%@",[ConnectionManager getServerPath],@"/terms"];
+    webView.webViewURL = [NSString stringWithFormat:@"https://%@%@",[ConnectionManager getServerPath],@"/terms"];
 
     
     [self presentViewController:webView animated:YES completion:nil];

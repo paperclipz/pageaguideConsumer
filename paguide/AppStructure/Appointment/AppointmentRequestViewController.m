@@ -28,6 +28,8 @@
 
     __weak IBOutlet NSLayoutConstraint *constHeight_complete;
     
+    MerchantProfileModel* merchantProfileModel;
+    
     
 }
 @property (strong, nonatomic) MerchantProfileModel* selectedMerchantProfileModel;
@@ -287,7 +289,7 @@
             
                 self.selectedMerchantProfileModel = self.appointmentModel.arr_Merchant_info[indexPath.row];
 
-                [self performSegueWithIdentifier:@"merchant_profile" sender:self];
+                [self showMerchantView];
             };
             return cell;
         }
@@ -305,7 +307,7 @@
                 
                 self.selectedMerchantProfileModel = self.appointmentModel.arr_Merchant_info[indexPath.row];
                 
-                [self performSegueWithIdentifier:@"merchant_profile" sender:self];
+                [self showMerchantView];
 
             };
             
@@ -461,6 +463,32 @@
     }];
 }
 
+
+-(void)showMerchantView
+{
+    
+    [LoadingManager show];
+
+    [MerchantProfileViewController requestServerForMerchantID:self.selectedMerchantProfileModel.merchant_id Completion:^(NSDictionary *dict) {
+        
+        [LoadingManager hide];
+        
+        MerchantProfileModel* model = [[MerchantProfileModel alloc]initWithDictionary:dict[@"data"] error:nil];
+        
+        merchantProfileModel = model;
+        
+        [self performSegueWithIdentifier:@"merchant_profile" sender:self];
+
+        
+    } Fail:^(NSDictionary *dict) {
+        
+        [LoadingManager hide];
+        
+        [MessageManager showMessage:@"Load Merchant data Fail" Type:TSMessageNotificationTypeError];
+        
+    }];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -470,10 +498,10 @@
     
     if ([[segue identifier] isEqualToString:@"merchant_profile"]) {
         
-        
         MerchantProfileViewController* mViewController = [segue destinationViewController];
-        
-        [mViewController setUpMerchantProfile:self.selectedMerchantProfileModel];
+      
+        [mViewController setUpMerchantProfile:merchantProfileModel];
+
     }
 }
 

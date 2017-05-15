@@ -33,8 +33,6 @@
 
 @implementation AppDelegate
 
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
@@ -55,6 +53,8 @@
     
     [self configureNotificaiton:application];
     
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-60, -60)
+                                                         forBarMetrics:UIBarMetricsDefault];
   //  do app update checking
     
     return YES;

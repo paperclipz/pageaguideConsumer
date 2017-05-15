@@ -10,16 +10,38 @@
 
 @interface BaseModel()
 
-@property (nonatomic,strong)NSDictionary<Optional>* message;
+@property (nonatomic,strong)NSDictionary<Ignore>* message;
 
 @end
 @implementation BaseModel
 
 
+-(instancetype)initWithDictionary:(NSDictionary *)dict error:(NSError *__autoreleasing *)err
+{
+   
+    self = [super initWithDictionary:dict error:err];
+    
+    if (self) {
+        
+        NSDictionary* tempDict = dict[@"message"];
+        if (tempDict) {
+            _message = tempDict;
+        }
+        
+    }
+    
+    return self;
+    
+}
+
+
 +(BOOL)propertyIsOptional:(NSString*)propertyName
 {
+    
+    
     return YES;
 }
+
 
 -(BOOL)isSuccessful
 {

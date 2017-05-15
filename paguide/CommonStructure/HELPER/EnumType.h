@@ -64,6 +64,8 @@ typedef enum
     ServerRequestTypePostMerchantCategorylist,
     ServerRequestTypePostMerchantListing,
     ServerRequestTypePostMerchantDetails,
+    ServerRequestTypePostMerchantFavouriteListing,
+    ServerRequestTypePostMerchantFavourite,
     //  ==========  [ Merchant List ]  ==========  //
 }ServerRequestType;
 

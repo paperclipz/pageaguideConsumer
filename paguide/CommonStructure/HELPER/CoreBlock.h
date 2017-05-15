@@ -14,6 +14,7 @@
 #import "CountryModel.h"
 #import "ScheduleModel.h"
 #import "Stripe.h"
+#import "MerchantProfileModel.h"
 
 typedef void(^BoolBlock) (BOOL isCollected);
 typedef void(^VoidBlock) (void);
@@ -42,3 +43,5 @@ typedef void (^RateAndReviewBlock)(int rate, NSString* reviews);
 typedef void(^CountryModelBlock) (CountryModel* model);
 typedef void(^ScheduleModelBlock) (ScheduleModel* model);
 typedef void(^STPTokenBlock) (STPToken* token);
+typedef void(^MerchantProfileBlock) (MerchantProfileModel* merchantProfile);
+

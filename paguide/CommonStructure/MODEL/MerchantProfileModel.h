@@ -34,6 +34,7 @@
 @property (nonatomic, strong)NSString* offer_price;
 @property (nonatomic, strong)NSString* offer_details;
 @property (nonatomic, strong)NSArray<ReviewModel>* reviews;
+@property (nonatomic, assign)BOOL isFavourite;
 
 
 @property (nonatomic,assign)BOOL isSelect;

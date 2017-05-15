@@ -208,6 +208,7 @@
 		8A9F46201E603DA8005F1453 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F46191E603DA8005F1453 /* DataManager.m */; };
 		8A9F46211E603DA8005F1453 /* LoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F461B1E603DA8005F1453 /* LoadingManager.m */; };
 		8A9F46241E604645005F1453 /* ConnectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F46231E604645005F1453 /* ConnectionHelper.m */; };
+		8AB61D5F1EC41DDE00D49B26 /* TourGuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB61D5E1EC41DDE00D49B26 /* TourGuidePageViewController.m */; };
 		8ABC514A1E8E2D5100E31560 /* placeholder_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC51491E8E2D5100E31560 /* placeholder_photo.png */; };
 		8ABC514F1E8E341C00E31560 /* ServiceAccount.json in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC514E1E8E341C00E31560 /* ServiceAccount.json */; };
 		8ABC51561E8E523D00E31560 /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC51551E8E523D00E31560 /* package.json */; };
@@ -589,6 +590,8 @@
 		8A9F46221E604645005F1453 /* ConnectionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionHelper.h; sourceTree = "<group>"; };
 		8A9F46231E604645005F1453 /* ConnectionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionHelper.m; sourceTree = "<group>"; };
 		8A9F46261E6047BE005F1453 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		8AB61D5D1EC41DDE00D49B26 /* TourGuidePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourGuidePageViewController.h; sourceTree = "<group>"; };
+		8AB61D5E1EC41DDE00D49B26 /* TourGuidePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourGuidePageViewController.m; sourceTree = "<group>"; };
 		8ABC51491E8E2D5100E31560 /* placeholder_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder_photo.png; sourceTree = "<group>"; };
 		8ABC514E1E8E341C00E31560 /* ServiceAccount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ServiceAccount.json; sourceTree = "<group>"; };
 		8ABC51551E8E523D00E31560 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
@@ -1500,6 +1503,8 @@
 				8AF384B41EB858B700583031 /* TourGuideListingViewController.m */,
 				8AE22C8D1EB8699000F58C72 /* FilterTourGuideViewController.h */,
 				8AE22C8E1EB8699000F58C72 /* FilterTourGuideViewController.m */,
+				8AB61D5D1EC41DDE00D49B26 /* TourGuidePageViewController.h */,
+				8AB61D5E1EC41DDE00D49B26 /* TourGuidePageViewController.m */,
 			);
 			path = SearchTourGuide;
 			sourceTree = "<group>";
@@ -1993,6 +1998,7 @@
 				8A56375D1E6924E800ACAF2B /* MerchantProfileTableViewCell.m in Sources */,
 				8A8E306D1E6FB12700A16002 /* FSCalendarCalculator.m in Sources */,
 				8A9BD7141E77FF0C0043D171 /* ForgotPasswordViewController.m in Sources */,
+				8AB61D5F1EC41DDE00D49B26 /* TourGuidePageViewController.m in Sources */,
 				8ABC51771E93700800E31560 /* NSString+Extra.m in Sources */,
 				8A68F5D71EBB080E0087A613 /* README.md in Sources */,
 				8A1176DF1E6E973400C72B5A /* PackageDetailsTableViewCell.m in Sources */,

@@ -30,6 +30,9 @@
     __weak IBOutlet NSLayoutConstraint *constHeight_verify;
     NSArray* arrCellTypeList;
     __weak IBOutlet NSLayoutConstraint *constHeight_complete;
+    
+    MerchantProfileModel* merchantProfileModel;
+
 }
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 @property (strong, nonatomic)AppointmentModel* appointmentModel;
@@ -318,7 +321,8 @@
     
     if ([type isEqualToString:@"cell_title"]) {
         
-        [self performSegueWithIdentifier: @"merchant_profile" sender:self];
+        
+        [self showMerchantView];
 
     }
 }
@@ -440,6 +444,31 @@
 
 }
 
+-(void)showMerchantView
+{
+    [LoadingManager show];
+
+    [MerchantProfileViewController requestServerForMerchantID:self.appointmentModel.merchant_info_model.merchant_id Completion:^(NSDictionary *dict) {
+        
+        [LoadingManager hide];
+        
+        MerchantProfileModel* model = [[MerchantProfileModel alloc]initWithDictionary:dict[@"data"] error:nil];
+        
+        merchantProfileModel = model;
+        
+        [self performSegueWithIdentifier:@"merchant_profile" sender:self];
+        
+        
+    } Fail:^(NSDictionary *dict) {
+        
+        [LoadingManager hide];
+        
+        [MessageManager showMessage:@"Load Merchant data Fail" Type:TSMessageNotificationTypeError];
+        
+    }];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -451,8 +480,10 @@
         
         
         MerchantProfileViewController* mViewController = [segue destinationViewController];
-       
-        [mViewController setUpMerchantProfile:self.appointmentModel.merchant_info_model];
+        
+        [mViewController setUpMerchantProfile:merchantProfileModel];
+
+        
     }
         
 

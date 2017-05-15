@@ -8,8 +8,8 @@
 
 #import <JSONModel/JSONModel.h>
 
-
 #define server_fail @"failed"
+
 @interface BaseModel: JSONModel
 
 

@@ -951,20 +951,20 @@
     dateSelectionController.message = @"Please choose a date and press 'Select' or 'Cancel'.";
     
     
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDate *currentDate = [NSDate date];
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setYear:1];
-    NSDate *maxDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
- 
-    
-    [comps setYear:0];
-    [comps setDay:1];
-    NSDate *minDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
-    
-    
-    dateSelectionController.datePicker.minimumDate = minDate;
-    dateSelectionController.datePicker.maximumDate = maxDate;
+//    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+//    NSDate *currentDate = [NSDate date];
+//    NSDateComponents *comps = [[NSDateComponents alloc] init];
+//    [comps setYear:1];
+//    NSDate *maxDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+// 
+//    
+//    [comps setYear:0];
+//    [comps setDay:1];
+//    NSDate *minDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+//    
+//    
+//    dateSelectionController.datePicker.minimumDate = minDate;
+//    dateSelectionController.datePicker.maximumDate = maxDate;
     
     [self.tabBarController presentViewController:dateSelectionController animated:YES completion:nil];
 }

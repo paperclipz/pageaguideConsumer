@@ -222,7 +222,20 @@
             
             KeyValueModel* kModel = model.arrOptionsList[indexPath.row];
             
-            cell.lblTitle.text = kModel.key;
+            
+            if ([kModel.key isEqualToString:@"Y"]) {
+                cell.lblTitle.text = @"YES";
+
+            }
+            else if ([kModel.key isEqualToString:@"N"]) {
+                cell.lblTitle.text = @"NO";
+
+            }
+            else{
+                cell.lblTitle.text = kModel.key;
+
+            }
+            
             
             cell.ibSwitch.on = kModel.isSelected;
             
@@ -335,6 +348,8 @@
             
             fmodel.title = key;
             
+            fmodel.parameter = key;
+
             fmodel.type = cell_type_multiple_option;
             
             NSArray* arrOptions = object[key];
@@ -345,16 +360,21 @@
             
         }
         
+
+        
         FormDataModel* model4 = [FormDataModel new];
         model4.title = @"name";
+        model4.parameter = @"name";
         model4.type = cell_type_string;
         [self.arrFilterList addObject:model4];
         
         [self.arrFilterList addObjectsFromArray:tempArray];
+
         
         FormDataModel* model2 = [FormDataModel new];
         model2.type = cell_type_option;
         model2.title = @"gender";
+        model2.parameter = @"gender";
         model2.answer_list = @[@"male",@"female"];
         [self.arrFilterList addObject:model2
          ];
@@ -364,8 +384,17 @@
         FormDataModel* model3 = [FormDataModel new];
         model3.type = cell_type_option;
         model3.title = @"rating";
+        model3.parameter = @"rating";
         model3.answer_list = @[@"low_high",@"high_low"];
         [self.arrFilterList addObject:model3
+         ];
+        
+        FormDataModel* model5 = [FormDataModel new];
+        model5.type = cell_type_option;
+        model5.title = @"By Favourite";
+        model5.parameter = @"favourite";
+        model5.answer_list = @[@"Y",@"N"];
+        [self.arrFilterList addObject:model5
          ];
         
       
@@ -438,10 +467,9 @@
         
         if ([model.type isEqualToString:cell_type_string]) {
             
-            
             if (![Utils isStringNull:model.value]) {
                 
-                NSString* string = [NSString stringWithFormat:@"%@:%@",model.title,model.value];
+                NSString* string = [NSString stringWithFormat:@"%@:%@",model.parameter,model.value];
                 
                 [finalArray addObject:string];
             }
@@ -455,7 +483,7 @@
                 NSArray* array = [self getArrayOptionsSelectedArray:model.arrOptionsList];
                 
                 if (![Utils isArrayNull:array]) {
-                    NSString* string = [NSString stringWithFormat:@"%@:%@",model.title,[array componentsJoinedByString:@","]];
+                    NSString* string = [NSString stringWithFormat:@"%@:%@",model.parameter,[array componentsJoinedByString:@","]];
                     
                     [finalArray addObject:string];
                 

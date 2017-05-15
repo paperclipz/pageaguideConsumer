@@ -112,9 +112,6 @@
         }
     }];
     
-   
-    
-    
     [self initSelfView];
 
     [self requestServerForPackageListing];

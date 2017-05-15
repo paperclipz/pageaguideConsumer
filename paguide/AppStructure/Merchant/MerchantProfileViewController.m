@@ -31,7 +31,8 @@
     
     NSArray* arrCellDetailList;
 
-    
+    BOOL isPackageBookmarked;
+
     BOOL isNeedRequestGuide;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constBottomHeight_tblView;
@@ -55,11 +56,26 @@
 
 @implementation MerchantProfileViewController
 
+#pragma mark - IBACTION
+- (IBAction)btnBookmarkClicked:(id)sender {
+    
+        [self requestServerForMerchantFovourite:^{
+    
+            [self changeItemBarBookedmarked:self.merchantProfileModel.isFavourite];
+            
+            if (self.didUpdateMerchantProfileBlock) {
+                self.didUpdateMerchantProfileBlock(self.merchantProfileModel);
+            }
+        }];
+}
+
 -(void)setUpMerchantProfile:(MerchantProfileModel*)model
 {
     self.merchantProfileModel = model;
     
     isNeedRequestGuide = NO;
+
+    self.title = self.merchantProfileModel.username;
 
 }
 
@@ -68,6 +84,8 @@
     self.merchantProfileModel = model;
 
     isNeedRequestGuide = YES;
+    
+    self.title = self.merchantProfileModel.username;
 }
 
 - (IBAction)btnRequestClicked:(id)sender {
@@ -125,6 +143,8 @@
         self.constBottomHeight_tblView.constant = 0.0f;
 
     }
+    
+    [self changeItemBarBookedmarked:self.merchantProfileModel.isFavourite];
 }
 
 
@@ -432,13 +452,57 @@
     return attributeString;
 }
 
+#pragma mark - Bookmark
 
--(void)requestServerForMerchantID:(NSString*)merchantID Completion:(NSDictionaryBlock)completion Fail:(NSDictionaryBlock)failure
+-(void)changeItemBarBookedmarked:(BOOL)isBookmarked
 {
     
+    if (isBookmarked) {
+        UIImage* image = [[UIImage imageNamed:@"icon_bookmark_red.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        UIBarButtonItem* editButton = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(btnBookmarkClicked:)];
+        
+        editButton.tintColor = APP_MAIN_COLOR;
+        
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObject:editButton];
+        
+    }
+    else{
+        
+        UIImage* image = [[UIImage imageNamed:@"icon_bookmark_red.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        UIBarButtonItem* editButton = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(btnBookmarkClicked:)];
+        
+        editButton.tintColor = [UIColor darkGrayColor];
+        
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObject:editButton];
+        
+    }
+    
+}
+
+
+#pragma mark - Request Server
++(void)requestServerForMerchantID:(NSString*)merchantID Completion:(NSDictionaryBlock)completion Fail:(NSDictionaryBlock)failure
+{
+    
+    NSString* token = [Utils getToken];
+   
     NSDictionary* dict = @{@"merchant_id" : IsNullConverstion(merchantID)};
     
-    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostMerchantDetails parameter:dict appendString:nil success:^(id object) {
+    NSMutableDictionary* mDict = [NSMutableDictionary new];
+    
+    [mDict addEntriesFromDictionary:dict];
+    
+    if (![Utils isStringNull:token]) {
+        
+        NSDictionary* dictToken = @{@"token" : IsNullConverstion(token)};
+        
+        [mDict addEntriesFromDictionary:dictToken];
+
+    }
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostMerchantDetails parameter:mDict appendString:nil success:^(id object) {
         
         if (completion) {
             completion(object);
@@ -448,6 +512,39 @@
         if (failure) {
             failure(object);
         }
+    }];
+}
+
+-(void)requestServerForMerchantFovourite:(VoidBlock)completion
+{
+    
+    NSString* token = [Utils getToken];
+    
+    NSDictionary* dict = @{@"merchant_id" : IsNullConverstion(self.merchantProfileModel.merchant_id),
+                           @"token" : IsNullConverstion(token),
+                        };
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostMerchantFavourite parameter:dict appendString:nil success:^(id object) {
+        
+        NSError* error;
+
+        BaseModel* bModel = [[BaseModel alloc]initWithDictionary:object error:&error];
+        
+        if ([bModel.status_code  isEqual: @(211)]) {//fav
+            
+            self.merchantProfileModel.isFavourite = YES;
+        }
+        else if ([bModel.status_code  isEqual: @(212)]) {//un-fav
+            
+            self.merchantProfileModel.isFavourite = NO;
+            
+        }
+        if (completion) {
+            completion();
+        }
+    } failure:^(id object) {
+      
+      
     }];
 }
 

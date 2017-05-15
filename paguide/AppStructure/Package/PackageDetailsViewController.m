@@ -42,6 +42,9 @@
     NSArray* arrCellDetailsList;
     
     BOOL isPackageBookmarked;
+    
+    MerchantProfileModel* merchantProfileModel;
+
 }
 
 
@@ -632,8 +635,9 @@
     
     if ([type isEqualToString:cell_type_title]) {
         
-        [self performSegueWithIdentifier:@"package_details_merchant" sender:self];
-
+        
+        [self showMerchantView];
+        
     }
 }
 
@@ -1305,6 +1309,31 @@
     
     return dateFormatter;
 }
+
+-(void)showMerchantView
+{
+    
+    [LoadingManager show];
+
+    [MerchantProfileViewController requestServerForMerchantID:self.packageModel.merchant_info.merchant_id Completion:^(NSDictionary *dict) {
+        
+        [LoadingManager hide];
+        
+        MerchantProfileModel* model = [[MerchantProfileModel alloc]initWithDictionary:dict[@"data"] error:nil];
+        
+        merchantProfileModel = model;
+        
+        [self performSegueWithIdentifier:@"package_details_merchant" sender:self];
+        
+        
+    } Fail:^(NSDictionary *dict) {
+        
+        [LoadingManager hide];
+        
+        [MessageManager showMessage:@"Load Merchant data Fail" Type:TSMessageNotificationTypeError];
+        
+    }];
+}
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -1315,7 +1344,8 @@
         
         MerchantProfileViewController *vc = [segue destinationViewController];
         
-        [vc setUpMerchantProfile:self.packageModel.merchant_info];
+        [vc setUpMerchantProfile:merchantProfileModel];
+        
         
     }
 }

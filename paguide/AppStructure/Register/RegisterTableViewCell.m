@@ -8,8 +8,6 @@
 
 #import "RegisterTableViewCell.h"
 
-#define TERM_OF_USE @"TermsofService"
-
 @interface RegisterTableViewCell() <TTTAttributedLabelDelegate,UITextFieldDelegate>
 
 @property (nonatomic,strong)NSArray<KeyValueModel>* arrayKeyValueList;

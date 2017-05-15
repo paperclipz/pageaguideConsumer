@@ -822,6 +822,13 @@
             
             break;
             
+        case ServerRequestTypePostMerchantFavouriteListing:
+            str = [NSString stringWithFormat:@"merchant/favourite-listing"];
+            break;
+            
+        case ServerRequestTypePostMerchantFavourite:
+            str = [NSString stringWithFormat:@"merchant/favourite"];
+            break;
 
             
         default:

@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef enum
+{
+    MERCHANT_LISTING_TYPE_FAVOURITE = 1,
+    MERCHANT_LISTING_TYPE_NORMAL = 0,
+
+    
+}MERCHANT_LISTING_TYPE;
+
+
 @interface TourGuideListingViewController : UIViewController
+-(void)setupFavouriteTourGuideScreen;
 
 @end
