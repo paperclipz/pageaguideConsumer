@@ -39,5 +39,9 @@
 
 @property (nonatomic,assign)BOOL isSelect;
 @property (nonatomic,assign)BOOL isExpand;
+@property (nonatomic, assign)int rating;//for unrated merchant use only
+@property (nonatomic)NSString* review;//for unrated merchant use only
+
+
 
 @end

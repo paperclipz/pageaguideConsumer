@@ -27,6 +27,7 @@
 @property(nonatomic,strong)NSString* updated_at;
 @property(nonatomic,strong)NSArray* specialty;
 @property (nonatomic,strong)NSArray* arrRequest_field;
+@property (nonatomic,strong)NSString* appointment_startdate;
 
 
 

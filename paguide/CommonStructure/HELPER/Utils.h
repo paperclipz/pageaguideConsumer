@@ -83,4 +83,8 @@
 
 #pragma mark - App Specific
 
+#pragma mark - Alert Utils
+
++(UIAlertController*)alertViewWithText:(NSString*)string AndButtonText:(NSString*)btnText;
+
 @end

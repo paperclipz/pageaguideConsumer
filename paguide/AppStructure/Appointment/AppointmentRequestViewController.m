@@ -236,8 +236,15 @@
     }
    
     else if ([type isEqualToString:cell_request_guide]) {
-        return self.appointmentModel.request_info.arrRequest_field.count;
 
+        if (![Utils isStringNull:self.appointmentModel.cancellation_policy]) {
+            return self.appointmentModel.request_info.arrRequest_field.count+1;
+            
+        }
+        else{
+            return self.appointmentModel.request_info.arrRequest_field.count;
+            
+        }
     }
     return 0;
 }
@@ -280,11 +287,13 @@
             
             cell.lblDescription.text = model.name;
             
-            cell.lblTitle2.text = @"Bid Detail";
+            cell.lblTitle2.text = @"Comment";
             
             
             cell.lblDescription2.attributedText = [model.offer_details getAttributedText];
 
+            [cell.ratingView setupRatingOutOfFive:round([model.overall_rating doubleValue])];
+            
             cell.didSelectInnerButton1Block = ^{
             
                 self.selectedMerchantProfileModel = self.appointmentModel.arr_Merchant_info[indexPath.row];
@@ -297,11 +306,12 @@
             
             GeneralTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"appt_request_offer"];
             
-            
             cell.lblTitle.text = [NSString stringWithFormat:@"%@ %@",model.offer_currency,model.offer_price];
             
             cell.lblDescription.text = model.name;
             
+            [cell.ratingView setupRatingOutOfFive:round([model.overall_rating doubleValue])];
+
             cell.didSelectInnerButton1Block = ^{
                 
                 
@@ -320,14 +330,25 @@
   
     else if ([type isEqualToString:cell_request_guide]) {
         GeneralTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"appt_request_detail"];
+       
         
-        FormDataModel* fModel = self.appointmentModel.request_info.arrRequest_field[indexPath.row];
+        if (indexPath.row >= self.appointmentModel.request_info.arrRequest_field.count) {
+            
+            
+            cell.lblTitle.text = @"Cancellation Policy";
+            
+            cell.lblDescription.text = self.appointmentModel.cancellation_policy;
+            
+        }
+        else{
         
-        cell.lblTitle.text = fModel.title;
+            FormDataModel* fModel = self.appointmentModel.request_info.arrRequest_field[indexPath.row];
+            
+            cell.lblTitle.text = fModel.title;
+            
+            cell.lblDescription.text = fModel.value;
+        }
         
-        cell.lblDescription.text = fModel.value;
-
-      
         return cell;
     }
     
@@ -370,7 +391,8 @@
     __weak typeof (self)weakSelf = self;
     self.ratingViewController.didFinishRateBlock = ^(void)
     {
-        
+      
+
         if ([Utils isStringNull:weakSelf.ratingViewController.txtRating.text]) {
             [MessageManager showMessage:@"Please Input A Review" Type:TSMessageNotificationTypeError inViewController:weakSelf.ratingViewController];
         }
@@ -380,6 +402,8 @@
                 rateNreview(weakSelf.ratingViewController.rating, weakSelf.ratingViewController.txtRating.text);
             }
         }
+        
+        
         NSLog(@"txt:%@",weakSelf.ratingViewController.txtRating.text);
         
         NSLog(@"rating:%i",weakSelf.ratingViewController.rating);
@@ -500,7 +524,7 @@
         
         MerchantProfileViewController* mViewController = [segue destinationViewController];
       
-        [mViewController setUpMerchantProfile:merchantProfileModel];
+        [mViewController setUpMerchantProfileWithRequestGuide:merchantProfileModel];
 
     }
 }

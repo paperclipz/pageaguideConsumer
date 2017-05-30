@@ -349,6 +349,34 @@
 #pragma mark - User Utils
 
 
+#pragma mark - Alert Utils
+
++(UIAlertController*)alertViewWithText:(NSString*)string AndButtonText:(NSString*)btnText
+{
+    
+    
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:string
+                                  message:@""
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:btnText
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             
+                             
+                             [Utils showRegisterPage];
+                             
+                         }];
+    [alert addAction:ok]; // add action to uialertcontroller
+    
+    
+    return alert;
+    
+}
 
 
 @end

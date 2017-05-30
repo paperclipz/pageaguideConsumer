@@ -143,8 +143,9 @@
         
         cell.lblTitle2.text = [NSString validateText:model.request_info.title];
         
-        NSString* string1 = @"Appointment : ";
-        NSString* string2 = [NSString validateText:model.transaction_date];
+        NSString* string1 = @"Appointment Start Date : ";
+        
+        NSString* string2 = [NSString validateText:model.appointment_startdate];
         
         cell.lblTitle3.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string1,string2] StringToChange:string1];
         
@@ -204,15 +205,17 @@
 
         AppointmentViewController *vc = [segue destinationViewController];
         
-        if ([Utils isStringNull:apptModel.verify_time])
-        {
-            vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
+//        if ([Utils isStringNull:apptModel.verify_time])
+//        {
+//            vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
+//
+//        }
+//        else{
+//            vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
+//
+//        }
 
-        }
-        else{
-            vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
-
-        }
+        vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
 
         [vc setupData:apptModel];
         
@@ -223,16 +226,20 @@
     else if ([[segue identifier] isEqualToString:@"appointment_request_details"]) {
         
         AppointmentRequestViewController *vc = [segue destinationViewController];
+
+        // 30 may 2017
+        //change request : dont want to show verify anymore
+//        if ([Utils isStringNull:apptModel.verify_time])
+//        {
+//            vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
+//            
+//        }
+//        else{
+//            vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
+//            
+//        }
         
-        if ([Utils isStringNull:apptModel.verify_time])
-        {
-            vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
-            
-        }
-        else{
-            vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
-            
-        }
+        vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
         
         [vc setupData:apptModel];
         

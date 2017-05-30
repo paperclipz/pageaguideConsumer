@@ -743,6 +743,10 @@
             
             break;
             
+        case ServerRequestTypePostAppointmentCheckComplete:
+            str = [NSString stringWithFormat:@"appointment/checkcomplete"];
+            
+            break;
             
             
         case ServerRequestTypePostHistoryListing:
@@ -792,7 +796,13 @@
             str = [NSString stringWithFormat:@"request/create"];
             
             break;
-
+        
+        case ServerRequestTypePostRequestCancel:
+        
+        str = [NSString stringWithFormat:@"request/cancel"];
+        
+        break;
+        
         case ServerRequestTypePostHomeVersion:
             
             str = [NSString stringWithFormat:@"home/version"];

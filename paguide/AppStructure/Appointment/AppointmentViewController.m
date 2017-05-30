@@ -338,7 +338,7 @@
     __weak typeof (self.ratingViewController)weakRatingVC = self.ratingViewController;
     self.ratingViewController.didFinishRateBlock = ^(void)
     {
-        
+ 
         if ([Utils isStringNull:weakRatingVC.txtRating.text]) {
             [MessageManager showMessage:@"Please Input A Review" Type:TSMessageNotificationTypeError inViewController:weakRatingVC];
         }
@@ -348,6 +348,8 @@
                 rateNreview(weakRatingVC.rating, weakRatingVC.txtRating.text);
             }
         }
+        
+        
         NSLog(@"txt:%@",weakRatingVC.txtRating.text);
         
         NSLog(@"rating:%i",weakRatingVC.rating);
@@ -481,7 +483,7 @@
         
         MerchantProfileViewController* mViewController = [segue destinationViewController];
         
-        [mViewController setUpMerchantProfile:merchantProfileModel];
+        [mViewController setUpMerchantProfileWithRequestGuide:merchantProfileModel];
 
         
     }

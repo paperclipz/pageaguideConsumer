@@ -41,6 +41,8 @@ typedef enum
     ServerRequestTypePostAppointmentListing,
     ServerRequestTypePostAppointmentComplete,
     ServerRequestTypePostAppointmentValidatecode,
+    ServerRequestTypePostAppointmentCheckComplete,
+
     //  ==========  [ appointment ]  ==========  //
     ServerRequestTypePostHistoryListing,
     ServerRequestTypePostPromocodeCheck,
@@ -55,6 +57,7 @@ typedef enum
     ServerRequestTypePostRequestBiddinglist,
     ServerRequestTypePostRequestBidselection,
     ServerRequestTypePostRequestCreate,
+    ServerRequestTypePostRequestCancel,
     
     ServerRequestTypePostHomeVersion,
     ServerRequestTypePostUserRegisterdevice,
@@ -68,7 +71,6 @@ typedef enum
     ServerRequestTypePostMerchantFavourite,
     //  ==========  [ Merchant List ]  ==========  //
 }ServerRequestType;
-
 
 typedef enum
 {

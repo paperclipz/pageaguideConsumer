@@ -42,10 +42,24 @@
 @property (nonatomic,strong)TransactionModel* transactionModel;
 @property (nonatomic,strong)PromoCodeViewController* promoCodeViewController;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblTotalAmount;
 
 @end
 
 @implementation MyRequestDetailViewController
+- (IBAction)btnCancelRequestClicked:(id)sender {
+    
+    
+    [self showAlert:@"Are you sure you want to cancel this request" Message:@"" OK:^{
+        
+        [self requestServerForCancelRequest:self.appointmentModel.request_id];
+
+    } Cancel:^{
+        
+    }];
+    
+}
+
 - (IBAction)btnMakePaymentClicked:(id)sender {
     
     [self showPromoCodeViewAndPayment];
@@ -61,6 +75,9 @@
 {
     [self.btnMakePayment setDefaultBorder];
     [self.btnMakePayment setTitle:@"Make Payment" forState:UIControlStateNormal];
+    
+    self.lblTotalAmount.text = @"$ 0.00";
+    
 }
 
 - (void)viewDidLoad {
@@ -193,8 +210,15 @@
     }
     
     else if ([type isEqualToString:cell_request_guide]) {
-        return self.appointmentModel.request_info.arrRequest_field.count;
         
+        if (![Utils isStringNull:self.appointmentModel.cancellation_policy]) {
+            return self.appointmentModel.request_info.arrRequest_field.count+1;
+
+        }
+        else{
+            return self.appointmentModel.request_info.arrRequest_field.count;
+
+        }
     }
     return 0;
 }
@@ -246,6 +270,9 @@
                 
                 cell.lblDescription.text = model.name;
                 
+                [cell.ratingView setupRatingOutOfFive:round([model.overall_rating doubleValue])];
+
+                
                 cell.didSelectBlock = ^{
                 
                     model.isSelect = !model.isSelect;
@@ -253,12 +280,14 @@
                     [self.arrAppointmentList replaceObjectAtIndex:indexPath.row withObject:aModel];
                     
                     [self.ibTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
+                    
+                    [self getTotalAmount];
 
                 };
                 
                 [cell.btnSelection setImage:[self getImageForSelection:model.isSelect] forState:UIControlStateNormal];
                 
-                cell.lblTitle2.text = @"Bid Detail";
+                cell.lblTitle2.text = @"Comment";
                 
                 cell.lblDescription2.attributedText = [aModel.offer_details getAttributedText];
                 
@@ -281,6 +310,8 @@
                 
                 cell.lblDescription.text = model.name;
                 
+                [cell.ratingView setupRatingOutOfFive:round([model.overall_rating doubleValue])];
+
                 cell.didSelectBlock = ^{
                     
                     model.isSelect = !model.isSelect;
@@ -288,6 +319,8 @@
                     [self.arrAppointmentList replaceObjectAtIndex:indexPath.row withObject:aModel];
                     
                     [self.ibTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationNone];
+
+                    [self getTotalAmount];
 
                 };
                 
@@ -307,19 +340,31 @@
             
         }
  
-        
     }
     
     else if ([type isEqualToString:cell_request_guide]) {
         GeneralTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"appt_request_detail"];
         
-        FormDataModel* fModel = self.appointmentModel.request_info.arrRequest_field[indexPath.row];
         
-        cell.lblTitle.text = fModel.title;
-    
-        cell.lblDescription.text = fModel.value;
+        if (indexPath.row >= self.appointmentModel.request_info.arrRequest_field.count) {
+          
+            
+            cell.lblTitle.text = @"Cancellation Policy";
+            
+            cell.lblDescription.text = self.appointmentModel.cancellation_policy;
 
-        return cell;
+        }
+        else{
+        
+            FormDataModel* fModel = self.appointmentModel.request_info.arrRequest_field[indexPath.row];
+            
+            cell.lblTitle.text = fModel.title;
+            
+            cell.lblDescription.text = fModel.value;
+            
+
+        }
+                return cell;
     }
     
     return nil;
@@ -349,6 +394,27 @@
 
 }
 
+#pragma mark - Process data
+
+
+-(void)getTotalAmount
+{
+    float total = 0.00;
+    
+    for (int i = 0; i< self.arrAppointmentList.count; i++) {
+        
+        AppointmentModel* aModel  = self.arrAppointmentList[i];
+        
+        MerchantProfileModel* model = aModel.merchant_info_model;
+
+        if (model.isSelect) {
+            
+            total += [aModel.price floatValue];
+        }
+        
+    }
+    self.lblTotalAmount.text = [NSString stringWithFormat:@"$ %.2f",total];
+}
 
 -(UIImage*)getImageForSelection:(BOOL)isSelected
 {
@@ -689,6 +755,35 @@
 }
 
 
+-(void)requestServerForCancelRequest:(NSString*)requestID
+{
+    [LoadingManager show];
+    
+    NSString* token = [Utils getToken];
+    NSDictionary* dict = @{
+                           @"token" : IsNullConverstion(token),
+                           @"request_id" : requestID,
+                           
+                           };
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostRequestCancel parameter:dict appendString:nil success:^(id object) {
+        
+        [LoadingManager hide];
+        
+        [self resetMainPage];
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+
+
+    } failure:^(id object) {
+        
+        [LoadingManager hide];
+        
+
+    }];
+    
+    
+}
 
 #pragma mark - Alert View
 
@@ -826,7 +921,7 @@
         
         MerchantProfileViewController* mViewController = [segue destinationViewController];
         
-        [mViewController setUpMerchantProfile:merchantProfileModel];
+        [mViewController setUpMerchantProfileWithRequestGuide:merchantProfileModel];
 
 
     }

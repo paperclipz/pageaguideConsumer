@@ -1344,7 +1344,7 @@
         
         MerchantProfileViewController *vc = [segue destinationViewController];
         
-        [vc setUpMerchantProfile:merchantProfileModel];
+        [vc setUpMerchantProfileWithRequestGuide:merchantProfileModel];
         
         
     }

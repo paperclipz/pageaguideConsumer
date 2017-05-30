@@ -1,35 +1,42 @@
 //
-//  RatingViewController.m
+//  UnratedCollectionViewCell.m
 //  paguide
 //
-//  Created by Evan Beh on 09/03/2017.
+//  Created by Evan Beh on 30/05/2017.
 //  Copyright © 2017 Evan Beh. All rights reserved.
 //
 
-#import "RatingViewController.h"
-#import "UIButton+System.h"
-@interface RatingViewController ()
+#import "UnratedCollectionViewCell.h"
+
+@interface UnratedCollectionViewCell() <UITextFieldDelegate>
 {
     int tempRating;
+
 }
+
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *arrCollectionRatingButton;
 
 @end
+@implementation UnratedCollectionViewCell
 
-@implementation RatingViewController
 - (IBAction)btnSubmitClicked:(id)sender {
     
+    
+    [self.txtRating endEditing:YES];
+
     if(self.didFinishRateBlock) {
         self.didFinishRateBlock();
     }
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
     tempRating  = 0;
+    
+    self.txtRating.delegate = self;
     
     [self.btnSubmit setDefaultBorder];
     
@@ -48,9 +55,9 @@
     
     [self btnRateClicked:button];
 
-    
-    // Do any additional setup after loading the view from its nib.
+
 }
+
 
 
 -(IBAction)btnRateClicked:(id)sender
@@ -69,9 +76,35 @@
         }
         else{
             [self setButtonSelected:NO Button:tempButton];
-
+            
         }
     }
+    
+    if (self.didRateClicked) {
+        self.didRateClicked(self.rating);
+    }
+}
+
+
+-(void)setRatingInView:(int)rating
+{
+    tempRating = rating-=1;
+    
+    for (int i = 0; i<_arrCollectionRatingButton.count; i++) {
+        
+        UIButton* tempButton = _arrCollectionRatingButton[i];
+        
+        if (tempButton.tag<= tempRating) {
+            
+            [self setButtonSelected:YES Button:tempButton];
+        }
+        else{
+            [self setButtonSelected:NO Button:tempButton];
+            
+        }
+    }
+    
+
 }
 
 -(void)setButtonSelected:(BOOL)isSelected Button:(UIButton*)button
@@ -79,32 +112,24 @@
     
     if (isSelected) {
         [button setImage:[UIImage imageNamed:@"icon_star_full_red.png"] forState:UIControlStateNormal];
-
+        
     }
     else
     {
         [button setImage:[UIImage imageNamed:@"icon_star_outline_red.png"] forState:UIControlStateNormal];
-
+        
     }
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 -(int)rating
 {
     return tempRating + 1;
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+ 
+    if (self.didUpdateStringBlock) {
+        self.didUpdateStringBlock(textField.text);
+    }
 }
-*/
-
 @end

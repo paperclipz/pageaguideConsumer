@@ -156,9 +156,9 @@
         
         cell.lblTitle2.text = [NSString validateText:model.request_info.title];
         
-        NSString* string1 = @"Appointment : ";
-        NSString* string2 = [NSString validateText:model.transaction_date];
-        
+        NSString* string1 = @"Appointment Start Date : ";
+        NSString* string2 = [NSString validateText:model.appointment_startdate];
+
         cell.lblTitle3.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string1,string2] StringToChange:string1];
         
         NSString* string3 = @"Completed date : ";

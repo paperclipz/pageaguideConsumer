@@ -8,6 +8,12 @@
 
 #import "GeneralTableViewCell.h"
 
+@interface GeneralTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIView *ibRatingContentView;
+
+
+@end
 @implementation GeneralTableViewCell
 - (IBAction)btnSelectionClicked:(id)sender {
     
@@ -19,6 +25,12 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    if (self.ibRatingContentView) {
+        [self.ibRatingContentView addSubview:self.ratingView];
+        
+        self.ratingView.frame = CGRectMake(0, 0, self.ibRatingContentView.frame.size.width, self.ibRatingContentView.frame.size.height);
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,6 +44,17 @@
     if (self.didSelectInnerButton1Block) {
         self.didSelectInnerButton1Block();
     }
+}
+
+-(RatingView*)ratingView
+{
+    if (!_ratingView) {
+        _ratingView = [RatingView initializeCustomView];
+        
+        
+    }
+    
+    return _ratingView;
 }
 
 @end

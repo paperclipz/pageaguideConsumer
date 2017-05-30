@@ -128,6 +128,7 @@
     
     cell.lblDesc.text = @"-";
     
+    cell.ibImgFavourite.hidden = !profile.isFavourite;
     
     [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:profile.profile_img] placeholderImage:AVATAR_PLACEHOLDER];
     
@@ -189,8 +190,12 @@ return cell;
     
     self.vm_package_paging.isLoading = YES;
     
+    
+    NSString* token = [Utils getToken];
+    
     NSDictionary* dict = @{@"per_page" : PER_PAGE,
                            @"page" : @(self.vm_package_paging.currentPage + 1),
+                           @"token" : token
                            };
     
     NSMutableDictionary* mDict = [[NSMutableDictionary alloc]initWithDictionary:dict];

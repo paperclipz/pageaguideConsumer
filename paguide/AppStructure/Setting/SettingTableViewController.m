@@ -10,6 +10,8 @@
 #import "WebViewController.h"
 #import "SettingPopoutViewController.h"
 #import <STPopup/STPopup.h>
+#import "UnratedViewController.h"
+#import "AppointmentModel.h"
 
 #define cell_change_password @"Change Password"
 #define cell_notification @"Notification"
@@ -19,6 +21,7 @@
 #define cell_Logout @"Logout"
 #define cell_Login @"Login"
 #define cell_Version @"Version"
+#define cell_Rate @"Rating"
 
 
 @interface SettingTableViewController ()
@@ -48,6 +51,7 @@
                              //cell_FAQ,
                              cell_Term,
                              cell_Privacy,
+                             cell_Rate,
                              cell_Logout,
                              cell_Version,
                              ];
@@ -200,6 +204,12 @@
         [Utils showRegisterPage];
 
     }
+    else if ([type isEqualToString:cell_Rate]) {
+        
+        [self requestServerForUnratedmerchant];
+        
+    }
+    
     
  
 
@@ -321,7 +331,7 @@
         [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess inViewController:self];
         
         [DataManager reloadUserProfile:^(ProfileModel *pModel) {
-          
+            
             if(completion)
             {
                 completion(YES);
@@ -342,10 +352,63 @@
             completion(NO);
         }
     }];
-
     
-
+    
+    
 }
+
+
+-(void)requestServerForUnratedmerchant
+{
+    
+    NSString* token = [Utils getToken];
+    
+    NSDictionary* dict = @{@"token" : token};
+    
+    [LoadingManager show];
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostAppointmentCheckComplete parameter:dict appendString:nil success:^(id object) {
+        
+        [LoadingManager hide];
+
+        NSMutableArray* array = [AppointmentModel arrayOfModelsFromDictionaries:object[@"data"] error:nil];
+        
+        array = nil;
+        if ([Utils isArrayNull:array]) {
+            
+            [MessageManager showMessage:@"No Merchant to be rated" Type:TSMessageNotificationTypeSuccess inViewController:self];
+        }
+        else{
+        
+            [self showRatingView:array];
+
+        }
+        
+    } failure:^(id object) {
+        
+        [LoadingManager hide];
+
+    }];
+}
+
+#pragma mark - show view
+
+-(void)showRatingView:(NSArray*)array
+{
+    UnratedViewController* ratingViewController = [UnratedViewController new];
+    
+    ratingViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    ratingViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    ratingViewController.arrayAppointments = [array mutableCopy];
+    
+    [self presentViewController:ratingViewController animated:YES completion:^{
+        
+    }];
+}
+
+
+
 
 /*
 // Override to support conditional editing of the table view.

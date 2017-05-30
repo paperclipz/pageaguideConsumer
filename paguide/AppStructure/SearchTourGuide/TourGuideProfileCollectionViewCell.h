@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblDesc;
 @property (weak, nonatomic) IBOutlet UIView *ibRatingContentView;
 @property (strong, nonatomic) RatingView *ratingView;
+@property (weak, nonatomic) IBOutlet UIImageView *ibImgFavourite;
 
 @end

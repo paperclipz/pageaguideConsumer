@@ -20,6 +20,10 @@
 #import "MyRequestListingViewController.h"
 #import "AppointmentListViewController.h"
 #import "AppointmentPageViewController.h"
+#import "UnratedViewController.h"
+#import "AppointmentModel.h"
+
+
 @import Intercom;
 
 #define PER_PAGE @"10"
@@ -68,6 +72,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
  
+    [self requestServerForUnratedmerchant];
+    
     if (self.isNeedReload) {
         
         if (![Utils isUserLogin]) {
@@ -357,6 +363,25 @@
 
 #pragma mark - Request Server
 
+
+-(void)requestServerForUnratedmerchant
+{
+    
+    NSString* token = [Utils getToken];
+    
+    NSDictionary* dict = @{@"token" : token};
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostAppointmentCheckComplete parameter:dict appendString:nil success:^(id object) {
+        
+        NSMutableArray* array = [AppointmentModel arrayOfModelsFromDictionaries:object[@"data"] error:nil];
+        
+        [self showRatingView:array];
+        
+    } failure:^(id object) {
+        
+    }];
+}
+
 -(void)requestServerForPackageListing
 {
     
@@ -437,6 +462,23 @@
     
 
 }// any offset changes
+
+
+#pragma mark - show view
+
+-(void)showRatingView:(NSArray*)array
+{
+    UnratedViewController* ratingViewController = [UnratedViewController new];
+    
+    ratingViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    ratingViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
+    ratingViewController.arrayAppointments = [array mutableCopy];
+    
+    [self presentViewController:ratingViewController animated:YES completion:^{
+        
+    }];
+}
 
 -(IBAction)showPromptToLogin
 {

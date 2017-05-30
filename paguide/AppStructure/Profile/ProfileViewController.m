@@ -731,8 +731,7 @@
 //    if ([[segue identifier] isEqualToString:@"appointment_details"]) {
 //        
 //        // Get destination view
-//        AppointmentViewController *vc = [segue destinationViewController];
-//        
+//
 //        
 //    }
 //

@@ -32,6 +32,7 @@
 @property (nonatomic,strong)NSString* verify_time;
 
 @property (nonatomic,strong)NSString* promo_code;
+@property (nonatomic,strong)NSString* title;
 
 //request usage and merchant bid
 @property (nonatomic,strong)ProfileModel* consumer_info;
@@ -51,6 +52,11 @@
 @property (nonatomic,strong)NSString* offer_id;
 
 @property (nonatomic,strong)NSString* complete_time;
+
+@property (nonatomic,strong)NSString* cancellation_policy;
+
+@property (nonatomic,strong)NSString* appointment_startdate;
+
 
 
 
