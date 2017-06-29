@@ -23,4 +23,6 @@
 
 @property(nonatomic,copy)VoidBlock didSelectInnerButton1Block;
 
+@property(nonatomic,copy)VoidBlock didSelectInnerButton2Block;
+
 @end

@@ -373,7 +373,6 @@
 
         NSMutableArray* array = [AppointmentModel arrayOfModelsFromDictionaries:object[@"data"] error:nil];
         
-        array = nil;
         if ([Utils isArrayNull:array]) {
             
             [MessageManager showMessage:@"No Merchant to be rated" Type:TSMessageNotificationTypeSuccess inViewController:self];

@@ -39,11 +39,21 @@
     // Configure the view for the selected state
 }
 
+// for merchant profile
 - (IBAction)btnOneClicked:(id)sender {
     
     if (self.didSelectInnerButton1Block) {
         self.didSelectInnerButton1Block();
     }
+}
+
+
+- (IBAction)btnTwoClicked:(id)sender {
+    
+    if (self.didSelectInnerButton2Block) {
+        self.didSelectInnerButton2Block();
+    }
+
 }
 
 -(RatingView*)ratingView

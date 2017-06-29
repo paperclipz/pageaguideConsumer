@@ -300,6 +300,12 @@
 
                 [self showMerchantView];
             };
+            
+            cell.didSelectInnerButton2Block = ^{
+            
+                [self showCall:model.mobile_number];
+            };
+            
             return cell;
         }
         else{
@@ -318,6 +324,12 @@
                 self.selectedMerchantProfileModel = self.appointmentModel.arr_Merchant_info[indexPath.row];
                 
                 [self showMerchantView];
+
+            };
+            
+            cell.didSelectInnerButton2Block = ^{
+                
+                [self showCall:model.mobile_number];
 
             };
             
@@ -511,6 +523,12 @@
         [MessageManager showMessage:@"Load Merchant data Fail" Type:TSMessageNotificationTypeError];
         
     }];
+}
+
+-(void)showCall:(NSString*)mobileNumber
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",mobileNumber]]];
+
 }
 
 #pragma mark - Navigation

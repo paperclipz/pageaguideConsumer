@@ -186,6 +186,8 @@
 		8A8E30781E6FB12700A16002 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E30661E6FB12700A16002 /* FSCalendarTransitionCoordinator.m */; };
 		8A8E30791E6FB12700A16002 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E30681E6FB12700A16002 /* FSCalendarWeekdayView.m */; };
 		8A8E307A1E6FB12700A16002 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E30691E6FB12700A16002 /* Info.plist */; };
+		8A9B26701EEA3812004F75FC /* icon_call_red@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9B266E1EEA3812004F75FC /* icon_call_red@1x.png */; };
+		8A9B26711EEA3812004F75FC /* icon_call_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9B266F1EEA3812004F75FC /* icon_call_red@2x.png */; };
 		8A9BD70B1E77E0880043D171 /* GVUserDefaults+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9BD70A1E77E0880043D171 /* GVUserDefaults+Extra.m */; };
 		8A9BD70F1E77E2A40043D171 /* VerifyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9BD70D1E77E2A40043D171 /* VerifyAccountViewController.m */; };
 		8A9BD7101E77E2A40043D171 /* VerifyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9BD70E1E77E2A40043D171 /* VerifyAccountViewController.xib */; };
@@ -552,6 +554,8 @@
 		8A8E30671E6FB12700A16002 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
 		8A8E30681E6FB12700A16002 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
 		8A8E30691E6FB12700A16002 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A9B266E1EEA3812004F75FC /* icon_call_red@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_call_red@1x.png"; sourceTree = "<group>"; };
+		8A9B266F1EEA3812004F75FC /* icon_call_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_call_red@2x.png"; sourceTree = "<group>"; };
 		8A9BD7091E77E0880043D171 /* GVUserDefaults+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GVUserDefaults+Extra.h"; sourceTree = "<group>"; };
 		8A9BD70A1E77E0880043D171 /* GVUserDefaults+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GVUserDefaults+Extra.m"; sourceTree = "<group>"; };
 		8A9BD70C1E77E2A40043D171 /* VerifyAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyAccountViewController.h; sourceTree = "<group>"; };
@@ -1062,6 +1066,8 @@
 		8A76566E1E9B906200A99C4E /* 66x66 */ = {
 			isa = PBXGroup;
 			children = (
+				8A9B266E1EEA3812004F75FC /* icon_call_red@1x.png */,
+				8A9B266F1EEA3812004F75FC /* icon_call_red@2x.png */,
 				8A76566F1E9B906200A99C4E /* icon_arrow_next_red.png */,
 				8A7656701E9B906200A99C4E /* icon_back_red.png */,
 				8A7656711E9B906200A99C4E /* icon_back_white.png */,
@@ -1713,6 +1719,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A76569A1E9B906300A99C4E /* icon_collapse_down_red@2x.png in Resources */,
+				8A9B26701EEA3812004F75FC /* icon_call_red@1x.png in Resources */,
 				8A2463E11EB9CD3D0000734B /* GeneralCalenderViewController.xib in Resources */,
 				8ABC514A1E8E2D5100E31560 /* placeholder_photo.png in Resources */,
 				8A7656A91E9B906300A99C4E /* icon_share_white.png in Resources */,
@@ -1774,6 +1781,7 @@
 				8A7656A51E9B906300A99C4E /* icon_profile_red@1x.png in Resources */,
 				8A6B68E91E6D593600D696DE /* icon_appointment_red@2x.png in Resources */,
 				8A7656AA1E9B906300A99C4E /* icon_star_full_red.png in Resources */,
+				8A9B26711EEA3812004F75FC /* icon_call_red@2x.png in Resources */,
 				8A7656A61E9B906300A99C4E /* icon_profile_red@2x.png in Resources */,
 				8AFA230C1E6D53520090837C /* 750x1334.png in Resources */,
 				8A1228AA1E8BD5B80093C92C /* icon_setting_red_Tab@1x.png in Resources */,

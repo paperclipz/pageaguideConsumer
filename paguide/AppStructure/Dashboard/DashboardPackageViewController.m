@@ -72,7 +72,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
  
-    [self requestServerForUnratedmerchant];
     
     if (self.isNeedReload) {
         
@@ -85,6 +84,7 @@
             [DataManager getUserProfile:^(ProfileModel *pModel) {
                 
                 [Intercom registerUserWithEmail:pModel.email];
+                
             }];
         }
         
@@ -115,6 +115,11 @@
         if (![Utils isUserLogin]) {
             
             [Utils showRegisterPage];
+        }
+        else{
+        
+            [self requestServerForUnratedmerchant];
+
         }
     }];
     
@@ -375,7 +380,11 @@
         
         NSMutableArray* array = [AppointmentModel arrayOfModelsFromDictionaries:object[@"data"] error:nil];
         
-        [self showRatingView:array];
+        if (![Utils isArrayNull:array]) {
+            
+            [self showRatingView:array];
+
+        }
         
     } failure:^(id object) {
         
