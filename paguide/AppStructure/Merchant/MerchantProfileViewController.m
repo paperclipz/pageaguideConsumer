@@ -100,7 +100,7 @@
 
     arrCellList = @[cell_about,cell_detail,cell_review];
 
-    arrCellDetailList = @[cell_detail_language,cell_detail_specialty,cell_detail_qualifications];
+    arrCellDetailList = @[cell_detail_language];
     
     self.ibTableView.estimatedRowHeight = 120.0f;
     
@@ -295,7 +295,6 @@
         
     }
     
-    
 
     return 0;
 }
@@ -310,10 +309,8 @@
     if ([type isEqualToString:cell_about]) {
         MerchantProfileTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"merchant_about"];
         
-        
         cell.lblTitle1.text = self.merchantProfileModel.desc;
         
-       
         return cell;
         
     }
@@ -321,13 +318,11 @@
         
         MerchantProfileTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"merchant_detail"];
         
-        
         NSString* detail_type = arrCellDetailList[indexPath.row];
 
         NSString* string1 = [NSString stringWithFormat:@"%@ : ",detail_type];
         
         NSString* string2;
-        
         
         if ([detail_type isEqualToString:cell_detail_language]) {
             

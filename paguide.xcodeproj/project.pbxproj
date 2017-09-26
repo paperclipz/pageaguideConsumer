@@ -2241,7 +2241,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yiwen beh (CGR599YP24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2259,8 +2259,8 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pageaguide.consumer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7fdf490c-36d0-4114-84ca-50d55de2441d";
-				PROVISIONING_PROFILE_SPECIFIER = "Dev Enterprise PageAGuide Consumer";
+				PROVISIONING_PROFILE = "c949336e-e26b-4cc9-ba5d-b7d15b623c72";
+				PROVISIONING_PROFILE_SPECIFIER = "Enterprise PageAGuide Consumer v2";
 				SWIFT_OBJC_BRIDGING_HEADER = "paguide/AppStructure/paguide-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2396,7 +2396,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yiwen beh (CGR599YP24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2407,8 +2407,8 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pageaguide.consumer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7fdf490c-36d0-4114-84ca-50d55de2441d";
-				PROVISIONING_PROFILE_SPECIFIER = "Dev Enterprise PageAGuide Consumer";
+				PROVISIONING_PROFILE = "c949336e-e26b-4cc9-ba5d-b7d15b623c72";
+				PROVISIONING_PROFILE_SPECIFIER = "Enterprise PageAGuide Consumer v2";
 				SWIFT_OBJC_BRIDGING_HEADER = "paguide/AppStructure/paguide-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;

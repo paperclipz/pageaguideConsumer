@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -58,7 +58,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="3u4-co-Rkp"/>
                                         </constraints>
-                                        <state key="normal" title="No Receive Yet"/>
+                                        <state key="normal" title="Not Receive Yet"/>
                                         <connections>
                                             <action selector="btnResendClicked:" destination="dcn-MI-6Fo" eventType="touchUpInside" id="xdn-ah-6oI"/>
                                         </connections>
