@@ -18,6 +18,7 @@
 #import "PromoCodeViewController.h"
 #import "FormDataModel.h"
 #import "MerchantProfileViewController.h"
+#import "ChattingViewController.h"
 
 #define cell_title @"cell_title"
 #define cell_merchant_offer @"cell_merchant_offer"
@@ -305,7 +306,6 @@
             
                 GeneralTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"appt_request_offer"];
                 
-                
                 cell.lblTitle.text = [NSString stringWithFormat:@"%@ %@",aModel.currency,aModel.price];
                 
                 cell.lblDescription.text = model.name;
@@ -324,6 +324,7 @@
 
                 };
                 
+                
                 [cell.btnSelection setImage:[self getImageForSelection:model.isSelect] forState:UIControlStateNormal];
 
                 cell.didSelectInnerButton1Block = ^{
@@ -332,6 +333,20 @@
                     
                     [self showMerchantView];
                                         
+                };
+                
+                cell.didSelectOnChatBlock = ^(void)
+                {
+                    self.hidesBottomBarWhenPushed = YES;
+                    
+                    ChattingViewController* vc = [ChattingViewController new];
+                    
+                    [vc setupPreData:model requestID:aModel.request_id];
+                    
+                    [self.navigationController pushViewController:vc animated:YES];
+                    
+                    self.hidesBottomBarWhenPushed = NO;
+                    
                 };
                 
                 return cell;

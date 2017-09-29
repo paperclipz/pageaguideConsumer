@@ -38,3 +38,18 @@
 
 
 @end
+
+@implementation UIButton (Rendering)
+
+- (void)setImageRenderingMode:(UIImageRenderingMode)renderMode
+{
+    UIImage* image = [self imageForState:UIControlStateNormal];
+
+    NSAssert(image, @"Image must be set before setting rendering mode");
+    
+    image = [image imageWithRenderingMode:renderMode];
+
+    [self setImage:image forState:UIControlStateNormal];
+}
+
+@end

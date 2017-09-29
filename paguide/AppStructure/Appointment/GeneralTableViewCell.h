@@ -18,11 +18,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSelection;
 @property (weak, nonatomic) IBOutlet RatingView *ratingView;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnSend;
 
 @property(nonatomic,copy)VoidBlock didSelectBlock;
 
 @property(nonatomic,copy)VoidBlock didSelectInnerButton1Block;
 
 @property(nonatomic,copy)VoidBlock didSelectInnerButton2Block;
+
+@property (nonatomic, copy)VoidBlock didSelectOnChatBlock;
 
 @end

@@ -953,7 +953,8 @@
                             [weakSelf requestServerForPayment:weakSelf.transactionModel];
                             
                         } Failure:^{
-                            
+                           
+                            [MessageManager showMessage:@"Failed to request stripe token" Type:TSMessageNotificationTypeError inViewController:self];
                         }];
                         
                     } Cancel:^{
@@ -1228,7 +1229,7 @@
         
         BaseModel* bModel = [[BaseModel alloc]initWithDictionary:object error:&error];
         
-        [MessageManager showMessage:bModel.displayMessage Type:TSMessageNotificationTypeSuccess inViewController:self];
+        [MessageManager showMessage:bModel.displayMessage Type:TSMessageNotificationTypeError inViewController:self];
         
     }];
 }

@@ -15,3 +15,10 @@
 -(void)setDefaultBorder;
 
 @end
+
+
+@interface UIButton (Rendering)
+
+- (void)setImageRenderingMode:(UIImageRenderingMode)renderMode;
+
+@end

@@ -22,6 +22,7 @@
 #import "AppointmentPageViewController.h"
 #import "UnratedViewController.h"
 #import "AppointmentModel.h"
+#import "ChattingViewController.h"
 
 
 @import Intercom;
@@ -44,7 +45,7 @@
 @implementation DashboardPackageViewController
 
 - (IBAction)btnIntercomClicked:(id)sender {
-   
+
      [Intercom presentMessageComposer];
 
 }
@@ -97,9 +98,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
-    [Utils checkIsNeedUpateApp:^(NSString* urlString){
+
+        [Utils checkIsNeedUpateApp:^(NSString* urlString){
         
         UpdateViewController* uVC = [UpdateViewController new];
         

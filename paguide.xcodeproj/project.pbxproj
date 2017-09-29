@@ -52,6 +52,9 @@
 		8A4CB60B1E63EDEC00A8BCDA /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CB60A1E63EDEC00A8BCDA /* RegisterViewController.m */; };
 		8A4E85A91E63DA3A002DC150 /* DashboardMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E85A81E63DA3A002DC150 /* DashboardMainTableViewCell.m */; };
 		8A4E953B1E7938DB00F45B96 /* CategorySelectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E953A1E7938DB00F45B96 /* CategorySelectionViewModel.m */; };
+		8A4F705D1F7E2A5200251054 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4F705C1F7E2A5200251054 /* ChatModel.m */; };
+		8A4F70601F7E2A7300251054 /* ChatWrapperModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4F705F1F7E2A7300251054 /* ChatWrapperModel.m */; };
+		8A4F70631F7E2B4800251054 /* DateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4F70621F7E2B4800251054 /* DateModel.m */; };
 		8A5637121E67FFF700ACAF2B /* AppointmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5637111E67FFF700ACAF2B /* AppointmentViewController.m */; };
 		8A5637151E68011B00ACAF2B /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5637141E68011B00ACAF2B /* RatingView.m */; };
 		8A5637181E68038D00ACAF2B /* ApptHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5637171E68038D00ACAF2B /* ApptHeaderTableViewCell.m */; };
@@ -237,6 +240,12 @@
 		8AF5F8FD1E8221F6004A7322 /* TransactionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5F8FC1E8221F6004A7322 /* TransactionModel.m */; };
 		8AF5F9061E839160004A7322 /* AppointmentRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5F9051E839160004A7322 /* AppointmentRequestViewController.m */; };
 		8AF5F90F1E84028E004A7322 /* MyRequestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5F90E1E84028E004A7322 /* MyRequestDetailViewController.m */; };
+		8AF982F51F7A2F6C000021BB /* ChattingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF982F31F7A2F6C000021BB /* ChattingViewController.m */; };
+		8AF982F61F7A2F6C000021BB /* ChattingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF982F41F7A2F6C000021BB /* ChattingViewController.xib */; };
+		8AF982FB1F7A2F91000021BB /* ChattingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF982F91F7A2F91000021BB /* ChattingTableViewCell.m */; };
+		8AF982FE1F7A2FC2000021BB /* ChattingReceiverTblVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF982FD1F7A2FC2000021BB /* ChattingReceiverTblVCell.xib */; };
+		8AF983001F7A2FD0000021BB /* ChattingSenderTblVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF982FF1F7A2FD0000021BB /* ChattingSenderTblVCell.xib */; };
+		8AF983031F7A3B5A000021BB /* send-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AF983021F7A3B5A000021BB /* send-grey.png */; };
 		8AFA22C31E6D16550090837C /* DashboardPackageFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA22C21E6D16540090837C /* DashboardPackageFilterViewController.m */; };
 		8AFA22C61E6D19850090837C /* FilterCategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA22C51E6D19850090837C /* FilterCategoryTableViewCell.m */; };
 		8AFA22CD1E6D3EF90090837C /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA22CB1E6D3EF90090837C /* GalleryViewController.m */; };
@@ -353,6 +362,12 @@
 		8A4E85A81E63DA3A002DC150 /* DashboardMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardMainTableViewCell.m; sourceTree = "<group>"; };
 		8A4E95391E7938DB00F45B96 /* CategorySelectionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategorySelectionViewModel.h; sourceTree = "<group>"; };
 		8A4E953A1E7938DB00F45B96 /* CategorySelectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySelectionViewModel.m; sourceTree = "<group>"; };
+		8A4F705B1F7E2A5200251054 /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
+		8A4F705C1F7E2A5200251054 /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
+		8A4F705E1F7E2A7300251054 /* ChatWrapperModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatWrapperModel.h; sourceTree = "<group>"; };
+		8A4F705F1F7E2A7300251054 /* ChatWrapperModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatWrapperModel.m; sourceTree = "<group>"; };
+		8A4F70611F7E2B4800251054 /* DateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateModel.h; sourceTree = "<group>"; };
+		8A4F70621F7E2B4800251054 /* DateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateModel.m; sourceTree = "<group>"; };
 		8A5637101E67FFF700ACAF2B /* AppointmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppointmentViewController.h; sourceTree = "<group>"; };
 		8A5637111E67FFF700ACAF2B /* AppointmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentViewController.m; sourceTree = "<group>"; };
 		8A5637131E68011B00ACAF2B /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatingView.h; sourceTree = "<group>"; };
@@ -645,6 +660,14 @@
 		8AF5F9051E839160004A7322 /* AppointmentRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentRequestViewController.m; sourceTree = "<group>"; };
 		8AF5F90D1E84028E004A7322 /* MyRequestDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestDetailViewController.h; sourceTree = "<group>"; };
 		8AF5F90E1E84028E004A7322 /* MyRequestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRequestDetailViewController.m; sourceTree = "<group>"; };
+		8AF982F21F7A2F6C000021BB /* ChattingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChattingViewController.h; sourceTree = "<group>"; };
+		8AF982F31F7A2F6C000021BB /* ChattingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChattingViewController.m; sourceTree = "<group>"; };
+		8AF982F41F7A2F6C000021BB /* ChattingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChattingViewController.xib; sourceTree = "<group>"; };
+		8AF982F81F7A2F91000021BB /* ChattingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChattingTableViewCell.h; sourceTree = "<group>"; };
+		8AF982F91F7A2F91000021BB /* ChattingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChattingTableViewCell.m; sourceTree = "<group>"; };
+		8AF982FD1F7A2FC2000021BB /* ChattingReceiverTblVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChattingReceiverTblVCell.xib; sourceTree = "<group>"; };
+		8AF982FF1F7A2FD0000021BB /* ChattingSenderTblVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChattingSenderTblVCell.xib; sourceTree = "<group>"; };
+		8AF983021F7A3B5A000021BB /* send-grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-grey.png"; sourceTree = "<group>"; };
 		8AFA22C11E6D16540090837C /* DashboardPackageFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardPackageFilterViewController.h; sourceTree = "<group>"; };
 		8AFA22C21E6D16540090837C /* DashboardPackageFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardPackageFilterViewController.m; sourceTree = "<group>"; };
 		8AFA22C41E6D19850090837C /* FilterCategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCategoryTableViewCell.h; sourceTree = "<group>"; };
@@ -752,6 +775,7 @@
 		8A20DB161E63D0F900C2F060 /* AppStructure */ = {
 			isa = PBXGroup;
 			children = (
+				8AF982F11F7A2E4C000021BB /* Chatting */,
 				8AB693D61EDD247700F9C7A3 /* UnratedView */,
 				8AF384AF1EB8450000583031 /* SearchTourGuide */,
 				8A1228AC1E8BD6160093C92C /* Setting */,
@@ -840,6 +864,17 @@
 				8A23E9A11E7F997C001FAB6D /* RequestGuideTableViewCell.m */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		8A4F705A1F7E2A4100251054 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				8A4F705B1F7E2A5200251054 /* ChatModel.h */,
+				8A4F705C1F7E2A5200251054 /* ChatModel.m */,
+				8A4F705E1F7E2A7300251054 /* ChatWrapperModel.h */,
+				8A4F705F1F7E2A7300251054 /* ChatWrapperModel.m */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		8A56370F1E67FD3600ACAF2B /* Appointment */ = {
@@ -1433,14 +1468,15 @@
 		8A9F461C1E603DA8005F1453 /* MODEL */ = {
 			isa = PBXGroup;
 			children = (
+				8A4F705A1F7E2A4100251054 /* Chat */,
 				8AE22C901EB8702600F58C72 /* MerchantList */,
+				8A23E9C51E7FDE47001FAB6D /* Request */,
+				8A23E9B71E7FD553001FAB6D /* Appointment */,
+				8A9BD7221E78EC7A0043D171 /* Package */,
 				8A3C7BAA1E8A27C70093BA62 /* FacebookModel.h */,
 				8A3C7BAB1E8A27C70093BA62 /* FacebookModel.m */,
 				8AF5F8FB1E8221F6004A7322 /* TransactionModel.h */,
 				8AF5F8FC1E8221F6004A7322 /* TransactionModel.m */,
-				8A23E9C51E7FDE47001FAB6D /* Request */,
-				8A23E9B71E7FD553001FAB6D /* Appointment */,
-				8A9BD7221E78EC7A0043D171 /* Package */,
 				8AFFDE3F1E769AEA00C55B55 /* BaseModel.h */,
 				8AFFDE401E769AEA00C55B55 /* BaseModel.m */,
 				8AFFDE421E769B0900C55B55 /* CountryModel.h */,
@@ -1459,6 +1495,8 @@
 				8A3C7BA21E8A0DD60093BA62 /* AppModel.m */,
 				8A1228B01E8BEE010093C92C /* ReviewModel.h */,
 				8A1228B11E8BEE010093C92C /* ReviewModel.m */,
+				8A4F70611F7E2B4800251054 /* DateModel.h */,
+				8A4F70621F7E2B4800251054 /* DateModel.m */,
 			);
 			path = MODEL;
 			sourceTree = "<group>";
@@ -1539,9 +1577,40 @@
 			path = SearchTourGuide;
 			sourceTree = "<group>";
 		};
+		8AF982F11F7A2E4C000021BB /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				8AF982F71F7A2F7B000021BB /* Cell */,
+				8AF982F21F7A2F6C000021BB /* ChattingViewController.h */,
+				8AF982F31F7A2F6C000021BB /* ChattingViewController.m */,
+				8AF982F41F7A2F6C000021BB /* ChattingViewController.xib */,
+			);
+			path = Chatting;
+			sourceTree = "<group>";
+		};
+		8AF982F71F7A2F7B000021BB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8AF982F81F7A2F91000021BB /* ChattingTableViewCell.h */,
+				8AF982F91F7A2F91000021BB /* ChattingTableViewCell.m */,
+				8AF982FD1F7A2FC2000021BB /* ChattingReceiverTblVCell.xib */,
+				8AF982FF1F7A2FD0000021BB /* ChattingSenderTblVCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8AF983011F7A3B5A000021BB /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				8AF983021F7A3B5A000021BB /* send-grey.png */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		8AFA22CF1E6D53520090837C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8AF983011F7A3B5A000021BB /* Chat */,
 				8ABC51491E8E2D5100E31560 /* placeholder_photo.png */,
 				8A1228BF1E8D10810093C92C /* paguide_splash_logo.png */,
 				8A1228A61E8BCC920093C92C /* placeholder_profile.png */,
@@ -1728,10 +1797,12 @@
 				8A1228A71E8BCC920093C92C /* placeholder_profile.png in Resources */,
 				8A9BD7101E77E2A40043D171 /* VerifyAccountViewController.xib in Resources */,
 				8AB693E01EDD251500F9C7A3 /* UnratedCollectionViewCell.xib in Resources */,
+				8AF982F61F7A2F6C000021BB /* ChattingViewController.xib in Resources */,
 				8A7656991E9B906300A99C4E /* icon_collapse_down_red@1x.png in Resources */,
 				8A7656951E9B906300A99C4E /* icon_calendar_grey.png in Resources */,
 				8A851FCD1E66D8D600904B6C /* ProfileHeaderFooterView.xib in Resources */,
 				8ABC51561E8E523D00E31560 /* package.json in Resources */,
+				8AF983001F7A2FD0000021BB /* ChattingSenderTblVCell.xib in Resources */,
 				8A7656AB1E9B906300A99C4E /* icon_star_full_white.png in Resources */,
 				8AFA22CE1E6D3EF90090837C /* GalleryViewController.xib in Resources */,
 				8A76566D1E9B88DC00A99C4E /* HeaderView2.xib in Resources */,
@@ -1763,6 +1834,7 @@
 				8A76569F1E9B906300A99C4E /* icon_dropdown_red@2x.png in Resources */,
 				8A6EB1D11E715F1A0022ABA2 /* RatingViewController.xib in Resources */,
 				8A7656A71E9B906300A99C4E /* icon_search_grey.png in Resources */,
+				8AF982FE1F7A2FC2000021BB /* ChattingReceiverTblVCell.xib in Resources */,
 				8A68F5D61EBB080E0087A613 /* LICENSE in Resources */,
 				8A6B68F51E6D593600D696DE /* icon_package_grey.png in Resources */,
 				8A7656981E9B906300A99C4E /* icon_close_red@2x.png in Resources */,
@@ -1777,6 +1849,7 @@
 				8A7656AC1E9B906300A99C4E /* icon_star_outline_red.png in Resources */,
 				8A7656A11E9B906300A99C4E /* icon_filter_red.png in Resources */,
 				8A7656931E9B906300A99C4E /* icon_bookmark_red@2x.png in Resources */,
+				8AF983031F7A3B5A000021BB /* send-grey.png in Resources */,
 				8A76569E1E9B906300A99C4E /* icon_dropdown_red@1x.png in Resources */,
 				8A7656A51E9B906300A99C4E /* icon_profile_red@1x.png in Resources */,
 				8A6B68E91E6D593600D696DE /* icon_appointment_red@2x.png in Resources */,
@@ -2002,6 +2075,7 @@
 				8A5B3ED21E669600005BE083 /* KeyValueModel.m in Sources */,
 				8A5B3ECF1E66857C005BE083 /* TTTAttributedLabel+Block.m in Sources */,
 				8A68F5D81EBB080E0087A613 /* UITextView+Placeholder.m in Sources */,
+				8AF982FB1F7A2F91000021BB /* ChattingTableViewCell.m in Sources */,
 				8A9BD70F1E77E2A40043D171 /* VerifyAccountViewController.m in Sources */,
 				8AFA22CD1E6D3EF90090837C /* GalleryViewController.m in Sources */,
 				8AF384B21EB8589800583031 /* TourGuideProfileCollectionViewCell.m in Sources */,
@@ -2009,6 +2083,7 @@
 				8A1176DC1E6D91C500C72B5A /* PackageDetailsViewController.m in Sources */,
 				8A9BD70B1E77E0880043D171 /* GVUserDefaults+Extra.m in Sources */,
 				8ABC515A1E92248200E31560 /* EBActionSheetHeaderView.m in Sources */,
+				8A4F705D1F7E2A5200251054 /* ChatModel.m in Sources */,
 				8A772B091E601D2F00763DF7 /* AppDelegate.m in Sources */,
 				8A851FBB1E66C5CA00904B6C /* DashboardPackageViewController.m in Sources */,
 				8A5637721E698FE100ACAF2B /* CommonTableViewCell.m in Sources */,
@@ -2074,6 +2149,7 @@
 				8A8DB9891E8939B000DE467D /* UIImageView+Extra.m in Sources */,
 				8A8DB97D1E890F3B00DE467D /* AutoCoding.m in Sources */,
 				8A61AD801E6597CA002383A3 /* EBActionSheetViewController.m in Sources */,
+				8A4F70631F7E2B4800251054 /* DateModel.m in Sources */,
 				8A9BD7251E78EC7A0043D171 /* PackageModel.m in Sources */,
 				8A5637481E69135B00ACAF2B /* AppointmentListViewController.m in Sources */,
 				8A3C7BB11E8B72A70093BA62 /* ResendVerificationCodeViewController.m in Sources */,
@@ -2108,7 +2184,9 @@
 				8A5B3EC71E6682D6005BE083 /* README.md in Sources */,
 				8A9BD7281E78EF3F0043D171 /* PackageWrapperModel.m in Sources */,
 				8A9F461E1E603DA8005F1453 /* Utils.m in Sources */,
+				8AF982F51F7A2F6C000021BB /* ChattingViewController.m in Sources */,
 				8A56375A1E69225D00ACAF2B /* MerchantProfileViewController.m in Sources */,
+				8A4F70601F7E2A7300251054 /* ChatWrapperModel.m in Sources */,
 				8A1228B21E8BEE010093C92C /* ReviewModel.m in Sources */,
 				8AF5F8EF1E812377004A7322 /* PaymentManager.m in Sources */,
 				8A9BD72F1E78F53B0043D171 /* UITableView+Extra.m in Sources */,

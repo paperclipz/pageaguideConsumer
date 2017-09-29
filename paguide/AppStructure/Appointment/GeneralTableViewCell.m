@@ -15,6 +15,14 @@
 
 @end
 @implementation GeneralTableViewCell
+- (IBAction)btnSendClicked:(id)sender {
+    
+    if (self.didSelectOnChatBlock)
+    {
+        self.didSelectOnChatBlock();
+    }
+}
+
 - (IBAction)btnSelectionClicked:(id)sender {
     
     if (self.didSelectBlock) {
@@ -24,6 +32,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.btnSend.tintColor = APP_MAIN_COLOR;
     // Initialization code
     
     if (self.ibRatingContentView) {

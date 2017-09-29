@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="caY-x0-3Oy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1611" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="caY-x0-3Oy">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -3801,6 +3801,22 @@
                                                                 <constraint firstAttribute="width" constant="140" id="cTZ-xR-Uac"/>
                                                             </constraints>
                                                         </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQ1-Vl-i3k">
+                                                            <rect key="frame" x="304" y="10" width="40" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="CZT-Ia-1Iy"/>
+                                                                <constraint firstAttribute="width" constant="40" id="pFL-Rk-NIR"/>
+                                                            </constraints>
+                                                            <state key="normal" image="send-grey.png"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="imageRenderingMode">
+                                                                    <integer key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="btnSendClicked:" destination="2Zm-tb-UBZ" eventType="touchUpInside" id="QJL-NE-iha"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -3810,8 +3826,10 @@
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YGh-pi-X1z" secondAttribute="bottom" constant="10" id="6Kd-rL-MFp"/>
                                                         <constraint firstItem="SEs-SX-bzs" firstAttribute="leading" secondItem="6Da-40-xTp" secondAttribute="trailing" constant="10" id="Ayy-XT-yKW"/>
                                                         <constraint firstItem="UCw-iS-Msr" firstAttribute="bottom" secondItem="6Da-40-xTp" secondAttribute="bottom" id="B3M-0H-uta"/>
+                                                        <constraint firstItem="J36-5c-Plh" firstAttribute="leading" secondItem="lQ1-Vl-i3k" secondAttribute="trailing" constant="20" id="B6k-fO-wcf"/>
                                                         <constraint firstItem="J36-5c-Plh" firstAttribute="top" secondItem="fyF-jP-GIi" secondAttribute="top" constant="10" id="BlU-cI-wLO"/>
                                                         <constraint firstItem="p3E-aQ-Qgg" firstAttribute="leading" secondItem="fyF-jP-GIi" secondAttribute="leading" constant="10" id="C3P-mD-Ziy"/>
+                                                        <constraint firstItem="lQ1-Vl-i3k" firstAttribute="top" secondItem="J36-5c-Plh" secondAttribute="top" id="Dm3-mb-aWf"/>
                                                         <constraint firstItem="YGh-pi-X1z" firstAttribute="leading" secondItem="fyF-jP-GIi" secondAttribute="leading" constant="10" id="JGl-Dn-TsT"/>
                                                         <constraint firstAttribute="trailing" secondItem="J36-5c-Plh" secondAttribute="trailing" constant="10" id="Js5-w1-Zab"/>
                                                         <constraint firstItem="6Nw-TV-W8z" firstAttribute="leading" secondItem="UCw-iS-Msr" secondAttribute="trailing" constant="10" id="MxU-rJ-vKn"/>
@@ -3838,6 +3856,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="btnSelection" destination="J36-5c-Plh" id="fpx-qI-WLq"/>
+                                            <outlet property="btnSend" destination="lQ1-Vl-i3k" id="sPa-Kp-s10"/>
                                             <outlet property="ibRatingContentView" destination="6Nw-TV-W8z" id="I1g-Vt-IVj"/>
                                             <outlet property="lblDescription" destination="Pdx-yV-0Fc" id="30K-xg-qNa"/>
                                             <outlet property="lblTitle" destination="SEs-SX-bzs" id="ina-Ix-1pv"/>
@@ -3917,11 +3936,28 @@
                                                                 <constraint firstAttribute="height" constant="20" id="uNT-R2-d3m"/>
                                                             </constraints>
                                                         </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOQ-iB-O2V">
+                                                            <rect key="frame" x="304" y="10" width="40" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="40" id="Nqs-fC-H9D"/>
+                                                                <constraint firstAttribute="height" constant="40" id="j5b-vS-t8R"/>
+                                                            </constraints>
+                                                            <state key="normal" image="send-grey.png"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="imageRenderingMode">
+                                                                    <integer key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="btnSendClicked:" destination="JrC-Zy-DrO" eventType="touchUpInside" id="ki1-eC-Oog"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="ph0-it-EvH" firstAttribute="leading" secondItem="MAL-bK-lrC" secondAttribute="leading" constant="10" id="2rR-zP-5rI"/>
                                                         <constraint firstAttribute="trailing" secondItem="ph0-it-EvH" secondAttribute="trailing" constant="10" id="3D0-sf-N8j"/>
+                                                        <constraint firstItem="HOQ-iB-O2V" firstAttribute="top" secondItem="iTP-CQ-XwK" secondAttribute="top" id="6sP-LP-fss"/>
                                                         <constraint firstItem="xue-7q-H0R" firstAttribute="leading" secondItem="3Cc-A4-g6i" secondAttribute="leading" id="8l2-0F-eMI"/>
                                                         <constraint firstItem="xue-7q-H0R" firstAttribute="top" secondItem="iTP-CQ-XwK" secondAttribute="bottom" constant="21" id="AwP-mi-TuD"/>
                                                         <constraint firstItem="eU1-BF-x6q" firstAttribute="leading" secondItem="4MO-I7-UfB" secondAttribute="trailing" constant="10" id="B1F-3m-DcT"/>
@@ -3938,6 +3974,7 @@
                                                         <constraint firstItem="4MO-I7-UfB" firstAttribute="leading" secondItem="3Cc-A4-g6i" secondAttribute="trailing" constant="10" id="iPF-82-Vgx"/>
                                                         <constraint firstItem="ypd-fC-rx4" firstAttribute="top" secondItem="eU1-BF-x6q" secondAttribute="bottom" id="iSM-Fg-N2Y"/>
                                                         <constraint firstItem="iTP-CQ-XwK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ypd-fC-rx4" secondAttribute="trailing" constant="10" id="pAW-Jx-Rdj"/>
+                                                        <constraint firstItem="iTP-CQ-XwK" firstAttribute="leading" secondItem="HOQ-iB-O2V" secondAttribute="trailing" constant="20" id="pOK-R6-aE6"/>
                                                         <constraint firstItem="iTP-CQ-XwK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eU1-BF-x6q" secondAttribute="trailing" constant="10" id="skO-Gi-oUH"/>
                                                         <constraint firstItem="4MO-I7-UfB" firstAttribute="top" secondItem="3Cc-A4-g6i" secondAttribute="top" id="x17-3N-m71"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hSV-h1-w38" secondAttribute="bottom" constant="10" id="x4t-k3-hju"/>
@@ -3966,6 +4003,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="btnSelection" destination="iTP-CQ-XwK" id="Drz-Tn-MmC"/>
+                                            <outlet property="btnSend" destination="HOQ-iB-O2V" id="fSw-zg-CG4"/>
                                             <outlet property="ibRatingContentView" destination="UJn-g2-rhx" id="Sv0-wK-3EU"/>
                                             <outlet property="lblDescription" destination="ypd-fC-rx4" id="1Dg-Hd-QPP"/>
                                             <outlet property="lblDescription2" destination="hSV-h1-w38" id="Wn9-qd-NdP"/>
@@ -4522,13 +4560,14 @@
         <image name="icon_uncheck_red.png" width="66" height="66"/>
         <image name="placeholder_photo.png" width="960" height="640"/>
         <image name="placeholder_profile.png" width="225" height="225"/>
+        <image name="send-grey.png" width="100" height="100"/>
         <image name="top_nav_logo.png" width="300" height="263"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Ge3-BN-LfH"/>
         <segue reference="TAn-iX-pKS"/>
-        <segue reference="sig-rP-EeT"/>
-        <segue reference="ox5-sH-vFD"/>
-        <segue reference="EW7-Du-wkm"/>
         <segue reference="Pcg-U7-Hy1"/>
+        <segue reference="ox5-sH-vFD"/>
+        <segue reference="sig-rP-EeT"/>
     </inferredMetricsTieBreakers>
 </document>

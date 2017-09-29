@@ -840,6 +840,10 @@
             str = [NSString stringWithFormat:@"merchant/favourite"];
             break;
 
+        case ServerRequestTypePostRequestComment:
+            
+            str = [NSString stringWithFormat:@"requests"];
+            break;
             
         default:
             break;
