@@ -341,7 +341,7 @@
                     
                     ChattingViewController* vc = [ChattingViewController new];
                     
-                    [vc setupPreData:model requestID:aModel.request_id];
+                    [vc setupPreData:model requestID:aModel.rid];
                     
                     [self.navigationController pushViewController:vc animated:YES];
                     

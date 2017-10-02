@@ -1192,7 +1192,6 @@
 
 -(void)requestServerForPayment:(TransactionModel*)model
 {
-  
     
     [LoadingManager show];
     NSString* token = [Utils getToken];

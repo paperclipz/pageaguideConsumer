@@ -11,10 +11,14 @@
 #import "ChattingTableViewCell.h"
 
 #import "ChatWrapperModel.h"
+#define LIMIT 20
 
 @interface ChattingViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 {
     float viewHeight;
+    BOOL isMiddleOfLoading;
+    int currentPage;
+
 
 }
 @property (weak, nonatomic) IBOutlet UILabel *lblUserName;
@@ -25,6 +29,8 @@
 @property (nonatomic)NSMutableArray* arrMessage;
 @property (nonatomic)MerchantProfileModel* merchantProfile;
 @property (nonatomic)NSString* requestID;
+@property (nonatomic,strong)ChatWrapperModel* chatWrapperModel;
+@property (strong, nonatomic) UIActivityIndicatorView* acivityIndicator;
 
 @end
 
@@ -35,6 +41,9 @@
     self.requestID = requestId;
     
     self.merchantProfile = model;
+    
+    currentPage = 1;
+
 }
 
 - (void)viewDidLoad {
@@ -45,7 +54,7 @@
     
     self.lblUserName.text = self.merchantProfile.name;
     
-    [self requestServerForChatListing:self.requestID];
+    [self requestServerToGetForChatListing:self.requestID];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -58,6 +67,8 @@
 -(void)initSelfView
 {
 
+    [self addActivityIndicator];
+    
     self.title = @"Chat";
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -89,6 +100,25 @@
     self.ibTxtView.placeholder = [@"Send A Message" uppercaseString];
     
 //    [Utils setRoundBorder:self.ibImgProfile color:[UIColor clearColor] borderRadius:self.ibImgProfile .frame.size.width/2];
+    
+}
+
+-(void)addActivityIndicator
+{
+    
+    self.navigationItem.rightBarButtonItem = nil;
+    
+    self.acivityIndicator = [[UIActivityIndicatorView alloc]init];
+    
+    UIBarButtonItem* buttonBar = [[UIBarButtonItem alloc]initWithCustomView:self.acivityIndicator];
+    
+    self.acivityIndicator.hidesWhenStopped = YES;
+    
+    self.navigationItem.rightBarButtonItems  = @[buttonBar];
+    
+    self.acivityIndicator.color = APP_MAIN_COLOR;
+    
+    
     
 }
 
@@ -129,7 +159,7 @@
     if ([cModel.user_type isEqualToString:@"consumer"]) {
         ChattingTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell_sender"];
         
-        cell.lblUserName.text = cModel.created_at.date;
+        cell.lblUserName.text = cModel.created_at;
         
         cell.lblMessage.text = cModel.comment;
         
@@ -141,7 +171,7 @@
     else{
         ChattingTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell_receiver"];
         
-        cell.lblUserName.text = cModel.created_at.date;
+        cell.lblUserName.text = cModel.created_at;
 
         cell.lblMessage.text = cModel.comment;
         
@@ -166,7 +196,7 @@
 -(void)sendMessage:(NSString*)message
 {
     
-    [self.arrMessage addObject:message];
+    //[self.arrMessage addObject:message];
     
     self.ibTxtView.text = @"";
     
@@ -176,39 +206,187 @@
     
     [self.ibTableView reloadData];
     
+    [self requestServerToPostForChatListing:self.requestID Message:message];
+
 }
 
 #pragma mark - Request Server
 
 //    https://devpage.pageadvisor.com/requests/:requestId/comments?services_token=%5BSERVICE_TOKEN%5D&token=%5BUSER_TOKEN%5D
 
--(void)requestServerForChatListing:(NSString*)requestID
+-(void)requestServerToGetForChatListing:(NSString*)requestID
 {
+    
+    if (isMiddleOfLoading) {
+        return;
+    }
+    
+    if (currentPage > 1) {
+        
+        if ([Utils isStringNull:self.chatWrapperModel.next_page_url]) {
+            
+            [self.acivityIndicator stopAnimating];
+
+            return;
+        }
+    }
+    
+    isMiddleOfLoading = YES;
+    
     
     NSString* token = [Utils getToken];
     NSDictionary* dict = @{@"token" : token,
+                           @"page" : @(currentPage),
+                           @"limit" : @(LIMIT)
                            };
     
-    NSString* appendString = [NSString stringWithFormat:@"%@/comments",@"1"];
+    NSString* appendString = [NSString stringWithFormat:@"%@/comments",requestID];
     
     [ConnectionManager requestServerWith:AFNETWORK_GET serverRequestType:ServerRequestTypePostRequestComment parameter:dict appendString:appendString success:^(id object) {
         
-        NSError* error;
-        ChatWrapperModel* wrapperModel = [[ChatWrapperModel alloc]initWithDictionary:object error:&error];
+        [self processChatData:object];
         
-        [self.arrMessage addObjectsFromArray:wrapperModel.arrChatList];
+        isMiddleOfLoading = NO;
         
-        [self.ibTableView reloadData];
-        
-        
+        [self.acivityIndicator stopAnimating];
+
+
     } failure:^(id object) {
         
-        
+        isMiddleOfLoading = NO;
+
+        [self.acivityIndicator stopAnimating];
+
         [MessageManager showMessage:object Type:TSMessageNotificationTypeError inViewController:self];
     }];
 }
 
+-(void)requestServerToPostForChatListing:(NSString*)requestID Message:(NSString*)message
+{
+    [self.acivityIndicator stopAnimating];
+    
+    
+    NSString* token = [Utils getToken];
+    NSDictionary* dict = @{@"token" : token,
+                           @"comment": message
+                           };
+    
+    NSString* appendString = [NSString stringWithFormat:@"%@/comments",requestID];
 
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostRequestComment parameter:dict appendString:appendString success:^(id object) {
+        
+        currentPage = 1;
+        
+        [self requestServerToGetForChatListing:self.requestID];
+        
+        isMiddleOfLoading = NO;
+        
+    } failure:^(id object) {
+        
+        isMiddleOfLoading = NO;
+        
+        [MessageManager showMessage:object Type:TSMessageNotificationTypeError inViewController:self];
+    }];
+
+}
+
+
+-(void)processChatData:(id)object
+{
+    
+    @try {
+        
+        //for first time load
+        if (currentPage == 1) {
+            
+            [self resetData];
+            
+            NSError* error;
+            
+            self.chatWrapperModel = [[ChatWrapperModel alloc]initWithDictionary:object error:&error];
+            
+            NSArray* tempArray = self.chatWrapperModel.arrChatList;
+            
+            NSMutableArray* reverseArray = [[[tempArray reverseObjectEnumerator] allObjects] mutableCopy];
+            
+            [self.arrMessage addObjectsFromArray:reverseArray];
+            
+            [self.ibTableView reloadData];
+            
+            
+            if (![Utils isArrayNull:self.arrMessage] && currentPage <=1) {
+                [self.ibTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.arrMessage.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+                
+            }
+        }
+        //for continuios load
+        else{
+            
+            
+            NSError* error;
+            
+            self.chatWrapperModel = [[ChatWrapperModel alloc]initWithDictionary:object error:&error];
+            
+            
+            NSArray* tempArray = self.chatWrapperModel.arrChatList;
+            
+            NSMutableArray* reverseArray = [[[tempArray reverseObjectEnumerator] allObjects] mutableCopy];
+            
+            
+            NSMutableArray* arrTempMessage = self.arrMessage;
+            
+            NSMutableArray* arrTempReverseArray = [reverseArray mutableCopy];
+            
+            [arrTempReverseArray addObjectsFromArray:arrTempMessage];
+            
+            self.arrMessage = (NSMutableArray<ChatModel>*)arrTempReverseArray;
+            
+            [self.ibTableView reloadData];
+            
+            NSIndexPath* scrollToIndexPath = [NSIndexPath indexPathForRow:reverseArray.count inSection:0];
+            
+            [self.ibTableView scrollToRowAtIndexPath: scrollToIndexPath atScrollPosition: UITableViewScrollPositionTop animated: NO];
+        }
+        
+        currentPage+=1;
+        
+    } @catch (NSException *exception) {
+        
+    }
+    
+    
+}
+
+#pragma mark - Scroll View
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    float scrollOffset = scrollView.contentOffset.y;
+    
+    if (scrollOffset == 0)
+        
+    {
+        if (![Utils isArrayNull:self.arrMessage]) {
+            
+            [self.acivityIndicator startAnimating];
+            
+            [self requestServerToGetForChatListing:self.requestID];
+            
+        }
+    }
+}
+
+-(void)resetData
+{
+    [self.arrMessage removeAllObjects];
+    
+    self.arrMessage = nil;
+    
+    self.arrMessage = [NSMutableArray new];
+
+    [self.ibTableView reloadData];
+}
 /*
 #pragma mark - Navigation
 

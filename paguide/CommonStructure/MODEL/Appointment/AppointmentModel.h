@@ -41,6 +41,8 @@
 
 @property (nonatomic,strong)NSString* request_id;
 
+@property (nonatomic,strong)NSString* rid;
+
 @property (nonatomic,strong)NSString* created_at;
 
 @property (nonatomic,strong)NSString* updated_at;

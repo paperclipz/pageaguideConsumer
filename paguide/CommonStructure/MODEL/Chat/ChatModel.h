@@ -12,7 +12,7 @@
 @interface ChatModel : JSONModel
 
 
-@property (nonatomic,strong)DateModel* created_at;
+@property (nonatomic,strong)NSString* created_at;
 @property (nonatomic,strong)NSString* user_id;
 @property (nonatomic,strong)NSString* user_type;
 @property (nonatomic,strong)NSString* user_name;

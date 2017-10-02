@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "80935FED9367636AFDF026E63D25D9D2D3081F20",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "80935FED9367636AFDF026E63D25D9D2D3081F20" : 9223372036854775807,
+    "3F5D844E47E2194E9C4A4A6718DA17E0E28F60DE" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D566B065-3AF5-4B03-B31D-2664747E8E6E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "80935FED9367636AFDF026E63D25D9D2D3081F20" : "paguide\/",
+    "3F5D844E47E2194E9C4A4A6718DA17E0E28F60DE" : "..\/PageaguideMerchant"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "paguide",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "paguide.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/pageadvisor\/pageaguide-ios-merchant.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3F5D844E47E2194E9C4A4A6718DA17E0E28F60DE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:paperclipz\/pageaguide.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "80935FED9367636AFDF026E63D25D9D2D3081F20"
+    }
+  ]
+}
