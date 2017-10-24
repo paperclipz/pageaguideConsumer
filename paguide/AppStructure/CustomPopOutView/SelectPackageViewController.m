@@ -92,7 +92,6 @@
             noError = NO;
             
         }
-
     }
     
     return noError;
@@ -214,6 +213,8 @@
                     
                     selectedScheduleModel.max_slot = model.max_slot;
                     
+                    selectedScheduleModel.min_slot = model.min_slot;
+
                     selectedScheduleModel.quantity = 0;
                     
                     [self.ibTableView reloadData];
@@ -296,11 +297,14 @@
 
         
         if (self.packageModel.isScheduled) {
-            cell.maxNumber = selectedScheduleModel.max_slot;
+            
+            [cell setupCellMinumber:selectedScheduleModel.min_slot MaxNumber:selectedScheduleModel.max_slot SelectedNumber:selectedScheduleModel.quantity];
+
 
         }
         else{
-            cell.maxNumber = @(99);
+
+            [cell setupCellMinumber:@(0) MaxNumber:@(99) SelectedNumber:selectedScheduleModel.quantity];
 
         }
         

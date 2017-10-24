@@ -16,5 +16,8 @@
 @property (nonatomic,copy)VoidBlock didSelectBlock;
 @property (nonatomic,copy)IntBlock didUpdateQuantitytBlock;
 
-@property (nonatomic,strong)NSNumber* maxNumber;
+
+
+-(void)setupCellMinumber:(NSNumber*)minNumber MaxNumber:(NSNumber*)maxNumber SelectedNumber:(NSNumber*)selectedNumber;
+
 @end

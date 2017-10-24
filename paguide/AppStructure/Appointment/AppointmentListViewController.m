@@ -303,6 +303,9 @@
         [self.ibTableView customTableViewReloadData];
 
         [LoadingManager hide];
+        
+        [self.ibTableView stopRefresh];
+
 
     }];
 }

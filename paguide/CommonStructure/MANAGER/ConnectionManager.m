@@ -992,6 +992,13 @@
 //            defaultBlock(nil);
 //        }
     }
+    else
+    {
+        if (defaultBlock) {
+            defaultBlock(nil);
+        }
+
+    }
 }
 
 + (NSURLSession *)session
