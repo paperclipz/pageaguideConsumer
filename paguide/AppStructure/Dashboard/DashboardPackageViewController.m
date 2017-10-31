@@ -477,7 +477,7 @@
 
 -(void)showRatingView:(NSArray*)array
 {
-    UnratedViewController* ratingViewController = [UnratedViewController new];
+    UnratedViewController* ratingViewController = [[UnratedViewController alloc]initWithNibName:@"UnratedViewControllerV2" bundle:nil];
     
     ratingViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     ratingViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

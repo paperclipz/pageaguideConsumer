@@ -213,6 +213,9 @@
 		8A9F46201E603DA8005F1453 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F46191E603DA8005F1453 /* DataManager.m */; };
 		8A9F46211E603DA8005F1453 /* LoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F461B1E603DA8005F1453 /* LoadingManager.m */; };
 		8A9F46241E604645005F1453 /* ConnectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F46231E604645005F1453 /* ConnectionHelper.m */; };
+		8AA2CF641FA87A1B0004ECF7 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA2CF621FA87A1B0004ECF7 /* iCarousel.m */; };
+		8AA2CF651FA87A1B0004ECF7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AA2CF631FA87A1B0004ECF7 /* Info.plist */; };
+		8AA2CF671FA87A700004ECF7 /* UnratedViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AA2CF661FA87A700004ECF7 /* UnratedViewControllerV2.xib */; };
 		8AB61D5F1EC41DDE00D49B26 /* TourGuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB61D5E1EC41DDE00D49B26 /* TourGuidePageViewController.m */; };
 		8AB693DA1EDD24A000F9C7A3 /* UnratedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB693D81EDD24A000F9C7A3 /* UnratedViewController.m */; };
 		8AB693DB1EDD24A000F9C7A3 /* UnratedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB693D91EDD24A000F9C7A3 /* UnratedViewController.xib */; };
@@ -613,6 +616,10 @@
 		8A9F46221E604645005F1453 /* ConnectionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionHelper.h; sourceTree = "<group>"; };
 		8A9F46231E604645005F1453 /* ConnectionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionHelper.m; sourceTree = "<group>"; };
 		8A9F46261E6047BE005F1453 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		8AA2CF611FA87A1B0004ECF7 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		8AA2CF621FA87A1B0004ECF7 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		8AA2CF631FA87A1B0004ECF7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AA2CF661FA87A700004ECF7 /* UnratedViewControllerV2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnratedViewControllerV2.xib; sourceTree = "<group>"; };
 		8AB61D5D1EC41DDE00D49B26 /* TourGuidePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourGuidePageViewController.h; sourceTree = "<group>"; };
 		8AB61D5E1EC41DDE00D49B26 /* TourGuidePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourGuidePageViewController.m; sourceTree = "<group>"; };
 		8AB693D71EDD24A000F9C7A3 /* UnratedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnratedViewController.h; sourceTree = "<group>"; };
@@ -1418,6 +1425,7 @@
 		8A9F460D1E603DA8005F1453 /* FRAMEWORK */ = {
 			isa = PBXGroup;
 			children = (
+				8AA2CF601FA87A1B0004ECF7 /* iCarousel */,
 				8A8DB97A1E890F3B00DE467D /* AutoCoding */,
 				8A8E30481E6FB12700A16002 /* FSCalendar */,
 				8A5B3EC01E6682D6005BE083 /* TTTAttributedLabel */,
@@ -1501,12 +1509,23 @@
 			path = MODEL;
 			sourceTree = "<group>";
 		};
+		8AA2CF601FA87A1B0004ECF7 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				8AA2CF611FA87A1B0004ECF7 /* iCarousel.h */,
+				8AA2CF621FA87A1B0004ECF7 /* iCarousel.m */,
+				8AA2CF631FA87A1B0004ECF7 /* Info.plist */,
+			);
+			path = iCarousel;
+			sourceTree = "<group>";
+		};
 		8AB693D61EDD247700F9C7A3 /* UnratedView */ = {
 			isa = PBXGroup;
 			children = (
 				8AB693D71EDD24A000F9C7A3 /* UnratedViewController.h */,
 				8AB693D81EDD24A000F9C7A3 /* UnratedViewController.m */,
 				8AB693D91EDD24A000F9C7A3 /* UnratedViewController.xib */,
+				8AA2CF661FA87A700004ECF7 /* UnratedViewControllerV2.xib */,
 				8AB693DC1EDD251500F9C7A3 /* UnratedCollectionViewCell.h */,
 				8AB693DD1EDD251500F9C7A3 /* UnratedCollectionViewCell.m */,
 				8AB693DE1EDD251500F9C7A3 /* UnratedCollectionViewCell.xib */,
@@ -1711,6 +1730,7 @@
 				8A772B221E601D3000763DF7 /* Frameworks */,
 				8A772B231E601D3000763DF7 /* Resources */,
 				663CF6D436AB20FF22CF7113 /* [CP] Copy Pods Resources */,
+				7FC14A1D4CEF82B2FB648DAB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1789,6 +1809,7 @@
 			files = (
 				8A76569A1E9B906300A99C4E /* icon_collapse_down_red@2x.png in Resources */,
 				8A9B26701EEA3812004F75FC /* icon_call_red@1x.png in Resources */,
+				8AA2CF671FA87A700004ECF7 /* UnratedViewControllerV2.xib in Resources */,
 				8A2463E11EB9CD3D0000734B /* GeneralCalenderViewController.xib in Resources */,
 				8ABC514A1E8E2D5100E31560 /* placeholder_photo.png in Resources */,
 				8A7656A91E9B906300A99C4E /* icon_share_white.png in Resources */,
@@ -1870,6 +1891,7 @@
 				8A4CB6051E63E82500A8BCDA /* Register.storyboard in Resources */,
 				8A7BDE581EA9E8D40036E1E2 /* GoogleService-Info-itunes.plist in Resources */,
 				8A6B68EB1E6D593600D696DE /* icon_concierge_red@2x.png in Resources */,
+				8AA2CF651FA87A1B0004ECF7 /* Info.plist in Resources */,
 				8AFA22F51E6D53520090837C /* 1080x1920.png in Resources */,
 				8A1228AB1E8BD5B80093C92C /* icon_setting_red_Tab@2x.png in Resources */,
 				8A6B68EC1E6D593600D696DE /* icon_history_red@1x.png in Resources */,
@@ -1917,13 +1939,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-paguide-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		258846AB9D01CB5F033D21AC /* [CP] Embed Pods Frameworks */ = {
@@ -1947,9 +1972,62 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-paguide/Pods-paguide-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/DLFPhotosPicker/DLFPhotosPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GVUserDefaults/GVUserDefaults.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
+				"${BUILT_PRODUCTS_DIR}/JTCalendar/JTCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/KVNProgress/KVNProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RMActionController/RMActionController.framework",
+				"${BUILT_PRODUCTS_DIR}/RMDateSelectionViewController/RMDateSelectionViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/SAMKeychain/SAMKeychain.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
+				"${BUILT_PRODUCTS_DIR}/SVPullToRefresh/SVPullToRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
+				"${BUILT_PRODUCTS_DIR}/TSMessages/TSMessages.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLFPhotosPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GVUserDefaults.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HexColors.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVNProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RMActionController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RMDateSelectionViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAMKeychain.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPullToRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TSMessages.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1986,6 +2064,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-paguideTests/Pods-paguideTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7FC14A1D4CEF82B2FB648DAB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-paguideUITests/Pods-paguideUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8ABC514B1E8E316B00E31560 /* Firebase Crash Report */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2020,13 +2113,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-paguideUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A42733DDE412839F21337637 /* [CP] Check Pods Manifest.lock */ = {
@@ -2035,13 +2131,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-paguideTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E7C5936E0206D9FFACDE2C84 /* [CP] Copy Pods Resources */ = {
@@ -2050,9 +2149,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-paguide/Pods-paguide-resources.sh",
+				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/Intercom.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2136,6 +2238,7 @@
 				8A8E306B1E6FB12700A16002 /* FSCalendar.m in Sources */,
 				8A6EB1CC1E71594B0022ABA2 /* GeneralTableViewCell.m in Sources */,
 				8A23E9BD1E7FD569001FAB6D /* AppointmentWrapperModel.m in Sources */,
+				8AA2CF641FA87A1B0004ECF7 /* iCarousel.m in Sources */,
 				8A8E306C1E6FB12700A16002 /* FSCalendarAppearance.m in Sources */,
 				8A4CB60B1E63EDEC00A8BCDA /* RegisterViewController.m in Sources */,
 				8A6EB1C91E71541D0022ABA2 /* UIButton+System.m in Sources */,

@@ -21,7 +21,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
-  
+    [super awakeFromNib];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -32,7 +32,13 @@
         
         for (id currentObject in objects ){
             if ([currentObject isKindOfClass:[self class]]) {
+                
                 [currentObject initSelfView];
+                
+                UIView* view = currentObject;
+                
+                view.frame = frame;
+                
                 return currentObject;
             }
         }
@@ -51,6 +57,11 @@
         for (id currentObject in objects ){
             if ([currentObject isKindOfClass:[self class]]) {
                 [currentObject initSelfView];
+                
+                UIView* view = currentObject;
+                
+                view.frame = frame;
+
                 return currentObject;
             }
         }

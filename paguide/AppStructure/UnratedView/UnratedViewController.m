@@ -10,10 +10,17 @@
 #import "UnratedCollectionViewCell.h"
 #import "AppointmentModel.h"
 #import "MerchantProfileModel.h"
+#import "iCarousel.h"
 
-@interface UnratedViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface UnratedViewController () <UICollectionViewDelegate,UICollectionViewDataSource,iCarouselDataSource, iCarouselDelegate, UICollectionViewDelegateFlowLayout>
+
+
+@property (weak, nonatomic) IBOutlet iCarousel *ibIcarousel;
 @property (weak, nonatomic) IBOutlet UICollectionView *ibCollectionView;
 @property (nonatomic)NSMutableArray* arrRatings;
+
+@property (nonatomic, assign) CGFloat previousOffset;
+@property (nonatomic, assign) NSInteger currentPage;
 
 @end
 
@@ -24,11 +31,21 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)setupCarousel
+{
+    self.ibIcarousel.delegate = self;
+    self.ibIcarousel.dataSource = self;
+    self.ibIcarousel.pagingEnabled = YES;
+    self.ibIcarousel.backgroundColor = [UIColor clearColor];
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.ibCollectionView registerClass:[UnratedCollectionViewCell class] forCellWithReuseIdentifier:@"cell1"];
     
+    [self setupCarousel];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -63,15 +80,42 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
 {
     UnratedCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell1" forIndexPath:indexPath];
     
+    [self setupCell:cell Index:indexPath.row];
     
-    AppointmentModel* aModel = self.arrayAppointments[indexPath.row];
+    return cell;
+}
+
+
+#pragma mark - Icarousel
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+    return self.arrayAppointments.count;
+    
+}
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(nullable UIView *)view
+{
+    
+    CGRect frame = [Utils getWindowFrame];
+
+    UnratedCollectionViewCell* cell = [[UnratedCollectionViewCell alloc]initWithFrame:CGRectMake(0, 0, frame.size.width*0.8, 320.0f)];
+    
+    [self setupCell:cell Index:index];
+
+    return cell;
+}
+
+
+-(void)setupCell:(UnratedCollectionViewCell*)cell Index:(NSInteger)index
+{
+    
+    AppointmentModel* aModel = self.arrayAppointments[index];
     
     MerchantProfileModel* mModel = aModel.merchant_info_model;
-
+    
     cell.lblTitle1.text = aModel.title;
     
     cell.lblTitle2.text = mModel.name;
-        
+    
     [cell setRatingInView:mModel.rating];
     
     cell.txtRating.text = mModel.review;
@@ -82,7 +126,7 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
         
         aModel.merchant_info_model = mModel;
         
-        [self.arrayAppointments replaceObjectAtIndex:indexPath.row withObject:aModel];
+        [self.arrayAppointments replaceObjectAtIndex:index withObject:aModel];
         
     };
     
@@ -93,44 +137,43 @@ minimumLineSpacingForSectionAtIndex:(NSInteger)section {
         
         aModel.merchant_info_model = mModel;
         
-        [self.arrayAppointments replaceObjectAtIndex:indexPath.row withObject:aModel];
-
+        [self.arrayAppointments replaceObjectAtIndex:index withObject:aModel];
+        
     };
     
     __weak typeof(self) weakSelf = self;
-
+    
     __weak typeof(cell) weakCell = cell;
-
+    
     cell.didFinishRateBlock = ^{
         
         
-            if ([Utils isStringNull:weakCell.txtRating.text]) {
-                [MessageManager showMessage:@"Please Input A Review" Type:TSMessageNotificationTypeError inViewController:weakSelf];
-            }
-            else{
-                
-                
-                [weakSelf requestServerForAppointmentRating:weakCell.rating Review:weakCell.txtRating.text AppointmentID:aModel.appointment_id Type:aModel.type Completion:^{
-                    
-                    
-                    [self.arrayAppointments removeObjectAtIndex:indexPath.row];
-                    [self.ibCollectionView reloadData];
-
-                    if ([Utils isArrayNull:self.arrayAppointments]) {
-                        
-                        
-                        [self dismissViewControllerAnimated:YES completion:nil];
-                    }
-
-                }];
-               
-            }
+        if ([Utils isStringNull:weakCell.txtRating.text]) {
+            [MessageManager showMessage:@"Please Input A Review" Type:TSMessageNotificationTypeError inViewController:weakSelf];
+        }
+        else{
             
+            
+            [weakSelf requestServerForAppointmentRating:weakCell.rating Review:weakCell.txtRating.text AppointmentID:aModel.appointment_id Type:aModel.type Completion:^{
+                
+                
+                [self.arrayAppointments removeObjectAtIndex:index];
+                [self.ibCollectionView reloadData];
+                [self.ibIcarousel reloadData];
+                
+                if ([Utils isArrayNull:self.arrayAppointments]) {
+                    
+                    
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+                
+            }];
+            
+        }
+        
         
     };
-    return cell;
 }
-
 -(void)requestServerForAppointmentRating:(int)rating Review:(NSString*)review AppointmentID:(NSString*)apptID Type:(NSString*)type
                              Completion :(VoidBlock)completion
 {

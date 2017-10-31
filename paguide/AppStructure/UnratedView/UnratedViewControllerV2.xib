@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="17A405" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UnratedViewController">
+            <connections>
+                <outlet property="ibIcarousel" destination="loV-qP-W2L" id="Xop-G4-THB"/>
+                <outlet property="view" destination="mhk-dG-W4A" id="XQF-ad-cHZ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="mhk-dG-W4A">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.40000000596046448" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OyH-eS-WsA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <connections>
+                        <action selector="btnCloseClicked:" destination="-1" eventType="touchUpInside" id="QCD-Do-wlt"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoG-ce-2Pz">
+                    <rect key="frame" x="319" y="16" width="40" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="wE3-GR-RhV"/>
+                        <constraint firstAttribute="height" constant="40" id="yIP-kI-6cI"/>
+                    </constraints>
+                    <color key="tintColor" red="0.81960784310000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="icon_close_red.png"/>
+                    <connections>
+                        <action selector="btnCloseClicked:" destination="-1" eventType="touchUpInside" id="dNK-gX-ZQa"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loV-qP-W2L" customClass="iCarousel">
+                    <rect key="frame" x="0.0" y="173.5" width="375" height="320"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="320" id="vi0-SB-bA6"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="OyH-eS-WsA" firstAttribute="top" secondItem="mhk-dG-W4A" secondAttribute="top" id="2Oq-4C-y2w"/>
+                <constraint firstItem="OyH-eS-WsA" firstAttribute="leading" secondItem="mhk-dG-W4A" secondAttribute="leading" id="4Ye-zu-GvM"/>
+                <constraint firstItem="IoG-ce-2Pz" firstAttribute="top" secondItem="mhk-dG-W4A" secondAttribute="top" constant="16" id="4uJ-Tq-agQ"/>
+                <constraint firstItem="loV-qP-W2L" firstAttribute="centerY" secondItem="mhk-dG-W4A" secondAttribute="centerY" id="8gu-K7-XX6"/>
+                <constraint firstAttribute="trailing" secondItem="OyH-eS-WsA" secondAttribute="trailing" id="G8l-Dz-lcP"/>
+                <constraint firstAttribute="bottom" secondItem="OyH-eS-WsA" secondAttribute="bottom" id="J9M-FW-1KY"/>
+                <constraint firstItem="loV-qP-W2L" firstAttribute="leading" secondItem="mhk-dG-W4A" secondAttribute="leading" id="LOj-gF-ztf"/>
+                <constraint firstItem="loV-qP-W2L" firstAttribute="centerX" secondItem="mhk-dG-W4A" secondAttribute="centerX" id="X36-EC-UaC"/>
+                <constraint firstAttribute="trailing" secondItem="IoG-ce-2Pz" secondAttribute="trailing" constant="16" id="o60-0Q-f1B"/>
+            </constraints>
+            <point key="canvasLocation" x="32.5" y="92.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_close_red.png" width="30" height="30"/>
+    </resources>
+</document>
