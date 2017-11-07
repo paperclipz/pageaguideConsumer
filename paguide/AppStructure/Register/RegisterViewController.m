@@ -713,6 +713,10 @@
             
             [MessageManager showMessage:model.displayMessage Type:TSMessageNotificationTypeSuccess];
             
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:NOTIF_CENTER_LOGIN
+             object:self];
+
         }];
         
         [DataManager requestServerForRegisterDevice];

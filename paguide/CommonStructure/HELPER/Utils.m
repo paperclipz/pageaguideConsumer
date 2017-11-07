@@ -297,7 +297,6 @@
         NSArray* array = tabBarcontroller.viewControllers;
         
         for (int i = 0; i<array.count; i++) {
-            
         
             UIViewController* controller = array[i];
             

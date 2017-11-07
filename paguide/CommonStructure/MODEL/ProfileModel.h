@@ -24,6 +24,11 @@
 // as view model
 @property (nonatomic,strong)NSString* temp_prefix;
 @property (nonatomic,strong)NSString* temp_mobile_number;
+
+
+//for guest mode
+@property (nonatomic,strong)NSString* user_id;
+
 -(void)processPrefix:(VoidBlock)completion;
 
 

@@ -28,6 +28,7 @@ typedef enum
     ServerRequestTypePostUserForgotPassword,
     ServerRequestTypePostUserProfile,
     ServerRequestTypePostUserUpdateProfile,
+    ServerRequestTypePostGuestLogin,
     //  ==========  [ access ]  ==========  //
     
     ServerRequestTypePostPackagesCategoryList,

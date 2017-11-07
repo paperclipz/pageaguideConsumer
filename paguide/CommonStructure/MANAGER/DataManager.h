@@ -14,6 +14,9 @@ typedef void(^ProfileModelBlock) (ProfileModel* pModel);
 
 
 @interface DataManager : NSObject
+
+@property (nonatomic,strong)ProfileModel* guestModeModel;
+
 + (id)Instance;
 
 -(void)getCountryList:(NSArrayBlock)completionBlock;

@@ -18,6 +18,9 @@
 #import "OfflineManager.h"
 #import "NSString+Extra.h"
 #import "MerchantProfileViewController.h"
+#import "GuestModeViewController.h"
+#import "UIViewController+Extension.h"
+
 
 #define cell_type_title @"title"
 #define cell_type_details @"details"
@@ -47,12 +50,15 @@
 
 }
 
+@property (nonatomic,assign) BOOL isCheckOutWithGuestMode;
+
 
 // Data
 @property (nonatomic) PackageModel* packageModel;
 @property (nonatomic) NSString* packageID;
 @property (nonatomic) ScheduleModel* selectedScheduleModel;
 @property (nonatomic) TransactionModel* transactionModel;//for package purhcase and stripe token
+@property (nonatomic) ProfileModel* guestModeModel;
 
 //UI
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
@@ -115,22 +121,83 @@
 - (IBAction)btnMakePaymentClicked:(id)sender {
     
     
-    [self showPromoCodeView];
+    
+    
+    if([Utils isUserLogin])
+    {
+        [self showPromoCodeView];
+
+    }
+    else{
+        GuestModeViewController* gVC = [GuestModeViewController instantiate];
+        
+        [gVC userDidSelecGuestMode:^(id object) {
+            
+            if ([object isKindOfClass:[ProfileModel class]]) {
+                
+                DataManager* manager = [DataManager Instance];
+                
+                self.guestModeModel = object;
+                
+                manager.guestModeModel = self.guestModeModel;
+                
+            }
+            
+            
+            [self requestServerForGuestLogin:^{
+                
+                [self showPromoCodeView];
+                
+            }];
+            
+            
+        } userDidLogin:^(id object) {
+            
+            if (![Utils isUserLogin]) {
+                
+                [self showPromptToLogin];
+                
+                return;
+            }
+            
+        }];
+        
+        
+        [self.navigationController pushViewController:gVC animated:YES];
+
+    }
+
 }
 
 - (IBAction)btnAvailableClicked:(id)sender {
 
-    
-    if (![Utils isUserLogin]) {
-        
-        [self showPromptToLogin];
-        
-        return;
-    }
-
-    
     [self showCalenderView];
+
+   
     
+//    UINavigationController* navigationController = [[UINavigationController alloc]initWithRootViewController:gVC];
+//    
+//    navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+//    navigationController.navigationBar.translucent = NO;
+//
+//    
+//    [self presentViewController:navigationController animated:YES completion:nil];
+//    
+  //  [gVC setup];
+    
+    
+//    return;
+//    
+//    if (![Utils isUserLogin]) {
+//        
+//        [self showPromptToLogin];
+//        
+//        return;
+//    }
+//
+//    
+//    [self showCalenderView];
+//    
 }
 
 
@@ -145,6 +212,12 @@
     [self showPackageSelectionViewNonSecheduled];
 }
 
+#pragma mark - Validation
+
+
+
+
+#pragma mark - Setup
 -(void)setupData:(PackageModel*)model
 {
     self.packageModel = model;
@@ -176,6 +249,7 @@
     }
     
 }
+
 -(void)changeItemBarBookedmarked:(BOOL)isBookmarked
 {
     
@@ -206,6 +280,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.guestModeModel = [[DataManager Instance]guestModeModel];
     
     [self initSelfView];
     
@@ -933,47 +1009,67 @@
     
     __weak typeof (self)weakSelf = self;
     
+    StringBlock confirmPaymentBlock = ^(NSString* token)
+    {
+        [weakSelf.promoCodeViewController dismissViewControllerAnimated:YES completion:^{
+            
+            
+            [weakSelf showAlert:[NSString stringWithFormat:@"Purchase price is %@ %@",weakSelf.transactionModel.currency,weakSelf.transactionModel.total_price] Message:@"" OK:^{
+                
+                
+                [weakSelf requestForStripeToken:^{
+                    
+                    [weakSelf requestServerForPaymentWithToken:token Transaction:weakSelf.transactionModel];
+                    
+                } Failure:^{
+                    
+                    [MessageManager showMessage:@"Failed to request stripe token" Type:TSMessageNotificationTypeError inViewController:self];
+                }];
+                
+            } Cancel:^{
+                
+            }];
+            
+        }];
+    };
+    
     self.promoCodeViewController.didApplyPromoBlock = ^(NSString* promocode)
     {
         
         [weakSelf requestServerToCheckPromoCode:promocode Completion:^{
             
             
-            [weakSelf requestServerToPurchasePackage:promocode Success:^(NSString *str) {
-                
-                
-                [weakSelf.promoCodeViewController dismissViewControllerAnimated:YES completion:^{
+            if (![Utils isStringNull:[Utils getToken]]) {
+               
+                NSString* token = [Utils getToken];
+                [weakSelf requestServerToPurchasePackageWithToken:token PromoCode:promocode Success:^(NSString *str) {
                     
                     
-                    [weakSelf showAlert:[NSString stringWithFormat:@"Purchase price is %@ %@",weakSelf.transactionModel.currency,weakSelf.transactionModel.total_price] Message:@"" OK:^{
-                        
-                        
-                        [weakSelf requestForStripeToken:^{
-                            
-                            [weakSelf requestServerForPayment:weakSelf.transactionModel];
-                            
-                        } Failure:^{
-                           
-                            [MessageManager showMessage:@"Failed to request stripe token" Type:TSMessageNotificationTypeError inViewController:self];
-                        }];
-                        
-                    } Cancel:^{
-                        
-                    }];
+                    confirmPaymentBlock(token);
+                    
+                    
+                } Failure:^(NSString *str) {
+                    
+                    [MessageManager showMessage:str Type:TSMessageNotificationTypeError];
                     
                 }];
-                
-                
-               
-
-            } Failure:^(NSString *str) {
-                
-                [MessageManager showMessage:str Type:TSMessageNotificationTypeError];
-                
-            }];
+            }
+            else
+            {
             
+                NSString* token = weakSelf.guestModeModel.user_id;
 
-            
+                [weakSelf requestServerToPurchasePackageWithToken:token PromoCode:promocode Success:^(NSString *str) {
+                    
+                    confirmPaymentBlock(token);
+                    
+                    
+                } Failure:^(NSString *str) {
+                    
+                    [MessageManager showMessage:str Type:TSMessageNotificationTypeError];
+                    
+                }];
+            }
             
             
         }];
@@ -983,27 +1079,38 @@
     
     self.promoCodeViewController.didApplyNoPromoBlock = ^(void)
     {
-        
-        [weakSelf requestServerToPurchasePackage:nil Success:^(NSString *str) {
+        if (![Utils isStringNull:[Utils getToken]]) {
             
-            
-            [weakSelf.promoCodeViewController dismissViewControllerAnimated:YES completion:^{
+            NSString* token = [Utils getToken];
+
+            [weakSelf requestServerToPurchasePackageWithToken:token PromoCode:nil Success:^(NSString *str) {
                 
-                [weakSelf requestForStripeToken:^ {
-                    
-                    [weakSelf requestServerForPayment:weakSelf.transactionModel];
-                    
-                } Failure:^{
-                    
-                }];
+                confirmPaymentBlock(token);
+                
+                
+            } Failure:^(NSString *str) {
+                
+                [MessageManager showMessage:str Type:TSMessageNotificationTypeError inViewController:weakSelf.promoCodeViewController];
                 
             }];
-            
-        } Failure:^(NSString *str) {
-            
-            [MessageManager showMessage:str Type:TSMessageNotificationTypeError inViewController:weakSelf.promoCodeViewController];
-            
-        }];
+        }
+        else{
+        
+            NSString* token = weakSelf.guestModeModel.user_id;
+
+            [weakSelf requestServerToPurchasePackageWithToken:token PromoCode:nil Success:^(NSString *str) {
+                
+                confirmPaymentBlock(token);
+                
+                
+            } Failure:^(NSString *str) {
+                
+                [MessageManager showMessage:str Type:TSMessageNotificationTypeError];
+                
+            }];
+
+        }
+      
 
     };
 
@@ -1085,7 +1192,8 @@
     }];
 }
 
--(void)requestServerToPurchasePackage:(NSString*)promoCode Success:(StringBlock)success Failure:(StringBlock)failure
+
+-(void)requestServerToPurchasePackageWithToken:(NSString*)token PromoCode:(NSString*)promoCode Success:(StringBlock)success Failure:(StringBlock)failure
 {
     NSDictionary* dict;
 
@@ -1117,7 +1225,7 @@
                  @"packages_id" : IsNullConverstion(self.packageModel.packages_id),
                  @"pax" : IsNullConverstion(self.selectedScheduleModel.quantity),
                  @"scheduled_datetime" : IsNullConverstion(date_language_pax_time),
-                 @"token" : IsNullConverstion([Utils getToken])
+                 @"token" : IsNullConverstion(token)
                  };
     }
     else{
@@ -1125,7 +1233,7 @@
                  @"packages_id" : self.packageModel.packages_id,
                  @"pax" : IsNullConverstion(self.selectedScheduleModel.quantity),
                  @"scheduled_datetime" : IsNullConverstion(date_language_pax_time),
-                 @"token" : IsNullConverstion([Utils getToken])
+                 @"token" : IsNullConverstion(token)
                  };
 
     }
@@ -1190,13 +1298,13 @@
 
 }
 
--(void)requestServerForPayment:(TransactionModel*)model
+-(void)requestServerForPaymentWithToken:(NSString*)token Transaction:(TransactionModel*)model
 {
     
     [LoadingManager show];
-    NSString* token = [Utils getToken];
+
     NSDictionary* dict = @{
-                           @"token" : token,
+                           @"token" : IsNullConverstion(token),
                            @"transaction_id" : model.transaction_id,
                            @"stripetoken" : model.stripetoken,
                            @"type" : model.type,
@@ -1233,6 +1341,53 @@
     }];
 }
 
+
+-(void)requestServerForGuestLogin:(VoidBlock)completion
+{
+    
+    NSString* contactNumber = [NSString stringWithFormat:@"%@%@",self.guestModeModel.temp_prefix,self.guestModeModel.temp_mobile_number];
+    
+    NSDictionary* dict = @{@"guest" : @(1),
+                           @"email" : IsNullConverstion(self.guestModeModel.email),
+                           @"mobile_number" : IsNullConverstion(contactNumber),
+                           @"username" : IsNullConverstion(self.guestModeModel.name)
+                           };
+    
+    NSString* appendString = @"";
+    
+    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostGuestLogin parameter:dict appendString:appendString success:^(id object) {
+        
+        NSError* error;
+        
+        BaseModel* bModel = [[BaseModel alloc]initWithDictionary:object error:&error];
+        
+        NSString* userID;
+        
+        if (bModel.isSuccessful) {
+            
+          userID  = object[@"user_id"];
+
+            self.guestModeModel.user_id = userID;
+            
+            if (completion) {
+                completion();
+            }
+        }
+        else{
+            [MessageManager showMessage:bModel.displayMessage Type:TSMessageNotificationTypeError];
+
+        }
+        
+        
+    } failure:^(id object) {
+        
+        NSError* error;
+
+        BaseModel* bModel = [[BaseModel alloc]initWithDictionary:object error:&error];
+ 
+        [MessageManager showMessage:bModel.displayMessage Type:TSMessageNotificationTypeError];
+    }];
+}
 
 
 #pragma mark - Alert View
@@ -1432,5 +1587,6 @@
     
 
 }
+
 
 @end

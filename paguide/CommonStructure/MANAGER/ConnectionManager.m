@@ -658,6 +658,8 @@
     switch (type) {
             
         case ServerRequestTypePostUserRegister:
+        case ServerRequestTypePostGuestLogin:
+
             str = [NSString stringWithFormat:@"user/register"];
             
             break;
@@ -702,7 +704,6 @@
             str = [NSString stringWithFormat:@"user/updateprofile"];
             
             break;
-            
 
             //  ========== PACKAGE  ========== //
         case ServerRequestTypePostPackageListing:

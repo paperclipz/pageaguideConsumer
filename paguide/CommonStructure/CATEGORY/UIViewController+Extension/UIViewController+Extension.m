@@ -68,3 +68,32 @@
     return self;
 }
 @end
+
+@implementation UIViewController (custom)
+
+-(void)setup
+{
+    UIImage *image = [UIImage imageNamed:@"icon_close_red.png"];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.bounds = CGRectMake( 0, 0, 25,25);
+    
+    if ([self respondsToSelector:@selector(closeApp)]) {
+        
+        [button addTarget:self action:@selector(closeApp) forControlEvents:UIControlEventTouchUpInside];
+
+    }
+    [button setImage:image forState:UIControlStateNormal];
+    UIBarButtonItem *editbutton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    
+    self.navigationItem.rightBarButtonItems = @[editbutton];
+    
+}
+
+-(void)closeApp
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+@end

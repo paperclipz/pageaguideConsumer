@@ -42,6 +42,15 @@
     return self;
 }
 
+-(ProfileModel*)guestModeModel
+{
+    if (!_guestModeModel) {
+        return _guestModeModel;
+    }
+    
+    return _guestModeModel;
+}
+
 -(void)getCountryList:(NSArrayBlock)completionBlock
 {
 

@@ -14,3 +14,10 @@
 - (UIViewController *)topVisibleViewControllerForDeepLink;
 
 @end
+
+
+@interface UIViewController (custom)
+
+-(void)setup;
+
+@end

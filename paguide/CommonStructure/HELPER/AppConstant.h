@@ -49,4 +49,8 @@
 #pragma mark - App Definition
 #define T_N_C @"By registring I had agree with the Terms of Service and Privacy Policy."//
 
+
+
+//==================== NOTIFICATION CENTER ====================//
+#define NOTIF_CENTER_LOGIN @"notf_center_login"
 @end

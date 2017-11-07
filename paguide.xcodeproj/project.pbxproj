@@ -38,6 +38,8 @@
 		8A23E9D51E7FF185001FAB6D /* PackageSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E9D41E7FF185001FAB6D /* PackageSelectionTableViewCell.m */; };
 		8A2463E01EB9CD3D0000734B /* GeneralCalenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2463DE1EB9CD3D0000734B /* GeneralCalenderViewController.m */; };
 		8A2463E11EB9CD3D0000734B /* GeneralCalenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2463DF1EB9CD3D0000734B /* GeneralCalenderViewController.xib */; };
+		8A3904DC1FB15F0800591103 /* GeneralView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3904DB1FB15F0800591103 /* GeneralView.m */; };
+		8A3904DE1FB15F2300591103 /* GuestHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3904DD1FB15F2300591103 /* GuestHeaderView.xib */; };
 		8A3C7B9F1E8A06900093BA62 /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C7B9D1E8A06900093BA62 /* UpdateViewController.m */; };
 		8A3C7BA01E8A06900093BA62 /* UpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3C7B9E1E8A06900093BA62 /* UpdateViewController.xib */; };
 		8A3C7BA31E8A0DD60093BA62 /* AppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C7BA21E8A0DD60093BA62 /* AppModel.m */; };
@@ -231,6 +233,9 @@
 		8ABC51711E93558700E31560 /* EmptyStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABC51701E93558700E31560 /* EmptyStateView.m */; };
 		8ABC51731E93559000E31560 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC51721E93559000E31560 /* EmptyStateView.xib */; };
 		8ABC51771E93700800E31560 /* NSString+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABC51761E93700800E31560 /* NSString+Extra.m */; };
+		8AC7790A1FAB164500A18083 /* GuestModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC779091FAB164500A18083 /* GuestModeViewController.m */; };
+		8AC7790E1FAB168B00A18083 /* GuestMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7790D1FAB168B00A18083 /* GuestMode.storyboard */; };
+		8AC7791E1FAB1FB200A18083 /* UINavigationController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7791D1FAB1FB200A18083 /* UINavigationController+Extension.m */; };
 		8AD70D1B1E77A36A006F1A8E /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D1A1E77A36A006F1A8E /* LoginViewModel.m */; };
 		8AD70D1E1E77B167006F1A8E /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D1D1E77B167006F1A8E /* MessageManager.m */; };
 		8AD70D221E77B1A2006F1A8E /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD70D211E77B1A2006F1A8E /* UIViewController+Extension.m */; };
@@ -340,6 +345,9 @@
 		8A2463DD1EB9CD3D0000734B /* GeneralCalenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralCalenderViewController.h; sourceTree = "<group>"; };
 		8A2463DE1EB9CD3D0000734B /* GeneralCalenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralCalenderViewController.m; sourceTree = "<group>"; };
 		8A2463DF1EB9CD3D0000734B /* GeneralCalenderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralCalenderViewController.xib; sourceTree = "<group>"; };
+		8A3904DA1FB15F0800591103 /* GeneralView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralView.h; sourceTree = "<group>"; };
+		8A3904DB1FB15F0800591103 /* GeneralView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralView.m; sourceTree = "<group>"; };
+		8A3904DD1FB15F2300591103 /* GuestHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuestHeaderView.xib; sourceTree = "<group>"; };
 		8A3C7B9C1E8A06900093BA62 /* UpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateViewController.h; sourceTree = "<group>"; };
 		8A3C7B9D1E8A06900093BA62 /* UpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateViewController.m; sourceTree = "<group>"; };
 		8A3C7B9E1E8A06900093BA62 /* UpdateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateViewController.xib; sourceTree = "<group>"; };
@@ -643,6 +651,11 @@
 		8ABC51721E93559000E31560 /* EmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
 		8ABC51751E93700800E31560 /* NSString+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extra.h"; sourceTree = "<group>"; };
 		8ABC51761E93700800E31560 /* NSString+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extra.m"; sourceTree = "<group>"; };
+		8AC779081FAB164500A18083 /* GuestModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuestModeViewController.h; sourceTree = "<group>"; };
+		8AC779091FAB164500A18083 /* GuestModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuestModeViewController.m; sourceTree = "<group>"; };
+		8AC7790D1FAB168B00A18083 /* GuestMode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GuestMode.storyboard; sourceTree = "<group>"; };
+		8AC7791C1FAB1FB200A18083 /* UINavigationController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Extension.h"; sourceTree = "<group>"; };
+		8AC7791D1FAB1FB200A18083 /* UINavigationController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Extension.m"; sourceTree = "<group>"; };
 		8AD70D191E77A36A006F1A8E /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
 		8AD70D1A1E77A36A006F1A8E /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		8AD70D1C1E77B167006F1A8E /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
@@ -782,6 +795,7 @@
 		8A20DB161E63D0F900C2F060 /* AppStructure */ = {
 			isa = PBXGroup;
 			children = (
+				8AC779051FAB0F6800A18083 /* GuestMode */,
 				8AF982F11F7A2E4C000021BB /* Chatting */,
 				8AB693D61EDD247700F9C7A3 /* UnratedView */,
 				8AF384AF1EB8450000583031 /* SearchTourGuide */,
@@ -988,6 +1002,8 @@
 				8ABC516F1E93558700E31560 /* EmptyStateView.h */,
 				8ABC51701E93558700E31560 /* EmptyStateView.m */,
 				8ABC51721E93559000E31560 /* EmptyStateView.xib */,
+				8A3904DA1FB15F0800591103 /* GeneralView.h */,
+				8A3904DB1FB15F0800591103 /* GeneralView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1394,6 +1410,7 @@
 		8A9F460B1E603DA8005F1453 /* CATEGORY */ = {
 			isa = PBXGroup;
 			children = (
+				8AC7791B1FAB1F9400A18083 /* UINavigationController+Extension */,
 				8A68F5D01EBB080E0087A613 /* UITextView+Placeholder */,
 				8A80BFFD1E9C9C8100AFC150 /* UITextField+Extension */,
 				8ABC51741E936FF800E31560 /* NSString+Extension */,
@@ -1548,6 +1565,26 @@
 				8ABC51761E93700800E31560 /* NSString+Extra.m */,
 			);
 			path = "NSString+Extension";
+			sourceTree = "<group>";
+		};
+		8AC779051FAB0F6800A18083 /* GuestMode */ = {
+			isa = PBXGroup;
+			children = (
+				8AC779081FAB164500A18083 /* GuestModeViewController.h */,
+				8AC779091FAB164500A18083 /* GuestModeViewController.m */,
+				8AC7790D1FAB168B00A18083 /* GuestMode.storyboard */,
+				8A3904DD1FB15F2300591103 /* GuestHeaderView.xib */,
+			);
+			path = GuestMode;
+			sourceTree = "<group>";
+		};
+		8AC7791B1FAB1F9400A18083 /* UINavigationController+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8AC7791C1FAB1FB200A18083 /* UINavigationController+Extension.h */,
+				8AC7791D1FAB1FB200A18083 /* UINavigationController+Extension.m */,
+			);
+			path = "UINavigationController+Extension";
 			sourceTree = "<group>";
 		};
 		8AD70D181E77A356006F1A8E /* VIEWMODEL */ = {
@@ -1807,6 +1844,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A3904DE1FB15F2300591103 /* GuestHeaderView.xib in Resources */,
 				8A76569A1E9B906300A99C4E /* icon_collapse_down_red@2x.png in Resources */,
 				8A9B26701EEA3812004F75FC /* icon_call_red@1x.png in Resources */,
 				8AA2CF671FA87A700004ECF7 /* UnratedViewControllerV2.xib in Resources */,
@@ -1840,6 +1878,7 @@
 				8A772B141E601D3000763DF7 /* LaunchScreen.storyboard in Resources */,
 				8A23E9AF1E7FCE69001FAB6D /* top_nav_logo.png in Resources */,
 				8A89BB6E1E84C77800F3B824 /* EmptyTableViewCell.xib in Resources */,
+				8AC7790E1FAB168B00A18083 /* GuestMode.storyboard in Resources */,
 				8A1228B71E8CCB8C0093C92C /* SettingPopoutViewController.xib in Resources */,
 				8A7656971E9B906300A99C4E /* icon_close_red@1x.png in Resources */,
 				8A6EB1C31E714EB30022ABA2 /* PromoCodeViewController.xib in Resources */,
@@ -2244,6 +2283,7 @@
 				8A6EB1C91E71541D0022ABA2 /* UIButton+System.m in Sources */,
 				8A5637521E691ACA00ACAF2B /* HistoryViewController.m in Sources */,
 				8A5637121E67FFF700ACAF2B /* AppointmentViewController.m in Sources */,
+				8AC7790A1FAB164500A18083 /* GuestModeViewController.m in Sources */,
 				8A180C151E88C2AA0056E630 /* BaseViewController.m in Sources */,
 				8AD70D1B1E77A36A006F1A8E /* LoginViewModel.m in Sources */,
 				8A9F46241E604645005F1453 /* ConnectionHelper.m in Sources */,
@@ -2285,6 +2325,7 @@
 				8A851FB81E66C5B300904B6C /* RequestGuideViewController.m in Sources */,
 				8A23E9A51E7FAF27001FAB6D /* FormDataModel.m in Sources */,
 				8A5B3EC71E6682D6005BE083 /* README.md in Sources */,
+				8AC7791E1FAB1FB200A18083 /* UINavigationController+Extension.m in Sources */,
 				8A9BD7281E78EF3F0043D171 /* PackageWrapperModel.m in Sources */,
 				8A9F461E1E603DA8005F1453 /* Utils.m in Sources */,
 				8AF982F51F7A2F6C000021BB /* ChattingViewController.m in Sources */,
@@ -2309,6 +2350,7 @@
 				8A5637151E68011B00ACAF2B /* RatingView.m in Sources */,
 				8A3C7BAC1E8A27C70093BA62 /* FacebookModel.m in Sources */,
 				8A8E30791E6FB12700A16002 /* FSCalendarWeekdayView.m in Sources */,
+				8A3904DC1FB15F0800591103 /* GeneralView.m in Sources */,
 				8A851FD01E66D97300904B6C /* CommonView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
