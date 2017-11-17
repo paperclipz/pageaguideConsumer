@@ -163,7 +163,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         
-        cell.lblHeader.text = @"Continue Using Guest Mode. Please fill the the details below";
+        cell.lblHeader.text = @"Continue using guest checkout. Please fill the the details below";
         cell.lblTitle.textColor = [UIColor darkGrayColor];
         cell.lblTitle2.textColor = [UIColor darkGrayColor];
         cell.lblTitle3.textColor = [UIColor darkGrayColor];
@@ -239,7 +239,7 @@
 
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        cell.lblHeader.text = @"Login or register your account here. Press the Login button below!!";
+        cell.lblHeader.text = @"Login or register your account here";
 
         
         cell.didSelectInnerButton1Block = ^{
