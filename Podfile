@@ -60,8 +60,7 @@ def shared_pods
     pod 'Firebase/Crash'
 
     pod 'RMDateSelectionViewController', '~> 2.0.3'
-    #  pod 'WWCalendarTimeSelector'
-
+    pod 'MXSegmentedPager'
 
 
 end

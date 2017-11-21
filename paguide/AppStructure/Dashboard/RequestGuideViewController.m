@@ -182,7 +182,7 @@
             if ([model.type isEqualToString:cell_type_option] ||
                 [model.type isEqualToString:cell_type_multi_select_option]) {
                 
-                [self.ibTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                [self.ibTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
             }
         }
     };

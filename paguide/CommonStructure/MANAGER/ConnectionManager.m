@@ -733,6 +733,10 @@
             str = [NSString stringWithFormat:@"appointment/listing"];
             
             break;
+        case ServerRequestTypePostPendingAppointmentListing:
+            str = [NSString stringWithFormat:@"appointments"];
+            
+            break;
             
         case ServerRequestTypePostAppointmentComplete:
             str = [NSString stringWithFormat:@"appointment/complete"];

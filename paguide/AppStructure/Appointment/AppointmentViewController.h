@@ -10,9 +10,7 @@
 #import "AppointmentModel.h"
 
 
-
 @interface AppointmentViewController : CommonViewController
-
 
 -(void)setupData:(AppointmentModel*)model;
 

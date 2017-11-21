@@ -72,7 +72,6 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
- 
     
     if (self.isNeedReload) {
         
@@ -94,6 +93,7 @@
     }
  
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

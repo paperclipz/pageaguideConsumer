@@ -19,6 +19,7 @@
     AppointmentModel* apptModel;
 
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 
 @property (nonatomic) PagingViewModel* vm_appointment_paging;
@@ -181,7 +182,7 @@
 
     if (self.vm_appointment_paging.currentPage == 0) {
         
-        [LoadingManager show];
+     //   [LoadingManager show];
     }
 
     NSDictionary* dict = @{@"token" : [Utils getToken],
@@ -192,7 +193,7 @@
     
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostRequestConsumerlisting parameter:dict appendString:nil success:^(id object) {
         
-        [LoadingManager hide];
+        //[LoadingManager hide];
         
         self.vm_appointment_paging.isLoading = NO;
 
@@ -216,7 +217,7 @@
         
     } failure:^(id object) {
      
-        [LoadingManager hide];
+    //    [LoadingManager hide];
 
         self.vm_appointment_paging.isLoading = NO;
 

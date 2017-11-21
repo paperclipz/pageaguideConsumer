@@ -40,6 +40,7 @@ typedef enum
     
     //  ==========  [ appointment ]  ==========  //
     ServerRequestTypePostAppointmentListing,
+    ServerRequestTypePostPendingAppointmentListing,
     ServerRequestTypePostAppointmentComplete,
     ServerRequestTypePostAppointmentValidatecode,
     ServerRequestTypePostAppointmentCheckComplete,
@@ -90,6 +91,8 @@ typedef enum
     APPOITNMENT_VIEW_TYPE_VERIFY = 1,
     APPOITNMENT_VIEW_TYPE_COMPLETE = 2,
     APPOITNMENT_VIEW_TYPE_HISTORY = 3,
+    APPOITNMENT_VIEW_TYPE_PENDING = 4,
+
 }APPOITNMENT_VIEW_TYPE;
 
 

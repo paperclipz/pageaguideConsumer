@@ -298,6 +298,20 @@
                     
                     [self showMerchantView];
                 };
+                
+                cell.didSelectOnChatBlock = ^(void)
+                {
+                    self.hidesBottomBarWhenPushed = YES;
+                    
+                    ChattingViewController* vc = [ChattingViewController new];
+                    
+                    [vc setupPreData:model requestID:aModel.rid];
+                    
+                    [self.navigationController pushViewController:vc animated:YES];
+                    
+                    self.hidesBottomBarWhenPushed = NO;
+                    
+                };
 
                 
                 return cell;

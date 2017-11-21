@@ -39,6 +39,8 @@
 @property (nonatomic,strong)NSString* packages_id;
 @property (nonatomic,strong)NSString* packages_code;
 @property (nonatomic,strong)NSString* ratings;
+@property (nonatomic,assign)BOOL merchant_group_active;
+
 
 @property (nonatomic,assign)BOOL isScheduled;
 

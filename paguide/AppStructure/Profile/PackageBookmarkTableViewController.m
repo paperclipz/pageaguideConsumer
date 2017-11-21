@@ -30,7 +30,7 @@
     
     self.arrPackageList = [[OfflineManager getPackageList] mutableCopy];
     
-    self.tableView.contentInset = UIEdgeInsetsMake(64,0,0,0);
+  //  self.tableView.contentInset = UIEdgeInsetsMake(64,0,0,0);
 
     [self.tableView reloadData];
     

@@ -1,15 +1,17 @@
 //
-//  AppointmentPageViewController.h
+//  DashboardMainViewController.h
 //  paguide
 //
-//  Created by Evan Beh on 07/04/2017.
+//  Created by Evan Beh on 17/11/2017.
 //  Copyright © 2017 Evan Beh. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
 #import <MXSegmentedPager/MXSegmentedPagerController.h>
 
-@interface AppointmentPageViewController : MXSegmentedPagerController
+@interface DashboardMainViewController : MXSegmentedPagerController
 
 @property (nonatomic,assign)BOOL isNeedReload;
+
 @end

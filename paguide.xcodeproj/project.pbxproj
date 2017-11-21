@@ -77,6 +77,7 @@
 		8A5637711E698FE100ACAF2B /* CommonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A56376E1E698FE100ACAF2B /* CommonCollectionViewCell.m */; };
 		8A5637721E698FE100ACAF2B /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5637701E698FE100ACAF2B /* CommonTableViewCell.m */; };
 		8A5637751E6992A200ACAF2B /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5637741E6992A200ACAF2B /* ReviewViewController.m */; };
+		8A5674761FBEAA8C0080F934 /* PendingPackageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5674751FBEAA8C0080F934 /* PendingPackageListViewController.m */; };
 		8A5B3EBE1E6676C2005BE083 /* EBActionSheetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B3EBC1E6676C2005BE083 /* EBActionSheetTableViewCell.m */; };
 		8A5B3EBF1E6676C2005BE083 /* EBActionSheetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A5B3EBD1E6676C2005BE083 /* EBActionSheetTableViewCell.xib */; };
 		8A5B3EC61E6682D6005BE083 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8A5B3EC11E6682D6005BE083 /* LICENSE */; };
@@ -261,6 +262,7 @@
 		8AFA22F51E6D53520090837C /* 1080x1920.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AFA22D11E6D53520090837C /* 1080x1920.png */; };
 		8AFA22F61E6D53520090837C /* 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AFA22D21E6D53520090837C /* 640x1136.png */; };
 		8AFA230C1E6D53520090837C /* 750x1334.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AFA22E91E6D53520090837C /* 750x1334.png */; };
+		8AFE9E191FBED36F00635DC3 /* DashboardMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFE9E181FBED36F00635DC3 /* DashboardMainViewController.m */; };
 		8AFFDE411E769AEA00C55B55 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFDE401E769AEA00C55B55 /* BaseModel.m */; };
 		8AFFDE441E769B0900C55B55 /* CountryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFDE431E769B0900C55B55 /* CountryModel.m */; };
 		8AFFDE4B1E76A1A900C55B55 /* NSArray+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFDE481E76A1A900C55B55 /* NSArray+JSON.m */; };
@@ -414,6 +416,8 @@
 		8A5637701E698FE100ACAF2B /* CommonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewCell.m; sourceTree = "<group>"; };
 		8A5637731E6992A200ACAF2B /* ReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
 		8A5637741E6992A200ACAF2B /* ReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
+		8A5674741FBEAA8C0080F934 /* PendingPackageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingPackageListViewController.h; sourceTree = "<group>"; };
+		8A5674751FBEAA8C0080F934 /* PendingPackageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingPackageListViewController.m; sourceTree = "<group>"; };
 		8A5B3EBB1E6676C2005BE083 /* EBActionSheetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBActionSheetTableViewCell.h; sourceTree = "<group>"; };
 		8A5B3EBC1E6676C2005BE083 /* EBActionSheetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBActionSheetTableViewCell.m; sourceTree = "<group>"; };
 		8A5B3EBD1E6676C2005BE083 /* EBActionSheetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBActionSheetTableViewCell.xib; sourceTree = "<group>"; };
@@ -698,6 +702,8 @@
 		8AFA22D11E6D53520090837C /* 1080x1920.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1080x1920.png; sourceTree = "<group>"; };
 		8AFA22D21E6D53520090837C /* 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640x1136.png; sourceTree = "<group>"; };
 		8AFA22E91E6D53520090837C /* 750x1334.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 750x1334.png; sourceTree = "<group>"; };
+		8AFE9E171FBED36F00635DC3 /* DashboardMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardMainViewController.h; sourceTree = "<group>"; };
+		8AFE9E181FBED36F00635DC3 /* DashboardMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardMainViewController.m; sourceTree = "<group>"; };
 		8AFFDE3F1E769AEA00C55B55 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		8AFFDE401E769AEA00C55B55 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		8AFFDE421E769B0900C55B55 /* CountryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryModel.h; sourceTree = "<group>"; };
@@ -883,6 +889,8 @@
 				8AFA22C51E6D19850090837C /* FilterCategoryTableViewCell.m */,
 				8A23E9A01E7F997C001FAB6D /* RequestGuideTableViewCell.h */,
 				8A23E9A11E7F997C001FAB6D /* RequestGuideTableViewCell.m */,
+				8AFE9E171FBED36F00635DC3 /* DashboardMainViewController.h */,
+				8AFE9E181FBED36F00635DC3 /* DashboardMainViewController.m */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -915,6 +923,8 @@
 				8AF5F9051E839160004A7322 /* AppointmentRequestViewController.m */,
 				8A164B5C1E9736FA004EA3C8 /* AppointmentPageViewController.h */,
 				8A164B5D1E9736FA004EA3C8 /* AppointmentPageViewController.m */,
+				8A5674741FBEAA8C0080F934 /* PendingPackageListViewController.h */,
+				8A5674751FBEAA8C0080F934 /* PendingPackageListViewController.m */,
 			);
 			path = Appointment;
 			sourceTree = "<group>";
@@ -2022,6 +2032,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GVUserDefaults/GVUserDefaults.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/HMSegmentedControl/HMSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
@@ -2029,6 +2040,9 @@
 				"${BUILT_PRODUCTS_DIR}/KVNProgress/KVNProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/MXPagerView/MXPagerView.framework",
+				"${BUILT_PRODUCTS_DIR}/MXParallaxHeader/MXParallaxHeader.framework",
+				"${BUILT_PRODUCTS_DIR}/MXSegmentedPager/MXSegmentedPager.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RMActionController/RMActionController.framework",
 				"${BUILT_PRODUCTS_DIR}/RMDateSelectionViewController/RMDateSelectionViewController.framework",
@@ -2051,6 +2065,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GVUserDefaults.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HMSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HexColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
@@ -2058,6 +2073,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVNProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MWPhotoBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXPagerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXParallaxHeader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MXSegmentedPager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RMActionController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RMDateSelectionViewController.framework",
@@ -2296,6 +2314,7 @@
 				8A9BD7251E78EC7A0043D171 /* PackageModel.m in Sources */,
 				8A5637481E69135B00ACAF2B /* AppointmentListViewController.m in Sources */,
 				8A3C7BB11E8B72A70093BA62 /* ResendVerificationCodeViewController.m in Sources */,
+				8A5674761FBEAA8C0080F934 /* PendingPackageListViewController.m in Sources */,
 				8A164B5E1E9736FA004EA3C8 /* AppointmentPageViewController.m in Sources */,
 				8A4E953B1E7938DB00F45B96 /* CategorySelectionViewModel.m in Sources */,
 				8A851FCB1E66D8C300904B6C /* ProfileHeaderFooterView.m in Sources */,
@@ -2339,6 +2358,7 @@
 				8A5637751E6992A200ACAF2B /* ReviewViewController.m in Sources */,
 				8AFA22C61E6D19850090837C /* FilterCategoryTableViewCell.m in Sources */,
 				8A1228BA1E8CF6180093C92C /* PushNotificationManager.m in Sources */,
+				8AFE9E191FBED36F00635DC3 /* DashboardMainViewController.m in Sources */,
 				8A8E30461E6FAFA500A16002 /* CalenderViewController.m in Sources */,
 				8ABC516A1E923BE000E31560 /* PackageBookmarkTableViewController.m in Sources */,
 				8A6EB1BC1E71218B0022ABA2 /* QuantitySelectionViewController.m in Sources */,

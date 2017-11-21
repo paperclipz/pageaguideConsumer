@@ -202,7 +202,7 @@
     
     if (self.vm_appointment_paging.currentPage == 0)
     {
-        [LoadingManager show];
+  //      [LoadingManager show];
     }
     self.vm_appointment_paging.isLoading = YES;
     
@@ -216,7 +216,7 @@
     
     [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostHistoryListing parameter:dict appendString:nil success:^(id object) {
         
-        [LoadingManager hide];
+   //     [LoadingManager hide];
 
         self.vm_appointment_paging.isLoading = NO;
         
@@ -244,7 +244,7 @@
 
         [self.ibTableView customTableViewReloadData];
 
-        [LoadingManager hide];
+      //  [LoadingManager hide];
 
     }];
 }

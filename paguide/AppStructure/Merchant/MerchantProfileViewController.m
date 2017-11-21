@@ -539,7 +539,12 @@
         }
     } failure:^(id object) {
       
-      
+        NSError* error;
+
+        BaseModel* bModel = [[BaseModel alloc]initWithDictionary:object error:&error];
+
+        [MessageManager showMessage:bModel.generalMessage Type:TSMessageNotificationTypeError inViewController:self];
+        
     }];
 }
 

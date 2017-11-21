@@ -191,7 +191,16 @@
     
     if ([type isEqualToString:@"cell_title"]) {
         
-        return 1;
+        
+        if (self.appointmentModel.package_info_model.merchant_group_active) {
+            
+            return 0;
+        }
+
+        else{
+            return 1;
+
+        }
     
     }
     else  if ([type isEqualToString:@"cell_detail1"]) {

@@ -1,53 +1,47 @@
 //
-//  AppointmentPageViewController.m
+//  DashboardMainViewController.m
 //  paguide
 //
-//  Created by Evan Beh on 07/04/2017.
+//  Created by Evan Beh on 17/11/2017.
 //  Copyright © 2017 Evan Beh. All rights reserved.
 //
 
-#import "AppointmentPageViewController.h"
-#import "AppointmentListViewController.h"
-#import "HistoryListViewController.h"
-#import "MyRequestListingViewController.h"
-#import "PendingPackageListViewController.h"
+#import "DashboardMainViewController.h"
+#import "DashboardPackageViewController.h"
+#import "RequestGuideViewController.h"
 #import "ProfileViewController.h"
+
 
 @import Intercom;
 
-@interface AppointmentPageViewController () <MXSegmentedPagerDelegate, MXSegmentedPagerDataSource>
+@interface DashboardMainViewController ()<MXSegmentedPagerDelegate, MXSegmentedPagerDataSource>
 
-@property (nonatomic,strong)AppointmentListViewController* appointmentListViewController;
-@property (nonatomic,strong)HistoryListViewController* historyListViewController;
-@property (nonatomic,strong)MyRequestListingViewController* myRequestListingViewController;
-@property (nonatomic,strong)PendingPackageListViewController* pendingPackageListViewController;
+@property (nonatomic)DashboardPackageViewController* dashboardPackageViewController;
+@property (nonatomic)RequestGuideViewController* requestGuideViewController;
 @property (nonatomic)ProfileViewController* profileViewController;
 
-
 @property (nonatomic, strong)NSArray* arrViewControllers;
+
 @end
 
-@implementation AppointmentPageViewController
-
+@implementation DashboardMainViewController
 - (IBAction)btnProfileClicked:(id)sender {
     
+    
     _profileViewController = nil;
-
+    
     [self.navigationController pushViewController:self.profileViewController animated:YES];
 }
-
 
 - (IBAction)btnIntercomClicked:(id)sender {
     
     [Intercom presentMessageComposer];
-    
+
 }
 
 -(void)setIsNeedReload:(BOOL)isNeedReload
 {
-    
     if (isNeedReload) {
-      
         
         for (int i = 0; i<self.arrViewControllers.count; i++) {
             
@@ -56,6 +50,7 @@
             
             if ([vc isKindOfClass:[BaseViewController class]]) {
                 
+                
                 BaseViewController* bVC = (BaseViewController*)vc;
                 
                 bVC.isNeedReload = isNeedReload;
@@ -63,39 +58,33 @@
             
         }
         
-        [self.segmentedPager.segmentedControl setSelectedSegmentIndex:0];
-        
-        
     }
-        _isNeedReload = NO;
-
-}
-
-
-#pragma mark - Page Setup
--(void)setupIntercom
-{
-    
-    UIImage* image = [UIImage imageNamed:@"icon_concierge_red.png"];
-    
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(btnIntercomClicked:)];
-    
-    self.navigationItem.rightBarButtonItems = @[rightButton];
-    
+    _isNeedReload = NO;
     
 }
 
--(void)setupProfile
-{
-    
-    UIImage* image = [UIImage imageNamed:@"icon_profile_red.png"];
-    
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(btnProfileClicked:)];
-    
-    self.navigationItem.leftBarButtonItems = @[leftButton];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
     
+    [self.navigationController.navigationBar setTranslucent:NO];
+    
+    [self.tabBarController.tabBar setTranslucent:NO];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
+    self.arrViewControllers = @[self.dashboardPackageViewController,self.requestGuideViewController];
+
+      [self setupPageMenu];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    // Do any additional setup after loading the view.
 }
+
+
 - (void)setupPageMenu
 {
     
@@ -105,7 +94,7 @@
         UIViewController* vc = self.arrViewControllers[i];
         
         [self addChildViewController:vc];
-
+        
     }
     
     // Segmented Control customization
@@ -115,7 +104,7 @@
     self.segmentedPager.segmentedControl.titleTextAttributes = @{
                                                                  NSForegroundColorAttributeName : [UIColor blackColor],
                                                                  NSFontAttributeName : [UIFont boldSystemFontOfSize:10.0f]
-
+                                                                 
                                                                  };
     
     self.segmentedPager.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : APP_MAIN_COLOR};
@@ -145,92 +134,35 @@
     
 }
 
--(AppointmentListViewController*)appointmentListViewController
-{
-    if (!_appointmentListViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        _appointmentListViewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_appointmentList"];
-        
-        _appointmentListViewController.view.tag = 0;
-        _appointmentListViewController.title = [@"Appointment" uppercaseString];
-
-    }
-    
-    return _appointmentListViewController;
-}
-
--(HistoryListViewController*)historyListViewController
-{
-    if (!_historyListViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        _historyListViewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_historyList"];
-        
-        _historyListViewController.view.tag = 1;
-        _historyListViewController.title = [@"History" uppercaseString];
-    
-    }
-    
-    return _historyListViewController;
-}
-
--(MyRequestListingViewController*)myRequestListingViewController
-{
-    if (!_myRequestListingViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        _myRequestListingViewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_myRequestList"];
-        
-        _myRequestListingViewController.view.tag = 2;
-        _myRequestListingViewController.title = [@"My Request" uppercaseString];
-        
-    }
-    
-    return _myRequestListingViewController;
-}
-
--(PendingPackageListViewController*)pendingPackageListViewController
-{
-    if (!_pendingPackageListViewController) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        _pendingPackageListViewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_pendingPackageList"];
-        
-        _pendingPackageListViewController.view.tag = 3;
-        _pendingPackageListViewController.title = [@"Pending Package" uppercaseString];
-        
-    }
-    
-    return _pendingPackageListViewController;
-}
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self.navigationController.navigationBar setTranslucent:NO];
-    
-    [self.tabBarController.tabBar setTranslucent:NO];
-    
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-
-    self.automaticallyAdjustsScrollViewInsets = false;
-    
-    self.arrViewControllers = @[self.myRequestListingViewController,
-                                self.pendingPackageListViewController,
-                                self.appointmentListViewController,
-                                self.historyListViewController];
-    
-    [self setupPageMenu];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self setupIntercom];
-    
-    
-    [self setupProfile];
-    // Do any additional setup after loading the view.
-}
-
 
 #pragma mark - Declaration
+-(DashboardPackageViewController*)dashboardPackageViewController
+{
+    if (!_dashboardPackageViewController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        _dashboardPackageViewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_package_list"];
+        
+        _dashboardPackageViewController.view.tag = 0;
+        _dashboardPackageViewController.title = [@"Package" uppercaseString];
+        
+    }
+    
+    return _dashboardPackageViewController;
+}
+
+-(RequestGuideViewController*)requestGuideViewController
+{
+    if (!_requestGuideViewController) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        _requestGuideViewController = [storyboard instantiateViewControllerWithIdentifier:@"sb_request_guide"];
+        
+        _requestGuideViewController.view.tag = 2;
+        _requestGuideViewController.title = [@"Request" uppercaseString];
+        
+    }
+    
+    return _requestGuideViewController;
+}
 
 -(ProfileViewController*)profileViewController
 {
@@ -245,6 +177,7 @@
     
     return _profileViewController;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

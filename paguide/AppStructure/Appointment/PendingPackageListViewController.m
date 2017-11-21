@@ -1,12 +1,12 @@
 //
-//  AppointmentListViewController.m
+//  PendingPackageListViewController.m
 //  paguide
 //
-//  Created by Evan Beh on 03/03/2017.
+//  Created by Evan Beh on 17/11/2017.
 //  Copyright © 2017 Evan Beh. All rights reserved.
 //
 
-#import "AppointmentListViewController.h"
+#import "PendingPackageListViewController.h"
 #import "PackageTableViewCell.h"
 #import "AppointmentViewController.h"
 #import "AppointmentModel.h"
@@ -14,21 +14,23 @@
 #import "AppointmentRequestViewController.h"
 #import "PackageModel.h"
 
-@protocol AppointmentModel;
-
 #define PER_PAGE @"20"
 
-@interface AppointmentListViewController () <UITableViewDelegate, UITableViewDataSource>
+@protocol AppointmentModel;
+
+@interface PendingPackageListViewController () <UITableViewDelegate, UITableViewDataSource>
 {
     AppointmentModel* apptModel;
-    
+
 }
 @property (nonatomic) PagingViewModel* vm_appointment_paging;
 @property (nonatomic) NSMutableArray<AppointmentModel>* arrAppointmentList;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
-@implementation AppointmentListViewController
+@implementation PendingPackageListViewController
 
 -(NSMutableArray<AppointmentModel>*)arrAppointmentList{
     
@@ -58,7 +60,7 @@
         
         self.arrAppointmentList = nil;
         
-        [self.ibTableView reloadData];
+        [self.tableView reloadData];
         
     }
     
@@ -72,24 +74,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.ibTableView.delegate = self;
-    self.ibTableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
-
     
-    [self.ibTableView pullToRefresh:^{
+    
+    [self.tableView pullToRefresh:^{
         
         [self resetAndCallAppointmentListing];
         
     }];
     
-    [self.ibTableView setupCustomEmptyView];
+    [self.tableView setupCustomEmptyView];
     
     
-    [self.ibTableView setupFooterView];
+    [self.tableView setupFooterView];
     
     [self requestServerForAppointmentList];
-
+    
     // Do any additional setup after loading the view.
 }
 
@@ -106,7 +108,7 @@
     
     self.arrAppointmentList = nil;
     
-    [self.ibTableView reloadData];
+    [self.tableView reloadData];
     
     
     [self requestServerForAppointmentList];
@@ -121,7 +123,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+    
     return self.arrAppointmentList.count;
 }
 
@@ -134,7 +136,7 @@
     PackageTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"packageCell"];
     
     AppointmentModel* model = self.arrAppointmentList[indexPath.row];
-
+    
     if ([model.type isEqualToString:@"request"]) {
         
         cell.lblPackage.hidden = YES;
@@ -160,7 +162,7 @@
     else{
         
         cell.lblPackage.hidden = NO;
-
+        
         cell.lblTitle1.text = model.appointment_code;
         
         cell.lblTitle2.text = [NSString validateText:model.package_info_model.name];
@@ -176,7 +178,7 @@
         
         cell.lblTitle4.attributedText = [self convertAttributedStringFor:[NSString stringWithFormat:@"%@%@",string3,string4] StringToChange:string3];
     }
-  
+    
     return cell;
 }
 
@@ -188,10 +190,10 @@
     if ([apptModel.type isEqualToString:@"request"]) {
         
         [self performSegueWithIdentifier: @"appointment_request_details" sender:self];
-
+        
     }else{
         [self performSegueWithIdentifier: @"appointment_details" sender:self];
-
+        
     }
 }
 
@@ -200,23 +202,23 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-
+    
     if ([[segue identifier] isEqualToString:@"appointment_details"]) {
-
+        
         AppointmentViewController *vc = [segue destinationViewController];
         
-//        if ([Utils isStringNull:apptModel.verify_time])
-//        {
-//            vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
-//
-//        }
-//        else{
-//            vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
-//
-//        }
-
-        vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
-
+        //        if ([Utils isStringNull:apptModel.verify_time])
+        //        {
+        //            vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
+        //
+        //        }
+        //        else{
+        //            vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
+        //
+        //        }
+        
+        vc.viewType = APPOITNMENT_VIEW_TYPE_PENDING;
+        
         [vc setupData:apptModel];
         
         
@@ -226,26 +228,26 @@
     else if ([[segue identifier] isEqualToString:@"appointment_request_details"]) {
         
         AppointmentRequestViewController *vc = [segue destinationViewController];
-
+        
         // 30 may 2017
         //change request : dont want to show verify anymore
-//        if ([Utils isStringNull:apptModel.verify_time])
-//        {
-//            vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
-//            
-//        }
-//        else{
-//            vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
-//            
-//        }
+        //        if ([Utils isStringNull:apptModel.verify_time])
+        //        {
+        //            vc.viewType = APPOITNMENT_VIEW_TYPE_VERIFY;
+        //
+        //        }
+        //        else{
+        //            vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
+        //
+        //        }
         
         vc.viewType = APPOITNMENT_VIEW_TYPE_COMPLETE;
         
         [vc setupData:apptModel];
         
     }
-
-
+    
+    
 }
 
 #pragma mark - Request Server
@@ -261,22 +263,24 @@
     
     if (self.vm_appointment_paging.currentPage == 0) {
         
-      //  [LoadingManager show];
+        //  [LoadingManager show];
     }
     self.vm_appointment_paging.isLoading = YES;
     
     NSString* token =  [Utils getToken];
-
+    
     NSDictionary* dict = @{
                            @"token" : IsNullConverstion(token),
-                           @"per_page" : PER_PAGE,
-                           @"page" : @(self.vm_appointment_paging.currentPage + 1)
+//                           @"per_page" : PER_PAGE,
+//                           @"page" : @(self.vm_appointment_paging.currentPage + 1)
+                           @"status" : @"pending",
+                           @"date" : @"future"
                            };
     
-    [ConnectionManager requestServerWith:AFNETWORK_POST serverRequestType:ServerRequestTypePostAppointmentListing parameter:dict appendString:nil success:^(id object) {
+    [ConnectionManager requestServerWith:AFNETWORK_GET serverRequestType:ServerRequestTypePostPendingAppointmentListing parameter:dict appendString:nil success:^(id object) {
         
-       // [LoadingManager hide];
-
+        // [LoadingManager hide];
+        
         self.vm_appointment_paging.isLoading = NO;
         
         NSError* error;
@@ -285,28 +289,28 @@
         
         [self.vm_appointment_paging processPagingFrom:model.pageContent];
         
-        [self.ibTableView stopRefresh];
+        [self.tableView stopRefresh];
         
         [self.arrAppointmentList addObjectsFromArray:model.arrAppointmentList];
         
-        [self.ibTableView reloadData];
+        [self.tableView reloadData];
         
-        [self.ibTableView stopFooterLoadingView];
-         
-        [self.ibTableView customTableViewReloadData];
+        [self.tableView stopFooterLoadingView];
+        
+        [self.tableView customTableViewReloadData];
         
     } failure:^(id object) {
         self.vm_appointment_paging.isLoading = NO;
         
-        [self.ibTableView stopFooterLoadingView];
+        [self.tableView stopFooterLoadingView];
         
-        [self.ibTableView customTableViewReloadData];
-
-      //  [LoadingManager hide];
+        [self.tableView customTableViewReloadData];
         
-        [self.ibTableView stopRefresh];
-
-
+        //  [LoadingManager hide];
+        
+        [self.tableView stopRefresh];
+        
+        
     }];
 }
 
@@ -331,11 +335,11 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self.ibTableView scrollViewDidScroll:scrollView activated:^{
+    [self.tableView scrollViewDidScroll:scrollView activated:^{
         
         if (self.vm_appointment_paging.hasNext && self.vm_appointment_paging.currentPage > 0) {
             
-            [self.ibTableView startFooterLoadingView];
+            [self.tableView startFooterLoadingView];
             
             [self requestServerForAppointmentList];
         }
@@ -354,5 +358,6 @@
     }
     return dateFormatter;
 }
+
 
 @end

@@ -61,15 +61,24 @@
 
 - (IBAction)btnEditClicked:(id)sender {
     
+    
+    [self.view endEditing:YES];
+    
+    [self resignFirstResponder];
+    
     if (isEditable) {
         
         NSLog(@"edit profile : %@",self.editProfileModel);
         
-        [self requestServerForUserUpdateProfile:^{
-            [self setNavigationButtonAsEdit:@"Edit"];
-            isEditable = !isEditable;
-
-        }];
+        if ([self validateProfile]) {
+            
+            [self requestServerForUserUpdateProfile:^{
+                [self setNavigationButtonAsEdit:@"Edit"];
+                isEditable = !isEditable;
+                
+            }];
+        }
+     
     }
     else{
         
@@ -96,7 +105,7 @@
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObject:editButton];
 }
 
--(void)validateProfile
+-(BOOL)validateProfile
 {
     
     NSString* errorMessage;
@@ -105,10 +114,33 @@
         
         
         errorMessage = @"Plese select Country";
+        
+        [MessageManager showMessage:errorMessage Type:TSMessageNotificationTypeWarning inViewController:self];
+        return false;
     }
     
     else if ([Utils isStringNull:self.editProfileModel.temp_prefix] || [self.editProfileModel.temp_prefix isEqualToString:@"Prefix"]) {
         
+        errorMessage = @"Plese select a Prefix";
+        [MessageManager showMessage:errorMessage Type:TSMessageNotificationTypeWarning inViewController:self];
+
+        return false;
+
+    }
+    
+    else if ([Utils isStringNull:self.editProfileModel.temp_mobile_number] || [self.editProfileModel.temp_mobile_number isEqualToString:@"Mobile Number"]) {
+        
+        errorMessage = @"Plese input mobile number";
+        [MessageManager showMessage:errorMessage Type:TSMessageNotificationTypeWarning inViewController:self];
+
+        return false;
+
+        
+    }else
+    {
+    
+        return true;
+
     }
 }
 
@@ -184,7 +216,6 @@
                 }];
                 
             };
-
             
             if ([Utils isStringNull:self.profileModel.country]) {
                 [cell.btnOne setTitle:type forState:UIControlStateNormal];
@@ -629,10 +660,12 @@
     NSString* token = [Utils getToken];
     
     
+    NSString* new_contact_number = [NSString stringWithFormat:@"%@%@",self.editProfileModel.temp_prefix,self.editProfileModel.temp_mobile_number];
+    
     NSDictionary* dict = @{@"username" : IsNullConverstion(self.editProfileModel.username),
                            @"country" : IsNullConverstion(self.editProfileModel.country),
                            @"gender" : IsNullConverstion(self.editProfileModel.gender),
-                           @"mobile_number" : IsNullConverstion(self.editProfileModel.mobile_number),
+                           @"mobile_number" : IsNullConverstion(new_contact_number),
                            //                           @"profile_img" : @"",
                            @"token" : token
                            };

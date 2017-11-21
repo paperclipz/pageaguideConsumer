@@ -8,6 +8,7 @@
 
 #import "CommonViewController.h"
 #import "AppointmentPageViewController.h"
+#import "DashboardMainViewController.h"
 
 @interface CommonViewController ()
 
@@ -31,6 +32,13 @@
 
         bVC.isNeedReload = YES;
 
+    }
+    else if ([viewC isKindOfClass:[DashboardMainViewController class]])
+    {
+        DashboardMainViewController* bVC = (DashboardMainViewController*)viewC;
+
+        bVC.isNeedReload = YES;
+        
     }
 
 }
