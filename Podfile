@@ -50,7 +50,7 @@ def shared_pods
     
     #payment
     pod 'Stripe'
-    pod 'Intercom'
+    pod 'Intercom', '~> 4.1.3'
     pod 'STPopup'
 
     pod 'SAMKeychain'

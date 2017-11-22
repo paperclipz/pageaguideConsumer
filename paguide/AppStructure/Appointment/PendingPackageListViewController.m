@@ -274,7 +274,7 @@
 //                           @"per_page" : PER_PAGE,
 //                           @"page" : @(self.vm_appointment_paging.currentPage + 1)
                            @"status" : @"pending",
-                           @"date" : @"future"
+                           @"date" : @"today"
                            };
     
     [ConnectionManager requestServerWith:AFNETWORK_GET serverRequestType:ServerRequestTypePostPendingAppointmentListing parameter:dict appendString:nil success:^(id object) {

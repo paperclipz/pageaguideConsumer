@@ -63,12 +63,37 @@
             
         }
         
-        [self.segmentedPager.segmentedControl setSelectedSegmentIndex:0];
-        
         
     }
         _isNeedReload = NO;
 
+}
+
+-(void)setIsNeedReset:(BOOL)isNeedReset
+{
+    
+    if (isNeedReset) {
+        
+        
+        for (int i = 0; i<self.arrViewControllers.count; i++) {
+            
+            UIViewController* vc = self.arrViewControllers[i];
+            
+            
+            if ([vc isKindOfClass:[BaseViewController class]]) {
+                
+                BaseViewController* bVC = (BaseViewController*)vc;
+                
+                bVC.isNeedReload = isNeedReset;
+            }
+            
+        }
+        
+        [self.segmentedPager.segmentedControl setSelectedSegmentIndex:0];
+        
+    }
+    _isNeedReset = NO;
+    
 }
 
 

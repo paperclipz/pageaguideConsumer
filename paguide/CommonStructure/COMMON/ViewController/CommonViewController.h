@@ -14,4 +14,7 @@
 @property (nonatomic, assign) BOOL isMiddleOfLoadingPage;
 
 -(void)resetMainPage;
+
+-(void)reloadMainPage;
+
 @end

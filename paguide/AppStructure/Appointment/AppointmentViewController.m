@@ -17,8 +17,7 @@
 #import "MerchantProfileViewController.h"
 #import "NSString+Extra.h"
 
-
-
+#define cell_image @"appt_image"
 #define cell_title @"cell_title"
 #define cell_detail1 @"cell_detail1"
 #define cell_map @"cell_map"
@@ -54,8 +53,7 @@
             
             [self.ratingViewController dismissViewControllerAnimated:YES completion:^{
                 
-                
-                [self resetMainPage];
+                [self reloadMainPage];
                 
                 [self.navigationController popToRootViewControllerAnimated:YES];
 
@@ -94,7 +92,7 @@
     
     self.ibTableView.estimatedRowHeight = 120.0f;
     
-    arrCellTypeList = @[cell_title,cell_detail1,cell_details_more,cell_map];
+    arrCellTypeList = @[cell_image,cell_title,cell_detail1,cell_details_more,cell_map];
     
     // Do any additional setup after loading the view.
     
@@ -102,6 +100,10 @@
     [Utils setRoundBorder:self.btnVerify color:[UIColor clearColor] borderRadius:5.0f];
     
     [Utils setRoundBorder:self.btnComplete color:[UIColor clearColor] borderRadius:5.0f];
+
+    
+    
+    self.ibTableView.contentInset = UIEdgeInsetsMake(0,0,0,0);
 
     
     [self initData];
@@ -189,7 +191,23 @@
     
     NSString* type = arrCellTypeList[section];
     
-    if ([type isEqualToString:@"cell_title"]) {
+    
+    
+    if ([type isEqualToString:cell_image]) {
+        
+        
+        if ([Utils isArrayNull:self.appointmentModel.package_info_model.cover_img]) {
+            return 0;
+
+        }
+        else
+        {
+            return 1;
+
+        }
+        
+    }
+    else if ([type isEqualToString:@"cell_title"]) {
         
         
         if (self.appointmentModel.package_info_model.merchant_group_active) {
@@ -227,6 +245,12 @@
 {
     NSString* type = arrCellTypeList[indexPath.section];
     
+    
+    if ([type isEqualToString:cell_image]) {
+        
+        return 150.0f;
+    }
+    
     if ([type isEqualToString:@"cell_title"]) {
         
         return 120.0f;
@@ -256,7 +280,21 @@
     
     NSString* type = arrCellTypeList[indexPath.section];
     
-    if ([type isEqualToString:@"cell_title"]) {
+    if ([type isEqualToString:cell_image]) {
+        
+        GeneralTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cell_image];
+        
+        
+        if (![Utils isArrayNull:self.appointmentModel.package_info_model.cover_img]) {
+          
+            [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:self.appointmentModel.package_info_model.cover_img[0]]];
+
+        }
+        
+        return cell;
+        
+    }
+    else if ([type isEqualToString:@"cell_title"]) {
         ApptHeaderTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"appt_title"];
         
         cell.lblTitle.text = [NSString validateText:self.appointmentModel.merchant_info_model.name];

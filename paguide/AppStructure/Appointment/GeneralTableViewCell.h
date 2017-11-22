@@ -10,6 +10,7 @@
 #import "RatingView.h"
 
 @interface GeneralTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIView *ibBorderView;
 @property (weak, nonatomic) IBOutlet UILabel *lblHeader;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *ibButton2;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSend;
+@property (weak, nonatomic) IBOutlet UIImageView *ibImageView;
 
 @property(nonatomic,copy)VoidBlock didSelectBlock;
 

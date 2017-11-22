@@ -30,7 +30,7 @@
     {
         AppointmentPageViewController* bVC = (AppointmentPageViewController*)viewC;
 
-        bVC.isNeedReload = YES;
+        bVC.isNeedReset = YES;
 
     }
     else if ([viewC isKindOfClass:[DashboardMainViewController class]])
@@ -41,6 +41,33 @@
         
     }
 
+}
+
+-(void)reloadMainPage
+{
+    UIViewController* viewC = self.navigationController.viewControllers[0];
+    
+    if ([viewC isKindOfClass:[BaseViewController class]]) {
+        
+        BaseViewController* bVC = (BaseViewController*)viewC;
+        
+        bVC.isNeedReload = YES;
+    }
+    else if ([viewC isKindOfClass:[AppointmentPageViewController class]])
+    {
+        AppointmentPageViewController* bVC = (AppointmentPageViewController*)viewC;
+        
+        bVC.isNeedReload = YES;
+        
+    }
+    else if ([viewC isKindOfClass:[DashboardMainViewController class]])
+    {
+        DashboardMainViewController* bVC = (DashboardMainViewController*)viewC;
+        
+        bVC.isNeedReload = YES;
+        
+    }
+    
 }
 
 - (void)viewDidLoad {

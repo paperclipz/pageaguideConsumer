@@ -239,7 +239,9 @@
     } failure:^(id object) {
         
         self.vm_appointment_paging.isLoading = NO;
-        
+       
+        [self.ibTableView stopRefresh];
+
         [self.ibTableView stopFooterLoadingView];
 
         [self.ibTableView customTableViewReloadData];

@@ -217,7 +217,6 @@
 		8A9F46211E603DA8005F1453 /* LoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F461B1E603DA8005F1453 /* LoadingManager.m */; };
 		8A9F46241E604645005F1453 /* ConnectionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9F46231E604645005F1453 /* ConnectionHelper.m */; };
 		8AA2CF641FA87A1B0004ECF7 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA2CF621FA87A1B0004ECF7 /* iCarousel.m */; };
-		8AA2CF651FA87A1B0004ECF7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AA2CF631FA87A1B0004ECF7 /* Info.plist */; };
 		8AA2CF671FA87A700004ECF7 /* UnratedViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AA2CF661FA87A700004ECF7 /* UnratedViewControllerV2.xib */; };
 		8AB61D5F1EC41DDE00D49B26 /* TourGuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB61D5E1EC41DDE00D49B26 /* TourGuidePageViewController.m */; };
 		8AB693DA1EDD24A000F9C7A3 /* UnratedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB693D81EDD24A000F9C7A3 /* UnratedViewController.m */; };
@@ -234,6 +233,7 @@
 		8ABC51711E93558700E31560 /* EmptyStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABC51701E93558700E31560 /* EmptyStateView.m */; };
 		8ABC51731E93559000E31560 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ABC51721E93559000E31560 /* EmptyStateView.xib */; };
 		8ABC51771E93700800E31560 /* NSString+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABC51761E93700800E31560 /* NSString+Extra.m */; };
+		8ABEB0F81FC434FD00031691 /* MyCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEB0F71FC434FD00031691 /* MyCustomNavigationBar.m */; };
 		8AC7790A1FAB164500A18083 /* GuestModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC779091FAB164500A18083 /* GuestModeViewController.m */; };
 		8AC7790E1FAB168B00A18083 /* GuestMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7790D1FAB168B00A18083 /* GuestMode.storyboard */; };
 		8AC7791E1FAB1FB200A18083 /* UINavigationController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC7791D1FAB1FB200A18083 /* UINavigationController+Extension.m */; };
@@ -630,7 +630,6 @@
 		8A9F46261E6047BE005F1453 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8AA2CF611FA87A1B0004ECF7 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		8AA2CF621FA87A1B0004ECF7 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
-		8AA2CF631FA87A1B0004ECF7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AA2CF661FA87A700004ECF7 /* UnratedViewControllerV2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnratedViewControllerV2.xib; sourceTree = "<group>"; };
 		8AB61D5D1EC41DDE00D49B26 /* TourGuidePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TourGuidePageViewController.h; sourceTree = "<group>"; };
 		8AB61D5E1EC41DDE00D49B26 /* TourGuidePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TourGuidePageViewController.m; sourceTree = "<group>"; };
@@ -655,6 +654,8 @@
 		8ABC51721E93559000E31560 /* EmptyStateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
 		8ABC51751E93700800E31560 /* NSString+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extra.h"; sourceTree = "<group>"; };
 		8ABC51761E93700800E31560 /* NSString+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extra.m"; sourceTree = "<group>"; };
+		8ABEB0F61FC434FD00031691 /* MyCustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomNavigationBar.h; sourceTree = "<group>"; };
+		8ABEB0F71FC434FD00031691 /* MyCustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomNavigationBar.m; sourceTree = "<group>"; };
 		8AC779081FAB164500A18083 /* GuestModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuestModeViewController.h; sourceTree = "<group>"; };
 		8AC779091FAB164500A18083 /* GuestModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuestModeViewController.m; sourceTree = "<group>"; };
 		8AC7790D1FAB168B00A18083 /* GuestMode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GuestMode.storyboard; sourceTree = "<group>"; };
@@ -1452,6 +1453,7 @@
 		8A9F460D1E603DA8005F1453 /* FRAMEWORK */ = {
 			isa = PBXGroup;
 			children = (
+				8ABEB0F51FC434EC00031691 /* CustomNavigationBar */,
 				8AA2CF601FA87A1B0004ECF7 /* iCarousel */,
 				8A8DB97A1E890F3B00DE467D /* AutoCoding */,
 				8A8E30481E6FB12700A16002 /* FSCalendar */,
@@ -1541,7 +1543,6 @@
 			children = (
 				8AA2CF611FA87A1B0004ECF7 /* iCarousel.h */,
 				8AA2CF621FA87A1B0004ECF7 /* iCarousel.m */,
-				8AA2CF631FA87A1B0004ECF7 /* Info.plist */,
 			);
 			path = iCarousel;
 			sourceTree = "<group>";
@@ -1575,6 +1576,15 @@
 				8ABC51761E93700800E31560 /* NSString+Extra.m */,
 			);
 			path = "NSString+Extension";
+			sourceTree = "<group>";
+		};
+		8ABEB0F51FC434EC00031691 /* CustomNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				8ABEB0F61FC434FD00031691 /* MyCustomNavigationBar.h */,
+				8ABEB0F71FC434FD00031691 /* MyCustomNavigationBar.m */,
+			);
+			path = CustomNavigationBar;
 			sourceTree = "<group>";
 		};
 		8AC779051FAB0F6800A18083 /* GuestMode */ = {
@@ -1804,6 +1814,9 @@
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -1940,7 +1953,6 @@
 				8A4CB6051E63E82500A8BCDA /* Register.storyboard in Resources */,
 				8A7BDE581EA9E8D40036E1E2 /* GoogleService-Info-itunes.plist in Resources */,
 				8A6B68EB1E6D593600D696DE /* icon_concierge_red@2x.png in Resources */,
-				8AA2CF651FA87A1B0004ECF7 /* Info.plist in Resources */,
 				8AFA22F51E6D53520090837C /* 1080x1920.png in Resources */,
 				8A1228AB1E8BD5B80093C92C /* icon_setting_red_Tab@2x.png in Resources */,
 				8A6B68EC1E6D593600D696DE /* icon_history_red@1x.png in Resources */,
@@ -2208,6 +2220,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-paguide/Pods-paguide-resources.sh",
 				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/Intercom.bundle",
+				"${PODS_ROOT}/Intercom/Intercom/Intercom.framework/Versions/A/Resources/IntercomTranslations.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2322,6 +2335,7 @@
 				8A23E9C81E7FDE59001FAB6D /* RequestModel.m in Sources */,
 				8A5B3EBE1E6676C2005BE083 /* EBActionSheetTableViewCell.m in Sources */,
 				8A89BB6D1E84C77800F3B824 /* EmptyTableViewCell.m in Sources */,
+				8ABEB0F81FC434FD00031691 /* MyCustomNavigationBar.m in Sources */,
 				8A23E9CC1E7FE9FC001FAB6D /* SelectPackageViewController.m in Sources */,
 				8AF384B51EB858B700583031 /* TourGuideListingViewController.m in Sources */,
 				8A9BD72B1E78F1870043D171 /* PagingViewModel.m in Sources */,

@@ -12,4 +12,7 @@
 @interface AppointmentPageViewController : MXSegmentedPagerController
 
 @property (nonatomic,assign)BOOL isNeedReload;
+
+@property (nonatomic,assign)BOOL isNeedReset;
+
 @end
