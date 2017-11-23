@@ -1810,7 +1810,7 @@
 				TargetAttributes = {
 					8A772B001E601D2F00763DF7 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = S8YV349CW3;
+						DevelopmentTeam = 4KJSSCCKPM;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -1824,7 +1824,7 @@
 								enabled = 1;
 							};
 							com.apple.SafariKeychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -2938,7 +2938,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = co.pageaguide.consumer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3076411d-32ea-452e-ab75-bf9cd1920110";
+				PROVISIONING_PROFILE = "335e299b-6f4a-471f-b837-aa2ffc38b903";
 				PROVISIONING_PROFILE_SPECIFIER = "PG Consumer iTunes Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "paguide/AppStructure/paguide-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
