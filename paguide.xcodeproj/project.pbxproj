@@ -24,6 +24,9 @@
 		8A1228C01E8D10810093C92C /* paguide_splash_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A1228BF1E8D10810093C92C /* paguide_splash_logo.png */; };
 		8A164B5E1E9736FA004EA3C8 /* AppointmentPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A164B5D1E9736FA004EA3C8 /* AppointmentPageViewController.m */; };
 		8A180C151E88C2AA0056E630 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A180C141E88C2AA0056E630 /* BaseViewController.m */; };
+		8A1D47C11FC6E3BB00694A88 /* ProfileV2TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1D47BF1FC6E3BB00694A88 /* ProfileV2TableViewCell.m */; };
+		8A1D47C21FC6E3BB00694A88 /* ProfileV2TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1D47C01FC6E3BB00694A88 /* ProfileV2TableViewCell.xib */; };
+		8A1D47C41FC6E56B00694A88 /* ProfileV2TableViewCellEdit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A1D47C31FC6E56B00694A88 /* ProfileV2TableViewCellEdit.xib */; };
 		8A23E9A21E7F997C001FAB6D /* RequestGuideTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E9A11E7F997C001FAB6D /* RequestGuideTableViewCell.m */; };
 		8A23E9A51E7FAF27001FAB6D /* FormDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E9A41E7FAF27001FAB6D /* FormDataModel.m */; };
 		8A23E9A91E7FC520001FAB6D /* NSDate+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A23E9A81E7FC520001FAB6D /* NSDate+Extra.m */; };
@@ -323,6 +326,10 @@
 		8A164B5D1E9736FA004EA3C8 /* AppointmentPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppointmentPageViewController.m; sourceTree = "<group>"; };
 		8A180C131E88C2AA0056E630 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8A180C141E88C2AA0056E630 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		8A1D47BE1FC6E3BB00694A88 /* ProfileV2TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileV2TableViewCell.h; sourceTree = "<group>"; };
+		8A1D47BF1FC6E3BB00694A88 /* ProfileV2TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileV2TableViewCell.m; sourceTree = "<group>"; };
+		8A1D47C01FC6E3BB00694A88 /* ProfileV2TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileV2TableViewCell.xib; sourceTree = "<group>"; };
+		8A1D47C31FC6E56B00694A88 /* ProfileV2TableViewCellEdit.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileV2TableViewCellEdit.xib; sourceTree = "<group>"; };
 		8A23E9A01E7F997C001FAB6D /* RequestGuideTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestGuideTableViewCell.h; sourceTree = "<group>"; };
 		8A23E9A11E7F997C001FAB6D /* RequestGuideTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestGuideTableViewCell.m; sourceTree = "<group>"; };
 		8A23E9A31E7FAF27001FAB6D /* FormDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormDataModel.h; sourceTree = "<group>"; };
@@ -1268,6 +1275,10 @@
 				8A1176D31E6D5F6600C72B5A /* ProfileTableViewCell.m */,
 				8ABC51681E923BE000E31560 /* PackageBookmarkTableViewController.h */,
 				8ABC51691E923BE000E31560 /* PackageBookmarkTableViewController.m */,
+				8A1D47BE1FC6E3BB00694A88 /* ProfileV2TableViewCell.h */,
+				8A1D47BF1FC6E3BB00694A88 /* ProfileV2TableViewCell.m */,
+				8A1D47C01FC6E3BB00694A88 /* ProfileV2TableViewCell.xib */,
+				8A1D47C31FC6E56B00694A88 /* ProfileV2TableViewCellEdit.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1810,7 +1821,7 @@
 				TargetAttributes = {
 					8A772B001E601D2F00763DF7 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 4KJSSCCKPM;
+						DevelopmentTeam = S8YV349CW3;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -1879,6 +1890,7 @@
 				8A1228A71E8BCC920093C92C /* placeholder_profile.png in Resources */,
 				8A9BD7101E77E2A40043D171 /* VerifyAccountViewController.xib in Resources */,
 				8AB693E01EDD251500F9C7A3 /* UnratedCollectionViewCell.xib in Resources */,
+				8A1D47C41FC6E56B00694A88 /* ProfileV2TableViewCellEdit.xib in Resources */,
 				8AF982F61F7A2F6C000021BB /* ChattingViewController.xib in Resources */,
 				8A7656991E9B906300A99C4E /* icon_collapse_down_red@1x.png in Resources */,
 				8A7656951E9B906300A99C4E /* icon_calendar_grey.png in Resources */,
@@ -1962,6 +1974,7 @@
 				8A7656A31E9B906300A99C4E /* icon_minus_red.png in Resources */,
 				8A76569C1E9B906300A99C4E /* icon_collapse_up_red@2x.png in Resources */,
 				8A8E307A1E6FB12700A16002 /* Info.plist in Resources */,
+				8A1D47C21FC6E3BB00694A88 /* ProfileV2TableViewCell.xib in Resources */,
 				8ABC51731E93559000E31560 /* EmptyStateView.xib in Resources */,
 				8A6B68F01E6D593600D696DE /* icon_request_red@1x.png in Resources */,
 				8A7656961E9B906300A99C4E /* icon_check_red.png in Resources */,
@@ -2247,6 +2260,7 @@
 				8A5B3ED21E669600005BE083 /* KeyValueModel.m in Sources */,
 				8A5B3ECF1E66857C005BE083 /* TTTAttributedLabel+Block.m in Sources */,
 				8A68F5D81EBB080E0087A613 /* UITextView+Placeholder.m in Sources */,
+				8A1D47C11FC6E3BB00694A88 /* ProfileV2TableViewCell.m in Sources */,
 				8AF982FB1F7A2F91000021BB /* ChattingTableViewCell.m in Sources */,
 				8A9BD70F1E77E2A40043D171 /* VerifyAccountViewController.m in Sources */,
 				8AFA22CD1E6D3EF90090837C /* GalleryViewController.m in Sources */,

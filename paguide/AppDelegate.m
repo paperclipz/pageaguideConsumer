@@ -53,7 +53,7 @@
     
     [self configureNotificaiton:application];
     
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-60, -60)
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-200, 0)
                                                          forBarMetrics:UIBarMetricsDefault];
   //  do app update checking
     

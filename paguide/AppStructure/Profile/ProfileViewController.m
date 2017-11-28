@@ -28,6 +28,7 @@
     BOOL isEditable;
     
 }
+@property (weak, nonatomic) IBOutlet UIView *ibProfileContainerView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnEdit;
 @property (weak, nonatomic) IBOutlet UITableView *ibTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *ibProfileImgView;
@@ -148,6 +149,7 @@
     [super viewDidLoad];
     
     [self setNavigationButtonAsEdit:@"Edit"];
+        
     isEditable = NO;
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -165,6 +167,7 @@
     
     [self requestServerForUserProfile];
     
+   
     // Do any additional setup after loading the view.
 }
 

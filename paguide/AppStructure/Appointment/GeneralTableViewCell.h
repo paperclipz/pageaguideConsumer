@@ -10,24 +10,40 @@
 #import "RatingView.h"
 
 @interface GeneralTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIView *ibBorderView;
+
 @property (weak, nonatomic) IBOutlet UILabel *lblHeader;
+
+
+@property (weak, nonatomic) IBOutlet UIView *ibBorderView;
+@property (weak, nonatomic) IBOutlet UIView *ibBorderView2;
+@property (weak, nonatomic) IBOutlet UIView *ibBorderView3;
+@property (weak, nonatomic) IBOutlet UIView *ibBorderView4;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle3;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle4;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle5;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle6;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle2;
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription2;
+@property (weak, nonatomic) IBOutlet UILabel *lblDescription3;
+@property (weak, nonatomic) IBOutlet UILabel *lblDescription4;
+@property (weak, nonatomic) IBOutlet UILabel *lblDescription5;
 @property (weak, nonatomic) IBOutlet UIButton *btnSelection;
 @property (weak, nonatomic) IBOutlet RatingView *ratingView;
-@property (weak, nonatomic) IBOutlet UILabel *lblTitle3;
 @property (weak, nonatomic) IBOutlet UITextField *txtField;
 @property (weak, nonatomic) IBOutlet UITextField *txtField2;
 @property (weak, nonatomic) IBOutlet UITextField *txtField3;
 @property (weak, nonatomic) IBOutlet UIButton *ibButton1;
 @property (weak, nonatomic) IBOutlet UIButton *ibButton2;
+@property (weak, nonatomic) IBOutlet UIButton *ibButtonAction1;
+@property (weak, nonatomic) IBOutlet UIButton *ibButtonAction2;
+@property (weak, nonatomic) IBOutlet UIButton *ibButtonAction3;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSend;
 @property (weak, nonatomic) IBOutlet UIImageView *ibImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *ibImageView2;
 
 @property(nonatomic,copy)VoidBlock didSelectBlock;
 

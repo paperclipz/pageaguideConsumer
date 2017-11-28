@@ -12,6 +12,7 @@
 @interface PackageDetailsTableViewCell()
 
 @property(nonatomic,assign)MKCoordinateRegion region;
+@property(nonatomic,strong)MKPointAnnotation* annotation;
 
 @end
 
@@ -19,6 +20,17 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.annotation = [[MKPointAnnotation alloc] init];
+    [self.annotation setCoordinate:self.region.center];
+    [self.annotation setTitle:@""]; //You can set the subtitle too
+    [self.ibMapView addAnnotation:self.annotation];
+    
+    MKCoordinateRegion zoomIn = self.ibMapView.region;
+    zoomIn.span.latitudeDelta *= 0.9;
+    zoomIn.span.longitudeDelta *= 0.9;
+    [self.ibMapView setRegion:zoomIn animated:NO];
+    self.ibMapView.userInteractionEnabled = NO;
     // Initialization code
 }
 
@@ -34,18 +46,10 @@
     CLLocationCoordinate2D coord = location.coordinate;
     self.region = MKCoordinateRegionMakeWithDistance(coord,1000,1000);
     
-    
     [self.ibMapView setRegion:self.region];
     
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    [annotation setCoordinate:self.region.center];
-    [annotation setTitle:@""]; //You can set the subtitle too
-    [self.ibMapView addAnnotation:annotation];
-    
-    MKCoordinateRegion zoomIn = self.ibMapView.region;
-    zoomIn.span.latitudeDelta *= 0.9;
-    zoomIn.span.longitudeDelta *= 0.9;
-    [self.ibMapView setRegion:zoomIn animated:NO];
+    [self.annotation setCoordinate:self.region.center];
+
 
     
 }

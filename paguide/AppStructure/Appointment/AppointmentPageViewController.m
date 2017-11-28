@@ -110,17 +110,17 @@
     
 }
 
--(void)setupProfile
-{
-    
-    UIImage* image = [UIImage imageNamed:@"icon_profile_red.png"];
-    
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(btnProfileClicked:)];
-    
-    self.navigationItem.leftBarButtonItems = @[leftButton];
-    
-    
-}
+//-(void)setupProfile
+//{
+//
+//    UIImage* image = [UIImage imageNamed:@"icon_profile_red.png"];
+//
+//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(btnProfileClicked:)];
+//
+//    self.navigationItem.leftBarButtonItems = @[leftButton];
+//
+//
+//}
 - (void)setupPageMenu
 {
     
@@ -249,8 +249,9 @@
     
     [self setupIntercom];
     
-    
-    [self setupProfile];
+    self.title = [@"Appointment" uppercaseString];
+
+ //   [self setupProfile];
     // Do any additional setup after loading the view.
 }
 

@@ -47,6 +47,8 @@
     BOOL isPackageBookmarked;
     
     MerchantProfileModel* merchantProfileModel;
+    
+    PackageDetailsTableViewCell* mapCell;// cache map cell so that i wont reload and cause slow
 
 }
 
@@ -283,10 +285,16 @@
     
     self.guestModeModel = [[DataManager Instance]guestModeModel];
     
+    mapCell = [self.ibTableView dequeueReusableCellWithIdentifier:@"package_details_map"];
+
     [self initSelfView];
     
     
-    arrCellList = @[cell_type_title,cell_type_details,cell_type_desc,cell_type_map,cell_type_cancellation];
+    arrCellList = @[cell_type_title,
+                    cell_type_details,
+                    cell_type_desc,
+                    cell_type_map,
+                    cell_type_cancellation];
    
     arrCellDetailsList = @[cell_detail_packageCode,
                            cell_detail_mode,
@@ -635,10 +643,10 @@
         
         cell.lblTitle.text = @"Description";
       
-        
         if (self.packageModel.desc.customAttributedText) {
             
             cell.lblTTDesc.attributedText = self.packageModel.desc.customAttributedText;
+            
         }
         else{
             
@@ -646,12 +654,12 @@
                 
                 cell.lblTTDesc.attributedText = attStr;
                 
-                [self.ibTableView reloadData];
+                [self.ibTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                 
                 
             }];
-            
         }
+       
         
 
         return cell;
@@ -659,14 +667,23 @@
     
     else if ([type isEqualToString:cell_type_map]) {
         
-        PackageDetailsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"package_details_map"];
+        PackageDetailsTableViewCell* cell;
+        
+        if (mapCell) {
+            cell = mapCell;
+        }
+        else{
+            
+            cell = [tableView dequeueReusableCellWithIdentifier:@"package_details_map"];
+            mapCell = cell;
+        }
         
         NSArray* coordinate = [self.packageModel.latlng componentsSeparatedByString:@","];
-        
+
         float latitude = [coordinate[0] floatValue];
-        
+
         float longtitude = [coordinate[1] floatValue];
-        
+
         CLLocation *location = [[CLLocation alloc]initWithLatitude:latitude longitude:longtitude];
 
         [cell setLocation:location];
@@ -679,23 +696,26 @@
         PackageDetailsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"package_details_desc2"];
         
         cell.lblTitle.text = @"Cancellation Policy";
+      
         
         if (self.packageModel.cancellation_policy.customAttributedText) {
             
             cell.lblTTDesc.attributedText = self.packageModel.cancellation_policy.customAttributedText;
+
         }
         else{
-        
+            
             [self.packageModel.cancellation_policy getAttributedText:^(NSAttributedString *attStr) {
                 
                 cell.lblTTDesc.attributedText = attStr;
                 
-                [self.ibTableView reloadData];
+                [self.ibTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
                 
-
+                
             }];
-
+            
         }
+       
         
         return cell;
         

@@ -71,6 +71,16 @@
     
 }
 
++(void)setRoundBorder:(UIView*)view color:(UIColor*)color borderRadius:(float)borderRadius BorderWitdh:(float)width
+{
+    
+    [[view layer] setBorderWidth:width];
+    [[view layer] setBorderColor:color.CGColor];
+    [[view layer] setCornerRadius:borderRadius];
+    [[view layer] setMasksToBounds:YES];
+    
+}
+
 #pragma mark - App Utils
 
 +(BOOL)isDevBuilt

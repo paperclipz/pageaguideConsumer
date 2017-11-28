@@ -27,6 +27,8 @@
 
 +(CGRect)getWindowFrame;
 
++(void)setRoundBorder:(UIView*)view color:(UIColor*)color borderRadius:(float)borderRadius BorderWitdh:(float)width;
+
 +(void)setRoundBorder:(UIView*)view color:(UIColor*)color borderRadius:(float)borderRadius;
 
 #pragma mark - App Utils

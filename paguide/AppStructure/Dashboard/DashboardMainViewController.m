@@ -81,6 +81,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.title = [@"Dashboard" uppercaseString];
     // Do any additional setup after loading the view.
 }
 
