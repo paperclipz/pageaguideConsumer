@@ -12,7 +12,6 @@
 #import "EBActionSheetViewController.h"
 #import "ProfileModel.h"
 #import "ActionSheetStringPicker.h"
-#import "DLFPhotosPickerViewController.h"
 
 #define cell_name @"Name"
 #define cell_country @"Country"
@@ -21,7 +20,7 @@
 
 @protocol CountryModel;
 
-@interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource,DLFPhotosPickerViewControllerDelegate>
+@interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource>
 {
     int segmentedControlIndex;
     
@@ -343,30 +342,30 @@
 
 -(void)showGalleryView
 {
-    DLFPhotosPickerViewController *picker = [[DLFPhotosPickerViewController alloc] init];
-    [picker setPhotosPickerDelegate:self];
-    picker.multipleSelections = NO;
-    [self presentViewController:picker animated:YES completion:nil];
+//    DLFPhotosPickerViewController *picker = [[DLFPhotosPickerViewController alloc] init];
+//    [picker setPhotosPickerDelegate:self];
+//    picker.multipleSelections = NO;
+//    [self presentViewController:picker animated:YES completion:nil];
 }
 
-- (void)photosPicker:(DLFPhotosPickerViewController *)photosPicker detailViewController:(DLFDetailViewController *)detailViewController didSelectPhoto:(PHAsset *)photo {
-    [photosPicker dismissViewControllerAnimated:YES completion:^{
-        [[PHImageManager defaultManager] requestImageForAsset:photo targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
-            NSLog(@"Selected one asset");
-            
-            
-            self.editProfileModel.uploadImage = result;
-            
-            self.ibProfileImgView.image = result;
-            
-        }];
-    }];
-}
-
-- (void)photosPickerDidCancel:(DLFPhotosPickerViewController *)photosPicker
-{
-    [photosPicker dismissViewControllerAnimated:YES completion:nil];
-}
+//- (void)photosPicker:(DLFPhotosPickerViewController *)photosPicker detailViewController:(DLFDetailViewController *)detailViewController didSelectPhoto:(PHAsset *)photo {
+//    [photosPicker dismissViewControllerAnimated:YES completion:^{
+//        [[PHImageManager defaultManager] requestImageForAsset:photo targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
+//            NSLog(@"Selected one asset");
+//
+//
+//            self.editProfileModel.uploadImage = result;
+//
+//            self.ibProfileImgView.image = result;
+//
+//        }];
+//    }];
+//}
+//
+//- (void)photosPickerDidCancel:(DLFPhotosPickerViewController *)photosPicker
+//{
+//    [photosPicker dismissViewControllerAnimated:YES completion:nil];
+//}
 
 -(void)showCountryView:(StringBlock)completion
 {

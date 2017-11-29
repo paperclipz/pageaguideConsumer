@@ -168,6 +168,29 @@
 		8A851FCB1E66D8C300904B6C /* ProfileHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A851FCA1E66D8C300904B6C /* ProfileHeaderFooterView.m */; };
 		8A851FCD1E66D8D600904B6C /* ProfileHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A851FCC1E66D8D600904B6C /* ProfileHeaderFooterView.xib */; };
 		8A851FD01E66D97300904B6C /* CommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A851FCF1E66D97300904B6C /* CommonView.m */; };
+		8A87F7BF1FCD6F3E004B5454 /* DKCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7A11FCD6F3E004B5454 /* DKCamera.swift */; };
+		8A87F7C01FCD6F3E004B5454 /* DKCameraResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A87F7A21FCD6F3E004B5454 /* DKCameraResource.bundle */; };
+		8A87F7C11FCD6F3E004B5454 /* DKCameraResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7A31FCD6F3E004B5454 /* DKCameraResource.swift */; };
+		8A87F7C21FCD6F3E004B5454 /* DKGroupDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7A61FCD6F3E004B5454 /* DKGroupDataManager.swift */; };
+		8A87F7C31FCD6F3E004B5454 /* DKAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7A81FCD6F3E004B5454 /* DKAsset.swift */; };
+		8A87F7C41FCD6F3E004B5454 /* DKAssetGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7A91FCD6F3E004B5454 /* DKAssetGroup.swift */; };
+		8A87F7C51FCD6F3E004B5454 /* DKImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7AA1FCD6F3E004B5454 /* DKImageManager.swift */; };
+		8A87F7C61FCD6F3E004B5454 /* DKImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A87F7AC1FCD6F3E004B5454 /* DKImagePickerController.bundle */; };
+		8A87F7C71FCD6F3E004B5454 /* DKImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7AE1FCD6F3E004B5454 /* DKImagePickerController.swift */; };
+		8A87F7C81FCD6F3E004B5454 /* DKImagePickerControllerDefaultUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7AF1FCD6F3E004B5454 /* DKImagePickerControllerDefaultUIDelegate.swift */; };
+		8A87F7C91FCD6F3E004B5454 /* DKImageResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7B01FCD6F3E004B5454 /* DKImageResource.swift */; };
+		8A87F7CA1FCD6F3E004B5454 /* DKPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7B11FCD6F3E004B5454 /* DKPopoverViewController.swift */; };
+		8A87F7CB1FCD6F3E004B5454 /* DKAssetGroupCellItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7B41FCD6F3E004B5454 /* DKAssetGroupCellItemProtocol.swift */; };
+		8A87F7CC1FCD6F3E004B5454 /* DKAssetGroupDetailBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7B51FCD6F3E004B5454 /* DKAssetGroupDetailBaseCell.swift */; };
+		8A87F7CD1FCD6F3E004B5454 /* DKAssetGroupDetailCameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7B61FCD6F3E004B5454 /* DKAssetGroupDetailCameraCell.swift */; };
+		8A87F7CE1FCD6F3E004B5454 /* DKAssetGroupDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7B71FCD6F3E004B5454 /* DKAssetGroupDetailImageCell.swift */; };
+		8A87F7CF1FCD6F3E004B5454 /* DKAssetGroupDetailVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7B81FCD6F3E004B5454 /* DKAssetGroupDetailVideoCell.swift */; };
+		8A87F7D01FCD6F3E004B5454 /* DKAssetGroupDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7B91FCD6F3E004B5454 /* DKAssetGroupDetailVC.swift */; };
+		8A87F7D11FCD6F3E004B5454 /* DKAssetGroupGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7BA1FCD6F3E004B5454 /* DKAssetGroupGridLayout.swift */; };
+		8A87F7D21FCD6F3E004B5454 /* DKAssetGroupListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7BB1FCD6F3E004B5454 /* DKAssetGroupListVC.swift */; };
+		8A87F7D31FCD6F3E004B5454 /* DKPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A87F7BC1FCD6F3E004B5454 /* DKPermissionView.swift */; };
+		8A87F7D41FCD6F3E004B5454 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8A87F7BD1FCD6F3E004B5454 /* LICENSE */; };
+		8A87F7D51FCD6F3E004B5454 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8A87F7BE1FCD6F3E004B5454 /* README.md */; };
 		8A89BB691E84C65400F3B824 /* UILabel+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A89BB681E84C65400F3B824 /* UILabel+Extra.m */; };
 		8A89BB6D1E84C77800F3B824 /* EmptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A89BB6B1E84C77800F3B824 /* EmptyTableViewCell.m */; };
 		8A89BB6E1E84C77800F3B824 /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A89BB6C1E84C77800F3B824 /* EmptyTableViewCell.xib */; };
@@ -541,6 +564,30 @@
 		8A851FCC1E66D8D600904B6C /* ProfileHeaderFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderFooterView.xib; sourceTree = "<group>"; };
 		8A851FCE1E66D97300904B6C /* CommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonView.h; sourceTree = "<group>"; };
 		8A851FCF1E66D97300904B6C /* CommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonView.m; sourceTree = "<group>"; };
+		8A87F7A11FCD6F3E004B5454 /* DKCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKCamera.swift; sourceTree = "<group>"; };
+		8A87F7A21FCD6F3E004B5454 /* DKCameraResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DKCameraResource.bundle; sourceTree = "<group>"; };
+		8A87F7A31FCD6F3E004B5454 /* DKCameraResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKCameraResource.swift; sourceTree = "<group>"; };
+		8A87F7A61FCD6F3E004B5454 /* DKGroupDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKGroupDataManager.swift; sourceTree = "<group>"; };
+		8A87F7A81FCD6F3E004B5454 /* DKAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKAsset.swift; sourceTree = "<group>"; };
+		8A87F7A91FCD6F3E004B5454 /* DKAssetGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKAssetGroup.swift; sourceTree = "<group>"; };
+		8A87F7AA1FCD6F3E004B5454 /* DKImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKImageManager.swift; sourceTree = "<group>"; };
+		8A87F7AC1FCD6F3E004B5454 /* DKImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DKImagePickerController.bundle; sourceTree = "<group>"; };
+		8A87F7AD1FCD6F3E004B5454 /* DKImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKImagePickerController.h; sourceTree = "<group>"; };
+		8A87F7AE1FCD6F3E004B5454 /* DKImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKImagePickerController.swift; sourceTree = "<group>"; };
+		8A87F7AF1FCD6F3E004B5454 /* DKImagePickerControllerDefaultUIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKImagePickerControllerDefaultUIDelegate.swift; sourceTree = "<group>"; };
+		8A87F7B01FCD6F3E004B5454 /* DKImageResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKImageResource.swift; sourceTree = "<group>"; };
+		8A87F7B11FCD6F3E004B5454 /* DKPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKPopoverViewController.swift; sourceTree = "<group>"; };
+		8A87F7B41FCD6F3E004B5454 /* DKAssetGroupCellItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKAssetGroupCellItemProtocol.swift; sourceTree = "<group>"; };
+		8A87F7B51FCD6F3E004B5454 /* DKAssetGroupDetailBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKAssetGroupDetailBaseCell.swift; sourceTree = "<group>"; };
+		8A87F7B61FCD6F3E004B5454 /* DKAssetGroupDetailCameraCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKAssetGroupDetailCameraCell.swift; sourceTree = "<group>"; };
+		8A87F7B71FCD6F3E004B5454 /* DKAssetGroupDetailImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKAssetGroupDetailImageCell.swift; sourceTree = "<group>"; };
+		8A87F7B81FCD6F3E004B5454 /* DKAssetGroupDetailVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKAssetGroupDetailVideoCell.swift; sourceTree = "<group>"; };
+		8A87F7B91FCD6F3E004B5454 /* DKAssetGroupDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKAssetGroupDetailVC.swift; sourceTree = "<group>"; };
+		8A87F7BA1FCD6F3E004B5454 /* DKAssetGroupGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKAssetGroupGridLayout.swift; sourceTree = "<group>"; };
+		8A87F7BB1FCD6F3E004B5454 /* DKAssetGroupListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKAssetGroupListVC.swift; sourceTree = "<group>"; };
+		8A87F7BC1FCD6F3E004B5454 /* DKPermissionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DKPermissionView.swift; sourceTree = "<group>"; };
+		8A87F7BD1FCD6F3E004B5454 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8A87F7BE1FCD6F3E004B5454 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8A89BB671E84C65400F3B824 /* UILabel+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extra.h"; sourceTree = "<group>"; };
 		8A89BB681E84C65400F3B824 /* UILabel+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extra.m"; sourceTree = "<group>"; };
 		8A89BB6A1E84C77800F3B824 /* EmptyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyTableViewCell.h; sourceTree = "<group>"; };
@@ -1283,6 +1330,93 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		8A87F79F1FCD6F3E004B5454 /* DKImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				8A87F7A01FCD6F3E004B5454 /* DKCamera */,
+				8A87F7A41FCD6F3E004B5454 /* DKImageManager */,
+				8A87F7AB1FCD6F3E004B5454 /* DKImagePickerController */,
+				8A87F7BD1FCD6F3E004B5454 /* LICENSE */,
+				8A87F7BE1FCD6F3E004B5454 /* README.md */,
+			);
+			path = DKImagePickerController;
+			sourceTree = "<group>";
+		};
+		8A87F7A01FCD6F3E004B5454 /* DKCamera */ = {
+			isa = PBXGroup;
+			children = (
+				8A87F7A11FCD6F3E004B5454 /* DKCamera.swift */,
+				8A87F7A21FCD6F3E004B5454 /* DKCameraResource.bundle */,
+				8A87F7A31FCD6F3E004B5454 /* DKCameraResource.swift */,
+			);
+			path = DKCamera;
+			sourceTree = "<group>";
+		};
+		8A87F7A41FCD6F3E004B5454 /* DKImageManager */ = {
+			isa = PBXGroup;
+			children = (
+				8A87F7A51FCD6F3E004B5454 /* Data */,
+				8A87F7AA1FCD6F3E004B5454 /* DKImageManager.swift */,
+			);
+			path = DKImageManager;
+			sourceTree = "<group>";
+		};
+		8A87F7A51FCD6F3E004B5454 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8A87F7A61FCD6F3E004B5454 /* DKGroupDataManager.swift */,
+				8A87F7A71FCD6F3E004B5454 /* Model */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		8A87F7A71FCD6F3E004B5454 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8A87F7A81FCD6F3E004B5454 /* DKAsset.swift */,
+				8A87F7A91FCD6F3E004B5454 /* DKAssetGroup.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A87F7AB1FCD6F3E004B5454 /* DKImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				8A87F7AC1FCD6F3E004B5454 /* DKImagePickerController.bundle */,
+				8A87F7AD1FCD6F3E004B5454 /* DKImagePickerController.h */,
+				8A87F7AE1FCD6F3E004B5454 /* DKImagePickerController.swift */,
+				8A87F7AF1FCD6F3E004B5454 /* DKImagePickerControllerDefaultUIDelegate.swift */,
+				8A87F7B01FCD6F3E004B5454 /* DKImageResource.swift */,
+				8A87F7B11FCD6F3E004B5454 /* DKPopoverViewController.swift */,
+				8A87F7B21FCD6F3E004B5454 /* View */,
+			);
+			path = DKImagePickerController;
+			sourceTree = "<group>";
+		};
+		8A87F7B21FCD6F3E004B5454 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A87F7B31FCD6F3E004B5454 /* Cell */,
+				8A87F7B91FCD6F3E004B5454 /* DKAssetGroupDetailVC.swift */,
+				8A87F7BA1FCD6F3E004B5454 /* DKAssetGroupGridLayout.swift */,
+				8A87F7BB1FCD6F3E004B5454 /* DKAssetGroupListVC.swift */,
+				8A87F7BC1FCD6F3E004B5454 /* DKPermissionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8A87F7B31FCD6F3E004B5454 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8A87F7B41FCD6F3E004B5454 /* DKAssetGroupCellItemProtocol.swift */,
+				8A87F7B51FCD6F3E004B5454 /* DKAssetGroupDetailBaseCell.swift */,
+				8A87F7B61FCD6F3E004B5454 /* DKAssetGroupDetailCameraCell.swift */,
+				8A87F7B71FCD6F3E004B5454 /* DKAssetGroupDetailImageCell.swift */,
+				8A87F7B81FCD6F3E004B5454 /* DKAssetGroupDetailVideoCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		8A89BB661E84C64300F3B824 /* UILabel+Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -1464,6 +1598,7 @@
 		8A9F460D1E603DA8005F1453 /* FRAMEWORK */ = {
 			isa = PBXGroup;
 			children = (
+				8A87F79F1FCD6F3E004B5454 /* DKImagePickerController */,
 				8ABEB0F51FC434EC00031691 /* CustomNavigationBar */,
 				8AA2CF601FA87A1B0004ECF7 /* iCarousel */,
 				8A8DB97A1E890F3B00DE467D /* AutoCoding */,
@@ -1821,7 +1956,7 @@
 				TargetAttributes = {
 					8A772B001E601D2F00763DF7 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = S8YV349CW3;
+						DevelopmentTeam = 4KJSSCCKPM;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -1887,6 +2022,8 @@
 				8A7656A91E9B906300A99C4E /* icon_share_white.png in Resources */,
 				8A76568F1E9B906300A99C4E /* icon_arrow_next_red.png in Resources */,
 				8A6B68EF1E6D593600D696DE /* icon_package_red@2x.png in Resources */,
+				8A87F7C01FCD6F3E004B5454 /* DKCameraResource.bundle in Resources */,
+				8A87F7D41FCD6F3E004B5454 /* LICENSE in Resources */,
 				8A1228A71E8BCC920093C92C /* placeholder_profile.png in Resources */,
 				8A9BD7101E77E2A40043D171 /* VerifyAccountViewController.xib in Resources */,
 				8AB693E01EDD251500F9C7A3 /* UnratedCollectionViewCell.xib in Resources */,
@@ -1895,6 +2032,7 @@
 				8A7656991E9B906300A99C4E /* icon_collapse_down_red@1x.png in Resources */,
 				8A7656951E9B906300A99C4E /* icon_calendar_grey.png in Resources */,
 				8A851FCD1E66D8D600904B6C /* ProfileHeaderFooterView.xib in Resources */,
+				8A87F7C61FCD6F3E004B5454 /* DKImagePickerController.bundle in Resources */,
 				8ABC51561E8E523D00E31560 /* package.json in Resources */,
 				8AF983001F7A2FD0000021BB /* ChattingSenderTblVCell.xib in Resources */,
 				8A7656AB1E9B906300A99C4E /* icon_star_full_white.png in Resources */,
@@ -1945,6 +2083,7 @@
 				8A7656A11E9B906300A99C4E /* icon_filter_red.png in Resources */,
 				8A7656931E9B906300A99C4E /* icon_bookmark_red@2x.png in Resources */,
 				8AF983031F7A3B5A000021BB /* send-grey.png in Resources */,
+				8A87F7D51FCD6F3E004B5454 /* README.md in Resources */,
 				8A76569E1E9B906300A99C4E /* icon_dropdown_red@1x.png in Resources */,
 				8A7656A51E9B906300A99C4E /* icon_profile_red@1x.png in Resources */,
 				8A6B68E91E6D593600D696DE /* icon_appointment_red@2x.png in Resources */,
@@ -2051,7 +2190,6 @@
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/DLFPhotosPicker/DLFPhotosPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
@@ -2084,7 +2222,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLFPhotosPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
@@ -2255,12 +2392,14 @@
 				8A772B0C1E601D3000763DF7 /* ViewController.m in Sources */,
 				8A56376B1E697B0600ACAF2B /* GalleryCollectionViewCell.m in Sources */,
 				8AFFDE441E769B0900C55B55 /* CountryModel.m in Sources */,
+				8A87F7C51FCD6F3E004B5454 /* DKImageManager.swift in Sources */,
 				8AFA22C31E6D16550090837C /* DashboardPackageFilterViewController.m in Sources */,
 				8A8E306F1E6FB12700A16002 /* FSCalendarCollectionView.m in Sources */,
 				8A5B3ED21E669600005BE083 /* KeyValueModel.m in Sources */,
 				8A5B3ECF1E66857C005BE083 /* TTTAttributedLabel+Block.m in Sources */,
 				8A68F5D81EBB080E0087A613 /* UITextView+Placeholder.m in Sources */,
 				8A1D47C11FC6E3BB00694A88 /* ProfileV2TableViewCell.m in Sources */,
+				8A87F7D11FCD6F3E004B5454 /* DKAssetGroupGridLayout.swift in Sources */,
 				8AF982FB1F7A2F91000021BB /* ChattingTableViewCell.m in Sources */,
 				8A9BD70F1E77E2A40043D171 /* VerifyAccountViewController.m in Sources */,
 				8AFA22CD1E6D3EF90090837C /* GalleryViewController.m in Sources */,
@@ -2272,6 +2411,7 @@
 				8A4F705D1F7E2A5200251054 /* ChatModel.m in Sources */,
 				8A772B091E601D2F00763DF7 /* AppDelegate.m in Sources */,
 				8A851FBB1E66C5CA00904B6C /* DashboardPackageViewController.m in Sources */,
+				8A87F7C81FCD6F3E004B5454 /* DKImagePickerControllerDefaultUIDelegate.swift in Sources */,
 				8A5637721E698FE100ACAF2B /* CommonTableViewCell.m in Sources */,
 				8A5637181E68038D00ACAF2B /* ApptHeaderTableViewCell.m in Sources */,
 				8A6EB1D01E715F1A0022ABA2 /* RatingViewController.m in Sources */,
@@ -2291,15 +2431,19 @@
 				8A6EB1D41E71627A0022ABA2 /* CustomPopOutViewController.m in Sources */,
 				8A9BD71B1E78E7130043D171 /* ScheduleModel.m in Sources */,
 				8AFFDE411E769AEA00C55B55 /* BaseModel.m in Sources */,
+				8A87F7CF1FCD6F3E004B5454 /* DKAssetGroupDetailVideoCell.swift in Sources */,
 				8AF5F8F71E812BC5004A7322 /* MyAPIClient.m in Sources */,
 				8A8E306E1E6FB12700A16002 /* FSCalendarCell.m in Sources */,
 				8A56375D1E6924E800ACAF2B /* MerchantProfileTableViewCell.m in Sources */,
 				8A8E306D1E6FB12700A16002 /* FSCalendarCalculator.m in Sources */,
+				8A87F7C21FCD6F3E004B5454 /* DKGroupDataManager.swift in Sources */,
 				8A9BD7141E77FF0C0043D171 /* ForgotPasswordViewController.m in Sources */,
 				8AB61D5F1EC41DDE00D49B26 /* TourGuidePageViewController.m in Sources */,
 				8ABC51771E93700800E31560 /* NSString+Extra.m in Sources */,
 				8A68F5D71EBB080E0087A613 /* README.md in Sources */,
 				8A1176DF1E6E973400C72B5A /* PackageDetailsTableViewCell.m in Sources */,
+				8A87F7C31FCD6F3E004B5454 /* DKAsset.swift in Sources */,
+				8A87F7BF1FCD6F3E004B5454 /* DKCamera.swift in Sources */,
 				8A3C7B9F1E8A06900093BA62 /* UpdateViewController.m in Sources */,
 				8A56374B1E69182100ACAF2B /* PackageTableViewCell.m in Sources */,
 				8A4E85A91E63DA3A002DC150 /* DashboardMainTableViewCell.m in Sources */,
@@ -2312,6 +2456,7 @@
 				8A851FBE1E66CAEC00904B6C /* DashboardPackageTableViewCell.m in Sources */,
 				8A9F46211E603DA8005F1453 /* LoadingManager.m in Sources */,
 				8AFFDE4C1E76A1A900C55B55 /* NSArray+value.m in Sources */,
+				8A87F7CA1FCD6F3E004B5454 /* DKPopoverViewController.swift in Sources */,
 				8A8E30751E6FB12700A16002 /* FSCalendarHeaderView.m in Sources */,
 				8AD70D221E77B1A2006F1A8E /* UIViewController+Extension.m in Sources */,
 				8A5637711E698FE100ACAF2B /* CommonCollectionViewCell.m in Sources */,
@@ -2324,6 +2469,7 @@
 				8A23E9BD1E7FD569001FAB6D /* AppointmentWrapperModel.m in Sources */,
 				8AA2CF641FA87A1B0004ECF7 /* iCarousel.m in Sources */,
 				8A8E306C1E6FB12700A16002 /* FSCalendarAppearance.m in Sources */,
+				8A87F7C91FCD6F3E004B5454 /* DKImageResource.swift in Sources */,
 				8A4CB60B1E63EDEC00A8BCDA /* RegisterViewController.m in Sources */,
 				8A6EB1C91E71541D0022ABA2 /* UIButton+System.m in Sources */,
 				8A5637521E691ACA00ACAF2B /* HistoryViewController.m in Sources */,
@@ -2338,10 +2484,12 @@
 				8A8DB97D1E890F3B00DE467D /* AutoCoding.m in Sources */,
 				8A61AD801E6597CA002383A3 /* EBActionSheetViewController.m in Sources */,
 				8A4F70631F7E2B4800251054 /* DateModel.m in Sources */,
+				8A87F7D21FCD6F3E004B5454 /* DKAssetGroupListVC.swift in Sources */,
 				8A9BD7251E78EC7A0043D171 /* PackageModel.m in Sources */,
 				8A5637481E69135B00ACAF2B /* AppointmentListViewController.m in Sources */,
 				8A3C7BB11E8B72A70093BA62 /* ResendVerificationCodeViewController.m in Sources */,
 				8A5674761FBEAA8C0080F934 /* PendingPackageListViewController.m in Sources */,
+				8A87F7C11FCD6F3E004B5454 /* DKCameraResource.swift in Sources */,
 				8A164B5E1E9736FA004EA3C8 /* AppointmentPageViewController.m in Sources */,
 				8A4E953B1E7938DB00F45B96 /* CategorySelectionViewModel.m in Sources */,
 				8A851FCB1E66D8C300904B6C /* ProfileHeaderFooterView.m in Sources */,
@@ -2354,7 +2502,9 @@
 				8AF384B51EB858B700583031 /* TourGuideListingViewController.m in Sources */,
 				8A9BD72B1E78F1870043D171 /* PagingViewModel.m in Sources */,
 				8A8E30771E6FB12700A16002 /* FSCalendarStickyHeader.m in Sources */,
+				8A87F7CC1FCD6F3E004B5454 /* DKAssetGroupDetailBaseCell.swift in Sources */,
 				8A9BD71E1E78E96E0043D171 /* PaginationModel.m in Sources */,
+				8A87F7CD1FCD6F3E004B5454 /* DKAssetGroupDetailCameraCell.swift in Sources */,
 				8A3C7BBD1E8B79900093BA62 /* PopOutViewController.m in Sources */,
 				8ABC51641E92368E00E31560 /* OfflineManager.m in Sources */,
 				8A81E90D1E7947C50073DC23 /* ProfileModel.m in Sources */,
@@ -2362,6 +2512,8 @@
 				8A1228B61E8CCB8C0093C92C /* SettingPopoutViewController.m in Sources */,
 				8A5637601E6970EE00ACAF2B /* HeaderView.m in Sources */,
 				8AD70D1E1E77B167006F1A8E /* MessageManager.m in Sources */,
+				8A87F7D01FCD6F3E004B5454 /* DKAssetGroupDetailVC.swift in Sources */,
+				8A87F7C41FCD6F3E004B5454 /* DKAssetGroup.swift in Sources */,
 				8A8E30761E6FB12700A16002 /* FSCalendarScopeHandle.m in Sources */,
 				8AB693DF1EDD251500F9C7A3 /* UnratedCollectionViewCell.m in Sources */,
 				8A23E9C01E7FD9FA001FAB6D /* MyRequestListingViewController.m in Sources */,
@@ -2372,6 +2524,7 @@
 				8A851FB81E66C5B300904B6C /* RequestGuideViewController.m in Sources */,
 				8A23E9A51E7FAF27001FAB6D /* FormDataModel.m in Sources */,
 				8A5B3EC71E6682D6005BE083 /* README.md in Sources */,
+				8A87F7CB1FCD6F3E004B5454 /* DKAssetGroupCellItemProtocol.swift in Sources */,
 				8AC7791E1FAB1FB200A18083 /* UINavigationController+Extension.m in Sources */,
 				8A9BD7281E78EF3F0043D171 /* PackageWrapperModel.m in Sources */,
 				8A9F461E1E603DA8005F1453 /* Utils.m in Sources */,
@@ -2383,6 +2536,7 @@
 				8A9BD72F1E78F53B0043D171 /* UITableView+Extra.m in Sources */,
 				8AE22C8F1EB8699000F58C72 /* FilterTourGuideViewController.m in Sources */,
 				8AF5F8FD1E8221F6004A7322 /* TransactionModel.m in Sources */,
+				8A87F7CE1FCD6F3E004B5454 /* DKAssetGroupDetailImageCell.swift in Sources */,
 				8A5637751E6992A200ACAF2B /* ReviewViewController.m in Sources */,
 				8AFA22C61E6D19850090837C /* FilterCategoryTableViewCell.m in Sources */,
 				8A1228BA1E8CF6180093C92C /* PushNotificationManager.m in Sources */,
@@ -2390,9 +2544,11 @@
 				8A8E30461E6FAFA500A16002 /* CalenderViewController.m in Sources */,
 				8ABC516A1E923BE000E31560 /* PackageBookmarkTableViewController.m in Sources */,
 				8A6EB1BC1E71218B0022ABA2 /* QuantitySelectionViewController.m in Sources */,
+				8A87F7D31FCD6F3E004B5454 /* DKPermissionView.swift in Sources */,
 				8A6EB1C21E714EB30022ABA2 /* PromoCodeViewController.m in Sources */,
 				8A8DB9841E89359000DE467D /* WebViewController.m in Sources */,
 				8ABC51711E93558700E31560 /* EmptyStateView.m in Sources */,
+				8A87F7C71FCD6F3E004B5454 /* DKImagePickerController.swift in Sources */,
 				8AE22C931EB8705800F58C72 /* MechantListWrapperModel.m in Sources */,
 				8A9F461D1E603DA8005F1453 /* AppConstant.m in Sources */,
 				8A5637151E68011B00ACAF2B /* RatingView.m in Sources */,
@@ -2511,8 +2667,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yiwen beh (CGR599YP24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yiwen beh (KG35U6D959)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2543,6 +2700,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 016FA9B4F739FF465849FE0F /* Pods-paguideTests.debug_dev.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = paguideTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2557,6 +2715,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 561B3089ECECFA0351EFD2AE /* Pods-paguideUITests.debug_dev.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = paguideUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pageadvisor.paguide.paguideUITests;
@@ -2666,8 +2825,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yiwen beh (CGR599YP24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yiwen beh (KG35U6D959)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2697,6 +2857,7 @@
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PAGE ADVISOR PTE. LTD.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2720,6 +2881,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B2D3FDEBCBB5DC537D9CD79 /* Pods-paguideTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = paguideTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2734,6 +2896,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C89E3227AB44762BCC1BC7BE /* Pods-paguideTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = paguideTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2748,6 +2911,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AE14A459BB761AAFF26A8CF9 /* Pods-paguideUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = paguideUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pageadvisor.paguide.paguideUITests;
@@ -2761,6 +2925,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B4E2A6F102445162C625E9AD /* Pods-paguideUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = paguideUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pageadvisor.paguide.paguideUITests;
@@ -2829,6 +2994,7 @@
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Evan Beh (LZD9FTFZF5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 4KJSSCCKPM;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2859,6 +3025,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC2B6A990CF507391786FFC8 /* Pods-paguideTests.itunes_sandbox.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = paguideTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2873,6 +3040,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71BB03365A8DD6AFCD86C539 /* Pods-paguideUITests.itunes_sandbox.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = paguideUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pageadvisor.paguide.paguideUITests;
@@ -2935,6 +3103,7 @@
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PAGE ADVISOR PTE. LTD. (4KJSSCCKPM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 4KJSSCCKPM;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2952,7 +3121,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = co.pageaguide.consumer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "335e299b-6f4a-471f-b837-aa2ffc38b903";
+				PROVISIONING_PROFILE = "3900858a-aa78-4c81-9000-3f999546e1a4";
 				PROVISIONING_PROFILE_SPECIFIER = "PG Consumer iTunes Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "paguide/AppStructure/paguide-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2965,6 +3134,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1EACF9C8E52B6FFF0561B927 /* Pods-paguideTests.itunes_release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = paguideTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2979,6 +3149,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AFE23AD73FEED76DD412BAA2 /* Pods-paguideUITests.itunes_release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = paguideUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pageadvisor.paguide.paguideUITests;
@@ -3041,6 +3212,7 @@
 				CODE_SIGN_ENTITLEMENTS = paguide/paguide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: PAGE ADVISOR PTE. LTD.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = S8YV349CW3;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -3071,6 +3243,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E7EBD452541156179600050 /* Pods-paguideTests.release_dev.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = paguideTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -3085,6 +3258,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 879AB944D6D06CCC1C3CCDDC /* Pods-paguideUITests.release_dev.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = paguideUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pageadvisor.paguide.paguideUITests;

@@ -15,9 +15,10 @@
 #import "EBActionSheetViewController.h"
 #import "ActionSheetStringPicker.h"
 #import "ProfileV2TableViewCell.h"
-#import "DLFPhotosPickerViewController.h"
 #import "TourGuidePageViewController.h"
 
+#import "paguide-Swift.h"
+#import "DKImagePickerController.h"
 
 #import <STPopup/STPopup.h>
 #import "AppointmentModel.h"
@@ -40,8 +41,7 @@
 
 
 @interface SettingTableViewController () <UITableViewDelegate,
-                                          UITableViewDataSource,
-                                          DLFPhotosPickerViewControllerDelegate>
+                                          UITableViewDataSource>
 {
    BOOL isEditMode;
     
@@ -64,7 +64,7 @@
 
 - (IBAction)tabProfileImage:(UITapGestureRecognizer *)sender {
     
-    [self showGalleryView];
+    [self showCameraView];
         
 }
 
@@ -887,38 +887,72 @@
 
 
 #pragma mark - Image Picker and Delegate
--(void)showGalleryView
+
+-(void)showCameraView
 {
-    DLFPhotosPickerViewController *picker = [[DLFPhotosPickerViewController alloc] init];
-    [picker setPhotosPickerDelegate:self];
-    picker.multipleSelections = NO;
-    [self presentViewController:picker animated:YES completion:nil];
-}
-
-- (void)photosPicker:(DLFPhotosPickerViewController *)photosPicker detailViewController:(DLFDetailViewController *)detailViewController didSelectPhoto:(PHAsset *)photo {
+    DKImagePickerController* gVC = [DKImagePickerController new];
+    gVC.singleSelect = YES;
     
+#if TARGET_OS_SIMULATOR
+    gVC.sourceType = DKImagePickerControllerSourceTypePhoto;
+#else
+    gVC.sourceType = DKImagePickerControllerSourceTypeBoth;
+#endif
     
-    NSLog(@"DONE SELECT");
-
-    
-    [photosPicker dismissViewControllerAnimated:YES completion:^{
-        [[PHImageManager defaultManager] requestImageForAsset:photo targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
-            NSLog(@"Selected one asset");
+    gVC.didSelectAssets = ^(NSArray<DKAsset*>* assets)
+    {
+        if ([Utils isArrayNull:assets]) {
+            return;
+        }
+        DKAsset* temp = assets[0];
+        
+        [temp fetchOriginalImage:YES completeBlock:^(UIImage * _Nullable image, NSDictionary * _Nullable info) {
             
-            self.editProfileModel.uploadImage = result;
+            self.editProfileModel.uploadImage = image;
             
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-            
-            //self.ibProfileImgView.image = result;
-            
         }];
+        
+    };
+    [self presentViewController:gVC animated:YES completion:^{
+        
     }];
 }
 
-- (void)photosPickerDidCancel:(DLFPhotosPickerViewController *)photosPicker
-{
-    [photosPicker dismissViewControllerAnimated:YES completion:nil];
-}
+
+
+//-(void)showGalleryView
+//{
+//    DLFPhotosPickerViewController *picker = [[DLFPhotosPickerViewController alloc] init];
+//    [picker setPhotosPickerDelegate:self];
+//    picker.multipleSelections = NO;
+//    [self presentViewController:picker animated:YES completion:nil];
+//}
+//
+//- (void)photosPicker:(DLFPhotosPickerViewController *)photosPicker detailViewController:(DLFDetailViewController *)detailViewController didSelectPhoto:(PHAsset *)photo {
+//
+//
+//    NSLog(@"DONE SELECT");
+//
+//
+//    [photosPicker dismissViewControllerAnimated:YES completion:^{
+//        [[PHImageManager defaultManager] requestImageForAsset:photo targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
+//            NSLog(@"Selected one asset");
+//
+//            self.editProfileModel.uploadImage = result;
+//
+//            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+//
+//            //self.ibProfileImgView.image = result;
+//
+//        }];
+//    }];
+//}
+//
+//- (void)photosPickerDidCancel:(DLFPhotosPickerViewController *)photosPicker
+//{
+//    [photosPicker dismissViewControllerAnimated:YES completion:nil];
+//}
 
 
 #pragma mark - Request Server

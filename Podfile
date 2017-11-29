@@ -46,7 +46,9 @@ def shared_pods
     #pod 'PEPhotoCropEditor'
     # pod 'IAPHelper'
     pod 'GVUserDefaults'
-    pod 'DLFPhotosPicker'
+    #pod 'DLFPhotosPicker'
+    #pod 'DKImagePickerController', '~>3.6.1'
+
     
     #payment
     pod 'Stripe'
