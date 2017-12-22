@@ -755,7 +755,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ubq-8L-Vwi">
-                        <barButtonItem key="rightBarButtonItem" image="icon_bookmark_red.png" id="5Bd-hZ-K1m">
+                        <barButtonItem key="rightBarButtonItem" image="icons8-bookmark" id="5Bd-hZ-K1m">
                             <color key="tintColor" red="0.81960784310000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
@@ -889,6 +889,7 @@
                                                         <constraint firstItem="a8E-OB-Fzf" firstAttribute="top" secondItem="0r2-ZR-V2z" secondAttribute="bottom" constant="5" id="CRu-uI-Yng"/>
                                                         <constraint firstAttribute="trailing" secondItem="x6b-lO-GOb" secondAttribute="trailing" constant="10" id="FdQ-qg-xbk"/>
                                                         <constraint firstItem="4nq-eu-HFk" firstAttribute="top" secondItem="uEs-Xm-ggD" secondAttribute="bottom" id="G9z-UO-Ier"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uEs-Xm-ggD" secondAttribute="trailing" constant="20" symbolic="YES" id="K5d-Vt-GEF"/>
                                                         <constraint firstItem="uEs-Xm-ggD" firstAttribute="leading" secondItem="Yx0-sz-V02" secondAttribute="leading" constant="10" id="L3w-HN-itD"/>
                                                         <constraint firstItem="0r2-ZR-V2z" firstAttribute="leading" secondItem="4nq-eu-HFk" secondAttribute="leading" id="VAT-e5-3YW"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="a8E-OB-Fzf" secondAttribute="trailing" constant="10" id="e0N-qD-H5u"/>
@@ -1965,7 +1966,7 @@
         <scene sceneID="eCK-hq-ncJ">
             <objects>
                 <navigationController id="NNz-lb-dlO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="APPOINTMENT" image="icon_appointment_red.png" id="klL-e2-mLy"/>
+                    <tabBarItem key="tabBarItem" title="APPOINTMENT" image="icons8-calendar" id="klL-e2-mLy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aZH-10-X5E">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2147,7 +2148,7 @@
         <scene sceneID="zro-B9-zWu">
             <objects>
                 <navigationController id="iwI-Ha-G5G" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="DASHBOARD" image="ic_home_white_48pt" id="Tv3-Dw-s9X"/>
+                    <tabBarItem key="tabBarItem" title="DASHBOARD" image="icons8-home-page" id="Tv3-Dw-s9X"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JnS-qb-6SD">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2641,7 +2642,7 @@
         <scene sceneID="ANe-f1-3HE">
             <objects>
                 <navigationController id="q53-XV-SJg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="PROFILE" image="icon_profile_red.png" id="uOg-uH-rk5"/>
+                    <tabBarItem key="tabBarItem" title="PROFILE" image="icons8-name" id="uOg-uH-rk5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ALW-SE-WIJ">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2681,30 +2682,41 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JcS-CN-bp4">
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JcS-CN-bp4">
                                                     <rect key="frame" x="10" y="0.0" width="394" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzU-HD-2ZN">
-                                                            <rect key="frame" x="16" y="14.666666666666664" width="362" height="21"/>
+                                                            <rect key="frame" x="50" y="15" width="328" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQi-jy-ASE">
-                                                            <rect key="frame" x="16" y="40.666666666666664" width="362" height="1"/>
+                                                            <rect key="frame" x="50" y="40" width="328" height="1"/>
                                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="kmN-FT-QoA"/>
                                                             </constraints>
                                                         </view>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YSg-R0-E7j">
+                                                            <rect key="frame" x="15" y="13.333333333333336" width="25" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="YSg-R0-E7j" secondAttribute="height" multiplier="1:1" id="2DS-S7-gl4"/>
+                                                                <constraint firstAttribute="width" constant="25" id="tqU-i9-Bv6"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="uzU-HD-2ZN" firstAttribute="leading" secondItem="JcS-CN-bp4" secondAttribute="leading" constant="16" id="1Ri-CP-Uhs"/>
+                                                        <constraint firstItem="uzU-HD-2ZN" firstAttribute="leading" secondItem="JcS-CN-bp4" secondAttribute="leading" constant="50" id="1Ri-CP-Uhs"/>
                                                         <constraint firstAttribute="trailing" secondItem="uzU-HD-2ZN" secondAttribute="trailing" constant="16" id="2yx-tJ-P2A"/>
+                                                        <constraint firstItem="uzU-HD-2ZN" firstAttribute="leading" secondItem="YSg-R0-E7j" secondAttribute="trailing" constant="10" id="5XK-vT-gTM"/>
+                                                        <constraint firstItem="uzU-HD-2ZN" firstAttribute="top" secondItem="JcS-CN-bp4" secondAttribute="top" constant="15" id="BL0-aA-gad"/>
                                                         <constraint firstAttribute="height" constant="50" id="Ci7-RQ-lbZ"/>
                                                         <constraint firstItem="rQi-jy-ASE" firstAttribute="leading" secondItem="uzU-HD-2ZN" secondAttribute="leading" id="FL5-fB-yNl"/>
-                                                        <constraint firstItem="uzU-HD-2ZN" firstAttribute="centerY" secondItem="JcS-CN-bp4" secondAttribute="centerY" id="bbc-d0-CxK"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="VPh-V8-rhz"/>
+                                                        <constraint firstItem="YSg-R0-E7j" firstAttribute="centerY" secondItem="uzU-HD-2ZN" secondAttribute="centerY" id="Ym5-BH-evZ"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uzU-HD-2ZN" secondAttribute="bottom" constant="15" id="gC4-Yn-psc"/>
                                                         <constraint firstItem="rQi-jy-ASE" firstAttribute="top" secondItem="uzU-HD-2ZN" secondAttribute="bottom" constant="5" id="qU4-Pd-MWh"/>
                                                         <constraint firstItem="rQi-jy-ASE" firstAttribute="trailing" secondItem="uzU-HD-2ZN" secondAttribute="trailing" id="xDe-dp-qf9"/>
                                                     </constraints>
@@ -2721,6 +2733,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="ibBorderView" destination="JcS-CN-bp4" id="1jI-LW-Gil"/>
+                                            <outlet property="ibImageView" destination="YSg-R0-E7j" id="iJX-EY-r2B"/>
                                             <outlet property="lblTitle" destination="uzU-HD-2ZN" id="wsq-i3-Fle"/>
                                         </connections>
                                     </tableViewCell>
@@ -4837,8 +4850,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_home_white_48pt" width="48" height="48"/>
-        <image name="icon_appointment_red.png" width="30" height="30"/>
         <image name="icon_arrow_next_red.png" width="66" height="66"/>
         <image name="icon_bookmark_red.png" width="30" height="30"/>
         <image name="icon_call_red.png" width="33" height="33"/>
@@ -4852,6 +4863,10 @@
         <image name="icon_request_red.png" width="30" height="30"/>
         <image name="icon_star_full_red.png" width="66" height="66"/>
         <image name="icon_uncheck_red.png" width="66" height="66"/>
+        <image name="icons8-bookmark" width="24" height="24"/>
+        <image name="icons8-calendar" width="24" height="24"/>
+        <image name="icons8-home-page" width="24" height="24"/>
+        <image name="icons8-name" width="24" height="24"/>
         <image name="placeholder_photo.png" width="960" height="640"/>
         <image name="placeholder_profile.png" width="225" height="225"/>
         <image name="send-grey.png" width="100" height="100"/>

@@ -256,7 +256,7 @@
 {
     
     if (isBookmarked) {
-        UIImage* image = [[UIImage imageNamed:@"icon_bookmark_red.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIImage* image = [[UIImage imageNamed:@"icons8-bookmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
         UIBarButtonItem* editButton = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(btnBookmarkClicked:)];
         
@@ -267,7 +267,7 @@
     }
     else{
     
-        UIImage* image = [[UIImage imageNamed:@"icon_bookmark_red.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIImage* image = [[UIImage imageNamed:@"icons8-bookmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
         UIBarButtonItem* editButton = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(btnBookmarkClicked:)];
         
@@ -621,8 +621,9 @@
         PackageDetailsTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"package_details_cell"];
         
         cell.lblTitle.text = self.packageModel.name;
-        cell.lblDesc.text = self.packageModel.merchant_info.username;
-        
+      //  cell.lblDesc.text = self.packageModel.merchant_info.username;
+        cell.lblDesc.text = @"";
+
         return cell;
         
     }

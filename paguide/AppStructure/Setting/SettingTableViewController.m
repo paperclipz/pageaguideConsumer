@@ -38,6 +38,8 @@
 #define cell_Version @"Version"
 #define cell_Rate @"Rating"
 #define cell_None @" "
+#define cell_Bookmark @"Bookmark"
+#define cell_Edit_Profile @"Edit Profile"
 
 
 @interface SettingTableViewController () <UITableViewDelegate,
@@ -88,6 +90,8 @@
         
         self.arrCellList = @[
                              cell_profile,
+                             cell_Edit_Profile,
+                             cell_Bookmark,
                              cell_change_password,
                              cell_notification,
                              //cell_FAQ,
@@ -213,6 +217,63 @@
     
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
+
+-(NSString*)getImageNameForType:(NSString*)str
+{
+    if ([str isEqualToString:cell_profile]) {
+        
+        
+        return @"icons8-name";
+    }
+    else if ([str isEqualToString:cell_change_password]) {
+        return @"icons8-password-reset";
+        
+    }
+    else if ([str isEqualToString:cell_notification]) {
+        return @"icons8-alarm";
+        
+    }
+    else if ([str isEqualToString:cell_FAQ]) {
+        return @"icons8-faq";
+        
+    } else if ([str isEqualToString:cell_Term]) {
+        return @"icons8-term";
+        
+    } else if ([str isEqualToString:cell_Privacy]) {
+        return @"icons8-policy-document";
+        
+    } else if ([str isEqualToString:cell_Logout]) {
+        return @"icons8-sign-out";
+        
+    }else if ([str isEqualToString:cell_Login]) {
+        return @"icons8-login";
+        
+    }
+    else if ([str isEqualToString:cell_Version]) {
+        return @"icons8-versions";
+        
+    }
+    else if ([str isEqualToString:cell_Rate]) {
+        return @"icons8-ratings";
+        
+    }
+    else if ([str isEqualToString:cell_Bookmark]) {
+        return @"icons8-bookmark";
+        
+    }
+    else if ([str isEqualToString:cell_Edit_Profile]) {
+        return @"icons8-edit-account";
+        
+    }
+    
+    else if ([str isEqualToString:cell_None]) {
+        return @"";
+        
+    }
+    
+    return @"";
+}
+
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -230,6 +291,18 @@
         else{
             return UITableViewAutomaticDimension;
 
+            
+        }
+    }
+    if ([cellType isEqualToString:cell_Edit_Profile]) {
+        
+        if (isEditMode) {
+            
+            return 0;
+        }
+        else{
+            return UITableViewAutomaticDimension;
+            
             
         }
     }
@@ -275,7 +348,15 @@
         
         cell.lblTitle.text = self.arrCellList[indexPath.row];
         cell.lblTitle.font = [UIFont boldSystemFontOfSize:12];
+        
+        NSString* imageName = [self getImageNameForType:self.arrCellList[indexPath.row]];
+     
+        if (![Utils isStringNull:imageName]) {
+            cell.ibImageView.image = [UIImage imageNamed:imageName];
 
+        }
+        cell.ibImageView.tintColor = APP_MAIN_COLOR;
+        
      //   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         NSString* type = self.arrCellList[indexPath.row];
@@ -392,10 +473,24 @@
     
     if (self.editProfileModel.uploadImage) {
         
+        cell.ibImageView.contentMode = UIViewContentModeScaleToFill;
+
         cell.ibImageView.image = self.editProfileModel.uploadImage;
     }
     else{
-        [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:self.profileModel.profile_img] placeholderImage:[UIImage imageNamed:@"ic_camera_enhance"]];
+        
+        if (self.profileModel.profile_img) {
+            cell.ibImageView.contentMode = UIViewContentModeScaleToFill;
+            
+        }
+        else{
+            
+            cell.ibImageView.contentMode = UIViewContentModeCenter;
+            
+        }
+
+        
+        [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:self.profileModel.profile_img] placeholderImage:[UIImage imageNamed:@"icons8-name"]];
     }
 
 }
@@ -429,30 +524,53 @@
     [cell.ibButton1 setTitle:@"Update Profile" forState:UIControlStateNormal];
     [cell.ibButton1 setTitleColor:APP_MAIN_COLOR forState:UIControlStateNormal];
     
-    [cell.ibButton2 setImage:[UIImage imageNamed:@"icon_bookmark_red.png"] forState:UIControlStateNormal];
+    [cell.ibButton2 setImage:[UIImage imageNamed:@"icons8-bookmark"] forState:UIControlStateNormal];
     
     
-    cell.didSelectInnerButton1Block = ^()
-    {
+//    cell.didSelectInnerButton1Block = ^()
+//    {
+//
+//        self.editProfileModel = self.profileModel;
+//
+//        self.editProfileModel.uploadImage = nil;
+//
+//        isEditMode = !isEditMode;
+//        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//
+//    };
+//
+//    cell.didSelectInnerButton2Block = ^()
+//    {
+//        [self.navigationController pushViewController:self.tourGuidePageViewController animated:YES];
+//
+//
+//    };
+
+    if (self.profileModel.profile_img) {
+        cell.ibImageView.contentMode = UIViewContentModeScaleToFill;
+
+    }
+    else{
         
-        self.editProfileModel = self.profileModel;
+        cell.ibImageView.contentMode = UIViewContentModeCenter;
 
-        self.editProfileModel.uploadImage = nil;
+    }
 
-        isEditMode = !isEditMode;
-        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-    };
-    
-    cell.didSelectInnerButton2Block = ^()
-    {
-        [self.navigationController pushViewController:self.tourGuidePageViewController animated:YES];
+    [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:self.profileModel.profile_img] placeholderImage:[UIImage imageNamed:@"icons8-name"]];
 
-        
-    };
-    
-    [cell.ibImageView sd_setImageWithURL:[NSURL URLWithString:self.profileModel.profile_img] placeholderImage:[UIImage imageNamed:@"ic_camera_enhance"]];
+}
 
+
+
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 
@@ -460,7 +578,23 @@
 {
     NSString* type = self.arrCellList[indexPath.row];
     
-    if ([type isEqualToString:cell_change_password]) {
+    
+    if ([type isEqualToString:cell_Edit_Profile]) {
+
+        self.editProfileModel = self.profileModel;
+        
+        self.editProfileModel.uploadImage = nil;
+        
+        isEditMode = !isEditMode;
+        
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0],[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
+    
+    else if ([type isEqualToString:cell_Bookmark]) {
+        [self.navigationController pushViewController:self.tourGuidePageViewController animated:YES];
+    }
+    else if ([type isEqualToString:cell_change_password]) {
         
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Change Password" message:@"" preferredStyle:UIAlertControllerStyleAlert];
